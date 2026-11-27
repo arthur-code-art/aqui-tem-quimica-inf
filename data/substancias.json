@@ -42,11 +42,7 @@
       "NATIONAL CENTER FOR BIOTECHNOLOGY INFORMATION (NCBI). PubChem Compound Summary for CID 176, Acetic Acid. Disponível em: https://pubchem.ncbi.nlm.nih.gov/compound/Acetic-Acid. Acesso em: 20 nov. 2026."
     ],
     "grupo": "G01",
-    "autores": [
-      "[Nome do Integrante 1 — G01]",
-      "[Nome do Integrante 2 — G01]",
-      "[Nome do Integrante 3 — G01]"
-    ],
+    "autores": ["[Nome do Integrante 1 — G01]", "[Nome do Integrante 2 — G01]", "[Nome do Integrante 3 — G01]"],
     "ocorrencias": [
       {
         "codigo": "INF-G01-P1",
@@ -55,11 +51,282 @@
         "grupo": "G01",
         "lat": -20.14515,
         "lng": -44.89175,
-        "autorizacao": {
-          "responsavel": "Responsável pelo Restaurante",
-          "data": "2026-11-20",
-          "aprovada": true
-        }
+        "autorizacao": { "responsavel": "Responsável pelo Restaurante", "data": "2026-11-20", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "acido-citrico",
+    "nomeIupac": "Ácido 2-hidroxipropano-1,2,3-tricarboxílico (Ácido cítrico)",
+    "formula": "C6H8O7",
+    "formulaHtml": "C<sub>6</sub>H<sub>8</sub>O<sub>7</sub>",
+    "nomesPopulares": ["Ácido do limão e da laranja", "Acidulante INS 330"],
+    "classe": "Ácido",
+    "subtipo": "Triácido orgânico fraco",
+    "phEstimado": 2.2,
+    "fotoPlaquinha": "/assets/img/classe-acidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G01-P2 no balcão de sucos e frutas do Restaurante",
+    "justificativa": "Classificado como ácido de Arrhenius por sofrer ionização em meio aquoso liberando íons H⁺ (H₃O⁺) a partir de seus três grupos carboxila.",
+    "classificacaoTags": ["Ácido de Arrhenius", "Ácido Fraco", "Triácido", "Orgânico"],
+    "equacaoTipo": "Primeira Etapa de Ionização em Água",
+    "equacaoHtml": "C<sub>6</sub>H<sub>8</sub>O<sub>7(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub> ⇌ H<sub>3</sub>O<sup>+</sup><sub>(aq)</sub> + C<sub>6</sub>H<sub>7</sub>O<sub>7</sub><sup>−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "Por possuir três hidrogênios ionizáveis, ioniza-se em etapas sucessivas com caráter ácido fraco.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino",
+      "Cor e odor": "Branco e inodoro, com sabor acentuadamente azedo",
+      "Solubilidade em água": "Altamente solúvel em água"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Ionização parcial em três etapas",
+      "Caráter ácido/básico": "Ácido (pH próximo de 2,2 em soluções concentradas)",
+      "Condutividade elétrica": "Eletrólito fraco em solução aquosa",
+      "Reações características": "Reage com bicarbonatos liberando CO₂ e atua como agente quelante"
+    },
+    "porQueEstaAqui": "Presente naturalmente em limões, laranjas e sucos servidos no Restaurante, conferindo sabor cítrico e retardando o escurecimento enzimático de frutas cortadas.",
+    "ondeMaisAparece": [
+      "Indústria de alimentos e bebidas como acidulante e conservante (INS 330).",
+      "Produtos de limpeza ecológicos para remoção de incrustações calcárias."
+    ],
+    "segurancaRiscos": "Seguro em alimentos, mas o pó concentrado ou suco puro irrita olhos e mucosas.",
+    "segurancaCuidados": [
+      "Lave as mãos após espremer frutas cítricas antes de se expor ao sol para evitar manchas na pele.",
+      "Em caso de contato com os olhos, enxágue com água corrente."
+    ],
+    "curiosidade": "O ácido cítrico dá nome ao Ciclo do Ácido Cítrico (Ciclo de Krebs), rota metabólica central que gera energia nas células aeróbicas.",
+    "referencias": [
+      "ATKINS, P.; JONES, L.; LAVERMAN, L. Princípios de química. 7. ed. Porto Alegre: Bookman, 2018."
+    ],
+    "grupo": "G01",
+    "autores": ["[Nome do Integrante 1 — G01]", "[Nome do Integrante 2 — G01]", "[Nome do Integrante 3 — G01]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G01-P2",
+        "zona": "Restaurante",
+        "localExato": "Área de distribuição de frutas e sucos cítricos",
+        "grupo": "G01",
+        "lat": -20.14516,
+        "lng": -44.89172,
+        "autorizacao": { "responsavel": "Responsável pelo Restaurante", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "acido-fosforico",
+    "nomeIupac": "Ácido fosfórico",
+    "formula": "H3PO4",
+    "formulaHtml": "H<sub>3</sub>PO<sub>4</sub>",
+    "nomesPopulares": ["Ácido ortofosfórico", "Acidulante de refrigerantes tipo cola (INS 338)"],
+    "classe": "Ácido",
+    "subtipo": "Oxiácido inorgânico moderado (triácido)",
+    "phEstimado": 2.5,
+    "fotoPlaquinha": "/assets/img/classe-acidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G01-P3 próxima à geladeira de bebidas do Restaurante",
+    "justificativa": "Substância molecular que, ao se dissolver em água, libera íons H⁺ (H₃O⁺) como únicos cátions, segundo Arrhenius.",
+    "classificacaoTags": ["Ácido de Arrhenius", "Ácido Moderado", "Triácido", "Oxiácido"],
+    "equacaoTipo": "Ionização em Meio Aquoso",
+    "equacaoHtml": "H<sub>3</sub>PO<sub>4(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub> ⇌ H<sub>3</sub>O<sup>+</sup><sub>(aq)</sub> + H<sub>2</sub>PO<sub>4</sub><sup>−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "Classificado como ácido moderado (α ≈ 27% em solução diluída), ionizando-se em três etapas.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino puro ou líquido viscoso em solução aquosa a 85%",
+      "Cor": "Incolor",
+      "Solubilidade em água": "Totalmente solúvel"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Ionização moderada gerando ânions fosfato",
+      "Caráter ácido/básico": "Ácido (pH entre 2,5 e 3,0 em refrigerantes de cola)",
+      "Condutividade elétrica": "Conduz eletricidade moderadamente em água",
+      "Reações características": "Forma sais fosfatos com bases e reage com óxidos de ferro (removedor de ferrugem)"
+    },
+    "porQueEstaAqui": "Encontrado em refrigerantes à base de cola no Restaurante para equilibrar o sabor doce e atuar como conservante, regulando a acidez da bebida.",
+    "ondeMaisAparece": [
+      "Produção de fertilizantes fosfatados para agricultura.",
+      "Tratamento odontológico (condicionamento ácido do esmalte) e conversão de ferrugem."
+    ],
+    "segurancaRiscos": "Em bebidas diluídas pode contribuir para erosão dentária se consumido em excesso; na forma industrial concentrada é corrosivo.",
+    "segurancaCuidados": [
+      "Evite consumo excessivo de refrigerantes ácidos para preservar o esmalte dos dentes.",
+      "Manuseie soluções concentradas apenas em laboratório com EPI."
+    ],
+    "curiosidade": "A acidez do ácido fosfórico presente em refrigerantes de cola é suficiente para dissolver pequenas camadas de ferrugem (Fe₂O₃) em objetos metálicos.",
+    "referencias": [
+      "FELTRE, R. Química geral. 6. ed. São Paulo: Moderna, 2004. v. 1."
+    ],
+    "grupo": "G01",
+    "autores": ["[Nome do Integrante 1 — G01]", "[Nome do Integrante 2 — G01]", "[Nome do Integrante 3 — G01]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G01-P3",
+        "zona": "Restaurante",
+        "localExato": "Lateral do expositor refrigerado de bebidas",
+        "grupo": "G01",
+        "lat": -20.14514,
+        "lng": -44.89170,
+        "autorizacao": { "responsavel": "Responsável pelo Restaurante", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "bicarbonato-de-sodio",
+    "nomeIupac": "Hidrogenocarbonato de sódio",
+    "formula": "NaHCO3",
+    "formulaHtml": "NaHCO<sub>3</sub>",
+    "nomesPopulares": ["Bicarbonato de sódio", "Fermento químico"],
+    "classe": "Sal",
+    "subtipo": "Hidrogenossal (sal de caráter básico em água)",
+    "phEstimado": 8.3,
+    "fotoPlaquinha": "/assets/img/classe-sais.jpg",
+    "fotoLegenda": "Plaquinha INF-G01-P4 na área de preparo de massas e bolos do Restaurante",
+    "justificativa": "Composto iônico formado por cátion diferente de H⁺ (Na⁺) e ânion diferente de OH⁻ (HCO₃⁻), enquadrando-se como sal.",
+    "classificacaoTags": ["Sal Básico", "Hidrogenossal", "Composto Iônico", "Solúvel"],
+    "equacaoTipo": "Decomposição Térmica e Ação com Ácidos",
+    "equacaoHtml": "2 NaHCO<sub>3(s)</sub> —<sup>Δ</sup>→ Na<sub>2</sub>CO<sub>3(s)</sub> + H<sub>2</sub>O<sub>(g)</sub> + CO<sub>2(g)</sub>",
+    "equacaoExplicacao": "Ao ser aquecido ou misturado a ácidos culinários, libera bolhas de gás carbônico (CO₂) que fazem bolos e pães crescerem.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido em pó fino cristalino",
+      "Cor": "Branco",
+      "Solubilidade em água": "Solúvel (aprox. 96 g/L a 20 °C)"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Dissociação iônica com hidrólise básica suave",
+      "Caráter ácido/básico": "Levemente básico (pH ≈ 8,3)",
+      "Condutividade elétrica": "Conduz eletricidade quando dissolvido em água",
+      "Reações características": "Neutraliza ácidos liberando CO₂ efervescente"
+    },
+    "porQueEstaAqui": "Utilizado na cozinha do Restaurante como fermento químico em bolos e biscoitos, além de auxiliar na higienização de hortaliças e neutralização de odores.",
+    "ondeMaisAparece": [
+      "Medicamentos antiácidos para alívio de azia e queimação estomacal.",
+      "Extintores de incêndio de pó químico seco (classe B e C)."
+    ],
+    "segurancaRiscos": "Baixa toxicidade; ingestão excessiva pode causar desconforto gástrico e excesso de sódio.",
+    "segurancaCuidados": [
+      "Armazene em local seco e fechado para não perder eficiência.",
+      "Não utilize como medicamento frequente sem orientação médica."
+    ],
+    "curiosidade": "A combinação de bicarbonato de sódio com vinagre é a reação química mais clássica para simular erupções vulcânicas em feiras de ciências.",
+    "referencias": [
+      "USBERCO, J.; SALVADOR, E. Química: volume único. 5. ed. São Paulo: Saraiva, 2002."
+    ],
+    "grupo": "G01",
+    "autores": ["[Nome do Integrante 1 — G01]", "[Nome do Integrante 2 — G01]", "[Nome do Integrante 3 — G01]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G01-P4",
+        "zona": "Restaurante",
+        "localExato": "Bancada de preparo de bolos e higienização de verduras",
+        "grupo": "G01",
+        "lat": -20.14517,
+        "lng": -44.89174,
+        "autorizacao": { "responsavel": "Responsável pelo Restaurante", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "hidroxido-de-calcio",
+    "nomeIupac": "Hidróxido de cálcio",
+    "formula": "Ca(OH)2",
+    "formulaHtml": "Ca(OH)<sub>2</sub>",
+    "nomesPopulares": ["Cal hidratada", "Cal apagada", "Água de cal"],
+    "classe": "Base",
+    "subtipo": "Dibase forte e pouco solúvel",
+    "phEstimado": 12.4,
+    "fotoPlaquinha": "/assets/img/classe-bases.jpg",
+    "fotoLegenda": "Plaquinha INF-G01-P5 na área de preparo de doces cristalizados e alvenaria do Restaurante",
+    "justificativa": "Segundo Arrhenius, é uma base porque sofre dissociação iônica em água liberando o íon hidróxido (OH⁻) como único ânion.",
+    "classificacaoTags": ["Base de Arrhenius", "Dibase", "Base Forte", "Pouco Solúvel"],
+    "equacaoTipo": "Equação de Dissociação Iônica em Água",
+    "equacaoHtml": "Ca(OH)<sub>2(s)</sub> ⇌ Ca<sup>2+</sup><sub>(aq)</sub> + 2 OH<sup>−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "Embora pouco solúvel, a fração dissolvida dissocia-se totalmente, produzindo solução alcalina (água de cal).",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido em pó fino",
+      "Cor": "Branco",
+      "Solubilidade em água": "Pouco solúvel (cerca de 1,7 g/L a 20 °C)"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Forma suspensão alcalina chamada leite de cal",
+      "Caráter ácido/básico": "Fortemente básico (pH ≈ 12,4 na solução saturada)",
+      "Condutividade elétrica": "Conduz eletricidade em solução aquosa",
+      "Reações características": "Reage com CO₂ do ar formando carbonato de cálcio (CaCO₃)"
+    },
+    "porQueEstaAqui": "Na culinária tradicional mineira e em cozinhas industriais, a cal virgem hidratada é usada na preparação de doces cristalizados (como abóbora e mamão) para manter a casca crocante por meio de ligações cruzadas com a pectina.",
+    "ondeMaisAparece": [
+      "Construção civil em argamassas, rebocos e pinturas à base de cal (caiação).",
+      "Tratamento de água e correção da acidez de solos agrícolas."
+    ],
+    "segurancaRiscos": "Alcalino irritante e corrosivo para pele, olhos e vias respiratórias se inalado em pó.",
+    "segurancaCuidados": [
+      "Evite contato direto com a pele e olhos; use luvas no manuseio.",
+      "Na culinária, enxágue muito bem os alimentos antes do cozimento final."
+    ],
+    "curiosidade": "A 'água de cal' é usada em laboratórios como detector natural de gás carbônico: ao assoprar com um canudo nela, o líquido transparente fica branco leitoso por formar CaCO₃ insolúvel.",
+    "referencias": [
+      "FELTRE, R. Química geral. 6. ed. São Paulo: Moderna, 2004. v. 1."
+    ],
+    "grupo": "G01",
+    "autores": ["[Nome do Integrante 1 — G01]", "[Nome do Integrante 2 — G01]", "[Nome do Integrante 3 — G01]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G01-P5",
+        "zona": "Restaurante",
+        "localExato": "Mural educativo próximo à despensa de ingredientes",
+        "grupo": "G01",
+        "lat": -20.14519,
+        "lng": -44.89176,
+        "autorizacao": { "responsavel": "Responsável pelo Restaurante", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "dioxido-de-carbono",
+    "nomeIupac": "Dióxido de carbono",
+    "formula": "CO2",
+    "formulaHtml": "CO<sub>2</sub>",
+    "nomesPopulares": ["Gás carbônico", "Gelo seco (estado sólido)"],
+    "classe": "Óxido",
+    "subtipo": "Óxido ácido (anidrido carbônico)",
+    "phEstimado": 5.6,
+    "fotoPlaquinha": "/assets/img/classe-oxidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G01-P6 próxima às bebidas gaseificadas e forno do Restaurante",
+    "justificativa": "Composto binário formado por carbono e oxigênio, sendo o oxigênio o elemento mais eletronegativo.",
+    "classificacaoTags": ["Óxido Ácido", "Composto Binário", "Molecular", "Gás à 25 °C"],
+    "equacaoTipo": "Reação com Água (Formação de Ácido Carbônico)",
+    "equacaoHtml": "CO<sub>2(g)</sub> + H<sub>2</sub>O<sub>(l)</sub> ⇌ H<sub>2</sub>CO<sub>3(aq)</sub>",
+    "equacaoExplicacao": "Por reagir com água formando ácido e com bases formando sal e água, classifica-se como óxido ácido.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Gás incolor e inodoro",
+      "Densidade": "Mais denso que o ar atmosférico",
+      "Solubilidade em água": "Moderadamente solúvel, aumentando sob pressão e baixa temperatura"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Forma equilíbrio com ácido carbônico (H₂CO₃)",
+      "Caráter ácido/básico": "Ácido em solução aquosa",
+      "Condutividade elétrica": "Não conduz no estado gasoso",
+      "Reações características": "Neutralizado por bases formando carbonatos; não é combustível"
+    },
+    "porQueEstaAqui": "No Restaurante, o CO₂ é responsável pela efervescência de águas com gás e refrigerantes, além de ser o gás liberado pela fermentação de pães e bolos.",
+    "ondeMaisAparece": [
+      "Fotossíntese das plantas e ciclo global do carbono.",
+      "Extintores de incêndio para equipamentos elétricos e refrigeração com gelo seco."
+    ],
+    "segurancaRiscos": "Não é tóxico em baixas concentrações, mas em ambientes fechados pode deslocar o oxigênio; o gelo seco (-78,5 °C) causa queimaduras por frio extremo.",
+    "segurancaCuidados": [
+      "Nunca toque em gelo seco sem luvas térmicas apropriadas.",
+      "Mantenha ambientes com combustão sempre ventilados."
+    ],
+    "curiosidade": "À pressão atmosférica normal, o CO₂ sólido (gelo seco) não derrete: ele sublima direto para gás a −78,5 °C.",
+    "referencias": [
+      "ATKINS, P.; JONES, L.; LAVERMAN, L. Princípios de química. 7. ed. Porto Alegre: Bookman, 2018."
+    ],
+    "grupo": "G01",
+    "autores": ["[Nome do Integrante 1 — G01]", "[Nome do Integrante 2 — G01]", "[Nome do Integrante 3 — G01]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G01-P6",
+        "zona": "Restaurante",
+        "localExato": "Próximo ao extintor de CO₂ e bancada de bebidas gaseificadas",
+        "grupo": "G01",
+        "lat": -20.14513,
+        "lng": -44.89178,
+        "autorizacao": { "responsavel": "Responsável pelo Restaurante", "data": "2026-11-26", "aprovada": true }
       }
     ]
   },
@@ -106,11 +373,7 @@
       "NATIONAL CENTER FOR BIOTECHNOLOGY INFORMATION (NCBI). PubChem Compound Summary for CID 14798, Sodium Hydroxide. Disponível em: https://pubchem.ncbi.nlm.nih.gov/compound/Sodium-Hydroxide. Acesso em: 20 nov. 2026."
     ],
     "grupo": "G02",
-    "autores": [
-      "[Nome do Integrante 1 — G02]",
-      "[Nome do Integrante 2 — G02]",
-      "[Nome do Integrante 3 — G02]"
-    ],
+    "autores": ["[Nome do Integrante 1 — G02]", "[Nome do Integrante 2 — G02]", "[Nome do Integrante 3 — G02]"],
     "ocorrencias": [
       {
         "codigo": "INF-G02-P1",
@@ -119,88 +382,830 @@
         "grupo": "G02",
         "lat": -20.14552,
         "lng": -44.89132,
-        "autorizacao": {
-          "responsavel": "Coordenação do Prédio 3",
-          "data": "2026-11-20",
-          "aprovada": true
-        }
+        "autorizacao": { "responsavel": "Coordenação do Prédio 3", "data": "2026-11-20", "aprovada": true }
       }
     ]
   },
   {
-    "slug": "cloreto-de-sodio",
-    "nomeIupac": "Cloreto de sódio",
-    "formula": "NaCl",
-    "formulaHtml": "NaCl",
-    "nomesPopulares": ["Sal de cozinha", "Sal refinado", "Eletrólito do suor e isotônicos"],
+    "slug": "hipoclorito-de-sodio",
+    "nomeIupac": "Hipoclorito de sódio",
+    "formula": "NaClO",
+    "formulaHtml": "NaClO",
+    "nomesPopulares": ["Água sanitária (solução 2% a 2,5%)", "Alvejante clorado"],
     "classe": "Sal",
-    "subtipo": "Sal neutro (haleto iônico)",
-    "phEstimado": 7.0,
+    "subtipo": "Oxissal básico (agente oxidante e desinfetante)",
+    "phEstimado": 11.5,
     "fotoPlaquinha": "/assets/img/classe-sais.jpg",
-    "fotoLegenda": "Plaquinhas INF-G09-P1 (Quadra) e INF-G01-P7 (Restaurante) — exemplo de substância repetida",
-    "justificativa": "O cloreto de sódio é um sal porque é um composto iônico que, dissolvido em água, dissocia-se liberando um cátion diferente de H⁺ (Na⁺) e um ânion diferente de OH⁻ (Cl⁻).",
-    "classificacaoTags": ["Sal Neutro", "Composto Iônico", "Eletrólito Forte", "Solúvel em Água"],
-    "equacaoTipo": "Equação de Neutralização e Dissociação Salina",
-    "equacaoHtml": "HCl<sub>(aq)</sub> + NaOH<sub>(aq)</sub> → NaCl<sub>(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub>",
-    "equacaoExplicacao": "Formado pela neutralização total entre um ácido forte (HCl) e uma base forte (NaOH). Em água, separa-se completamente em íons Na⁺ e Cl⁻.",
+    "fotoLegenda": "Plaquinha INF-G02-P2 próxima ao acesso de higienização dos Banheiros do prédio 3",
+    "justificativa": "Composto iônico que em água libera o cátion Na⁺ (diferente de H⁺) e o ânion hipoclorito ClO⁻ (diferente de OH⁻).",
+    "classificacaoTags": ["Sal Básico", "Oxissal", "Agente Oxidante", "Desinfetante"],
+    "equacaoTipo": "Dissociação e Hidrólise Básica",
+    "equacaoHtml": "NaClO<sub>(aq)</sub> → Na<sup>+</sup><sub>(aq)</sub> + ClO<sup>−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "O ânion ClO⁻ sofre hidrólise básica e possui alto poder oxidante, destruindo paredes celulares de bactérias e vírus.",
     "propriedadesFisicas": {
-      "Estado físico (25 °C)": "Sólido cristalino cúbico de alto ponto de fusão (801 °C)",
-      "Cor": "Branco / translúcido",
-      "Solubilidade em água": "Solúvel em água (aprox. 360 g/L a 25 °C)"
+      "Estado físico (25 °C)": "Comercializado em solução aquosa límpida",
+      "Cor e odor": "Levemente amarelado com odor característico de cloro",
+      "Solubilidade em água": "Completamente solúvel"
     },
     "propriedadesQuimicas": {
-      "Comportamento em água": "Dissociação iônica completa sem hidrólise relevante",
-      "Caráter ácido/básico": "Neutro (pH ≈ 7,0 em solução aquosa pura)",
-      "Condutividade elétrica": "Não conduz no estado sólido; excelente condutor em solução aquosa ou fundido",
-      "Reações características": "Usado na eletrólise industrial para obtenção de gás cloro, hidrogênio e soda cáustica"
+      "Comportamento em água": "Dissociação completa com hidrólise alcalina",
+      "Caráter ácido/básico": "Básico (pH entre 11 e 12 na água sanitária)",
+      "Condutividade elétrica": "Eletrólito forte em solução",
+      "Reações características": "Libera gás cloro (Cl₂) tóxico se misturado com ácidos ou amônia"
     },
-    "porQueEstaAqui": "Na Quadra, os íons Na⁺ e Cl⁻ são eliminados no suor durante a prática esportiva e repostos por isotônicos para manter o equilíbrio hídrico e os impulsos nervosos. No Restaurante, atua como tempero essencial e agente conservante.",
+    "porQueEstaAqui": "Nos Banheiros do prédio 3, soluções diluídas de hipoclorito de sódio são empregadas na desinfecção de pisos, vasos sanitários e bancadas.",
     "ondeMaisAparece": [
-      "Saúde e hospitais: soro fisiológico (solução aquosa a 0,9% de NaCl) para reposição de líquidos e higiene nasal.",
-      "Indústria química: matéria-prima da indústria de cloro-soda (produção de NaOH, Cl₂ e NaHCO₃)."
+      "Cloração e tratamento de água potável e piscinas.",
+      "Alvejamento de tecidos brancos na indústria têxtil e lavanderias."
     ],
-    "segurancaRiscos": "Seguro em consumo moderado, mas a ingestão excessiva crônica eleva o risco de hipertensão arterial, doenças cardiovasculares e sobrecarga renal.",
+    "segurancaRiscos": "Irritante para pele e olhos; a mistura com vinagre, ácido muriático ou amônia libera gases tóxicos asfixiantes.",
     "segurancaCuidados": [
-      "Modere o consumo diário seguindo a recomendação da OMS (até 5 g de sal por dia).",
-      "Evite contato de grandes quantidades com ferimentos abertos ou olhos, pois causa ardência intensa."
+      "Nunca misture água sanitária com outros produtos de limpeza.",
+      "Mantenha em embalagem opaca, fora do alcance de crianças e em local ventilado."
     ],
-    "curiosidade": "A palavra 'salário' vem do latim 'salarium': na Antiguidade, o sal era tão estratégico para conservar carnes e peixes sem geladeira que fazia parte da remuneração ou provisão de soldados romanos.",
+    "curiosidade": "A luz solar decompõe o hipoclorito de sódio em NaCl e gás oxigênio — por isso a água sanitária é vendida em frascos plásticos opacos.",
     "referencias": [
-      "USBERCO, J.; SALVADOR, E. Química: volume único. 5. ed. São Paulo: Saraiva, 2002.",
-      "NATIONAL CENTER FOR BIOTECHNOLOGY INFORMATION (NCBI). PubChem Compound Summary for CID 5234, Sodium Chloride. Disponível em: https://pubchem.ncbi.nlm.nih.gov/compound/Sodium-Chloride. Acesso em: 20 nov. 2026."
+      "USBERCO, J.; SALVADOR, E. Química: volume único. 5. ed. São Paulo: Saraiva, 2002."
     ],
-    "grupo": "G09 / G01",
-    "autores": [
-      "[Nome do Integrante 1 — G09]",
-      "[Nome do Integrante 2 — G09]",
-      "[Nome do Integrante 3 — G09]"
-    ],
+    "grupo": "G02",
+    "autores": ["[Nome do Integrante 1 — G02]", "[Nome do Integrante 2 — G02]", "[Nome do Integrante 3 — G02]"],
     "ocorrencias": [
       {
-        "codigo": "INF-G09-P1",
-        "zona": "Quadra",
-        "localExato": "Pilastra próxima ao bebedouro lateral da Quadra poliesportiva",
-        "grupo": "G09",
-        "lat": -20.14578,
-        "lng": -44.89028,
-        "autorizacao": {
-          "responsavel": "Professor(a) de Educação Física",
-          "data": "2026-11-20",
-          "aprovada": true
-        }
-      },
+        "codigo": "INF-G02-P2",
+        "zona": "Banheiros do prédio 3",
+        "localExato": "Entrada dos banheiros, próximo ao quadro de aviso de higienização",
+        "grupo": "G02",
+        "lat": -20.14554,
+        "lng": -44.89130,
+        "autorizacao": { "responsavel": "Coordenação do Prédio 3", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "acido-cloridrico",
+    "nomeIupac": "Ácido clorídrico",
+    "formula": "HCl",
+    "formulaHtml": "HCl",
+    "nomesPopulares": ["Ácido muriático (uso comercial impuro)", "Ácido do suco gástrico"],
+    "classe": "Ácido",
+    "subtipo": "Hidrácido forte (monoácido)",
+    "phEstimado": 1.0,
+    "fotoPlaquinha": "/assets/img/classe-acidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G02-P3 nos Banheiros do prédio 3 (alerta sobre limpeza pesada de pisos)",
+    "justificativa": "Substância molecular que se ioniza quase totalmente em água, liberando H⁺ (H₃O⁺) como único cátion.",
+    "classificacaoTags": ["Ácido de Arrhenius", "Ácido Forte", "Hidrácido", "Monoácido"],
+    "equacaoTipo": "Ionização Total em Água",
+    "equacaoHtml": "HCl<sub>(g)</sub> + H<sub>2</sub>O<sub>(l)</sub> → H<sub>3</sub>O<sup>+</sup><sub>(aq)</sub> + Cl<sup>−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "Ácido forte com grau de ionização superior a 92% em soluções diluídas.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Solução aquosa líquida (o HCl puro é gás)",
+      "Cor e odor": "Incolor (amarelado no ácido muriático) com odor irritante",
+      "Solubilidade em água": "Extremamente solúvel em água"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Ionização praticamente total",
+      "Caráter ácido/básico": "Ácido muito forte (pH próximo de 0 a 1 em soluções concentradas)",
+      "Condutividade elétrica": "Excelente condutor em solução aquosa",
+      "Reações características": "Dissolve calcário (CaCO₃) e corrói diversos metais liberando H₂"
+    },
+    "porQueEstaAqui": "Relacionado à limpeza pesada pós-obra de pisos cerâmicos e rejuntes dos banheiros (como ácido muriático), além de ser fundamental conhecer seu risco de mistura com água sanitária.",
+    "ondeMaisAparece": [
+      "Suco gástrico humano, auxiliando na digestão de proteínas e defesa contra microrganismos.",
+      "Indústria metalúrgica na decapagem (limpeza química) de chapas de aço."
+    ],
+    "segurancaRiscos": "Altamente corrosivo para pele, olhos e vias respiratórias; reage violentamente com hipoclorito liberando gás cloro.",
+    "segurancaCuidados": [
+      "Nunca misture ácido muriático com água sanitária.",
+      "Use luvas, óculos e ventilação intensa caso seja utilizado por profissionais."
+    ],
+    "curiosidade": "Nosso estômago produz ácido clorídrico suficiente para manter pH próximo de 1,5, mas uma camada espessa de muco protege as paredes estomacais contra autodigestão.",
+    "referencias": [
+      "FELTRE, R. Química geral. 6. ed. São Paulo: Moderna, 2004. v. 1."
+    ],
+    "grupo": "G02",
+    "autores": ["[Nome do Integrante 1 — G02]", "[Nome do Integrante 2 — G02]", "[Nome do Integrante 3 — G02]"],
+    "ocorrencias": [
       {
-        "codigo": "INF-G01-P7",
-        "zona": "Restaurante",
-        "localExato": "Área de temperos e preparo de refeições, junto aos saleiros",
-        "grupo": "G01",
-        "lat": -20.14518,
-        "lng": -44.89168,
-        "autorizacao": {
-          "responsavel": "Responsável pelo Restaurante",
-          "data": "2026-11-20",
-          "aprovada": true
-        }
+        "codigo": "INF-G02-P3",
+        "zona": "Banheiros do prédio 3",
+        "localExato": "Corredor de acesso aos sanitários, próximo ao piso cerâmico",
+        "grupo": "G02",
+        "lat": -20.14550,
+        "lng": -44.89134,
+        "autorizacao": { "responsavel": "Coordenação do Prédio 3", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "hidroxido-de-amonio",
+    "nomeIupac": "Hidróxido de amônio",
+    "formula": "NH4OH",
+    "formulaHtml": "NH<sub>4</sub>OH",
+    "nomesPopulares": ["Amoníaco", "Solução aquosa de amônia"],
+    "classe": "Base",
+    "subtipo": "Base fraca, solúvel e volátil (monobase)",
+    "phEstimado": 11.2,
+    "fotoPlaquinha": "/assets/img/classe-bases.jpg",
+    "fotoLegenda": "Plaquinha INF-G02-P4 próxima aos espelhos e vidros dos Banheiros do prédio 3",
+    "justificativa": "Em meio aquoso, a amônia (NH₃) ioniza a água formando íons amônio (NH₄⁺) e hidróxido (OH⁻), único ânion característico das bases.",
+    "classificacaoTags": ["Base de Arrhenius", "Base Fraca", "Solúvel", "Volátil"],
+    "equacaoTipo": "Equilíbrio de Ionização da Amônia em Água",
+    "equacaoHtml": "NH<sub>3(g)</sub> + H<sub>2</sub>O<sub>(l)</sub> ⇌ NH<sub>4</sub><sup>+</sup><sub>(aq)</sub> + OH<sup>−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "Única base comum que não contém metal; é fraca porque apenas pequena fração gera íons OH⁻.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Solução aquosa líquida volátil",
+      "Cor e odor": "Incolor, com cheiro forte e penetrante característico",
+      "Solubilidade em água": "Muito solúvel"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Equilíbrio reversível liberando NH₃ gasoso facilmente",
+      "Caráter ácido/básico": "Básico fraco (pH ≈ 11 em soluções domésticas)",
+      "Condutividade elétrica": "Eletrólito fraco",
+      "Reações características": "Remove gorduras de vidros sem deixar resíduos sólidos; reage com ácidos formando sais de amônio"
+    },
+    "porQueEstaAqui": "Componente clássico de limpa-vidros usados nos espelhos dos Banheiros do prédio 3, pois evapora rapidamente sem deixar manchas.",
+    "ondeMaisAparece": [
+      "Produtos de coloração capilar para abrir as cutículas dos fios.",
+      "Produção de fertilizantes nitrogenados e reagentes de laboratório."
+    ],
+    "segurancaRiscos": "Seus vapores irritam olhos e mucosas; misturado com água sanitária gera cloraminas tóxicas.",
+    "segurancaCuidados": [
+      "Use limpa-vidros com amoníaco apenas em locais ventilados.",
+      "Jamais misture produtos com amônia e água sanitária."
+    ],
+    "curiosidade": "Por ser altamente volátil, o hidróxido de amônio não existe isolado como sólido puro — existe apenas em equilíbrio dentro da água.",
+    "referencias": [
+      "ATKINS, P.; JONES, L.; LAVERMAN, L. Princípios de química. 7. ed. Porto Alegre: Bookman, 2018."
+    ],
+    "grupo": "G02",
+    "autores": ["[Nome do Integrante 1 — G02]", "[Nome do Integrante 2 — G02]", "[Nome do Integrante 3 — G02]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G02-P4",
+        "zona": "Banheiros do prédio 3",
+        "localExato": "Moldura lateral do espelho da pia",
+        "grupo": "G02",
+        "lat": -20.14553,
+        "lng": -44.89135,
+        "autorizacao": { "responsavel": "Coordenação do Prédio 3", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "carbonato-de-calcio",
+    "nomeIupac": "Carbonato de cálcio",
+    "formula": "CaCO3",
+    "formulaHtml": "CaCO<sub>3</sub>",
+    "nomesPopulares": ["Giz escolar", "Calcário", "Mármore"],
+    "classe": "Sal",
+    "subtipo": "Oxissal insolúvel (sal de caráter básico)",
+    "phEstimado": 9.0,
+    "fotoPlaquinha": "/assets/img/classe-sais.jpg",
+    "fotoLegenda": "Plaquinha INF-G03-P1 próxima ao quadro e bancadas das Salas de aula",
+    "justificativa": "Composto iônico formado pelo cátion cálcio (Ca²⁺) e pelo ânion carbonato (CO₃²⁻).",
+    "classificacaoTags": ["Oxissal", "Insolúvel em Água", "Mineral", "Composto Iônico"],
+    "equacaoTipo": "Reação Característica com Ácidos",
+    "equacaoHtml": "CaCO<sub>3(s)</sub> + 2 HCl<sub>(aq)</sub> → CaCl<sub>2(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub> + CO<sub>2(g)</sub>",
+    "equacaoExplicacao": "Embora insolúvel em água pura, reage rapidamente com ácidos liberando efervescência de CO₂.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino ou pó compacto",
+      "Cor": "Branco",
+      "Solubilidade em água": "Praticamente insolúvel em água pura"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Estável e insolúvel; solubiliza-se lentamente em água ácida",
+      "Caráter ácido/básico": "Levemente básico",
+      "Condutividade elétrica": "Não conduz eletricidade no estado sólido",
+      "Reações características": "Decompõe-se em altas temperaturas formando cal virgem (CaO) e CO₂"
+    },
+    "porQueEstaAqui": "Presente no giz tradicional, em acabamentos de mármore/granilite e na carga mineral de papéis e tintas das paredes das Salas de aula.",
+    "ondeMaisAparece": [
+      "Cascas de ovos, conchas marinhas, recifes de corais e estalactites.",
+      "Suplementos de cálcio, cremes dentais (abrasivo suave) e indústria de cimento."
+    ],
+    "segurancaRiscos": "Baixo risco; a inalação prolongada de pó de giz pode ressecar vias aéreas.",
+    "segurancaCuidados": [
+      "Lave as mãos após manusear giz escolar.",
+      "Evite sacudir apagadores em ambientes fechados."
+    ],
+    "curiosidade": "A chuva ácida desgasta estátuas de mármore justamente porque os ácidos reagem com o CaCO₃ convertendo a pedra em sais solúveis.",
+    "referencias": [
+      "USBERCO, J.; SALVADOR, E. Química: volume único. 5. ed. São Paulo: Saraiva, 2002."
+    ],
+    "grupo": "G03",
+    "autores": ["[Nome do Integrante 1 — G03]", "[Nome do Integrante 2 — G03]", "[Nome do Integrante 3 — G03]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G03-P1",
+        "zona": "Salas de aula",
+        "localExato": "Parede ao lado do quadro da sala do 1º Ano de Informática",
+        "grupo": "G03",
+        "lat": -20.14530,
+        "lng": -44.89110,
+        "autorizacao": { "responsavel": "Coordenação Pedagógica", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "dioxido-de-titanio",
+    "nomeIupac": "Dióxido de titânio",
+    "formula": "TiO2",
+    "formulaHtml": "TiO<sub>2</sub>",
+    "nomesPopulares": ["Branco de titânio", "Pigmento branco de tintas e corretivos"],
+    "classe": "Óxido",
+    "subtipo": "Óxido metálico anfótero / inerte",
+    "phEstimado": 7.0,
+    "fotoPlaquinha": "/assets/img/classe-oxidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G03-P2 sobre tinta branca e corretivos nas Salas de aula",
+    "justificativa": "Composto binário formado por titânio e oxigênio, no qual o oxigênio é o elemento mais eletronegativo.",
+    "classificacaoTags": ["Óxido", "Composto Binário", "Pigmento Branco", "Insolúvel"],
+    "equacaoTipo": "Formação do Dióxido de Titânio",
+    "equacaoHtml": "TiCl<sub>4(g)</sub> + O<sub>2(g)</sub> → TiO<sub>2(s)</sub> + 2 Cl<sub>2(g)</sub>",
+    "equacaoExplicacao": "Obtido industrialmente pelo processo do cloreto, gerando cristais de altíssimo índice de refração.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido em pó finíssimo",
+      "Cor": "Branco brilhante e opaco",
+      "Solubilidade em água": "Insolúvel em água"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Quimicamente inerte e insolúvel",
+      "Caráter ácido/básico": "Anfótero de baixíssima reatividade à temperatura ambiente",
+      "Condutividade elétrica": "Isolante / semicondutor fotocatalítico sob luz UV",
+      "Reações características": "Altamente resistente à degradação solar e oxidação"
+    },
+    "porQueEstaAqui": "Nas Salas de aula, o TiO₂ dá a cor branca brilhante às paredes pintadas, aos quadros brancos, aos papéis sulfite e aos líquidos corretivos usados pelos estudantes.",
+    "ondeMaisAparece": [
+      "Protetores solares físicos, refletindo radiação UVA e UVB.",
+      "Indústria de plásticos, borrachas e revestimentos cerâmicos."
+    ],
+    "segurancaRiscos": "Inerte em tintas secas e plásticos; deve-se evitar a inalação de pó seco industrial.",
+    "segurancaCuidados": [
+      "Utilize corretivos escolares apenas sobre o papel e tampe após o uso.",
+      "Não lixe paredes pintadas sem proteção respiratória."
+    ],
+    "curiosidade": "O TiO₂ tem índice de refração tão alto que é o pigmento branco mais opaco conhecido, substituindo antigos pigmentos tóxicos à base de chumbo.",
+    "referencias": [
+      "LEE, J. D. Química inorgânica não tão concisa. 5. ed. São Paulo: Blucher, 1999."
+    ],
+    "grupo": "G03",
+    "autores": ["[Nome do Integrante 1 — G03]", "[Nome do Integrante 2 — G03]", "[Nome do Integrante 3 — G03]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G03-P2",
+        "zona": "Salas de aula",
+        "localExato": "Moldura do quadro branco na parede frontal da sala",
+        "grupo": "G03",
+        "lat": -20.14532,
+        "lng": -44.89108,
+        "autorizacao": { "responsavel": "Coordenação Pedagógica", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "oxido-de-ferro-iii",
+    "nomeIupac": "Óxido de ferro(III)",
+    "formula": "Fe2O3",
+    "formulaHtml": "Fe<sub>2</sub>O<sub>3</sub>",
+    "nomesPopulares": ["Ferrugem (forma principal)", "Hematita", "Pigmento vermelho óxido"],
+    "classe": "Óxido",
+    "subtipo": "Óxido básico",
+    "phEstimado": 7.0,
+    "fotoPlaquinha": "/assets/img/classe-oxidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G03-P3 junto às estruturas metálicas das carteiras nas Salas de aula",
+    "justificativa": "Composto binário formado por ferro e oxigênio, com o oxigênio sendo o elemento mais eletronegativo.",
+    "classificacaoTags": ["Óxido Básico", "Composto Binário", "Mineral", "Insolúvel"],
+    "equacaoTipo": "Oxidação do Ferro pelo Oxigênio do Ar",
+    "equacaoHtml": "4 Fe<sub>(s)</sub> + 3 O<sub>2(g)</sub> → 2 Fe<sub>2</sub>O<sub>3(s)</sub>",
+    "equacaoExplicacao": "Ocorre gradualmente na presença de umidade, formando a camada avermelhada e quebradiça conhecida como ferrugem.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino ou pó",
+      "Cor": "Castanho-avermelhado (cor de ferrugem)",
+      "Solubilidade em água": "Insolúvel em água"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Insolúvel",
+      "Caráter ácido/básico": "Óxido básico (reage com ácidos fortes formando sais de ferro III)",
+      "Condutividade elétrica": "Baixa condutividade",
+      "Reações características": "Reduzido em altos-fornos com CO para obtenção de ferro-gusa e aço"
+    },
+    "porQueEstaAqui": "Presente nas estruturas metálicas de carteiras, janelas e portas de aço das Salas de aula sempre que a pintura protetora se desgasta e o ferro oxida em contato com ar e umidade.",
+    "ondeMaisAparece": [
+      "Principal minério de ferro de Minas Gerais (hematita) e responsável pela cor avermelhada do solo mineiro e de Marte.",
+      "Pigmentos de tintas, cerâmicas e fitas magnéticas."
+    ],
+    "segurancaRiscos": "Baixa toxicidade química, mas superfícies metálicas enferrujadas podem causar cortes e arranhões contaminados.",
+    "segurancaCuidados": [
+      "Avise a manutenção sobre estruturas metálicas quebradas ou pontiagudas.",
+      "Mantenha a vacinação antitetânica em dia."
+    ],
+    "curiosidade": "O planeta Marte é conhecido como 'Planeta Vermelho' justamente porque sua superfície é recoberta por poeira rica em óxido de ferro(III).",
+    "referencias": [
+      "ATKINS, P.; JONES, L.; LAVERMAN, L. Princípios de química. 7. ed. Porto Alegre: Bookman, 2018."
+    ],
+    "grupo": "G03",
+    "autores": ["[Nome do Integrante 1 — G03]", "[Nome do Integrante 2 — G03]", "[Nome do Integrante 3 — G03]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G03-P3",
+        "zona": "Salas de aula",
+        "localExato": "Batente metálico da janela no corredor das salas de aula",
+        "grupo": "G03",
+        "lat": -20.14534,
+        "lng": -44.89112,
+        "autorizacao": { "responsavel": "Coordenação Pedagógica", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "sulfato-de-calcio",
+    "nomeIupac": "Sulfato de cálcio di-hidratado",
+    "formula": "CaSO4·2H2O",
+    "formulaHtml": "CaSO<sub>4</sub>·2H<sub>2</sub>O",
+    "nomesPopulares": ["Gesso", "Gipsita"],
+    "classe": "Sal",
+    "subtipo": "Oxissal hidratado pouco solúvel",
+    "phEstimado": 7.0,
+    "fotoPlaquinha": "/assets/img/classe-sais.jpg",
+    "fotoLegenda": "Plaquinha INF-G03-P4 próxima ao forro e divisórias das Salas de aula",
+    "justificativa": "Composto iônico formado pelo cátion cálcio (Ca²⁺) e pelo ânion sulfato (SO₄²⁻), associado a moléculas de água de cristalização.",
+    "classificacaoTags": ["Sal Neutro", "Sal Hidratado", "Oxissal", "Pouco Solúvel"],
+    "equacaoTipo": "Endurecimento (Hidratação) do Gesso",
+    "equacaoHtml": "CaSO<sub>4</sub>·½H<sub>2</sub>O<sub>(s)</sub> + 1½ H<sub>2</sub>O<sub>(l)</sub> → CaSO<sub>4</sub>·2H<sub>2</sub>O<sub>(s)</sub>",
+    "equacaoExplicacao": "O pó de gesso (hemi-hidratado) reage com água liberando calor e recristalizando como sólido rígido.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido branco cristalino ou compacto",
+      "Cor": "Branco",
+      "Solubilidade em água": "Pouco solúvel (aprox. 2,1 g/L a 20 °C)"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Estável e pouco solúvel após cristalização",
+      "Caráter ácido/básico": "Neutro (pH ≈ 7,0)",
+      "Condutividade elétrica": "Isolante no estado sólido",
+      "Reações características": "Perde água por aquecimento moderado, regenerando o pó de gesso"
+    },
+    "porQueEstaAqui": "Encontrado nos forros, molduras de teto, placas de drywall e giz moderno antialérgico utilizados nas Salas de aula.",
+    "ondeMaisAparece": [
+      "Ortopedia médica para imobilização de fraturas ósseas.",
+      "Agricultura como gesso agrícola para condicionar solos profundos."
+    ],
+    "segurancaRiscos": "Material seguro no estado sólido; evitar inalar poeira durante reformas.",
+    "segurancaCuidados": [
+      "Não perfure placas de gesso sem orientação técnica.",
+      "Em contato do pó com os olhos, lave com água abundante."
+    ],
+    "curiosidade": "A reação de endurecimento do gesso é exotérmica — por isso quem já engessou um braço sente o gesso esquentar enquanto seca.",
+    "referencias": [
+      "FELTRE, R. Química geral. 6. ed. São Paulo: Moderna, 2004. v. 1."
+    ],
+    "grupo": "G03",
+    "autores": ["[Nome do Integrante 1 — G03]", "[Nome do Integrante 2 — G03]", "[Nome do Integrante 3 — G03]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G03-P4",
+        "zona": "Salas de aula",
+        "localExato": "Parede de acabamento em gesso próxima à porta da sala",
+        "grupo": "G03",
+        "lat": -20.14536,
+        "lng": -44.89114,
+        "autorizacao": { "responsavel": "Coordenação Pedagógica", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "dioxido-de-silicio",
+    "nomeIupac": "Dióxido de silício",
+    "formula": "SiO2",
+    "formulaHtml": "SiO<sub>2</sub>",
+    "nomesPopulares": ["Sílica", "Quartzo", "Principal componente do vidro e da areia"],
+    "classe": "Óxido",
+    "subtipo": "Óxido ácido covalente",
+    "phEstimado": 7.0,
+    "fotoPlaquinha": "/assets/img/classe-oxidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G04-P1 nas janelas de vidro e sachês dessecantes da Biblioteca",
+    "justificativa": "Composto binário formado por silício e oxigênio, no qual o oxigênio é o elemento mais eletronegativo.",
+    "classificacaoTags": ["Óxido Ácido", "Sólido Covalente", "Composto Binário", "Insolúvel"],
+    "equacaoTipo": "Reação com Base Forte sob Aquecimento",
+    "equacaoHtml": "SiO<sub>2(s)</sub> + 2 NaOH<sub>(aq)</sub> —<sup>Δ</sup>→ Na<sub>2</sub>SiO<sub>3(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub>",
+    "equacaoExplicacao": "Classifica-se como óxido ácido por reagir com bases fortes formando silicatos (como o silicato de sódio).",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido covalente duro de altíssimo ponto de fusão (~1710 °C)",
+      "Cor": "Incolor/transparente (quartzo/vidro) ou branco (sílica gel)",
+      "Solubilidade em água": "Insolúvel em água"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Insolúvel; a sílica gel absorve umidade superficial por adsorção física",
+      "Caráter ácido/básico": "Ácido fraco (atacado por HF e bases fortes a quente)",
+      "Condutividade elétrica": "Isolante elétrico",
+      "Reações características": "Forma redes amorfas transparentes (vidro) quando fundido com fundentes"
+    },
+    "porQueEstaAqui": "Na Biblioteca, o SiO₂ compõe os vidros das janelas e estantes, além dos sachês de sílica gel usados na conservação do acervo de livros para evitar mofo e umidade.",
+    "ondeMaisAparece": [
+      "Fabricação de fibras ópticas, microchips (fonte de silício ultrapuro) e concreto.",
+      "Areia das praias e cristais de quartzo abundantes em Minas Gerais."
+    ],
+    "segurancaRiscos": "Inerte em vidros e sílica gel, mas sachês dessecantes não devem ser ingeridos e a poeira fina de quartzo industrial causa silicose.",
+    "segurancaCuidados": [
+      "Não abra nem ingira sachês de sílica gel usados na conservação de livros.",
+      "Evite impactos nas divisórias de vidro."
+    ],
+    "curiosidade": "Os cristais de quartzo (SiO₂ puro) são piezoelétricos: vibram em frequência exata ao receber eletricidade, servindo de 'coração' de relógios e computadores.",
+    "referencias": [
+      "LEE, J. D. Química inorgânica não tão concisa. 5. ed. São Paulo: Blucher, 1999."
+    ],
+    "grupo": "G04",
+    "autores": ["[Nome do Integrante 1 — G04]", "[Nome do Integrante 2 — G04]", "[Nome do Integrante 3 — G04]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G04-P1",
+        "zona": "Biblioteca",
+        "localExato": "Vidraça lateral próxima às estantes de conservação do acervo",
+        "grupo": "G04",
+        "lat": -20.14540,
+        "lng": -44.89150,
+        "autorizacao": { "responsavel": "Bibliotecário(a) Responsável", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "oxido-de-aluminio",
+    "nomeIupac": "Óxido de alumínio",
+    "formula": "Al2O3",
+    "formulaHtml": "Al<sub>2</sub>O<sub>3</sub>",
+    "nomesPopulares": ["Alumina", "Camada protetora de esquadrias de alumínio", "Coríndon"],
+    "classe": "Óxido",
+    "subtipo": "Óxido anfótero",
+    "phEstimado": 7.0,
+    "fotoPlaquinha": "/assets/img/classe-oxidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G04-P2 nas esquadrias de alumínio anodizado da Biblioteca",
+    "justificativa": "Composto binário constituído por alumínio e oxigênio, sendo o oxigênio o elemento mais eletronegativo.",
+    "classificacaoTags": ["Óxido Anfótero", "Composto Binário", "Altamente Duro", "Insolúvel"],
+    "equacaoTipo": "Passivação Protetora do Alumínio",
+    "equacaoHtml": "4 Al<sub>(s)</sub> + 3 O<sub>2(g)</sub> → 2 Al<sub>2</sub>O<sub>3(s)</sub>",
+    "equacaoExplicacao": "Forma rapidamente uma película transparente, aderente e impermeável que protege o alumínio contra corrosão.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino extremamente duro (dureza 9 na escala Mohs)",
+      "Cor": "Branco ou transparente em película fina",
+      "Solubilidade em água": "Insolúvel em água"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Insolúvel e resistente à corrosão atmosférica",
+      "Caráter ácido/básico": "Anfótero (reage com ácidos fortes e bases fortes)",
+      "Condutividade elétrica": "Isolante elétrico",
+      "Reações características": "Submetido à eletrólise ígnea (processo Hall-Héroult) para produzir alumínio metálico"
+    },
+    "porQueEstaAqui": "Presente nas esquadrias de portas, janelas e estantes de alumínio anodizado da Biblioteca, protegendo o metal da oxidação profunda.",
+    "ondeMaisAparece": [
+      "Gemas preciosas: rubi (Al₂O₃ com traços de cromo) e safira (Al₂O₃ com ferro e titânio).",
+      "Lixas abrasivas, velas de ignição e cerâmicas de alta resistência."
+    ],
+    "segurancaRiscos": "Inerte e seguro em esquadrias e cerâmicas.",
+    "segurancaCuidados": [
+      "Não utilize produtos fortemente ácidos ou soda cáustica na limpeza de alumínio, pois destroem a camada protetora de Al₂O₃."
+    ],
+    "curiosidade": "Ao contrário da ferrugem do ferro que descasca e corrói o metal inteiro, o Al₂O₃ funciona como uma armadura microscópica que 'sela' o alumínio.",
+    "referencias": [
+      "ATKINS, P.; JONES, L.; LAVERMAN, L. Princípios de química. 7. ed. Porto Alegre: Bookman, 2018."
+    ],
+    "grupo": "G04",
+    "autores": ["[Nome do Integrante 1 — G04]", "[Nome do Integrante 2 — G04]", "[Nome do Integrante 3 — G04]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G04-P2",
+        "zona": "Biblioteca",
+        "localExato": "Esquadria de alumínio da porta principal de entrada",
+        "grupo": "G04",
+        "lat": -20.14542,
+        "lng": -44.89148,
+        "autorizacao": { "responsavel": "Bibliotecário(a) Responsável", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "hidroxido-de-magnesio",
+    "nomeIupac": "Hidróxido de magnésio",
+    "formula": "Mg(OH)2",
+    "formulaHtml": "Mg(OH)<sub>2</sub>",
+    "nomesPopulares": ["Leite de magnésia", "Antiácido estomacal"],
+    "classe": "Base",
+    "subtipo": "Dibase fraca e pouco solúvel",
+    "phEstimado": 10.3,
+    "fotoPlaquinha": "/assets/img/classe-bases.jpg",
+    "fotoLegenda": "Plaquinha INF-G04-P3 no mural de conservação de papel e farmácia básica da Biblioteca",
+    "justificativa": "Segundo Arrhenius, é uma base por dissociar-se em água liberando íons hidróxido (OH⁻) como únicos ânions.",
+    "classificacaoTags": ["Base de Arrhenius", "Base Fraca", "Dibase", "Pouco Solúvel"],
+    "equacaoTipo": "Neutralização de Ácido por Hidróxido de Magnésio",
+    "equacaoHtml": "Mg(OH)<sub>2(s)</sub> + 2 HCl<sub>(aq)</sub> → MgCl<sub>2(aq)</sub> + 2 H<sub>2</sub>O<sub>(l)</sub>",
+    "equacaoExplicacao": "Neutraliza ácidos de forma suave e controlada sem causar queimaduras nos tecidos ou nas fibras do papel.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido branco (comercializado como suspensão leitosa em água)",
+      "Cor": "Branco",
+      "Solubilidade em água": "Muito pouco solúvel em água"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Forma suspensão branca leitosa com baixa concentração de OH⁻",
+      "Caráter ácido/básico": "Básico suave (pH ≈ 10,3)",
+      "Condutividade elétrica": "Baixa condutividade devido à baixa solubilidade",
+      "Reações características": "Neutraliza ácidos estomacais e ácidos presentes em papéis antigos"
+    },
+    "porQueEstaAqui": "Na área de restauração de bibliotecas, suspensões de Mg(OH)₂ são usadas na desacidificação de livros antigos para neutralizar os ácidos que amarelam e quebram as folhas de papel.",
+    "ondeMaisAparece": [
+      "Farmácias como leite de magnésia (antiácido e laxante suave).",
+      "Retardante de chamas ecológico em cabos elétricos e plásticos."
+    ],
+    "segurancaRiscos": "Baixa toxicidade, mas o uso medicinal excessivo pode causar efeito laxativo.",
+    "segurancaCuidados": [
+      "Utilize medicamentos apenas com orientação médica ou farmacêutica.",
+      "Agite bem suspensões antes de qualquer uso técnico."
+    ],
+    "curiosidade": "Livros impressos nos séculos XIX e XX amarelam rápido por causa da acidez da polpa de madeira — bases suaves como Mg(OH)₂ podem estender sua vida útil por séculos.",
+    "referencias": [
+      "FELTRE, R. Química geral. 6. ed. São Paulo: Moderna, 2004. v. 1."
+    ],
+    "grupo": "G04",
+    "autores": ["[Nome do Integrante 1 — G04]", "[Nome do Integrante 2 — G04]", "[Nome do Integrante 3 — G04]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G04-P3",
+        "zona": "Biblioteca",
+        "localExato": "Estante de obras de referência e conservação de livros",
+        "grupo": "G04",
+        "lat": -20.14544,
+        "lng": -44.89152,
+        "autorizacao": { "responsavel": "Bibliotecário(a) Responsável", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "acido-carbonico",
+    "nomeIupac": "Ácido carbônico",
+    "formula": "H2CO3",
+    "formulaHtml": "H<sub>2</sub>CO<sub>3</sub>",
+    "nomesPopulares": ["Ácido da água gaseificada", "Ácido da chuva natural"],
+    "classe": "Ácido",
+    "subtipo": "Oxiácido fraco e instável (diácido)",
+    "phEstimado": 4.2,
+    "fotoPlaquinha": "/assets/img/classe-acidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G04-P4 na área de leitura e climatização da Biblioteca",
+    "justificativa": "Substância molecular que sofre ionização parcial em água liberando íons H⁺ (H₃O⁺).",
+    "classificacaoTags": ["Ácido de Arrhenius", "Ácido Fraco", "Instável", "Diácido"],
+    "equacaoTipo": "Equilíbrio de Formação e Ionização",
+    "equacaoHtml": "CO<sub>2(g)</sub> + H<sub>2</sub>O<sub>(l)</sub> ⇌ H<sub>2</sub>CO<sub>3(aq)</sub> ⇌ H<sup>+</sup><sub>(aq)</sub> + HCO<sub>3</sub><sup>−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "Instável: decompõe-se espontaneamente em água e gás carbônico quando a pressão diminui.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Existe apenas em solução aquosa",
+      "Cor": "Incolor",
+      "Solubilidade em água": "Dependente da pressão de CO₂ dissolvido"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Ionização muito fraca em equilíbrio com CO₂",
+      "Caráter ácido/básico": "Ácido fraco (pH entre 4,0 e 5,6)",
+      "Condutividade elétrica": "Eletrólito muito fraco",
+      "Reações características": "Forma sistema tampão no sangue humano junto ao íon bicarbonato"
+    },
+    "porQueEstaAqui": "Presente nas garrafas de água com gás trazidas pelos leitores e também formado naturalmente pela absorção de CO₂ na umidade do ar, fenômeno monitorado na preservação de acervos.",
+    "ondeMaisAparece": [
+      "Regulação do pH sanguíneo humano (tampão bicarbonato/ácido carbônico).",
+      "Formação de cavernas calcárias pela dissolução lenta de rochas pela água da chuva."
+    ],
+    "segurancaRiscos": "Substância de baixíssimo risco no cotidiano.",
+    "segurancaCuidados": [
+      "Mantenha garrafas de bebidas bem fechadas longe dos livros e computadores da biblioteca."
+    ],
+    "curiosidade": "Mesmo sem poluição nenhuma, a chuva natural já é levemente ácida (pH ≈ 5,6) devido ao ácido carbônico formado pelo CO₂ da atmosfera.",
+    "referencias": [
+      "USBERCO, J.; SALVADOR, E. Química: volume único. 5. ed. São Paulo: Saraiva, 2002."
+    ],
+    "grupo": "G04",
+    "autores": ["[Nome do Integrante 1 — G04]", "[Nome do Integrante 2 — G04]", "[Nome do Integrante 3 — G04]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G04-P4",
+        "zona": "Biblioteca",
+        "localExato": "Mesa central de estudos, próximo ao higrômetro do ambiente",
+        "grupo": "G04",
+        "lat": -20.14541,
+        "lng": -44.89154,
+        "autorizacao": { "responsavel": "Bibliotecário(a) Responsável", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "acido-sulfurico",
+    "nomeIupac": "Ácido sulfúrico",
+    "formula": "H2SO4",
+    "formulaHtml": "H<sub>2</sub>SO<sub>4</sub>",
+    "nomesPopulares": ["Óleo de vitríolo", "Solução de bateria automotiva"],
+    "classe": "Ácido",
+    "subtipo": "Oxiácido forte (diácido)",
+    "phEstimado": 0.5,
+    "fotoPlaquinha": "/assets/img/classe-acidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G05-P1 na capela de reagentes do Laboratório de química",
+    "justificativa": "Substância molecular que sofre ionização intensa em água liberando íons H⁺ (H₃O⁺) como únicos cátions.",
+    "classificacaoTags": ["Ácido de Arrhenius", "Ácido Forte", "Diácido", "Desidratante"],
+    "equacaoTipo": "Ionização em Meio Aquoso",
+    "equacaoHtml": "H<sub>2</sub>SO<sub>4(l)</sub> + 2 H<sub>2</sub>O<sub>(l)</sub> → 2 H<sub>3</sub>O<sup>+</sup><sub>(aq)</sub> + SO<sub>4</sub><sup>2−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "A primeira ionização é praticamente 100%, caracterizando um dos ácidos inorgânicos mais fortes e importantes da indústria.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Líquido oleoso e denso (1,84 g/cm³)",
+      "Cor": "Incolor quando puro",
+      "Solubilidade em água": "Totalmente miscível com altíssima liberação de calor"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Ionização muito exotérmica",
+      "Caráter ácido/básico": "Ácido muito forte",
+      "Condutividade elétrica": "Excelente eletrólito em solução aquosa",
+      "Reações características": "Poderoso agente desidratante (carboniza açúcar e papel)"
+    },
+    "porQueEstaAqui": "No Laboratório de química, o H₂SO₄ é um dos reagentes padrão mais utilizados em titulações, catálises e demonstrações de desidratação sob supervisão docente.",
+    "ondeMaisAparece": [
+      "Eletrólito de baterias chumbo-ácido de carros e nobreaks.",
+      "Produção de fertilizantes, refino de petróleo e indústria química pesada."
+    ],
+    "segurancaRiscos": "Extremamente corrosivo; provoca queimaduras graves imediatas na pele, olhos e roupas.",
+    "segurancaCuidados": [
+      "Regra de ouro: adicione sempre o ácido lentamente sobre a água (nunca água sobre o ácido).",
+      "Manuseie apenas na capela com jaleco, luvas nitrílicas e óculos de segurança."
+    ],
+    "curiosidade": "A produção anual de ácido sulfúrico de um país é tão ligada à indústria que economistas já a usaram como indicador do desenvolvimento industrial.",
+    "referencias": [
+      "ATKINS, P.; JONES, L.; LAVERMAN, L. Princípios de química. 7. ed. Porto Alegre: Bookman, 2018."
+    ],
+    "grupo": "G05",
+    "autores": ["[Nome do Integrante 1 — G05]", "[Nome do Integrante 2 — G05]", "[Nome do Integrante 3 — G05]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G05-P1",
+        "zona": "Laboratório de química",
+        "localExato": "Vidro externo da capela de exaustão de ácidos",
+        "grupo": "G05",
+        "lat": -20.14522,
+        "lng": -44.89090,
+        "autorizacao": { "responsavel": "Técnico(a) do Laboratório de Química", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "hidroxido-de-potassio",
+    "nomeIupac": "Hidróxido de potássio",
+    "formula": "KOH",
+    "formulaHtml": "KOH",
+    "nomesPopulares": ["Potassa cáustica", "Eletrólito de pilhas alcalinas"],
+    "classe": "Base",
+    "subtipo": "Monobase forte e solúvel",
+    "phEstimado": 13.8,
+    "fotoPlaquinha": "/assets/img/classe-bases.jpg",
+    "fotoLegenda": "Plaquinha INF-G05-P2 na bancada de titulação do Laboratório de química",
+    "justificativa": "Composto iônico de metal alcalino que se dissocia totalmente em água liberando OH⁻ como único ânion.",
+    "classificacaoTags": ["Base de Arrhenius", "Base Forte", "Monobase", "Solúvel"],
+    "equacaoTipo": "Dissociação Iônica em Água",
+    "equacaoHtml": "KOH<sub>(s)</sub> —<sup>H<sub>2</sub>O</sup>→ K<sup>+</sup><sub>(aq)</sub> + OH<sup>−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "Dissocia-se 100% em meio aquoso formando solução fortemente básica e condutora.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido branco em lentilhas ou escamas deliquescentes",
+      "Cor": "Branco",
+      "Solubilidade em água": "Altamente solúvel com liberação de calor"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Dissociação iônica completa",
+      "Caráter ácido/básico": "Básico muito forte",
+      "Condutividade elétrica": "Excelente condutor em solução aquosa",
+      "Reações características": "Saponificação produzindo sabões líquidos e pastas macias; absorve CO₂"
+    },
+    "porQueEstaAqui": "Empregado no Laboratório de química em titulações ácido-base, sínteses orgânicas e aulas sobre eletroquímica de pilhas alcalinas.",
+    "ondeMaisAparece": [
+      "Interior de pilhas alcalinas (como eletrólito condutor de íons).",
+      "Fabricação de sabonetes líquidos e biodiesel."
+    ],
+    "segurancaRiscos": "Altamente cáustico e corrosivo para pele e olhos.",
+    "segurancaCuidados": [
+      "Nunca abra pilhas usadas — o vazamento de KOH queima a pele.",
+      "No laboratório, use óculos de proteção e luvas adequadas."
+    ],
+    "curiosidade": "Enquanto o NaOH produz sabões duros em barra, o KOH produz sabões macios e líquidos porque os sais de potássio de ácidos graxos são mais solúveis em água.",
+    "referencias": [
+      "FELTRE, R. Química geral. 6. ed. São Paulo: Moderna, 2004. v. 1."
+    ],
+    "grupo": "G05",
+    "autores": ["[Nome do Integrante 1 — G05]", "[Nome do Integrante 2 — G05]", "[Nome do Integrante 3 — G05]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G05-P2",
+        "zona": "Laboratório de química",
+        "localExato": "Bancada 2 — área de titulação e volumetria",
+        "grupo": "G05",
+        "lat": -20.14524,
+        "lng": -44.89088,
+        "autorizacao": { "responsavel": "Técnico(a) do Laboratório de Química", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "sulfato-de-cobre-ii",
+    "nomeIupac": "Sulfato de cobre(II) penta-hidratado",
+    "formula": "CuSO4·5H2O",
+    "formulaHtml": "CuSO<sub>4</sub>·5H<sub>2</sub>O",
+    "nomesPopulares": ["Vitríolo azul", "Pedra azul", "Algicida de piscinas"],
+    "classe": "Sal",
+    "subtipo": "Oxissal hidratado de metal de transição",
+    "phEstimado": 4.5,
+    "fotoPlaquinha": "/assets/img/classe-sais.jpg",
+    "fotoLegenda": "Plaquinha INF-G05-P3 na estante de demonstrações de cristais do Laboratório de química",
+    "justificativa": "Composto iônico formado pelo cátion cobre(II) (Cu²⁺) e pelo ânion sulfato (SO₄²⁻).",
+    "classificacaoTags": ["Sal Ácido", "Oxissal", "Sal Hidratado", "Solúvel"],
+    "equacaoTipo": "Desidratação Reversível",
+    "equacaoHtml": "CuSO<sub>4</sub>·5H<sub>2</sub>O<sub>(s, azul)</sub> ⇌ CuSO<sub>4(s, branco)</sub> + 5 H<sub>2</sub>O<sub>(g)</sub>",
+    "equacaoExplicacao": "A cor azul vibrante depende das moléculas de água coordenadas ao íon Cu²⁺; ao aquecer, torna-se branco.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino triclínico",
+      "Cor": "Azul intenso (branco quando anidro)",
+      "Solubilidade em água": "Solúvel em água, formando solução azul-celeste"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Dissociação iônica com leve hidrólise ácida",
+      "Caráter ácido/básico": "Levemente ácido (pH ≈ 4,0–4,5)",
+      "Condutividade elétrica": "Bom condutor em solução aquosa",
+      "Reações características": "Reage com ferro metálico (deslocamento) depositando cobre metálico"
+    },
+    "porQueEstaAqui": "Famoso no Laboratório de química para cultivo de cristais azuis, testes de presença de água e montagem da pilha de Daniell (eletroquímica).",
+    "ondeMaisAparece": [
+      "Agricultura (calda bordalesa contra fungos em plantações).",
+      "Tratamento de água de piscinas como algicida."
+    ],
+    "segurancaRiscos": "Nocivo se ingerido e irritante para pele e olhos; tóxico para organismos aquáticos.",
+    "segurancaCuidados": [
+      "Nunca descarte soluções de cobre diretamente na pia; use o frasco de resíduos de metais pesados.",
+      "Lave as mãos após o manuseio em aula prática."
+    ],
+    "curiosidade": "O CuSO₄ anidro (branco) é usado em laboratórios para detectar gotículas de água em combustíveis e solventes, pois fica azul instantaneamente ao tocar na umidade.",
+    "referencias": [
+      "LEE, J. D. Química inorgânica não tão concisa. 5. ed. São Paulo: Blucher, 1999."
+    ],
+    "grupo": "G05",
+    "autores": ["[Nome do Integrante 1 — G05]", "[Nome do Integrante 2 — G05]", "[Nome do Integrante 3 — G05]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G05-P3",
+        "zona": "Laboratório de química",
+        "localExato": "Vitrine didática de sais e eletroquímica",
+        "grupo": "G05",
+        "lat": -20.14526,
+        "lng": -44.89092,
+        "autorizacao": { "responsavel": "Técnico(a) do Laboratório de Química", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "oxido-de-magnesio",
+    "nomeIupac": "Óxido de magnésio",
+    "formula": "MgO",
+    "formulaHtml": "MgO",
+    "nomesPopulares": ["Magnésia calcinada", "Pó de magnésia"],
+    "classe": "Óxido",
+    "subtipo": "Óxido básico iônico",
+    "phEstimado": 10.3,
+    "fotoPlaquinha": "/assets/img/classe-oxidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G05-P4 na bancada de reações de combustão do Laboratório de química",
+    "justificativa": "Composto binário formado por magnésio e oxigênio, no qual o oxigênio é o elemento mais eletronegativo.",
+    "classificacaoTags": ["Óxido Básico", "Composto Binário", "Refratário", "Iônico"],
+    "equacaoTipo": "Combustão do Magnésio e Reação com Água",
+    "equacaoHtml": "2 Mg<sub>(s)</sub> + O<sub>2(g)</sub> → 2 MgO<sub>(s)</sub><br>MgO<sub>(s)</sub> + H<sub>2</sub>O<sub>(l)</sub> → Mg(OH)<sub>2(s)</sub>",
+    "equacaoExplicacao": "Forma-se na queima brilhante da fita de magnésio e reage com água originando hidróxido de magnésio (base).",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido branco cristalino de altíssimo ponto de fusão (2852 °C)",
+      "Cor": "Branco",
+      "Solubilidade em água": "Muito pouco solúvel"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Hidrata-se lentamente formando Mg(OH)₂",
+      "Caráter ácido/básico": "Óxido básico",
+      "Condutividade elétrica": "Isolante elétrico e ótimo condutor térmico",
+      "Reações características": "Neutraliza ácidos formando sais de magnésio e água"
+    },
+    "porQueEstaAqui": "No Laboratório de química, o MgO é o produto clássico obtido na demonstração de combustão da fita de magnésio (experimento da Lei de Lavoisier) e em cadinhos refratários.",
+    "ondeMaisAparece": [
+      "Tijolos refratários de fornos industriais e isolamento interno de resistências elétricas.",
+      "Suplementação nutricional e formulações antiácidas."
+    ],
+    "segurancaRiscos": "Baixa toxicidade, mas não olhe diretamente para a chama branca intensa durante a queima da fita de magnésio.",
+    "segurancaCuidados": [
+      "Evite inalar o pó fino de MgO.",
+      "Realize a queima de magnésio apenas sob orientação do professor."
+    ],
+    "curiosidade": "Devido ao seu ponto de fusão acima de 2800 °C, o óxido de magnésio suporta temperaturas que derreteriam o aço com facilidade.",
+    "referencias": [
+      "FELTRE, R. Química geral. 6. ed. São Paulo: Moderna, 2004. v. 1."
+    ],
+    "grupo": "G05",
+    "autores": ["[Nome do Integrante 1 — G05]", "[Nome do Integrante 2 — G05]", "[Nome do Integrante 3 — G05]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G05-P4",
+        "zona": "Laboratório de química",
+        "localExato": "Bancada 1 — área de experimentos com bico de Bunsen",
+        "grupo": "G05",
+        "lat": -20.14521,
+        "lng": -44.89094,
+        "autorizacao": { "responsavel": "Técnico(a) do Laboratório de Química", "data": "2026-11-26", "aprovada": true }
       }
     ]
   },
@@ -247,11 +1252,7 @@
       "NATIONAL CENTER FOR BIOTECHNOLOGY INFORMATION (NCBI). PubChem Compound Summary for CID 14806, Zinc Oxide. Disponível em: https://pubchem.ncbi.nlm.nih.gov/compound/Zinc-Oxide. Acesso em: 20 nov. 2026."
     ],
     "grupo": "G06",
-    "autores": [
-      "[Nome do Integrante 1 — G06]",
-      "[Nome do Integrante 2 — G06]",
-      "[Nome do Integrante 3 — G06]"
-    ],
+    "autores": ["[Nome do Integrante 1 — G06]", "[Nome do Integrante 2 — G06]", "[Nome do Integrante 3 — G06]"],
     "ocorrencias": [
       {
         "codigo": "INF-G06-P1",
@@ -260,11 +1261,780 @@
         "grupo": "G06",
         "lat": -20.14508,
         "lng": -44.89075,
-        "autorizacao": {
-          "responsavel": "Responsável pelo Laboratório de Informática",
-          "data": "2026-11-20",
-          "aprovada": true
-        }
+        "autorizacao": { "responsavel": "Responsável pelo Laboratório de Informática", "data": "2026-11-20", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "oxido-de-cobre-ii",
+    "nomeIupac": "Óxido de cobre(II)",
+    "formula": "CuO",
+    "formulaHtml": "CuO",
+    "nomesPopulares": ["Óxido cúprico", "Oxidação escura em contatos elétricos de cobre"],
+    "classe": "Óxido",
+    "subtipo": "Óxido básico semicondutor",
+    "phEstimado": 7.0,
+    "fotoPlaquinha": "/assets/img/classe-oxidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G06-P2 próxima ao rack de cabos de rede do Laboratório de informática",
+    "justificativa": "Composto binário formado por cobre e oxigênio, com o oxigênio sendo o elemento mais eletronegativo.",
+    "classificacaoTags": ["Óxido Básico", "Composto Binário", "Semicondutor", "Insolúvel"],
+    "equacaoTipo": "Oxidação Superficial de Condutores de Cobre",
+    "equacaoHtml": "2 Cu<sub>(s)</sub> + O<sub>2(g)</sub> → 2 CuO<sub>(s)</sub>",
+    "equacaoExplicacao": "O cobre aquecido ou exposto ao oxigênio forma película escura de CuO que aumenta a resistência elétrica de contatos.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino ou pó",
+      "Cor": "Preto / marrom-escuro",
+      "Solubilidade em água": "Insolúvel em água"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Insolúvel",
+      "Caráter ácido/básico": "Óxido básico (dissolve-se em ácidos formando sais de cobre II)",
+      "Condutividade elétrica": "Semicondutor do tipo p",
+      "Reações características": "Atua como agente oxidante em alta temperatura"
+    },
+    "porQueEstaAqui": "No Laboratório de informática, cabos de rede, conectores e trilhas de placas-mãe são feitos de cobre: quando oxidam formando CuO, causam mau contato e falhas de rede.",
+    "ondeMaisAparece": [
+      "Pigmentação azul e verde em esmaltes cerâmicos e vidros.",
+      "Pesquisas de células solares, supercondutores e sensores de gás."
+    ],
+    "segurancaRiscos": "Evite inalar pó de CuO; em eletrônica, contatos oxidados podem aquecer excessivamente.",
+    "segurancaCuidados": [
+      "Nunca limpe conectores ligados à tomada.",
+      "Use limpa-contatos apropriado sob supervisão técnica."
+    ],
+    "curiosidade": "Os primeiros supercondutores de alta temperatura descobertos (cupratos) têm camadas cristalinas baseadas em óxido de cobre.",
+    "referencias": [
+      "LEE, J. D. Química inorgânica não tão concisa. 5. ed. São Paulo: Blucher, 1999."
+    ],
+    "grupo": "G06",
+    "autores": ["[Nome do Integrante 1 — G06]", "[Nome do Integrante 2 — G06]", "[Nome do Integrante 3 — G06]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G06-P2",
+        "zona": "Laboratório de informática",
+        "localExato": "Lateral do rack de switch e cabos de rede",
+        "grupo": "G06",
+        "lat": -20.14506,
+        "lng": -44.89073,
+        "autorizacao": { "responsavel": "Responsável pelo Laboratório de Informática", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "cloreto-de-ferro-iii",
+    "nomeIupac": "Cloreto de ferro(III)",
+    "formula": "FeCl3",
+    "formulaHtml": "FeCl<sub>3</sub>",
+    "nomesPopulares": ["Percloreto de ferro", "Corrosivo para placas de circuito impresso (PCB)"],
+    "classe": "Sal",
+    "subtipo": "Sal ácido (haleto metálico)",
+    "phEstimado": 2.0,
+    "fotoPlaquinha": "/assets/img/classe-sais.jpg",
+    "fotoLegenda": "Plaquinha INF-G06-P3 na bancada de eletrônica e placas PCB do Laboratório de informática",
+    "justificativa": "Sal formado pelo cátion ferro(III) (Fe³⁺) e pelo ânion cloreto (Cl⁻).",
+    "classificacaoTags": ["Sal Ácido", "Haleto", "Agente Oxidante", "Solúvel"],
+    "equacaoTipo": "Corrosão Química do Cobre em Placas Eletrônicas",
+    "equacaoHtml": "2 FeCl<sub>3(aq)</sub> + Cu<sub>(s)</sub> → 2 FeCl<sub>2(aq)</sub> + CuCl<sub>2(aq)</sub>",
+    "equacaoExplicacao": "Os íons Fe³⁺ oxidam o cobre exposto da placa fenolite/fibra de vidro, preservando apenas as trilhas desenhadas do circuito.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino higroscópico (usado em solução aquosa)",
+      "Cor": "Castanho-amarelado em solução aquosa",
+      "Solubilidade em água": "Altamente solúvel"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Sofre intensa hidrólise ácida",
+      "Caráter ácido/básico": "Ácido (pH próximo de 1,8 a 2,5 em solução)",
+      "Condutividade elétrica": "Bom condutor em solução aquosa",
+      "Reações características": "Corrói cobre e atua como coagulante no tratamento de esgotos"
+    },
+    "porQueEstaAqui": "Fundamental na formação de técnicos em Informática e Eletrônica: o percloreto de ferro é o sal clássico utilizado para corroer placas de circuito impresso (PCBs) em projetos de Arduino e robótica.",
+    "ondeMaisAparece": [
+      "Estações de tratamento de água e esgoto como agente floculante.",
+      "Gravura artística em placas metálicas."
+    ],
+    "segurancaRiscos": "Corrosivo para metais, mancha permanentemente roupas e irrita pele e olhos.",
+    "segurancaCuidados": [
+      "Use recipientes plásticos (nunca metálicos) e luvas ao preparar placas PCB.",
+      "Não descarte solução usada com cobre no ralo comum."
+    ],
+    "curiosidade": "Mesmo não sendo um ácido, a solução de FeCl₃ tem pH tão baixo quanto o do vinagre devido à forte hidrólise do cátion Fe³⁺.",
+    "referencias": [
+      "ATKINS, P.; JONES, L.; LAVERMAN, L. Princípios de química. 7. ed. Porto Alegre: Bookman, 2018."
+    ],
+    "grupo": "G06",
+    "autores": ["[Nome do Integrante 1 — G06]", "[Nome do Integrante 2 — G06]", "[Nome do Integrante 3 — G06]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G06-P3",
+        "zona": "Laboratório de informática",
+        "localExato": "Bancada de robótica e placas eletrônicas (PCB)",
+        "grupo": "G06",
+        "lat": -20.14510,
+        "lng": -44.89077,
+        "autorizacao": { "responsavel": "Responsável pelo Laboratório de Informática", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "hidroxido-de-litio",
+    "nomeIupac": "Hidróxido de lítio",
+    "formula": "LiOH",
+    "formulaHtml": "LiOH",
+    "nomesPopulares": ["Base precursora de baterias de íon-lítio", "Absorvedor espacial de CO₂"],
+    "classe": "Base",
+    "subtipo": "Monobase forte e solúvel",
+    "phEstimado": 13.0,
+    "fotoPlaquinha": "/assets/img/classe-bases.jpg",
+    "fotoLegenda": "Plaquinha INF-G06-P4 próxima à estação de recarga de notebooks do Laboratório de informática",
+    "justificativa": "Base de Arrhenius que se dissocia em água liberando o íon hidróxido (OH⁻) como único ânion.",
+    "classificacaoTags": ["Base de Arrhenius", "Base Forte", "Monobase", "Solúvel"],
+    "equacaoTipo": "Dissociação e Captura de Dióxido de Carbono",
+    "equacaoHtml": "2 LiOH<sub>(s)</sub> + CO<sub>2(g)</sub> → Li<sub>2</sub>CO<sub>3(s)</sub> + H<sub>2</sub>O<sub>(g)</sub>",
+    "equacaoExplicacao": "Por ter massa molar muito baixa, absorve grande quantidade de CO₂ por grama — essencial em naves espaciais e submarinos.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino higroscópico",
+      "Cor": "Branco",
+      "Solubilidade em água": "Solúvel em água"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Dissociação iônica completa",
+      "Caráter ácido/básico": "Fortemente básico",
+      "Condutividade elétrica": "Eletrólito forte em solução",
+      "Reações características": "Matéria-prima essencial para cátodos de alta densidade em baterias de íon-lítio"
+    },
+    "porQueEstaAqui": "No Laboratório de informática, notebooks, tablets e nobreaks modernos utilizam baterias de íon-lítio cujos cátodos (como NMC) são fabricados a partir de hidróxido de lítio de alta pureza.",
+    "ondeMaisAparece": [
+      "Filtros purificadores de ar na Estação Espacial Internacional e missões Apollo.",
+      "Graxas lubrificantes de alta resistência térmica."
+    ],
+    "segurancaRiscos": "Substância corrosiva no estado puro; baterias de lítio perfuradas ou inchadas apresentam risco de incêndio.",
+    "segurancaCuidados": [
+      "Nunca perfure, amasse ou descarte baterias de notebooks no lixo comum.",
+      "Utilize pontos de coleta de lixo eletrônico."
+    ],
+    "curiosidade": "Na missão Apollo 13, os astronautas improvisaram adaptadores com fita adesiva para encaixar cartuchos de LiOH e remover o CO₂ mortal da cápsula.",
+    "referencias": [
+      "LEE, J. D. Química inorgânica não tão concisa. 5. ed. São Paulo: Blucher, 1999."
+    ],
+    "grupo": "G06",
+    "autores": ["[Nome do Integrante 1 — G06]", "[Nome do Integrante 2 — G06]", "[Nome do Integrante 3 — G06]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G06-P4",
+        "zona": "Laboratório de informática",
+        "localExato": "Estação de recarga de notebooks e ponto de descarte de baterias",
+        "grupo": "G06",
+        "lat": -20.14507,
+        "lng": -44.89079,
+        "autorizacao": { "responsavel": "Responsável pelo Laboratório de Informática", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "oxido-de-calcio",
+    "nomeIupac": "Óxido de cálcio",
+    "formula": "CaO",
+    "formulaHtml": "CaO",
+    "nomesPopulares": ["Cal virgem", "Cal viva"],
+    "classe": "Óxido",
+    "subtipo": "Óxido básico iônico",
+    "phEstimado": 12.4,
+    "fotoPlaquinha": "/assets/img/classe-oxidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G07-P1 nos muros e canteiros do Pátio e área externa",
+    "justificativa": "Composto binário formado por cálcio e oxigênio, sendo o oxigênio o elemento mais eletronegativo.",
+    "classificacaoTags": ["Óxido Básico", "Composto Binário", "Iônico", "Reativo com Água"],
+    "equacaoTipo": "Hidratação da Cal Virgem (Reação Exotérmica)",
+    "equacaoHtml": "CaO<sub>(s)</sub> + H<sub>2</sub>O<sub>(l)</sub> → Ca(OH)<sub>2(s)</sub> + calor",
+    "equacaoExplicacao": "Reage vigorosamente com água liberando grande quantidade de calor e formando a base hidróxido de cálcio.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido branco em pedras ou pó",
+      "Cor": "Branco ou acinzentado",
+      "Solubilidade em água": "Reage quimicamente com a água"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Hidratação fortemente exotérmica",
+      "Caráter ácido/básico": "Óxido básico forte",
+      "Condutividade elétrica": "Isolante no estado sólido",
+      "Reações características": "Neutraliza ácidos e é constituinte fundamental do cimento Portland"
+    },
+    "porQueEstaAqui": "Presente na composição química do cimento, das argamassas dos muros e da cal usada em manutenção de canteiros e paredes do Pátio e área externa.",
+    "ondeMaisAparece": [
+      "Siderurgia para remoção de impurezas na fabricação do aço.",
+      "Correção de acidez de solos agrícolas e tratamento de efluentes."
+    ],
+    "segurancaRiscos": "Causa queimaduras químicas e térmicas ao entrar em contato com a umidade da pele e dos olhos.",
+    "segurancaCuidados": [
+      "Evite contato direto com pó de cimento ou cal virgem.",
+      "Em caso de contato com os olhos, lave imediatamente com água corrente."
+    ],
+    "curiosidade": "Nos teatros do século XIX, aquecer um bloco de cal virgem (CaO) com chama produzia uma luz branca ofuscante — daí surgiu a expressão inglesa 'in the limelight' (sob os holofotes).",
+    "referencias": [
+      "USBERCO, J.; SALVADOR, E. Química: volume único. 5. ed. São Paulo: Saraiva, 2002."
+    ],
+    "grupo": "G07",
+    "autores": ["[Nome do Integrante 1 — G07]", "[Nome do Integrante 2 — G07]", "[Nome do Integrante 3 — G07]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G07-P1",
+        "zona": "Pátio e área externa",
+        "localExato": "Mureta de concreto próxima ao jardim central do pátio",
+        "grupo": "G07",
+        "lat": -20.14560,
+        "lng": -44.89080,
+        "autorizacao": { "responsavel": "Direção do Campus", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "acido-nitrico",
+    "nomeIupac": "Ácido nítrico",
+    "formula": "HNO3",
+    "formulaHtml": "HNO<sub>3</sub>",
+    "nomesPopulares": ["Água-forte", "Ácido formado em raios e chuva ácida"],
+    "classe": "Ácido",
+    "subtipo": "Oxiácido forte e oxidante (monoácido)",
+    "phEstimado": 1.0,
+    "fotoPlaquinha": "/assets/img/classe-acidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G07-P2 na área aberta do Pátio (ciclo do nitrogênio e chuva ácida)",
+    "justificativa": "Substância molecular que se ioniza quase completamente em água liberando íons H⁺ (H₃O⁺).",
+    "classificacaoTags": ["Ácido de Arrhenius", "Ácido Forte", "Oxiácido", "Oxidante"],
+    "equacaoTipo": "Formação Atmosférica e Ionização",
+    "equacaoHtml": "HNO<sub>3(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub> → H<sub>3</sub>O<sup>+</sup><sub>(aq)</sub> + NO<sub>3</sub><sup>−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "Na atmosfera, óxidos de nitrogênio (NO₂) de veículos e relâmpagos reagem com água formando ácido nítrico.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Líquido fumegante",
+      "Cor": "Incolor (fica amarelado sob luz por formar NO₂)",
+      "Solubilidade em água": "Totalmente miscível"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Ionização praticamente total",
+      "Caráter ácido/básico": "Ácido muito forte",
+      "Condutividade elétrica": "Eletrólito forte em solução",
+      "Reações características": "Forte oxidante; ataca até metais nobres como cobre e prata"
+    },
+    "porQueEstaAqui": "No Pátio e área externa, o ácido nítrico aparece em traços na água da chuva (formado por descargas elétricas de relâmpagos e emissões urbanas), influenciando o pH do solo e o ciclo do nitrogênio.",
+    "ondeMaisAparece": [
+      "Produção industrial de fertilizantes nitrogenados (nitrato de amônio).",
+      "Teste de pureza do ouro e fabricação de corantes e polímeros."
+    ],
+    "segurancaRiscos": "No estado concentrado é altamente corrosivo e oxidante, causando queimaduras amareladas na pele.",
+    "segurancaCuidados": [
+      "Em laboratório, manuseie apenas dentro da capela e longe de materiais inflamáveis."
+    ],
+    "curiosidade": "A mistura de ácido nítrico com ácido clorídrico (1:3) forma a famosa 'água-régia', capaz de dissolver até o ouro e a platina.",
+    "referencias": [
+      "ATKINS, P.; JONES, L.; LAVERMAN, L. Princípios de química. 7. ed. Porto Alegre: Bookman, 2018."
+    ],
+    "grupo": "G07",
+    "autores": ["[Nome do Integrante 1 — G07]", "[Nome do Integrante 2 — G07]", "[Nome do Integrante 3 — G07]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G07-P2",
+        "zona": "Pátio e área externa",
+        "localExato": "Poste próximo ao jardim externo e calha de água pluvial",
+        "grupo": "G07",
+        "lat": -20.14562,
+        "lng": -44.89083,
+        "autorizacao": { "responsavel": "Direção do Campus", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "nitrato-de-potassio",
+    "nomeIupac": "Nitrato de potássio",
+    "formula": "KNO3",
+    "formulaHtml": "KNO<sub>3</sub>",
+    "nomesPopulares": ["Salitre", "Fertilizante NPK (fonte de nitrogênio e potássio)"],
+    "classe": "Sal",
+    "subtipo": "Oxissal neutro solúvel",
+    "phEstimado": 7.0,
+    "fotoPlaquinha": "/assets/img/classe-sais.jpg",
+    "fotoLegenda": "Plaquinha INF-G07-P3 no canteiro de plantas ornamentais do Pátio e área externa",
+    "justificativa": "Composto iônico que em água dissocia-se em cátion potássio (K⁺) e ânion nitrato (NO₃⁻).",
+    "classificacaoTags": ["Sal Neutro", "Oxissal", "Fertilizante", "Solúvel"],
+    "equacaoTipo": "Dissociação Iônica no Solo Úmido",
+    "equacaoHtml": "KNO<sub>3(s)</sub> —<sup>H<sub>2</sub>O</sup>→ K<sup>+</sup><sub>(aq)</sub> + NO<sub>3</sub><sup>−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "Libera dois macronutrientes essenciais diretamente absorvíveis pelas raízes das plantas: potássio e nitrogênio.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino",
+      "Cor": "Branco",
+      "Solubilidade em água": "Muito solúvel, aumentando drasticamente com a temperatura"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Dissociação endotérmica (esfria a água ao dissolver)",
+      "Caráter ácido/básico": "Neutro (pH ≈ 7,0)",
+      "Condutividade elétrica": "Eletrólito forte em solução",
+      "Reações características": "Agente oxidante quando aquecido"
+    },
+    "porQueEstaAqui": "Utilizado em adubos e fertilizantes dos canteiros e árvores do Pátio e área externa para fortalecer o crescimento foliar e a floração.",
+    "ondeMaisAparece": [
+      "Cremes dentais para dentes sensíveis (alívio da dor nervosa).",
+      "História da química: ingrediente oxidante da pólvora negra e conservação de carnes curadas."
+    ],
+    "segurancaRiscos": "No uso como fertilizante é seguro, mas como oxidante sólido deve ficar longe de chamas e calor intenso.",
+    "segurancaCuidados": [
+      "Lave as mãos após manusear adubos de jardinagem.",
+      "Armazene fertilizantes em local seco e afastado de fontes de ignição."
+    ],
+    "curiosidade": "O nitrato de potássio foi historicamente tão valioso que no século XIX foi chamado de 'ouro branco' na América do Sul.",
+    "referencias": [
+      "FELTRE, R. Química geral. 6. ed. São Paulo: Moderna, 2004. v. 1."
+    ],
+    "grupo": "G07",
+    "autores": ["[Nome do Integrante 1 — G07]", "[Nome do Integrante 2 — G07]", "[Nome do Integrante 3 — G07]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G07-P3",
+        "zona": "Pátio e área externa",
+        "localExato": "Canteiro de jardinagem na área de convivência externa",
+        "grupo": "G07",
+        "lat": -20.14564,
+        "lng": -44.89078,
+        "autorizacao": { "responsavel": "Direção do Campus", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "hidroxido-de-aluminio",
+    "nomeIupac": "Hidróxido de alumínio",
+    "formula": "Al(OH)3",
+    "formulaHtml": "Al(OH)<sub>3</sub>",
+    "nomesPopulares": ["Gel de hidróxido de alumínio", "Floculante de tratamento de água"],
+    "classe": "Base",
+    "subtipo": "Tribase fraca, insolúvel e anfótera",
+    "phEstimado": 8.0,
+    "fotoPlaquinha": "/assets/img/classe-bases.jpg",
+    "fotoLegenda": "Plaquinha INF-G07-P4 próxima ao reservatório e hidrante do Pátio e área externa",
+    "justificativa": "Base de Arrhenius por liberar íons hidróxido (OH⁻) em sua pequeníssima fração dissociada em água.",
+    "classificacaoTags": ["Base de Arrhenius", "Base Fraca", "Tribase", "Insolúvel"],
+    "equacaoTipo": "Formação do Floco Gelatinoso no Tratamento de Água",
+    "equacaoHtml": "Al<sub>2</sub>(SO<sub>4</sub>)<sub>3(aq)</sub> + 3 Ca(OH)<sub>2(aq)</sub> → 2 Al(OH)<sub>3(s)</sub> + 3 CaSO<sub>4(aq)</sub>",
+    "equacaoExplicacao": "O Al(OH)₃ precipita como flocos gelatinosos que aprisionam sujeira, argila e microrganismos na estação de tratamento.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido branco amorfo ou gelatinoso em água",
+      "Cor": "Branco",
+      "Solubilidade em água": "Praticamente insolúvel"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Forma precipitado gelatinoso branco",
+      "Caráter ácido/básico": "Anfótero (reage com ácidos fortes e bases fortes)",
+      "Condutividade elétrica": "Não conduz eletricidade",
+      "Reações características": "Neutraliza excesso de HCl no estômago; libera vapor de água ao aquecer (retardante de chamas)"
+    },
+    "porQueEstaAqui": "Relacionado diretamente à água potável que abastece o campus e o Pátio externo: é o agente floculante que clarifica a água nas estações de tratamento (ETA) antes de chegar às torneiras.",
+    "ondeMaisAparece": [
+      "Medicamentos antiácidos gástricos.",
+      "Principal componente da bauxita (minério usado para produzir alumínio)."
+    ],
+    "segurancaRiscos": "Baixa toxicidade; uso medicinal excessivo pode interferir na absorção de fosfatos.",
+    "segurancaCuidados": [
+      "Não utilize antiácidos de forma contínua sem orientação médica."
+    ],
+    "curiosidade": "Quando usado como retardante de chamas em tapetes e cabos, o Al(OH)₃ libera vapor de água ao ser aquecido acima de 200 °C, resfriando o fogo automaticamente.",
+    "referencias": [
+      "USBERCO, J.; SALVADOR, E. Química: volume único. 5. ed. São Paulo: Saraiva, 2002."
+    ],
+    "grupo": "G07",
+    "autores": ["[Nome do Integrante 1 — G07]", "[Nome do Integrante 2 — G07]", "[Nome do Integrante 3 — G07]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G07-P4",
+        "zona": "Pátio e área externa",
+        "localExato": "Próximo ao reservatório de água e ponto de torneira externa",
+        "grupo": "G07",
+        "lat": -20.14566,
+        "lng": -44.89085,
+        "autorizacao": { "responsavel": "Direção do Campus", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "acido-ascorbico",
+    "nomeIupac": "Ácido (5R)-5-[(1S)-1,2-di-hidroxietil]-3,4-di-hidroxifuran-2(5H)-ona (Ácido ascórbico)",
+    "formula": "C6H8O6",
+    "formulaHtml": "C<sub>6</sub>H<sub>8</sub>O<sub>6</sub>",
+    "nomesPopulares": ["Vitamina C", "Antioxidante INS 300"],
+    "classe": "Ácido",
+    "subtipo": "Ácido orgânico fraco antioxidante",
+    "phEstimado": 2.5,
+    "fotoPlaquinha": "/assets/img/classe-acidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G08-P1 no balcão de lanches e sucos da Cantina e bebedouros",
+    "justificativa": "Substância orgânica molecular que se ioniza parcialmente em água liberando íons H⁺ (H₃O⁺).",
+    "classificacaoTags": ["Ácido Fraco", "Vitamina Hidrossolúvel", "Antioxidante", "Orgânico"],
+    "equacaoTipo": "Ionização em Meio Aquoso",
+    "equacaoHtml": "C<sub>6</sub>H<sub>8</sub>O<sub>6(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub> ⇌ H<sub>3</sub>O<sup>+</sup><sub>(aq)</sub> + C<sub>6</sub>H<sub>7</sub>O<sub>6</sub><sup>−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "Apesar de não possuir grupo carboxila tradicional, sua estrutura enodiol estabiliza o ânion ascorbato, conferindo acidez moderada.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino",
+      "Cor": "Branco a levemente amarelado",
+      "Solubilidade em água": "Muito solúvel em água"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Ionização parcial gerando solução ácida",
+      "Caráter ácido/básico": "Ácido fraco (pH ≈ 2,5 em solução aquosa)",
+      "Condutividade elétrica": "Eletrólito fraco",
+      "Reações características": "Forte agente redutor (antioxidante), degradando-se facilmente pelo calor e oxigênio"
+    },
+    "porQueEstaAqui": "Presente nos sucos naturais de acerola, laranja e caju vendidos na Cantina e também adicionado como antioxidante em bebidas prontas.",
+    "ondeMaisAparece": [
+      "Síntese de colágeno e fortalecimento do sistema imunológico humano.",
+      "Indústria de alimentos para evitar escurecimento e oxidação de carnes e sucos."
+    ],
+    "segurancaRiscos": "Essencial à saúde; megadoses suplementares sem indicação podem causar desconforto gástrico.",
+    "segurancaCuidados": [
+      "Consuma sucos naturais logo após o preparo, pois o oxigênio e a luz oxidam a vitamina C."
+    ],
+    "curiosidade": "O nome 'ascórbico' significa 'contra o escorbuto', doença que dizimava marinheiros nas Grandes Navegações por falta de frutas frescas a bordo.",
+    "referencias": [
+      "ATKINS, P.; JONES, L.; LAVERMAN, L. Princípios de química. 7. ed. Porto Alegre: Bookman, 2018."
+    ],
+    "grupo": "G08",
+    "autores": ["[Nome do Integrante 1 — G08]", "[Nome do Integrante 2 — G08]", "[Nome do Integrante 3 — G08]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G08-P1",
+        "zona": "Cantina e bebedouros",
+        "localExato": "Balcão de sucos naturais da cantina escolar",
+        "grupo": "G08",
+        "lat": -20.14548,
+        "lng": -44.89162,
+        "autorizacao": { "responsavel": "Responsável pela Cantina", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "fluoreto-de-sodio",
+    "nomeIupac": "Fluoreto de sódio",
+    "formula": "NaF",
+    "formulaHtml": "NaF",
+    "nomesPopulares": ["Flúor da água tratada", "Ativo anticárie de cremes dentais"],
+    "classe": "Sal",
+    "subtipo": "Haleto iônico (sal de caráter levemente básico)",
+    "phEstimado": 7.4,
+    "fotoPlaquinha": "/assets/img/classe-sais.jpg",
+    "fotoLegenda": "Plaquinha INF-G08-P2 fixada ao lado dos bebedouros na Cantina e bebedouros",
+    "justificativa": "Composto iônico formado por cátion Na⁺ (diferente de H⁺) e ânion fluoreto F⁻ (diferente de OH⁻).",
+    "classificacaoTags": ["Sal Básico", "Haleto", "Composto Iônico", "Solúvel"],
+    "equacaoTipo": "Dissociação Iônica na Água Potável",
+    "equacaoHtml": "NaF<sub>(s)</sub> —<sup>H<sub>2</sub>O</sup>→ Na<sup>+</sup><sub>(aq)</sub> + F<sup>−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "Os íons fluoreto incorporam-se ao esmalte dentário formando fluorapatita, muito mais resistente ao ataque ácido de bactérias.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino",
+      "Cor": "Branco",
+      "Solubilidade em água": "Solúvel (cerca de 41 g/L a 25 °C)"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Dissociação completa com hidrólise básica muito suave",
+      "Caráter ácido/básico": "Levemente básico (pH ≈ 7,4)",
+      "Condutividade elétrica": "Eletrólito forte em solução aquosa",
+      "Reações características": "Promove remineralização do esmalte dental"
+    },
+    "porQueEstaAqui": "Presente em concentrações rigorosamente controladas (≈ 0,7 mg/L) na água distribuída pelos bebedouros públicos da escola para prevenção coletiva da cárie dentária.",
+    "ondeMaisAparece": [
+      "Cremes dentais e enxaguantes bucais.",
+      "Metalurgia do alumínio e gravação química de vidros."
+    ],
+    "segurancaRiscos": "Benéfico nas concentrações mínimas da água e pasta de dente; tóxico se ingerido puro ou em grandes quantidades.",
+    "segurancaCuidados": [
+      "Não engula creme dental durante a escovação.",
+      "Mantenha produtos concentrados de flúor fora do alcance de crianças pequenas."
+    ],
+    "curiosidade": "A fluoretação da água potável é considerada pela OMS uma das 10 maiores conquistas de saúde pública do século XX.",
+    "referencias": [
+      "USBERCO, J.; SALVADOR, E. Química: volume único. 5. ed. São Paulo: Saraiva, 2002."
+    ],
+    "grupo": "G08",
+    "autores": ["[Nome do Integrante 1 — G08]", "[Nome do Integrante 2 — G08]", "[Nome do Integrante 3 — G08]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G08-P2",
+        "zona": "Cantina e bebedouros",
+        "localExato": "Parede acima do bebedouro central próximo à cantina",
+        "grupo": "G08",
+        "lat": -20.14546,
+        "lng": -44.89165,
+        "autorizacao": { "responsavel": "Responsável pela Cantina", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "hidroxido-de-ferro-iii",
+    "nomeIupac": "Hidróxido de ferro(III)",
+    "formula": "Fe(OH)3",
+    "formulaHtml": "Fe(OH)<sub>3</sub>",
+    "nomesPopulares": ["Ferrugem hidratada", "Floculante férrico de tratamento de água"],
+    "classe": "Base",
+    "subtipo": "Tribase fraca e insolúvel",
+    "phEstimado": 7.5,
+    "fotoPlaquinha": "/assets/img/classe-bases.jpg",
+    "fotoLegenda": "Plaquinha INF-G08-P3 próxima aos filtros e tubulações dos bebedouros",
+    "justificativa": "Hidróxido metálico classificado como base de Arrhenius, embora extremamente pouco solúvel em água.",
+    "classificacaoTags": ["Base de Arrhenius", "Base Fraca", "Tribase", "Insolúvel"],
+    "equacaoTipo": "Formação em Meio Aquoso e Filtros",
+    "equacaoHtml": "Fe<sup>3+</sup><sub>(aq)</sub> + 3 OH<sup>−</sup><sub>(aq)</sub> → Fe(OH)<sub>3(s)</sub>",
+    "equacaoExplicacao": "Precipita como um sólido gelatinoso castanho-avermelhado retido nos filtros de purificação de água.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido gelatinoso ou pó",
+      "Cor": "Castanho-avermelhado (ocre)",
+      "Solubilidade em água": "Praticamente insolúvel"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Precipita facilmente em pH neutro ou básico",
+      "Caráter ácido/básico": "Base muito fraca",
+      "Condutividade elétrica": "Não conduz eletricidade",
+      "Reações características": "Desidrata gradualmente formando óxido de ferro(III) (Fe₂O₃)"
+    },
+    "porQueEstaAqui": "Nos filtros dos bebedouros da escola, partículas de Fe(OH)₃ oriundas de tubulações antigas ou do tratamento de água ficam retidas nos elementos filtrantes, garantindo água límpida e sem gosto metálico.",
+    "ondeMaisAparece": [
+      "Remoção de arsênio e fosfatos em estações de tratamento de água.",
+      "Pigmentos naturais ocre usados em tintas artísticas desde a pré-história."
+    ],
+    "segurancaRiscos": "Baixa toxicidade; excesso em água não filtrada altera apenas cor e sabor.",
+    "segurancaCuidados": [
+      "Troque os refis de filtros de bebedouros dentro do prazo recomendado pela manutenção."
+    ],
+    "curiosidade": "Quando água sai amarelada da torneira após manutenção na rede da rua, essa cor vem justamente de partículas suspensas de Fe(OH)₃ e óxidos de ferro.",
+    "referencias": [
+      "LEE, J. D. Química inorgânica não tão concisa. 5. ed. São Paulo: Blucher, 1999."
+    ],
+    "grupo": "G08",
+    "autores": ["[Nome do Integrante 1 — G08]", "[Nome do Integrante 2 — G08]", "[Nome do Integrante 3 — G08]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G08-P3",
+        "zona": "Cantina e bebedouros",
+        "localExato": "Lateral do filtro purificador dos bebedouros",
+        "grupo": "G08",
+        "lat": -20.14547,
+        "lng": -44.89167,
+        "autorizacao": { "responsavel": "Responsável pela Cantina", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "cloreto-de-potassio",
+    "nomeIupac": "Cloreto de potássio",
+    "formula": "KCl",
+    "formulaHtml": "KCl",
+    "nomesPopulares": ["Sal light (misturado com NaCl)", "Eletrólito de bebidas isotônicas"],
+    "classe": "Sal",
+    "subtipo": "Sal neutro (haleto iônico)",
+    "phEstimado": 7.0,
+    "fotoPlaquinha": "/assets/img/classe-sais.jpg",
+    "fotoLegenda": "Plaquinha INF-G08-P4 na vitrine de lanches e isotônicos da Cantina e bebedouros",
+    "justificativa": "Composto iônico que em água dissocia-se no cátion K⁺ (diferente de H⁺) e no ânion Cl⁻ (diferente de OH⁻).",
+    "classificacaoTags": ["Sal Neutro", "Composto Iônico", "Eletrólito Forte", "Solúvel"],
+    "equacaoTipo": "Dissociação Iônica em Água",
+    "equacaoHtml": "KCl<sub>(s)</sub> —<sup>H<sub>2</sub>O</sup>→ K<sup>+</sup><sub>(aq)</sub> + Cl<sup>−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "Originado pela neutralização de ácido forte (HCl) com base forte (KOH), produz solução neutra.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino cúbico",
+      "Cor": "Branco / incolor",
+      "Solubilidade em água": "Solúvel (aprox. 340 g/L a 20 °C)"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Dissociação iônica completa sem hidrólise",
+      "Caráter ácido/básico": "Neutro (pH ≈ 7,0)",
+      "Condutividade elétrica": "Excelente condutor em solução aquosa",
+      "Reações características": "Produz chama violeta característica no teste de chama"
+    },
+    "porQueEstaAqui": "Encontrado na Cantina em bebidas isotônicas, sais light (com teor reduzido de sódio) e salgadinhos assados, ajudando na reposição de potássio.",
+    "ondeMaisAparece": [
+      "Principal fertilizante potássico (K) usado na agricultura brasileira.",
+      "Soluções médicas de reidratação oral (soro caseiro/hospitalar)."
+    ],
+    "segurancaRiscos": "Seguro em alimentos equilibrados; pessoas com doenças renais devem controlar o consumo de potássio.",
+    "segurancaCuidados": [
+      "Leia os rótulos de 'sal light' caso possua restrição médica a potássio."
+    ],
+    "curiosidade": "No teste de chama do laboratório, os íons de potássio (K⁺) do KCl emitem luz lilás/violeta, enquanto o sódio (Na⁺) do sal comum emite amarelo intenso.",
+    "referencias": [
+      "FELTRE, R. Química geral. 6. ed. São Paulo: Moderna, 2004. v. 1."
+    ],
+    "grupo": "G08",
+    "autores": ["[Nome do Integrante 1 — G08]", "[Nome do Integrante 2 — G08]", "[Nome do Integrante 3 — G08]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G08-P4",
+        "zona": "Cantina e bebedouros",
+        "localExato": "Expositor de bebidas isotônicas e lanches da cantina",
+        "grupo": "G08",
+        "lat": -20.14549,
+        "lng": -44.89160,
+        "autorizacao": { "responsavel": "Responsável pela Cantina", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "cloreto-de-sodio",
+    "nomeIupac": "Cloreto de sódio",
+    "formula": "NaCl",
+    "formulaHtml": "NaCl",
+    "nomesPopulares": ["Sal de cozinha", "Sal refinado", "Eletrólito do suor e isotônicos"],
+    "classe": "Sal",
+    "subtipo": "Sal neutro (haleto iônico)",
+    "phEstimado": 7.0,
+    "fotoPlaquinha": "/assets/img/classe-sais.jpg",
+    "fotoLegenda": "Plaquinhas INF-G09-P1 (Quadra) e INF-G01-P7 (Restaurante) — exemplo de substância repetida",
+    "justificativa": "O cloreto de sódio é um sal porque é um composto iônico que, dissolvido em água, dissocia-se liberando um cátion diferente de H⁺ (Na⁺) e um ânion diferente de OH⁻ (Cl⁻).",
+    "classificacaoTags": ["Sal Neutro", "Composto Iônico", "Eletrólito Forte", "Solúvel em Água"],
+    "equacaoTipo": "Equação de Neutralização e Dissociação Salina",
+    "equacaoHtml": "HCl<sub>(aq)</sub> + NaOH<sub>(aq)</sub> → NaCl<sub>(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub>",
+    "equacaoExplicacao": "Formado pela neutralização total entre um ácido forte (HCl) e uma base forte (NaOH). Em água, separa-se completamente em íons Na⁺ e Cl⁻.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino cúbico de alto ponto de fusão (801 °C)",
+      "Cor": "Branco / translúcido",
+      "Solubilidade em água": "Solúvel em água (aprox. 360 g/L a 25 °C)"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Dissociação iônica completa sem hidrólise relevante",
+      "Caráter ácido/básico": "Neutro (pH ≈ 7,0 em solução aquosa pura)",
+      "Condutividade elétrica": "Não conduz no estado sólido; excelente condutor em solução aquosa ou fundido",
+      "Reações características": "Usado na eletrólise industrial para obtenção de gás cloro, hidrogênio e soda cáustica"
+    },
+    "porQueEstaAqui": "Na Quadra, os íons Na⁺ e Cl⁻ são eliminados no suor durante a prática esportiva e repostos por isotônicos para manter o equilíbrio hídrico e os impulsos nervosos. No Restaurante, atua como tempero essencial e agente conservante.",
+    "ondeMaisAparece": [
+      "Saúde e hospitais: soro fisiológico (solução aquosa a 0,9% de NaCl) para reposição de líquidos e higiene nasal.",
+      "Indústria química: matéria-prima da indústria de cloro-soda (produção de NaOH, Cl₂ e NaHCO₃)."
+    ],
+    "segurancaRiscos": "Seguro em consumo moderado, mas a ingestão excessiva crônica eleva o risco de hipertensão arterial, doenças cardiovasculares e sobrecarga renal.",
+    "segurancaCuidados": [
+      "Modere o consumo diário seguindo a recomendação da OMS (até 5 g de sal por dia).",
+      "Evite contato de grandes quantidades com ferimentos abertos ou olhos, pois causa ardência intensa."
+    ],
+    "curiosidade": "A palavra 'salário' vem do latim 'salarium': na Antiguidade, o sal era tão estratégico para conservar carnes e peixes sem geladeira que fazia parte da remuneração ou provisão de soldados romanos.",
+    "referencias": [
+      "USBERCO, J.; SALVADOR, E. Química: volume único. 5. ed. São Paulo: Saraiva, 2002.",
+      "NATIONAL CENTER FOR BIOTECHNOLOGY INFORMATION (NCBI). PubChem Compound Summary for CID 5234, Sodium Chloride. Disponível em: https://pubchem.ncbi.nlm.nih.gov/compound/Sodium-Chloride. Acesso em: 20 nov. 2026."
+    ],
+    "grupo": "G09 / G01",
+    "autores": ["[Nome do Integrante 1 — G09]", "[Nome do Integrante 2 — G09]", "[Nome do Integrante 3 — G09]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G09-P1",
+        "zona": "Quadra",
+        "localExato": "Pilastra próxima ao bebedouro lateral da Quadra poliesportiva",
+        "grupo": "G09",
+        "lat": -20.14578,
+        "lng": -44.89028,
+        "autorizacao": { "responsavel": "Professor(a) de Educação Física", "data": "2026-11-20", "aprovada": true }
+      },
+      {
+        "codigo": "INF-G01-P7",
+        "zona": "Restaurante",
+        "localExato": "Área de temperos e preparo de refeições, junto aos saleiros",
+        "grupo": "G01",
+        "lat": -20.14518,
+        "lng": -44.89168,
+        "autorizacao": { "responsavel": "Responsável pelo Restaurante", "data": "2026-11-20", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "acido-latico",
+    "nomeIupac": "Ácido 2-hidroxipropanoico (Ácido lático)",
+    "formula": "C3H6O3",
+    "formulaHtml": "C<sub>3</sub>H<sub>6</sub>O<sub>3</sub>",
+    "nomesPopulares": ["Ácido do esforço muscular", "Ácido do iogurte"],
+    "classe": "Ácido",
+    "subtipo": "Ácido carboxílico fraco (monoácido orgânico)",
+    "phEstimado": 3.8,
+    "fotoPlaquinha": "/assets/img/classe-acidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G09-P2 na lateral da arquibancada da Quadra poliesportiva",
+    "justificativa": "Substância molecular orgânica que, em meio aquoso, sofre ionização parcial liberando íons H⁺ (H₃O⁺).",
+    "classificacaoTags": ["Ácido de Arrhenius", "Ácido Fraco", "Monoácido", "Bioquímico"],
+    "equacaoTipo": "Ionização em Meio Aquoso (Formação de Lactato)",
+    "equacaoHtml": "C<sub>3</sub>H<sub>6</sub>O<sub>3(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub> ⇌ H<sub>3</sub>O<sup>+</sup><sub>(aq)</sub> + C<sub>3</sub>H<sub>5</sub>O<sub>3</sub><sup>−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "Durante exercícios físicos intensos, a fermentação lática gera lactato e íons H⁺, contribuindo para a sensação temporária de fadiga muscular.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Líquido viscoso ou sólido de baixo ponto de fusão",
+      "Cor": "Incolor a levemente amarelado",
+      "Solubilidade em água": "Totalmente miscível em água"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Ionização parcial formando íon lactato",
+      "Caráter ácido/básico": "Ácido fraco (pKa ≈ 3,86)",
+      "Condutividade elétrica": "Eletrólito fraco",
+      "Reações características": "Polimeriza formando PLA (plástico biodegradável muito usado em impressoras 3D)"
+    },
+    "porQueEstaAqui": "Na Quadra poliesportiva, sempre que os estudantes fazem corridas de alta intensidade ou partidas de futsal/vôlei sem oxigenação suficiente, as fibras musculares recorrem à fermentação lática para obter energia rápida.",
+    "ondeMaisAparece": [
+      "Produção de iogurtes, queijos e alimentos fermentados.",
+      "Fabricação de bioplástico PLA (poliácido lático) para impressão 3D e suturas médicas."
+    ],
+    "segurancaRiscos": "Substância natural do metabolismo humano; em forma concentrada industrial irrita pele e olhos.",
+    "segurancaCuidados": [
+      "Faça aquecimento antes das atividades na quadra e hidrate-se bem para melhorar a recuperação muscular."
+    ],
+    "curiosidade": "O ácido lático não é o verdadeiro culpado pelas dores musculares do dia seguinte (causadas por microlesões das fibras); na verdade, o corpo o recicla em energia no fígado em menos de uma hora.",
+    "referencias": [
+      "ATKINS, P.; JONES, L.; LAVERMAN, L. Princípios de química. 7. ed. Porto Alegre: Bookman, 2018."
+    ],
+    "grupo": "G09",
+    "autores": ["[Nome do Integrante 1 — G09]", "[Nome do Integrante 2 — G09]", "[Nome do Integrante 3 — G09]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G09-P2",
+        "zona": "Quadra",
+        "localExato": "Pilar central da arquibancada da Quadra poliesportiva",
+        "grupo": "G09",
+        "lat": -20.14580,
+        "lng": -44.89025,
+        "autorizacao": { "responsavel": "Professor(a) de Educação Física", "data": "2026-11-26", "aprovada": true }
+      }
+    ]
+  },
+  {
+    "slug": "hidroxido-de-zinco",
+    "nomeIupac": "Hidróxido de zinco",
+    "formula": "Zn(OH)2",
+    "formulaHtml": "Zn(OH)<sub>2</sub>",
+    "nomesPopulares": ["Base anfótera de zinco", "Composto de curativos e materiais esportivos"],
+    "classe": "Base",
+    "subtipo": "Dibase fraca, insolúvel e anfótera",
+    "phEstimado": 8.2,
+    "fotoPlaquinha": "/assets/img/classe-bases.jpg",
+    "fotoLegenda": "Plaquinha INF-G09-P3 próxima ao posto de apoio e kit de primeiros socorros da Quadra",
+    "justificativa": "Hidróxido metálico que se enquadra como base de Arrhenius, com baixíssima solubilidade em água.",
+    "classificacaoTags": ["Base de Arrhenius", "Base Fraca", "Dibase", "Anfótero"],
+    "equacaoTipo": "Comportamento Anfótero",
+    "equacaoHtml": "Zn(OH)<sub>2(s)</sub> + 2 HCl<sub>(aq)</sub> → ZnCl<sub>2(aq)</sub> + 2 H<sub>2</sub>O<sub>(l)</sub>",
+    "equacaoExplicacao": "Insolúvel em água pura, dissolve-se tanto em ácidos fortes quanto em excesso de bases fortes.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido branco gelatinoso ou pó cristalino",
+      "Cor": "Branco",
+      "Solubilidade em água": "Praticamente insolúvel em água"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Precipitado branco estável em pH neutro",
+      "Caráter ácido/básico": "Anfótero (base fraca)",
+      "Condutividade elétrica": "Não conduz no estado sólido",
+      "Reações características": "Forma-se na superfície de aço galvanizado úmido e em curativos absorventes médicos"
+    },
+    "porQueEstaAqui": "Na Quadra poliesportiva, o Zn(OH)₂ está presente na proteção anticorrosiva das estruturas metálicas galvanizadas das traves e alambrados, além de ser empregado em curativos absorventes para escoriações esportivas.",
+    "ondeMaisAparece": [
+      "Curativos cirúrgicos absorventes e produtos dermatológicos calmantes.",
+      "Proteção contra corrosão de grades, postes e coberturas galvanizadas."
+    ],
+    "segurancaRiscos": "Baixa toxicidade no contato superficial; evitar ingestão.",
+    "segurancaCuidados": [
+      "Em caso de ralados na quadra, lave o ferimento com água limpa e procure o apoio escolar."
+    ],
+    "curiosidade": "As grades e traves galvanizadas recebem um banho de zinco porque, ao oxidar com a chuva, o zinco forma camadas de Zn(OH)₂ e carbonatos que impedem o ferro interno de enferrujar.",
+    "referencias": [
+      "LEE, J. D. Química inorgânica não tão concisa. 5. ed. São Paulo: Blucher, 1999."
+    ],
+    "grupo": "G09",
+    "autores": ["[Nome do Integrante 1 — G09]", "[Nome do Integrante 2 — G09]", "[Nome do Integrante 3 — G09]"],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G09-P3",
+        "zona": "Quadra",
+        "localExato": "Estrutura galvanizada próxima ao banco de reservas e kit de primeiros socorros",
+        "grupo": "G09",
+        "lat": -20.14582,
+        "lng": -44.89030,
+        "autorizacao": { "responsavel": "Professor(a) de Educação Física", "data": "2026-11-26", "aprovada": true }
       }
     ]
   }

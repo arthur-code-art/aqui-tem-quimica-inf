@@ -51,6 +51,8 @@
       .tabela-sec { border: 0 !important; background: #fff !important; box-shadow: none !important; padding: 0; }
       th, td { color: #000 !important; border-bottom: 1px solid #94a3b8 !important; font-size: 11px; padding: 6px; }
     }
+      [data-tema="claro"] #gps-nav-bar{background:#ffffff!important;color:#1f1a14!important;border-color:#b8860b!important;}
+    [data-tema="claro"] #gps-nav-bar div{color:#1f1a14!important;}
   </style>
 </head>
 <body>
@@ -75,6 +77,7 @@
         <button type="button" id="tab-3d" class="btn ativo">🏛️ Maquete 3D do CEFET</button>
         <button type="button" id="tab-2d" class="btn">🛰️ Satélite GPS Real</button>
         <button type="button" id="btn-modo-coord" class="btn">📍 Calibrar GPS</button>
+        <button type="button" id="btn-guiar-seletor" class="btn">🧭 Guiar até Plaquinha</button>
       </div>
       <div class="grupo">
         <select id="filtro-classe">
@@ -97,6 +100,23 @@
       <span id="stat-visiveis" style="margin-left:auto;font-weight:700;">Carregando...</span>
     </div>
 
+    
+    <div id="gps-nav-bar" style="display:none;margin-bottom:12px;padding:14px 16px;border-radius:16px;border:1.5px solid #c89b3c;background:rgba(20,11,36,0.92);color:#f7f3ff;box-shadow:0 10px 28px rgba(0,0,0,0.32);">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div id="gps-seta" style="width:46px;height:46px;border-radius:50%;border:2px solid #f5d37a;display:flex;align-items:center;justify-content:center;font-size:22px;background:rgba(245,211,122,0.16);flex-shrink:0;transition:transform 0.35s ease;">➤</div>
+          <div>
+            <div style="font-size:11px;font-weight:800;letter-spacing:0.06em;color:#f5d37a;">NAVEGAÇÃO GPS AO VIVO</div>
+            <div id="gps-destino-titulo" style="font-size:16px;font-weight:800;">Selecione uma plaquinha</div>
+            <div id="gps-metricas" style="font-size:13px;opacity:0.9;">Aguardando sinal do GPS...</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a id="gps-gmaps-link" href="#" target="_blank" rel="noopener" class="btn btn-primary" style="text-decoration:none;">🗺️ Rota no Google Maps</a>
+          <button type="button" id="gps-parar-btn" class="btn">⏹ Parar GPS</button>
+        </div>
+      </div>
+    </div>
     <div class="viewport-card">
       <div id="painel-3d">
         <div id="canvas-3d-wrap">
@@ -147,10 +167,11 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="/js/mapa-pro.js?v=4" defer></script>
+  <script src="/js/mapa-pro.js?v=5" defer></script>
   <script src="/js/efeitos-editorial.js?v=4" defer></script>
-  <script src="/js/progresso.js?v=3" defer></script>
-  <script src="/js/scanner-qr.js" defer></script>
-  <script src="/js/quimicobot-ia.js?v=2" defer></script>
+  <script src="/js/progresso.js?v=4" defer></script>
+  <script src="/js/scanner-qr.js?v=2" defer></script>
+  <script src="/js/quimicobot-ia.js?v=4" defer></script>
+  <script src="/js/navbar-global.js?v=1" defer></script>
 </body>
 </html>

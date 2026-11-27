@@ -314,10 +314,11 @@
                 '<span style="font-size:11px;opacity:0.85;">📍 ' + item.zona + '</span>' +
               '</a>';
             }
-            return '<a href="/plaquinha/' + encodeURIComponent(item.codigo) + '" class="atq-selo-card pendente">' +
+            return '<a href="/mapa?guiar=' + encodeURIComponent(item.codigo) + '" class="atq-selo-card pendente">' +
               '<span style="font-size:10px;font-weight:700;opacity:0.75;">🔒 ' + item.codigo + '</span>' +
               '<strong style="font-size:12px;">Dica: ' + item.zona + '</strong>' +
               '<span style="font-size:11px;opacity:0.78;">Procure em: ' + item.localExato + '</span>' +
+              '<span style="margin-top:4px;font-size:11px;font-weight:700;color:#c89b3c;">🧭 Toque para abrir GPS →</span>' +
             '</a>';
           }).join('');
 

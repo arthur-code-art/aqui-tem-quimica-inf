@@ -82,9 +82,11 @@
       '<p style="margin:10px 0;font-size:13px;line-height:1.45;">' + p.porQueEstaAqui + '</p>' +
       '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;">' +
         '<span style="font-size:11px;opacity:0.78;">Grupo ' + p.grupo + ' • GPS: ' + p.lat.toFixed(5) + ', ' + p.lng.toFixed(5) + '</span>' +
-        '<a href="/plaquinha/' + encodeURIComponent(p.codigo) + '" class="btn btn-primary" style="text-decoration:none;">Abrir Ficha Completa →</a>' +
+        '<div style="display:flex;gap:8px;flex-wrap:wrap;">' + '<button type="button" id="btn-guiar-detalhe" class="btn" style="font-weight:700;">🧭 Guiar até aqui (GPS)</button>' + '<a href="https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lng + '&travelmode=walking" target="_blank" rel="noopener" class="btn" style="text-decoration:none;">🗺️ Google Maps</a>' + '<a href="/plaquinha/' + encodeURIComponent(p.codigo) + '" class="btn btn-primary" style="text-decoration:none;">Abrir Ficha →</a></div>' +
       '</div>';
     document.getElementById('fechar-detalhe').onclick = function () { mostrarCardDetalhe(null); };
+    var bgd = document.getElementById('btn-guiar-detalhe');
+    if (bgd) bgd.onclick = function () { iniciarNavegacaoGPS(p); };
   }
 
   // ==================== MAQUETE 3D FIEL DO CEFET-MG CAMPUS V ====================
@@ -712,7 +714,7 @@
           '<div style="font-size:11px;font-weight:800;color:' + cor.hex + ';">' + p.codigo + ' • ' + p.classe.toUpperCase() + '</div>' +
           '<div style="font-size:15px;font-weight:800;margin:2px 0;">' + p.nomeIupac + ' (' + p.formulaHtml + ')</div>' +
           '<div style="font-size:12px;color:#5c5040;margin-bottom:8px;">📍 ' + p.zona + ' — ' + p.localExato + '</div>' +
-          '<a href="/plaquinha/' + encodeURIComponent(p.codigo) + '" style="display:inline-block;background:#b8860b;color:#fff;text-decoration:none;padding:6px 11px;border-radius:7px;font-size:12px;font-weight:700;">Abrir ficha →</a>' +
+          '<div style="display:flex;gap:6px;flex-wrap:wrap;"><a href="/plaquinha/' + encodeURIComponent(p.codigo) + '" style="display:inline-block;background:#b8860b;color:#fff;text-decoration:none;padding:6px 10px;border-radius:7px;font-size:12px;font-weight:700;">Ficha →</a><a href="/mapa?guiar=' + encodeURIComponent(p.codigo) + '" style="display:inline-block;background:#1f1a14;color:#f5d37a;text-decoration:none;padding:6px 10px;border-radius:7px;font-size:12px;font-weight:700;">🧭 GPS</a></div>' +
         '</div>'
       );
       mk.on('click', function () { mostrarCardDetalhe(p); });
@@ -800,6 +802,105 @@
     }).join('');
   }
 
+
+  // ==================== NAVEGACAO GPS GUIADA ATE A PLAQUINHA ====================
+  var gpsWatchId = null, gpsLinha = null, gpsAlvoCircle = null, gpsPrimeiroAjuste = true;
+
+  function haversineMetros(lat1, lon1, lat2, lon2) {
+    var R = 6371000;
+    var toRad = function (v) { return v * Math.PI / 180; };
+    var dLat = toRad(lat2 - lat1), dLon = toRad(lon2 - lon1);
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }
+
+  function calcularRumo(lat1, lon1, lat2, lon2) {
+    var toRad = function (v) { return v * Math.PI / 180; };
+    var y = Math.sin(toRad(lon2 - lon1)) * Math.cos(toRad(lat2));
+    var x = Math.cos(toRad(lat1)) * Math.sin(toRad(lat2)) -
+            Math.sin(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.cos(toRad(lon2 - lon1));
+    return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+  }
+
+  function rumoTexto(deg) {
+    var dirs = ['Norte', 'Nordeste', 'Leste', 'Sudeste', 'Sul', 'Sudoeste', 'Oeste', 'Noroeste'];
+    return dirs[Math.round(deg / 45) % 8];
+  }
+
+  function pararNavegacaoGPS() {
+    if (gpsWatchId !== null && navigator.geolocation) {
+      navigator.geolocation.clearWatch(gpsWatchId);
+      gpsWatchId = null;
+    }
+    if (gpsLinha && map2d) { gpsLinha.remove(); gpsLinha = null; }
+    if (gpsAlvoCircle && map2d) { gpsAlvoCircle.remove(); gpsAlvoCircle = null; }
+    var bar = document.getElementById('gps-nav-bar');
+    if (bar) bar.style.display = 'none';
+  }
+
+  function iniciarNavegacaoGPS(p) {
+    if (!p) return;
+    pararNavegacaoGPS();
+    if (state.tab !== '2d') trocarAba('2d');
+    mostrarCardDetalhe(p);
+
+    var bar = document.getElementById('gps-nav-bar');
+    var tit = document.getElementById('gps-destino-titulo');
+    var met = document.getElementById('gps-metricas');
+    var seta = document.getElementById('gps-seta');
+    var gLink = document.getElementById('gps-gmaps-link');
+
+    bar.style.display = 'block';
+    tit.textContent = p.codigo + ' — ' + p.nomeIupac + ' (' + p.zona + ' · ' + p.localExato + ')';
+    gLink.href = 'https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lng + '&travelmode=walking';
+    met.textContent = 'Obtendo sua localização GPS...';
+    gpsPrimeiroAjuste = true;
+
+    setTimeout(function () {
+      if (map2d) {
+        gpsAlvoCircle = L.circleMarker([p.lat, p.lng], { radius: 14, color: '#f5d37a', weight: 3, fillColor: '#c89b3c', fillOpacity: 0.35 }).addTo(map2d);
+        map2d.flyTo([p.lat, p.lng], 19);
+      }
+    }, 180);
+
+    if (!navigator.geolocation) {
+      met.textContent = 'GPS não disponível neste dispositivo. Use o ponto destacado ou abra a rota no Google Maps.';
+      return;
+    }
+
+    gpsWatchId = navigator.geolocation.watchPosition(function (pos) {
+      var uLat = pos.coords.latitude;
+      var uLng = pos.coords.longitude;
+      var dist = haversineMetros(uLat, uLng, p.lat, p.lng);
+      var rumo = calcularRumo(uLat, uLng, p.lat, p.lng);
+      var mins = Math.max(1, Math.round(dist / 78));
+      var distTxt = dist >= 1000 ? (dist / 1000).toFixed(2) + ' km' : Math.round(dist) + ' m';
+
+      seta.style.transform = 'rotate(' + (rumo - 90).toFixed(0) + 'deg)';
+      if (dist <= 12) {
+        met.innerHTML = '<strong style="color:#22c55e;">🎉 Você chegou!</strong> Procure a plaquinha em: <strong>' + p.localExato + '</strong>';
+      } else {
+        met.innerHTML = 'Distância: <strong>' + distTxt + '</strong> (~' + mins + ' min a pé) • Siga para <strong>' + rumoTexto(rumo) + '</strong>';
+      }
+
+      if (map2d) {
+        if (userMarker) userMarker.setLatLng([uLat, uLng]);
+        else userMarker = L.circleMarker([uLat, uLng], { radius: 8, color: '#fff', weight: 2, fillColor: '#2563eb', fillOpacity: 1 }).addTo(map2d).bindPopup('📍 Você está aqui');
+
+        if (gpsLinha) gpsLinha.setLatLngs([[uLat, uLng], [p.lat, p.lng]]);
+        else gpsLinha = L.polyline([[uLat, uLng], [p.lat, p.lng]], { color: '#f5d37a', weight: 4, dashArray: '8, 8' }).addTo(map2d);
+
+        if (gpsPrimeiroAjuste) {
+          gpsPrimeiroAjuste = false;
+          map2d.fitBounds([[uLat, uLng], [p.lat, p.lng]], { padding: [55, 55], maxZoom: 19 });
+        }
+      }
+    }, function () {
+      met.textContent = 'Permita o acesso à localização no navegador ou clique em "Rota no Google Maps" ao lado.';
+    }, { enableHighAccuracy: true, maximumAge: 3000, timeout: 12000 });
+  }
+
   function bindEventos() {
     document.getElementById('tab-3d').onclick = function () { trocarAba('3d'); };
     document.getElementById('tab-2d').onclick = function () { trocarAba('2d'); };
@@ -853,6 +954,8 @@
     };
 
     document.getElementById('btn-imprimir').onclick = function () { window.print(); };
+    var bp = document.getElementById('gps-parar-btn'); if (bp) bp.onclick = pararNavegacaoGPS;
+    var bgs = document.getElementById('btn-guiar-seletor'); if (bgs) bgs.onclick = function () { var alvo = state.filtradas[0] || state.plaquinhas[0]; if (alvo) iniciarNavegacaoGPS(alvo); };
 
     window.addEventListener('atq-tema-mudou', function (ev) {
       state.noite = ev.detail && ev.detail.tema !== 'claro';
@@ -866,6 +969,8 @@
       bindEventos();
       init3D();
       aplicarFiltros();
+      var qGps = new URLSearchParams(window.location.search).get('guiar');
+      if (qGps) { var alvoGps = state.plaquinhas.find(function (x) { return x.codigo.toUpperCase() === qGps.toUpperCase(); }); if (alvoGps) setTimeout(function () { iniciarNavegacaoGPS(alvoGps); }, 250); }
     }).catch(function (err) {
       document.getElementById('canvas-3d-wrap').innerHTML = '<div style="padding:32px;color:#ef4444;">Erro ao carregar dados: ' + err.message + '</div>';
     });

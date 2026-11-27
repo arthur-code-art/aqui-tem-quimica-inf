@@ -1,17 +1,6 @@
 (function () {
   if (document.getElementById('atq-qr-fab')) return;
 
-  // Garantir link rapido para a Tabela Periodica no menu do topo
-  var nav = document.querySelector('header nav');
-  if (nav && !nav.querySelector('a[href="/tabela"]')) {
-    var linkTab = document.createElement('a');
-    linkTab.href = '/tabela';
-    linkTab.textContent = '⚛️ Tabela';
-    var toggle = document.getElementById('atq-tema-toggle');
-    if (toggle && toggle.parentNode === nav) nav.insertBefore(linkTab, toggle);
-    else nav.appendChild(linkTab);
-  }
-
   var st = document.createElement('style');
   st.textContent =
     '#atq-qr-fab{position:fixed;left:14px;bottom:62px;z-index:9993;display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#150c26,#4a2c6d);color:#f5d37a;border:1px solid #c8a24d;border-radius:999px;padding:7px 13px;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:12px;font-weight:800;cursor:pointer;box-shadow:0 0 18px rgba(192,132,252,0.42);backdrop-filter:blur(8px);}' +

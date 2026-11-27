@@ -10,6 +10,7 @@ const fs = require('fs');
 const QRCode = require('qrcode');
 
 const app = express();
+require('./lib/quimicobot-ia')(app);
 app.get('/api/extras-dados', (req, res) => {
   try {
     const p = require('path').join(__dirname, 'data', 'substancias.json');

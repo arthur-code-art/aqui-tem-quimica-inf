@@ -10,6 +10,13 @@ const fs = require('fs');
 const QRCode = require('qrcode');
 
 const app = express();
+app.get('/api/extras-dados', (req, res) => {
+  try {
+    const p = require('path').join(__dirname, 'data', 'substancias.json');
+    res.json(JSON.parse(require('fs').readFileSync(p, 'utf8')));
+  } catch (e) { res.status(500).json({ erro: 'Erro ao ler substancias' }); }
+});
+
 app.use((req, res, next) => {
   if (/^\/(assets|css|js)\//.test(req.path)) {
     res.setHeader('Cache-Control', 'public, max-age=86400');

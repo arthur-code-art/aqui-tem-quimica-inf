@@ -130,3 +130,55 @@
   });
   window.addEventListener('scroll', revelarTodosPresos, { passive: true });
 })();
+
+/* ATQ_CONTRASTE_JS_INICIO */
+(function () {
+  function ehFundoClaro(cs) {
+    var bg = cs.backgroundColor || '';
+    var m = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+    if (m) {
+      var a = m[4] !== undefined ? parseFloat(m[4]) : 1;
+      if (a >= 0.5) {
+        var lum = 0.299 * (+m[1]) + 0.587 * (+m[2]) + 0.114 * (+m[3]);
+        return lum > 170;
+      }
+    }
+    var img = cs.backgroundImage || '';
+    if (img.indexOf('gradient') !== -1) {
+      var cores = img.match(/rgb\((\d+),\s*(\d+),\s*(\d+)\)/g);
+      if (cores && cores.length) {
+        var soma = 0;
+        cores.forEach(function (c) {
+          var p = c.match(/\d+/g);
+          soma += 0.299 * (+p[0]) + 0.587 * (+p[1]) + 0.114 * (+p[2]);
+        });
+        return (soma / cores.length) > 170;
+      }
+    }
+    return false;
+  }
+
+  function ajustarContrasteCartoes() {
+    document.querySelectorAll('.atq-superficie-clara').forEach(function (el) {
+      el.classList.remove('atq-superficie-clara');
+    });
+    var nos = document.querySelectorAll('main section, main article, main div, main a');
+    nos.forEach(function (el) {
+      if (el.closest('#mapa-2d-canvas') || el.closest('#canvas-3d-wrap') || el.closest('#atq-mol-viewport')) return;
+      var cs = window.getComputedStyle(el);
+      if (ehFundoClaro(cs)) {
+        el.classList.add('atq-superficie-clara');
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    ajustarContrasteCartoes();
+    setTimeout(ajustarContrasteCartoes, 500);
+    setTimeout(ajustarContrasteCartoes, 1500);
+  });
+  window.addEventListener('atq-tema-mudou', function () {
+    setTimeout(ajustarContrasteCartoes, 80);
+  });
+})();
+/* ATQ_CONTRASTE_JS_FIM */

@@ -84,7 +84,7 @@
         '<span style="font-size:11px;opacity:0.78;">Grupo ' + p.grupo + ' • GPS: ' + p.lat.toFixed(5) + ', ' + p.lng.toFixed(5) + '</span>' +
         '<div style="display:flex;gap:8px;flex-wrap:wrap;">' + '<button type="button" id="btn-guiar-detalhe" class="btn" style="font-weight:700;">🧭 Guiar até aqui (GPS)</button>' + '<a href="https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lng + '&travelmode=walking" target="_blank" rel="noopener" class="btn" style="text-decoration:none;">🗺️ Google Maps</a>' + '<a href="/plaquinha/' + encodeURIComponent(p.codigo) + '" class="btn btn-primary" style="text-decoration:none;">Abrir Ficha →</a></div>' +
       '</div>';
-    document.getElementById('fechar-detalhe').onclick = function () { mostrarCardDetalhe(null); };
+    bindEl('fechar-detalhe', 'onclick', function () { mostrarCardDetalhe(null); });
     var bgd = document.getElementById('btn-guiar-detalhe');
     if (bgd) bgd.onclick = function () { iniciarNavegacaoGPS(p); };
   }
@@ -769,6 +769,7 @@
         '<td>' + p.zona + '</td>' +
         '<td>' + p.localExato + '</td>' +
         '<td>' + (p.autorizacao && p.autorizacao.aprovada ? '✅ Aprovada' : '⏳ Pendente') + '</td>' +
+        '<td style="white-space:nowrap;"><a href="/plaquinha/' + encodeURIComponent(p.codigo) + '" class="btn" style="padding:4px 8px;font-size:11px;margin-right:4px;text-decoration:none;">Ficha</a><button type="button" class="btn" onclick="window.atqGuiarPlaquinha(\'' + p.codigo + '\')" style="padding:4px 8px;font-size:11px;">🧭 GPS</button></td>' +
       '</tr>';
     }).join('');
   }
@@ -901,32 +902,34 @@
     }, { enableHighAccuracy: true, maximumAge: 3000, timeout: 12000 });
   }
 
+  function bindEl(id, prop, fn) { var e = document.getElementById(id); if (e) e[prop] = fn; }
+  window.atqGuiarPlaquinha = function (cod) { var p = state.plaquinhas.find(function (x) { return x.codigo.toUpperCase() === String(cod).toUpperCase(); }); if (p) { iniciarNavegacaoGPS(p); window.scrollTo({ top: 120, behavior: 'smooth' }); } };
+
   function bindEventos() {
-    document.getElementById('tab-3d').onclick = function () { trocarAba('3d'); };
-    document.getElementById('tab-2d').onclick = function () { trocarAba('2d'); };
+    bindEl('tab-3d', 'onclick', function () { trocarAba('3d'); });
+    bindEl('tab-2d', 'onclick', function () { trocarAba('2d'); });
+    bindEl('filtro-classe', 'onchange', function (e) { state.classe = e.target.value; aplicarFiltros(); });
+    bindEl('filtro-zona', 'onchange', function (e) { state.zona = e.target.value; aplicarFiltros(); });
+    bindEl('filtro-busca', 'oninput', function (e) { state.busca = e.target.value; aplicarFiltros(); });
 
-    document.getElementById('filtro-classe').onchange = function (e) { state.classe = e.target.value; aplicarFiltros(); };
-    document.getElementById('filtro-zona').onchange = function (e) { state.zona = e.target.value; aplicarFiltros(); };
-    document.getElementById('filtro-busca').oninput = function (e) { state.busca = e.target.value; aplicarFiltros(); };
+    bindEl('btn-dia-noite', 'onclick', function () { state.noite = !state.noite; aplicarIluminacao3D(); });
+    bindEl('btn-tour', 'onclick', alternarTour);
+    bindEl('btn-reset-3d', 'onclick', function () { if (state.tour) alternarTour(); resetar3D(); });
+    bindEl('btn-zoom-in', 'onclick', function () { cam.tRadius = Math.max(18, cam.tRadius - 10); });
+    bindEl('btn-zoom-out', 'onclick', function () { cam.tRadius = Math.min(125, cam.tRadius + 10); });
 
-    document.getElementById('btn-dia-noite').onclick = function () { state.noite = !state.noite; aplicarIluminacao3D(); };
-    document.getElementById('btn-tour').onclick = alternarTour;
-    document.getElementById('btn-reset-3d').onclick = function () { if (state.tour) alternarTour(); resetar3D(); };
-    document.getElementById('btn-zoom-in').onclick = function () { cam.tRadius = Math.max(18, cam.tRadius - 10); };
-    document.getElementById('btn-zoom-out').onclick = function () { cam.tRadius = Math.min(125, cam.tRadius + 10); };
-
-    document.getElementById('btn-camada-2d').onclick = function () {
+    bindEl('btn-camada-2d', 'onclick', function () {
       if (!map2d) return;
       state.usandoSat = !state.usandoSat;
       if (state.usandoSat) { map2d.removeLayer(tileRua); tileSat.addTo(map2d); this.textContent = '🗺️ Ver Ruas'; }
       else { map2d.removeLayer(tileSat); tileRua.addTo(map2d); this.textContent = '🛰️ Ver Satélite'; }
-    };
+    });
 
-    document.getElementById('btn-centralizar-cefet').onclick = function () {
+    bindEl('btn-centralizar-cefet', 'onclick', function () {
       if (map2d) map2d.flyTo(CEFET_CENTER, 18);
-    };
+    });
 
-    document.getElementById('btn-meu-gps').onclick = function () {
+    bindEl('btn-meu-gps', 'onclick', function () {
       if (!navigator.geolocation) { alert('Seu navegador não suporta GPS.'); return; }
       navigator.geolocation.getCurrentPosition(function (pos) {
         if (!map2d) return;
@@ -936,26 +939,31 @@
           .addTo(map2d).bindPopup('📍 Você está aqui').openPopup();
         map2d.flyTo(ll, 19);
       }, function () { alert('Não foi possível obter sua localização. Libere o GPS no navegador.'); }, { enableHighAccuracy: true, timeout: 10000 });
-    };
+    });
 
-    document.getElementById('btn-modo-coord').onclick = function () {
+    bindEl('btn-modo-coord', 'onclick', function () {
       state.modoCoord = !state.modoCoord;
       this.classList.toggle('ativo', state.modoCoord);
-      document.getElementById('coord-bar').style.display = state.modoCoord ? 'flex' : 'none';
+      var cb = document.getElementById('coord-bar');
+      if (cb) cb.style.display = state.modoCoord ? 'flex' : 'none';
       if (state.tab !== '2d') trocarAba('2d');
-    };
+    });
 
-    document.getElementById('btn-baixar-json').onclick = function () {
+    bindEl('btn-baixar-json', 'onclick', function () {
       var blob = new Blob([JSON.stringify(state.raw, null, 2)], { type: 'application/json' });
       var a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = 'substancias.json';
       a.click();
-    };
+    });
 
-    document.getElementById('btn-imprimir').onclick = function () { window.print(); };
-    var bp = document.getElementById('gps-parar-btn'); if (bp) bp.onclick = pararNavegacaoGPS;
-    var bgs = document.getElementById('btn-guiar-seletor'); if (bgs) bgs.onclick = function () { var alvo = state.filtradas[0] || state.plaquinhas[0]; if (alvo) iniciarNavegacaoGPS(alvo); };
+    bindEl('btn-imprimir', 'onclick', function () { window.print(); });
+    bindEl('btn-imprimir-tabela', 'onclick', function () { window.print(); });
+    bindEl('gps-parar-btn', 'onclick', pararNavegacaoGPS);
+    bindEl('btn-guiar-seletor', 'onclick', function () {
+      var alvo = state.filtradas[0] || state.plaquinhas[0];
+      if (alvo) iniciarNavegacaoGPS(alvo);
+    });
 
     window.addEventListener('atq-tema-mudou', function (ev) {
       state.noite = ev.detail && ev.detail.tema !== 'claro';
@@ -967,7 +975,7 @@
     carregarDados().then(function () {
       preencherSelects();
       bindEventos();
-      init3D();
+      try { init3D(); } catch (e3d) { console.error(e3d); }
       aplicarFiltros();
       var qGps = new URLSearchParams(window.location.search).get('guiar');
       if (qGps) { var alvoGps = state.plaquinhas.find(function (x) { return x.codigo.toUpperCase() === qGps.toUpperCase(); }); if (alvoGps) setTimeout(function () { iniciarNavegacaoGPS(alvoGps); }, 250); }

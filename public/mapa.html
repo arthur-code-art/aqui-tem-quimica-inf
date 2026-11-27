@@ -154,11 +154,11 @@
     <div id="detalhe-card"></div>
 
     <section class="tabela-sec">
-      <h2 style="margin:0;font-size:19px;">📋 Tabela Oficial das 38 Plaquinhas</h2>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;"><div><h2 style="margin:0;font-size:19px;">📋 Tabela Oficial das 38 Plaquinhas</h2></div><button type="button" id="btn-imprimir-tabela" class="btn btn-primary">🖨️ Imprimir / Salvar PDF</button></div>
       <p style="margin:3px 0 0;font-size:12px;opacity:0.8;">Pronta para imprimir ou salvar em PDF pelo botão no topo.</p>
       <div class="tabela-wrap">
         <table>
-          <thead><tr><th>Código</th><th>Classe</th><th>Substância</th><th>Fórmula</th><th>Zona</th><th>Local Exato</th><th>Autorização</th></tr></thead>
+          <thead><tr><th>Código</th><th>Classe</th><th>Substância</th><th>Fórmula</th><th>Zona</th><th>Local Exato</th><th>Autorização</th><th>Ações</th></tr></thead>
           <tbody id="tabela-corpo"></tbody>
         </table>
       </div>
@@ -167,11 +167,12 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="/js/mapa-pro.js?v=5" defer></script>
-  <script src="/js/efeitos-editorial.js?v=4" defer></script>
+  <script src="/js/mapa-pro.js?v=6" defer></script>
+  <script src="/js/efeitos-editorial.js?v=5" defer></script>
   <script src="/js/progresso.js?v=4" defer></script>
   <script src="/js/scanner-qr.js?v=2" defer></script>
   <script src="/js/quimicobot-ia.js?v=4" defer></script>
-  <script src="/js/navbar-global.js?v=1" defer></script>
+  <script src="/js/navbar-global.js?v=2" defer></script>
+  <script src="/js/catalogo-fix.js?v=1" defer></script>
 </body>
 </html>

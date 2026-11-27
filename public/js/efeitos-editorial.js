@@ -6,38 +6,10 @@
     return document.documentElement.getAttribute('data-tema') === 'claro' ? 'claro' : 'neon';
   }
 
-  function aplicarTema(tema) {
-    if (tema === 'claro') document.documentElement.setAttribute('data-tema', 'claro');
-    else document.documentElement.removeAttribute('data-tema');
-    try { localStorage.setItem(THEME_KEY, tema); } catch (e) {}
-    var btn = document.getElementById('atq-tema-toggle');
-    if (btn) {
-      btn.innerHTML = tema === 'claro' ? '✨ Modo Neon' : '☀️ Branco & Dourado';
-      btn.setAttribute('aria-label', tema === 'claro' ? 'Alternar para modo neon escuro' : 'Alternar para modo claro branco e dourado');
-    }
-    window.dispatchEvent(new CustomEvent('atq-tema-mudou', { detail: { tema: tema } }));
-  }
-
   var salvo = 'neon';
   try { salvo = localStorage.getItem(THEME_KEY) || 'neon'; } catch (e) {}
-  aplicarTema(salvo);
-
-  function montarToggle() {
-    if (document.getElementById('atq-tema-toggle')) return;
-    var btn = document.createElement('button');
-    btn.type = 'button';
-    btn.id = 'atq-tema-toggle';
-    btn.onclick = function () { aplicarTema(temaAtual() === 'claro' ? 'neon' : 'claro'); };
-    var nav = document.querySelector('header nav');
-    if (nav) nav.appendChild(btn);
-    else {
-      btn.style.position = 'fixed';
-      btn.style.top = '12px';
-      btn.style.right = '12px';
-      document.body.appendChild(btn);
-    }
-    aplicarTema(salvo);
-  }
+  if (salvo === 'claro') document.documentElement.setAttribute('data-tema', 'claro');
+  else document.documentElement.removeAttribute('data-tema');
 
   function iniciarParticulas() {
     if (reduzido || document.getElementById('atq-fx-canvas')) return;
@@ -46,7 +18,7 @@
     document.body.insertBefore(canvas, document.body.firstChild);
     var ctx = canvas.getContext('2d');
     var w = 0, h = 0;
-    var qtd = window.innerWidth < 640 ? 20 : 38;
+    var qtd = window.innerWidth < 640 ? 18 : 36;
     var nos = [];
 
     function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
@@ -56,7 +28,7 @@
     for (var i = 0; i < qtd; i++) {
       nos.push({
         x: Math.random() * w, y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.42, vy: (Math.random() - 0.5) * 0.42,
+        vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
         r: 1.8 + Math.random() * 2.2, idx: i
       });
     }
@@ -80,7 +52,7 @@
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = 'rgba(' + lineRgb + ',' + ((1 - d / 130) * (claro ? 0.26 : 0.20)).toFixed(3) + ')';
+            ctx.strokeStyle = 'rgba(' + lineRgb + ',' + ((1 - d / 130) * (claro ? 0.25 : 0.20)).toFixed(3) + ')';
             ctx.lineWidth = 1;
             ctx.stroke();
           }
@@ -91,7 +63,7 @@
         ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
         ctx.fillStyle = cor;
         ctx.shadowColor = cor;
-        ctx.shadowBlur = claro ? 6 : 11;
+        ctx.shadowBlur = claro ? 5 : 10;
         ctx.fill();
         ctx.shadowBlur = 0;
       }
@@ -106,12 +78,15 @@
     if (!reduzido && 'IntersectionObserver' in window) {
       obs = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
-          if (en.isIntersecting) { en.target.classList.add('atq-visivel'); obs.unobserve(en.target); }
+          if (en.isIntersecting) {
+            en.target.classList.add('atq-visivel');
+            obs.unobserve(en.target);
+          }
         });
-      }, { threshold: 0.05 });
+      }, { threshold: 0.01, rootMargin: '120px 0px 120px 0px' });
     }
 
-    alvos.forEach(function (el, idx) {
+    alvos.forEach(function (el) {
       if (el.dataset.atqBound) return;
       el.dataset.atqBound = '1';
       el.classList.add('atq-glow-card');
@@ -120,19 +95,38 @@
         el.style.setProperty('--mx', (ev.clientX - r.left) + 'px');
         el.style.setProperty('--my', (ev.clientY - r.top) + 'px');
       });
-      if (obs && !el.closest('#canvas-3d-wrap') && !el.closest('#mapa-2d-canvas')) {
+
+      // Nunca esconde secoes muito altas (evita listas grandes ficarem invisiveis)
+      var rect = el.getBoundingClientRect();
+      var muitoAlto = rect.height > window.innerHeight * 0.72;
+      var jaNaTela = rect.top < window.innerHeight + 80;
+      if (obs && !muitoAlto && !jaNaTela && !el.closest('#canvas-3d-wrap') && !el.closest('#mapa-2d-canvas')) {
         el.classList.add('atq-reveal');
-        el.style.transitionDelay = Math.min(idx * 40, 200) + 'ms';
         obs.observe(el);
+      } else {
+        el.classList.remove('atq-reveal');
+        el.classList.add('atq-visivel');
+      }
+    });
+  }
+
+  // Garantia absoluta: nenhum bloco permanece oculto
+  function revelarTodosPresos() {
+    document.querySelectorAll('.atq-reveal:not(.atq-visivel)').forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight + 160 || r.height > window.innerHeight * 0.7) {
+        el.classList.add('atq-visivel');
       }
     });
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    montarToggle();
     iniciarParticulas();
     ativarInteracoes();
-    setTimeout(ativarInteracoes, 700);
-    setTimeout(ativarInteracoes, 1800);
+    setTimeout(function () { ativarInteracoes(); revelarTodosPresos(); }, 700);
+    setTimeout(function () {
+      document.querySelectorAll('.atq-reveal').forEach(function (el) { el.classList.add('atq-visivel'); });
+    }, 1800);
   });
+  window.addEventListener('scroll', revelarTodosPresos, { passive: true });
 })();

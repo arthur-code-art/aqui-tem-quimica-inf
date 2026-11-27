@@ -50,7 +50,10 @@
     ],
     "grupo": "G01",
     "autores": [
-      "[Integrantes do Grupo G01]"
+      "Daniel Ferreira do Carmo",
+      "Diego Simões Gonçalves",
+      "Lucas Caputo Siqueira",
+      "Vitor Graciano Veiga de Morais"
     ],
     "ocorrencias": [
       {
@@ -118,7 +121,10 @@
     ],
     "grupo": "G01",
     "autores": [
-      "[Integrantes do Grupo G01]"
+      "Daniel Ferreira do Carmo",
+      "Diego Simões Gonçalves",
+      "Lucas Caputo Siqueira",
+      "Vitor Graciano Veiga de Morais"
     ],
     "ocorrencias": [
       {
@@ -186,7 +192,10 @@
     ],
     "grupo": "G01",
     "autores": [
-      "[Integrantes do Grupo G01]"
+      "Daniel Ferreira do Carmo",
+      "Diego Simões Gonçalves",
+      "Lucas Caputo Siqueira",
+      "Vitor Graciano Veiga de Morais"
     ],
     "ocorrencias": [
       {
@@ -255,7 +264,10 @@
     ],
     "grupo": "G01",
     "autores": [
-      "[Integrantes do Grupo G01]"
+      "Daniel Ferreira do Carmo",
+      "Diego Simões Gonçalves",
+      "Lucas Caputo Siqueira",
+      "Vitor Graciano Veiga de Morais"
     ],
     "ocorrencias": [
       {
@@ -323,9 +335,16 @@
     ],
     "grupo": "G01 / G04 / G05",
     "autores": [
-      "[Integrantes do Grupo G01]",
-      "[Integrantes do Grupo G04]",
-      "[Integrantes do Grupo G05]"
+      "Daniel Ferreira do Carmo (G01)",
+      "Diego Simões Gonçalves (G01)",
+      "Lucas Caputo Siqueira (G01)",
+      "Vitor Graciano Veiga de Morais (G01)",
+      "Guilherme Henrique Ribeiro Coutinho (G04)",
+      "Pedro Gabriel Braga Martins (G04)",
+      "Ruan Pablo Torquato dos Santos (G04)",
+      "Beatriz de Souza Dias (G05)",
+      "Gabriel Alves de Souza (G05)",
+      "Thayssa Martins Romano Ribeiro (G05)"
     ],
     "ocorrencias": [
       {
@@ -420,7 +439,10 @@
     ],
     "grupo": "G02",
     "autores": [
-      "[Integrantes do Grupo G02]"
+      "Joao Henrique Rodrigues Pereira",
+      "Karolayne Soares Gomes",
+      "Kawam Moreira Costa",
+      "Miguel Henrique Oliveira"
     ],
     "ocorrencias": [
       {
@@ -490,11 +512,24 @@
     ],
     "grupo": "G02 / G03 / G05 / G08 / G09",
     "autores": [
-      "[Integrantes do Grupo G02]",
-      "[Integrantes do Grupo G03]",
-      "[Integrantes do Grupo G05]",
-      "[Integrantes do Grupo G08]",
-      "[Integrantes do Grupo G09]"
+      "Joao Henrique Rodrigues Pereira (G02)",
+      "Karolayne Soares Gomes (G02)",
+      "Kawam Moreira Costa (G02)",
+      "Miguel Henrique Oliveira (G02)",
+      "Giovana Layla Pereira de Paulo Soares (G03)",
+      "Malu Shinzato Brandao Braga (G03)",
+      "Vinicius Soares Prudencio (G03)",
+      "Beatriz de Souza Dias (G05)",
+      "Gabriel Alves de Souza (G05)",
+      "Thayssa Martins Romano Ribeiro (G05)",
+      "Gabriel de Sousa Coutinho (G08)",
+      "Miguel Anderson Goncalves (G08)",
+      "Roberto Carlos Vilela Filho (G08)",
+      "Vitor Marcos Ferreira (G08)",
+      "Anna Vitoria Nascimento da Cruz (G09)",
+      "Gabriel Valinhas Ribeiro (G09)",
+      "Manoela Pereira Jesus Aquino de Souza (G09)",
+      "Samira Araujo Rezende (G09)"
     ],
     "ocorrencias": [
       {
@@ -615,7 +650,10 @@
     ],
     "grupo": "G02",
     "autores": [
-      "[Integrantes do Grupo G02]"
+      "Joao Henrique Rodrigues Pereira",
+      "Karolayne Soares Gomes",
+      "Kawam Moreira Costa",
+      "Miguel Henrique Oliveira"
     ],
     "ocorrencias": [
       {
@@ -684,8 +722,13 @@
     ],
     "grupo": "G02 / G04",
     "autores": [
-      "[Integrantes do Grupo G02]",
-      "[Integrantes do Grupo G04]"
+      "Joao Henrique Rodrigues Pereira (G02)",
+      "Karolayne Soares Gomes (G02)",
+      "Kawam Moreira Costa (G02)",
+      "Miguel Henrique Oliveira (G02)",
+      "Guilherme Henrique Ribeiro Coutinho (G04)",
+      "Pedro Gabriel Braga Martins (G04)",
+      "Ruan Pablo Torquato dos Santos (G04)"
     ],
     "ocorrencias": [
       {
@@ -767,7 +810,10 @@
     ],
     "grupo": "G02",
     "autores": [
-      "[Integrantes do Grupo G02]"
+      "Joao Henrique Rodrigues Pereira",
+      "Karolayne Soares Gomes",
+      "Kawam Moreira Costa",
+      "Miguel Henrique Oliveira"
     ],
     "ocorrencias": [
       {
@@ -835,9 +881,16 @@
     ],
     "grupo": "G03 / G05 / G09",
     "autores": [
-      "[Integrantes do Grupo G03]",
-      "[Integrantes do Grupo G05]",
-      "[Integrantes do Grupo G09]"
+      "Giovana Layla Pereira de Paulo Soares (G03)",
+      "Malu Shinzato Brandao Braga (G03)",
+      "Vinicius Soares Prudencio (G03)",
+      "Beatriz de Souza Dias (G05)",
+      "Gabriel Alves de Souza (G05)",
+      "Thayssa Martins Romano Ribeiro (G05)",
+      "Anna Vitoria Nascimento da Cruz (G09)",
+      "Gabriel Valinhas Ribeiro (G09)",
+      "Manoela Pereira Jesus Aquino de Souza (G09)",
+      "Samira Araujo Rezende (G09)"
     ],
     "ocorrencias": [
       {
@@ -933,9 +986,15 @@
     ],
     "grupo": "G03 / G05 / G06",
     "autores": [
-      "[Integrantes do Grupo G03]",
-      "[Integrantes do Grupo G05]",
-      "[Integrantes do Grupo G06]"
+      "Giovana Layla Pereira de Paulo Soares (G03)",
+      "Malu Shinzato Brandao Braga (G03)",
+      "Vinicius Soares Prudencio (G03)",
+      "Beatriz de Souza Dias (G05)",
+      "Gabriel Alves de Souza (G05)",
+      "Thayssa Martins Romano Ribeiro (G05)",
+      "Arthur Machado Mendes (G06)",
+      "Artur Belmiro de Melo (G06)",
+      "Jenypher Emily Oliveira Caldeira (G06)"
     ],
     "ocorrencias": [
       {
@@ -1029,7 +1088,9 @@
     ],
     "grupo": "G03",
     "autores": [
-      "[Integrantes do Grupo G03]"
+      "Giovana Layla Pereira de Paulo Soares",
+      "Malu Shinzato Brandao Braga",
+      "Vinicius Soares Prudencio"
     ],
     "ocorrencias": [
       {
@@ -1098,8 +1159,13 @@
     ],
     "grupo": "G03 / G08",
     "autores": [
-      "[Integrantes do Grupo G03]",
-      "[Integrantes do Grupo G08]"
+      "Giovana Layla Pereira de Paulo Soares (G03)",
+      "Malu Shinzato Brandao Braga (G03)",
+      "Vinicius Soares Prudencio (G03)",
+      "Gabriel de Sousa Coutinho (G08)",
+      "Miguel Anderson Goncalves (G08)",
+      "Roberto Carlos Vilela Filho (G08)",
+      "Vitor Marcos Ferreira (G08)"
     ],
     "ocorrencias": [
       {
@@ -1181,7 +1247,9 @@
     ],
     "grupo": "G04",
     "autores": [
-      "[Integrantes do Grupo G04]"
+      "Guilherme Henrique Ribeiro Coutinho",
+      "Pedro Gabriel Braga Martins",
+      "Ruan Pablo Torquato dos Santos"
     ],
     "ocorrencias": [
       {
@@ -1250,7 +1318,9 @@
     ],
     "grupo": "G04",
     "autores": [
-      "[Integrantes do Grupo G04]"
+      "Guilherme Henrique Ribeiro Coutinho",
+      "Pedro Gabriel Braga Martins",
+      "Ruan Pablo Torquato dos Santos"
     ],
     "ocorrencias": [
       {
@@ -1318,7 +1388,9 @@
     ],
     "grupo": "G06",
     "autores": [
-      "[Integrantes do Grupo G06]"
+      "Arthur Machado Mendes",
+      "Artur Belmiro de Melo",
+      "Jenypher Emily Oliveira Caldeira"
     ],
     "ocorrencias": [
       {
@@ -1385,7 +1457,9 @@
     ],
     "grupo": "G06",
     "autores": [
-      "[Integrantes do Grupo G06]"
+      "Arthur Machado Mendes",
+      "Artur Belmiro de Melo",
+      "Jenypher Emily Oliveira Caldeira"
     ],
     "ocorrencias": [
       {
@@ -1453,7 +1527,9 @@
     ],
     "grupo": "G06",
     "autores": [
-      "[Integrantes do Grupo G06]"
+      "Arthur Machado Mendes",
+      "Artur Belmiro de Melo",
+      "Jenypher Emily Oliveira Caldeira"
     ],
     "ocorrencias": [
       {
@@ -1522,8 +1598,13 @@
     ],
     "grupo": "G07 / G08",
     "autores": [
-      "[Integrantes do Grupo G07]",
-      "[Integrantes do Grupo G08]"
+      "Henrique Alves de Oliveira (G07)",
+      "Natã Neves Quadros (G07)",
+      "Pedro Jonas Gontijo (G07)",
+      "Gabriel de Sousa Coutinho (G08)",
+      "Miguel Anderson Goncalves (G08)",
+      "Roberto Carlos Vilela Filho (G08)",
+      "Vitor Marcos Ferreira (G08)"
     ],
     "ocorrencias": [
       {
@@ -1605,7 +1686,9 @@
     ],
     "grupo": "G07",
     "autores": [
-      "[Integrantes do Grupo G07]"
+      "Henrique Alves de Oliveira",
+      "Natã Neves Quadros",
+      "Pedro Jonas Gontijo"
     ],
     "ocorrencias": [
       {
@@ -1673,7 +1756,9 @@
     ],
     "grupo": "G07",
     "autores": [
-      "[Integrantes do Grupo G07]"
+      "Henrique Alves de Oliveira",
+      "Natã Neves Quadros",
+      "Pedro Jonas Gontijo"
     ],
     "ocorrencias": [
       {
@@ -1742,7 +1827,9 @@
     ],
     "grupo": "G07",
     "autores": [
-      "[Integrantes do Grupo G07]"
+      "Henrique Alves de Oliveira",
+      "Natã Neves Quadros",
+      "Pedro Jonas Gontijo"
     ],
     "ocorrencias": [
       {
@@ -1811,7 +1898,10 @@
     ],
     "grupo": "G08",
     "autores": [
-      "[Integrantes do Grupo G08]"
+      "Gabriel de Sousa Coutinho",
+      "Miguel Anderson Goncalves",
+      "Roberto Carlos Vilela Filho",
+      "Vitor Marcos Ferreira"
     ],
     "ocorrencias": [
       {
@@ -1880,7 +1970,10 @@
     ],
     "grupo": "G09",
     "autores": [
-      "[Integrantes do Grupo G09]"
+      "Anna Vitoria Nascimento da Cruz",
+      "Gabriel Valinhas Ribeiro",
+      "Manoela Pereira Jesus Aquino de Souza",
+      "Samira Araujo Rezende"
     ],
     "ocorrencias": [
       {

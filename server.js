@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AQUI TEM QUÍMICA! — 1º Ano de Informática (CEFET-MG — Divinópolis)
+   AQUI TEM QUÍMICA! — 1º Ano de Informática (UFCIMG — Divinópolis)
    ETAPA 4: Back-end Express, Rotas QR Code, Auditoria, QR Generator & QuímicoBot
    ========================================================================== */
 
@@ -237,7 +237,7 @@ async function askGeminiIfConfigured(message, substancias, contextSlug) {
     .join('\n');
 
   const systemPrompt = [
-    'Você é o QuímicoBot INF, assistente educacional da turma do 1º ano de Informática (CEFET-MG — Escola de Aplicação, Divinópolis) para o projeto "AQUI TEM QUÍMICA!".',
+    'Você é o QuímicoBot INF, assistente educacional da turma do 1º ano de Informática (UFCIMG — Escola de Aplicação, Divinópolis) para o projeto "AQUI TEM QUÍMICA!".',
     'Responda em português do Brasil, de forma clara, didática, objetiva (máximo 120 palavras) e cientificamente rigorosa.',
     'Use obrigatoriamente a definição de Arrhenius para ácidos e bases.',
     'REGRA DE SEGURANÇA INVIOLÁVEL: Nunca sugira testes caseiros, experimentos domésticos ou misturas de produtos químicos (especialmente água sanitária com ácidos ou amônia). Se o aluno pedir isso, recuse educadamente e explique o risco.',
@@ -387,7 +387,7 @@ app.use((req, res) => {
 
 app.listen(PORT, () => {
   console.log(`========================================================`);
-  console.log(`  AQUI TEM QUÍMICA! — 1º Ano de Informática (CEFET-MG)`);
+  console.log(`  AQUI TEM QUÍMICA! — 1º Ano de Informática (UFCIMG)`);
   console.log(`  Servidor rodando em: http://localhost:${PORT}`);
   console.log(`  Auditoria JSON:      http://localhost:${PORT}/api/auditoria`);
   console.log(`  Exemplo QR Direto:   http://localhost:${PORT}/plaquinha/INF-G01-P1`);

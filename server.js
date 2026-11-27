@@ -10,6 +10,15 @@ const fs = require('fs');
 const QRCode = require('qrcode');
 
 const app = express();
+
+app.use((req, res, next) => {
+  let p = decodeURIComponent(req.path).toUpperCase();
+  while (p.endsWith('/')) p = p.slice(0, -1);
+  if (p === '/PLAQUINHA/INF-G01-P6') return res.redirect(302, '/plaquinha/INF-G02-P5');
+  if (p === '/PLAQUINHA/INF-G01-P7') return res.redirect(302, '/plaquinha/INF-G03-P5');
+  next();
+});
+
 const PORT = process.env.PORT || 3000;
 const DATA_PATH = path.join(__dirname, 'data', 'substancias.json');
 const PUBLIC_DIR = path.join(__dirname, 'public');

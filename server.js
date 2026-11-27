@@ -10,6 +10,7 @@ const fs = require('fs');
 const QRCode = require('qrcode');
 
 const app = express();
+app.get('/tabela', (req, res) => res.sendFile(require('path').join(__dirname, 'public', 'tabela.html')));
 require('./lib/quimicobot-ia')(app);
 app.get('/api/extras-dados', (req, res) => {
   try {

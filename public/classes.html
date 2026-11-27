@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guia completo das 4 funções inorgânicas (Ácidos, Bases, Sais e Óxidos) com teoria de Arrhenius, exemplos na escola e mini-experimentos interativos.">
+  <meta name="theme-color" content="#0B0F19">
+  <title>As 4 Classes Inorgânicas — AQUI TEM QUÍMICA! | 1º INF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="classes">
+  <canvas id="bg-molecules-canvas" aria-hidden="true"></canvas>
+  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <path d="M12 4h8M14 4v7.2L6.8 23.4A3 3 0 0 0 9.4 28h13.2a3 3 0 0 0 2.6-4.6L18 11.2V4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9.5 21h13" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="14" cy="24" r="1.4" fill="#10B981"/>
+            <circle cx="18.5" cy="23.2" r="1.1" fill="#FF4D4D"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>AQUI TEM QUÍMICA!</strong>
+          <small>1º INF • UFCIMG Divinópolis</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Início</a></li>
+          <li><a href="/classes" class="nav-link active" aria-current="page">4 Classes</a></li>
+          <li><a href="/mapa" class="nav-link">Mapa &amp; Tabela</a></li>
+          <li><a href="/laboratorio" class="nav-link">Lab Virtual &amp; AS</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/laboratorio#desafio-as" class="btn btn-sm btn-accent hide-xs">Modo Estudo AS</a>
+        <button type="button" id="theme-toggle" class="icon-btn" aria-label="Alternar tema claro e escuro">
+          <span class="theme-icon-dark" aria-hidden="true">☀️</span>
+          <span class="theme-icon-light" aria-hidden="true">🌙</span>
+        </button>
+        <button type="button" id="mobile-menu-toggle" class="icon-btn mobile-only" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
+          <span class="hamburger-lines" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo-principal">
+    <section class="page-hero">
+      <div class="container reveal">
+        <span class="section-kicker">Guia Teórico Interativo para a AS (30/11)</span>
+        <h1 class="page-title">As 4 Classes da Química Inorgânica</h1>
+        <p class="page-subtitle">
+          Definições oficiais segundo Arrhenius, propriedades diagnósticas, exemplos reais nas 9 zonas do 1º ano de Informática e um mini-experimento visual em cada classe.
+        </p>
+
+        <nav class="class-anchor-tabs" aria-label="Navegação entre classes químicas">
+          <a href="#acidos" class="anchor-tab tab-acido active">🔴 Ácidos</a>
+          <a href="#bases" class="anchor-tab tab-base">🔵 Bases</a>
+          <a href="#sais" class="anchor-tab tab-sal">🟢 Sais</a>
+          <a href="#oxidos" class="anchor-tab tab-oxido">🟣 Óxidos</a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- CLASSE 1: ÁCIDOS -->
+    <section class="section class-detail-section theme-acido" id="acidos">
+      <div class="container">
+        <div class="class-detail-grid glass-card reveal">
+          <div class="class-detail-main">
+            <div class="class-detail-header">
+              <span class="badge badge-acido">Função 01 • pH &lt; 7</span>
+              <h2>Ácidos</h2>
+              <p class="definition-box">
+                <strong>Definição de Arrhenius:</strong> Ácido é toda substância molecular que, ao ser dissolvida em água, sofre <em>ionização</em> e libera como único cátion o íon hidrogênio (<code>H⁺</code>, ou hidrônio <code>H₃O⁺</code>).
+              </p>
+            </div>
+
+            <div class="equation-highlight">
+              <span class="eq-label">Equação Geral de Ionização</span>
+              <code class="chemical-eq">HA<sub>(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub> ⇌ H<sub>3</sub>O<sup>+</sup><sub>(aq)</sub> + A<sup>−</sup><sub>(aq)</sub></code>
+            </div>
+
+            <div class="props-two-col">
+              <div>
+                <h3>Propriedades Gerais</h3>
+                <ul class="styled-list">
+                  <li>Sabor azedo característico (nunca provar produtos de limpeza ou laboratório).</li>
+                  <li>Conduzem corrente elétrica em solução aquosa devido à formação de íons.</li>
+                  <li>Reagem com bases formando sal e água (neutralização).</li>
+                  <li>Deixam o papel tornassol azul em tom vermelho e a fenolftaleína incolor.</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Exemplos na Nossa Escola</h3>
+                <ul class="styled-list">
+                  <li><strong>Restaurante:</strong> Ácido acético (<code>CH₃COOH</code>) no vinagre e ácido cítrico (<code>C₆H₈O₇</code>) no limão.</li>
+                  <li><strong>Estacionamentos:</strong> Ácido sulfúrico (<code>H₂SO₄</code>) em baterias automotivas de chumbo-ácido.</li>
+                  <li><strong>Quadra / Bebidas:</strong> Ácido carbônico (<code>H₂CO₃</code>) em água gaseificada e refrigerantes.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="class-substances-row">
+              <h4>Plaquinhas de Ácidos do 1º INF:</h4>
+              <div class="inline-substance-links" data-class-list="Ácido">Carregando plaquinhas...</div>
+            </div>
+          </div>
+
+          <aside class="class-detail-side">
+            <img src="/assets/img/classe-acidos.jpg" alt="Ilustração de Ácidos" class="class-side-img" loading="lazy">
+            <div class="mini-lab-box" data-minilab="acido">
+              <h4>Mini-Experimento: Força Ácida (α)</h4>
+              <p>Compare a ionização em água de um ácido forte e um ácido fraco:</p>
+              <div class="mini-lab-controls">
+                <button type="button" class="btn btn-sm btn-class-acido" data-acid-mode="forte">HCl (Forte • α ≈ 92%)</button>
+                <button type="button" class="btn btn-sm btn-outline" data-acid-mode="fraco">CH₃COOH (Fraco • α ≈ 1%)</button>
+              </div>
+              <div class="mini-lab-stage" id="minilab-acido-stage" aria-live="polite">
+                <div class="ion-preview" id="minilab-acido-ions"></div>
+                <p class="mini-lab-caption" id="minilab-acido-text">Selecione um ácido acima para observar o grau de ionização em água.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLASSE 2: BASES -->
+    <section class="section class-detail-section theme-base" id="bases">
+      <div class="container">
+        <div class="class-detail-grid glass-card reveal">
+          <div class="class-detail-main">
+            <div class="class-detail-header">
+              <span class="badge badge-base">Função 02 • pH &gt; 7</span>
+              <h2>Bases (Hidróxidos)</h2>
+              <p class="definition-box">
+                <strong>Definição de Arrhenius:</strong> Base é toda substância que, ao ser dissolvida em água, sofre <em>dissociação iônica</em> e libera como único ânion o íon hidróxido ou hidroxila (<code>OH⁻</code>).
+              </p>
+            </div>
+
+            <div class="equation-highlight">
+              <span class="eq-label">Equação Geral de Dissociação</span>
+              <code class="chemical-eq">NaOH<sub>(s)</sub> —<sup>H₂O</sup>→ Na<sup>+</sup><sub>(aq)</sub> + OH<sup>−</sup><sub>(aq)</sub></code>
+            </div>
+
+            <div class="props-two-col">
+              <div>
+                <h3>Propriedades Gerais</h3>
+                <ul class="styled-list">
+                  <li>Sabor adstringente ("amarra" a boca, como banana verde) e tato escorregadio/ensaboado.</li>
+                  <li>Soluções aquosas conduzem eletricidade conforme a solubilidade da base.</li>
+                  <li>Tornam a fenolftaleína rosa-intenso e o azul de bromotimol azul vivo.</li>
+                  <li>Neutralizam ácidos gerando sal e água.</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Exemplos na Nossa Escola</h3>
+                <ul class="styled-list">
+                  <li><strong>Banheiros do prédio 3:</strong> Hidróxido de sódio (<code>NaOH</code>) na base da saponificação de sabonetes e desengordurantes; hidróxido de amônio (<code>NH₄OH</code>) em limpadores.</li>
+                  <li><strong>Quadra / Portaria:</strong> Hidróxido de cálcio (<code>Ca(OH)₂</code>) na argamassa, cal e pintura de guias.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="class-substances-row">
+              <h4>Plaquinhas de Bases do 1º INF:</h4>
+              <div class="inline-substance-links" data-class-list="Base">Carregando plaquinhas...</div>
+            </div>
+          </div>
+
+          <aside class="class-detail-side">
+            <img src="/assets/img/classe-bases.jpg" alt="Ilustração de Bases" class="class-side-img" loading="lazy">
+            <div class="mini-lab-box" data-minilab="base">
+              <h4>Mini-Experimento: Indicador Fenolftaleína</h4>
+              <p>Goteje fenolftaleína em diferentes meios e observe a viragem de cor:</p>
+              <div class="mini-lab-controls">
+                <button type="button" class="btn btn-sm btn-class-base" data-base-ph="12">Meio Básico (pH 12)</button>
+                <button type="button" class="btn btn-sm btn-outline" data-base-ph="7">Meio Neutro (pH 7)</button>
+              </div>
+              <div class="mini-lab-stage" id="minilab-base-stage" aria-live="polite">
+                <div class="mini-flask" id="minilab-base-liquid"></div>
+                <p class="mini-lab-caption" id="minilab-base-text">Clique para gotejar o indicador na solução.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLASSE 3: SAIS -->
+    <section class="section class-detail-section theme-sal" id="sais">
+      <div class="container">
+        <div class="class-detail-grid glass-card reveal">
+          <div class="class-detail-main">
+            <div class="class-detail-header">
+              <span class="badge badge-sal">Função 03 • Retículo Iônico</span>
+              <h2>Sais</h2>
+              <p class="definition-box">
+                <strong>Definição:</strong> Sal é todo composto iônico que, em meio aquoso, sofre dissociação liberando pelo menos um cátion diferente de <code>H⁺</code> e pelo menos um ânion diferente de <code>OH⁻</code>. Frequentemente resulta da reação de neutralização entre um ácido e uma base.
+              </p>
+            </div>
+
+            <div class="equation-highlight">
+              <span class="eq-label">Neutralização e Dissociação Salina</span>
+              <code class="chemical-eq">HCl<sub>(aq)</sub> + NaOH<sub>(aq)</sub> → NaCl<sub>(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub></code>
+            </div>
+
+            <div class="props-two-col">
+              <div>
+                <h3>Propriedades Gerais</h3>
+                <ul class="styled-list">
+                  <li>Sólidos cristalinos à temperatura ambiente com elevados pontos de fusão e ebulição.</li>
+                  <li>Não conduzem eletricidade no estado sólido, mas são excelentes condutores quando fundidos ou dissolvidos em água.</li>
+                  <li>Podem ter caráter neutro (<code>NaCl</code>), básico (<code>NaHCO₃</code>, <code>NaClO</code>) ou ácido (<code>NH₄Cl</code>) por hidrólise salina.</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Exemplos na Nossa Escola</h3>
+                <ul class="styled-list">
+                  <li><strong>Restaurante:</strong> Cloreto de sódio (<code>NaCl</code>) no sal de cozinha e bicarbonato de sódio (<code>NaHCO₃</code>) no fermento.</li>
+                  <li><strong>Banheiros do prédio 3:</strong> Hipoclorito de sódio (<code>NaClO</code>) na água sanitária.</li>
+                  <li><strong>Quadra &amp; Jardim:</strong> Eletrólitos do suor/isotônicos (<code>NaCl</code>, <code>KCl</code>) e carbonato de cálcio (<code>CaCO₃</code>) no calcário do solo.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="class-substances-row">
+              <h4>Plaquinhas de Sais do 1º INF:</h4>
+              <div class="inline-substance-links" data-class-list="Sal">Carregando plaquinhas...</div>
+            </div>
+          </div>
+
+          <aside class="class-detail-side">
+            <img src="/assets/img/classe-sais.jpg" alt="Ilustração de Sais" class="class-side-img" loading="lazy">
+            <div class="mini-lab-box" data-minilab="sal">
+              <h4>Mini-Experimento: Sólido vs. Aquoso</h4>
+              <p>Alterne o estado do cloreto de sódio (<code>NaCl</code>) e teste a lâmpada:</p>
+              <div class="mini-lab-controls">
+                <button type="button" class="btn btn-sm btn-outline" data-salt-state="solido">NaCl Sólido</button>
+                <button type="button" class="btn btn-sm btn-class-sal" data-salt-state="aquoso">NaCl + H₂O (Aquoso)</button>
+              </div>
+              <div class="mini-lab-stage" id="minilab-sal-stage" aria-live="polite">
+                <div class="mini-bulb" id="minilab-sal-bulb" aria-hidden="true">💡</div>
+                <p class="mini-lab-caption" id="minilab-sal-text">Escolha o estado físico do sal para verificar a mobilidade dos íons.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLASSE 4: ÓXIDOS -->
+    <section class="section class-detail-section theme-oxido" id="oxidos">
+      <div class="container">
+        <div class="class-detail-grid glass-card reveal">
+          <div class="class-detail-main">
+            <div class="class-detail-header">
+              <span class="badge badge-oxido">Função 04 • Compostos Binários</span>
+              <h2>Óxidos</h2>
+              <p class="definition-box">
+                <strong>Definição:</strong> Óxidos são compostos <em>binários</em> (formados por exatamente dois elementos químicos) nos quais o oxigênio é o elemento mais eletronegativo (perde eletronegatividade apenas para o flúor, em <code>OF₂</code>, que é fluoreto, não óxido).
+              </p>
+            </div>
+
+            <div class="equation-highlight">
+              <span class="eq-label">Classificações Principais</span>
+              <code class="chemical-eq">CO<sub>2</sub> (Ácido) • CaO (Básico) • CO (Neutro) • ZnO / Al<sub>2</sub>O<sub>3</sub> (Anfótero)</code>
+            </div>
+
+            <div class="props-two-col">
+              <div>
+                <h3>Tipos de Óxidos</h3>
+                <ul class="styled-list">
+                  <li><strong>Óxidos Ácidos (Anidridos):</strong> Geralmente ametais; reagem com água formando ácido ou com base formando sal + água (ex.: <code>CO₂</code>).</li>
+                  <li><strong>Óxidos Básicos:</strong> Geralmente metais de nox +1/+2; reagem com água formando base ou com ácido formando sal + água (ex.: <code>CaO</code>, <code>Fe₂O₃</code>).</li>
+                  <li><strong>Óxidos Neutros:</strong> Não reagem com água, ácidos nem bases (<code>CO</code>, <code>NO</code>, <code>N₂O</code>).</li>
+                  <li><strong>Óxidos Anfóteros:</strong> Comportam-se como ácido diante de base forte e como base diante de ácido forte (ex.: <code>ZnO</code>, <code>Al₂O₃</code>).</li>
+                </ul>
+              </div>
+              <div>
+                <h3>Exemplos na Nossa Escola</h3>
+                <ul class="styled-list">
+                  <li><strong>Laboratório de informática:</strong> Dióxido de silício (<code>SiO₂</code>) em vidros/telas e chips; óxido de zinco (<code>ZnO</code>) ou óxido de alumínio (<code>Al₂O₃</code>) em pastas térmicas.</li>
+                  <li><strong>Portaria &amp; Estacionamentos:</strong> Óxido de ferro III (<code>Fe₂O₃</code>) na ferrugem de portões e grades.</li>
+                  <li><strong>Corredores Prédios 1 e 6:</strong> Dióxido de carbono (<code>CO₂</code>) em extintores e dióxido de titânio (<code>TiO₂</code>) na tinta branca das paredes.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="class-substances-row">
+              <h4>Plaquinhas de Óxidos do 1º INF:</h4>
+              <div class="inline-substance-links" data-class-list="Óxido">Carregando plaquinhas...</div>
+            </div>
+          </div>
+
+          <aside class="class-detail-side">
+            <img src="/assets/img/classe-oxidos.jpg" alt="Ilustração de Óxidos" class="class-side-img" loading="lazy">
+            <div class="mini-lab-box" data-minilab="oxido">
+              <h4>Mini-Experimento: Classificador Rápido</h4>
+              <p>Clique em um óxido da escola para ver sua reação diagnóstica:</p>
+              <div class="mini-lab-controls">
+                <button type="button" class="btn btn-sm btn-class-oxido" data-oxide-key="CO2">CO₂ (Extintor)</button>
+                <button type="button" class="btn btn-sm btn-outline" data-oxide-key="CaO">CaO (Cal/Cimento)</button>
+                <button type="button" class="btn btn-sm btn-outline" data-oxide-key="ZnO">ZnO (Pasta Térmica)</button>
+              </div>
+              <div class="mini-lab-stage" id="minilab-oxido-stage" aria-live="polite">
+                <code class="mini-eq" id="minilab-oxido-eq">Selecione um óxido</code>
+                <p class="mini-lab-caption" id="minilab-oxido-text">Veja o comportamento ácido, básico ou anfótero em ação.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong class="footer-brand">AQUI TEM QUÍMICA! — 1º Ano de Informática</strong>
+        <p class="footer-text">UFCIMG — Escola de Aplicação, Divinópolis (MG).</p>
+      </div>
+      <div class="footer-links">
+        <a href="/">Início</a>
+        <a href="/classes">4 Classes</a>
+        <a href="/mapa">Mapa &amp; Tabela</a>
+        <a href="/laboratorio">Laboratório Virtual</a>
+      </div>
+      <p class="footer-safety">
+        <strong>Compromisso de Segurança:</strong> Conteúdo exclusivamente educativo. Nunca misture produtos químicos domésticos.
+      </p>
+    </div>
+  </footer>
+
+  <!-- CHATBOT FLUTUANTE QUÍMICOBOT INF -->
+  <aside id="quimicobot-widget" class="chatbot-widget" aria-label="Assistente virtual QuímicoBot INF">
+    <button type="button" id="chatbot-fab" class="chatbot-fab" aria-label="Abrir chat com QuímicoBot INF" aria-expanded="false" aria-controls="chatbot-window">
+      <img src="/assets/img/bot-avatar.jpg" alt="Avatar QuímicoBot INF" class="fab-avatar">
+      <span class="fab-pulse" aria-hidden="true"></span>
+    </button>
+    <section id="chatbot-window" class="chatbot-window glass-card" aria-label="Conversa com QuímicoBot INF" hidden>
+      <header class="chatbot-header">
+        <div class="chatbot-identity">
+          <img src="/assets/img/bot-avatar.jpg" alt="QuímicoBot INF" class="chatbot-avatar">
+          <div>
+            <h2>QuímicoBot INF</h2>
+            <small class="bot-status"><span class="status-dot" aria-hidden="true"></span> Online • Química + Base INF</small>
+          </div>
+        </div>
+        <button type="button" id="chatbot-close" class="icon-btn" aria-label="Fechar QuímicoBot">✕</button>
+      </header>
+      <div id="chatbot-messages" class="chatbot-messages" role="log" aria-live="polite">
+        <div class="chat-msg bot">
+          <p>Dúvida sobre ácidos, bases, sais ou óxidos? Me pergunte ou peça uma questão rápida para a AS!</p>
+        </div>
+      </div>
+      <div class="chatbot-chips">
+        <button type="button" class="chat-chip" data-prompt="O que é um óxido anfótero?">Óxido anfótero</button>
+        <button type="button" class="chat-chip" data-prompt="Qual a diferença entre ionização e dissociação?">Ionização vs Dissociação</button>
+        <button type="button" class="chat-chip" data-prompt="Me faça uma pergunta surpresa para a AS de Química!">Pergunta AS</button>
+      </div>
+      <form id="chatbot-form" class="chatbot-form">
+        <label for="chatbot-input" class="sr-only">Digite sua pergunta</label>
+        <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Digite sua dúvida de Química..." autocomplete="off" required>
+        <button type="submit" class="chatbot-send" aria-label="Enviar mensagem">➤</button>
+      </form>
+    </section>
+  </aside>
+
+  <script src="/js/core.js" defer></script>
+  <script src="/js/pages.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "aqui-tem-quimica-1inf",
+  "version": "1.0.0",
+  "description": "Plataforma web oficial do projeto AQUI TEM QUÍMICA! — 1º Ano de Informática (UFCIMG Divinópolis)",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "qrcodes": "node scripts/gerar-qrcodes.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "qrcode": "^1.5.4"
+  }
+}

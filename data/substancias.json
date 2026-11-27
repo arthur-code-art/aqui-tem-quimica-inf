@@ -1,0 +1,271 @@
+[
+  {
+    "slug": "acido-acetico",
+    "nomeIupac": "Ácido etanoico (Ácido acético)",
+    "formula": "CH3COOH",
+    "formulaHtml": "CH<sub>3</sub>COOH",
+    "nomesPopulares": ["Vinagre de álcool", "Ácido acético diluído (4% a 6%)"],
+    "classe": "Ácido",
+    "subtipo": "Ácido carboxílico fraco (monoácido orgânico)",
+    "phEstimado": 2.8,
+    "fotoPlaquinha": "/assets/img/classe-acidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G01-P1 fixada próxima ao balcão de temperos do Restaurante",
+    "justificativa": "Segundo a teoria de Arrhenius, o ácido acético é uma substância molecular que, ao ser dissolvida em água, sofre ionização parcial liberando como único cátion o íon hidrogênio (H⁺, na forma de hidrônio H₃O⁺).",
+    "classificacaoTags": ["Ácido de Arrhenius", "Ácido Fraco (α ≈ 1%)", "Monoácido", "Oxiácido orgânico"],
+    "equacaoTipo": "Equação de Ionização em Meio Aquoso",
+    "equacaoHtml": "CH<sub>3</sub>COOH<sub>(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub> ⇌ H<sub>3</sub>O<sup>+</sup><sub>(aq)</sub> + CH<sub>3</sub>COO<sup>−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "A dupla seta (⇌) representa equilíbrio químico: apenas cerca de 1% das moléculas sofre ionização em água, caracterizando um ácido fraco.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Líquido límpido",
+      "Cor e odor": "Incolor, com odor pungente e característico de vinagre",
+      "Solubilidade em água": "Totalmente miscível em qualquer proporção"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Ionização parcial formando íons H₃O⁺ e acetato (CH₃COO⁻)",
+      "Caráter ácido/básico": "Ácido (pH entre 2,4 e 3,0 no vinagre comercial)",
+      "Condutividade elétrica": "Conduz fracamente em solução aquosa (eletrólito fraco)",
+      "Reações características": "Neutraliza bases formando sais acetatos e reage com bicarbonato liberando CO₂"
+    },
+    "porQueEstaAqui": "No Restaurante da escola, o ácido acético diluído no vinagre é utilizado para temperar saladas, realçar sabores e conservar alimentos, pois o meio ácido dificulta a proliferação de diversos microrganismos.",
+    "ondeMaisAparece": [
+      "Indústria alimentícia: conservante e acidulante (INS 260) em picles, molhos, mostarda e maioneses.",
+      "Indústria química: matéria-prima para síntese de acetato de vinila (usado em colas PVA e tintas) e fibras sintéticas."
+    ],
+    "segurancaRiscos": "No vinagre culinário (4% a 6%), o risco é baixo, podendo causar ardência nos olhos ou pele irritada. Em concentrações industriais (ácido acético glacial), é corrosivo e inflamável.",
+    "segurancaCuidados": [
+      "Evite contato com os olhos; em caso de respingo, lave abundantemente com água corrente.",
+      "Nunca misture vinagre com água sanitária (NaClO), pois a acidificação libera gás cloro (Cl₂), substância altamente tóxica."
+    ],
+    "curiosidade": "O nome 'vinagre' deriva do francês antigo 'vin aigre' (vinho azedo). Bactérias aeróbicas do gênero Acetobacter oxidam o etanol presente em bebidas fermentadas, convertendo-o em ácido acético.",
+    "referencias": [
+      "ATKINS, P.; JONES, L.; LAVERMAN, L. Princípios de química: questionando a vida moderna e o meio ambiente. 7. ed. Porto Alegre: Bookman, 2018.",
+      "NATIONAL CENTER FOR BIOTECHNOLOGY INFORMATION (NCBI). PubChem Compound Summary for CID 176, Acetic Acid. Disponível em: https://pubchem.ncbi.nlm.nih.gov/compound/Acetic-Acid. Acesso em: 20 nov. 2026."
+    ],
+    "grupo": "G01",
+    "autores": [
+      "[Nome do Integrante 1 — G01]",
+      "[Nome do Integrante 2 — G01]",
+      "[Nome do Integrante 3 — G01]"
+    ],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G01-P1",
+        "zona": "Restaurante",
+        "localExato": "Balcão de temperos e saladas, ao lado dos galheteiros",
+        "grupo": "G01",
+        "lat": -20.14515,
+        "lng": -44.89175,
+        "autorizacao": {
+          "responsavel": "Responsável pelo Restaurante",
+          "data": "2026-11-20",
+          "aprovada": true
+        }
+      }
+    ]
+  },
+  {
+    "slug": "hidroxido-de-sodio",
+    "nomeIupac": "Hidróxido de sódio",
+    "formula": "NaOH",
+    "formulaHtml": "NaOH",
+    "nomesPopulares": ["Soda cáustica", "Base utilizada na saponificação de sabonetes"],
+    "classe": "Base",
+    "subtipo": "Base forte e solúvel (monobase)",
+    "phEstimado": 13.5,
+    "fotoPlaquinha": "/assets/img/classe-bases.jpg",
+    "fotoLegenda": "Plaquinha INF-G02-P1 fixada ao lado da pia nos Banheiros do prédio 3",
+    "justificativa": "Segundo a definição de Arrhenius, o hidróxido de sódio é uma base porque, ao se dissolver em água, sofre dissociação iônica liberando como único ânion o íon hidróxido (OH⁻).",
+    "classificacaoTags": ["Base de Arrhenius", "Base Forte", "Monobase", "Altamente Solúvel"],
+    "equacaoTipo": "Equação de Dissociação Iônica em Água",
+    "equacaoHtml": "NaOH<sub>(s)</sub> —<sup>H<sub>2</sub>O</sup>→ Na<sup>+</sup><sub>(aq)</sub> + OH<sup>−</sup><sub>(aq)</sub>",
+    "equacaoExplicacao": "Como composto iônico de metal alcalino (família 1), dissocia-se praticamente 100% em água, elevando drasticamente a concentração de OH⁻.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino em escamas ou lentilhas, altamente higroscópico",
+      "Cor": "Branco",
+      "Solubilidade em água": "Muito solúvel, com forte liberação de calor (dissolução exotérmica)"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Dissociação iônica completa gerando solução fortemente alcalina",
+      "Caráter ácido/básico": "Básico forte (pH próximo de 13–14 em soluções concentradas)",
+      "Condutividade elétrica": "Excelente condutor em solução aquosa (eletrólito forte)",
+      "Reações características": "Reage com óleos e gorduras (saponificação) formando sabão e glicerol; neutraliza ácidos"
+    },
+    "porQueEstaAqui": "Nos Banheiros do prédio 3, o NaOH está diretamente ligado aos sabonetes e desengordurantes: ele é o reagente alcalino usado na fabricação industrial do sabão (já neutralizado no produto final que chega às nossas mãos).",
+    "ondeMaisAparece": [
+      "Indústria de papel e celulose: processo Kraft para separar fibras de celulose da lignina.",
+      "Estações de tratamento de água (ETA): controle e elevação do pH durante a etapa de floculação."
+    ],
+    "segurancaRiscos": "Em sua forma pura (soda cáustica), é altamente corrosivo e pode provocar queimaduras químicas severas na pele, mucosas e cegueira se atingir os olhos.",
+    "segurancaCuidados": [
+      "Nunca toque em produtos com soda cáustica sem equipamentos de proteção adequados.",
+      "Jamais misture produtos alcalinos com ácidos fortes ou água sanitária."
+    ],
+    "curiosidade": "O hidróxido de sódio é deliquescente: se ficar exposto ao ar úmido, absorve tanta água da atmosfera que se dissolve sozinho, além de reagir lentamente com o CO₂ do ar formando carbonato de sódio (Na₂CO₃).",
+    "referencias": [
+      "FELTRE, R. Química geral. 6. ed. São Paulo: Moderna, 2004. v. 1.",
+      "NATIONAL CENTER FOR BIOTECHNOLOGY INFORMATION (NCBI). PubChem Compound Summary for CID 14798, Sodium Hydroxide. Disponível em: https://pubchem.ncbi.nlm.nih.gov/compound/Sodium-Hydroxide. Acesso em: 20 nov. 2026."
+    ],
+    "grupo": "G02",
+    "autores": [
+      "[Nome do Integrante 1 — G02]",
+      "[Nome do Integrante 2 — G02]",
+      "[Nome do Integrante 3 — G02]"
+    ],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G02-P1",
+        "zona": "Banheiros do prédio 3",
+        "localExato": "Parede ao lado do dispenser de sabonete líquido na pia principal",
+        "grupo": "G02",
+        "lat": -20.14552,
+        "lng": -44.89132,
+        "autorizacao": {
+          "responsavel": "Coordenação do Prédio 3",
+          "data": "2026-11-20",
+          "aprovada": true
+        }
+      }
+    ]
+  },
+  {
+    "slug": "cloreto-de-sodio",
+    "nomeIupac": "Cloreto de sódio",
+    "formula": "NaCl",
+    "formulaHtml": "NaCl",
+    "nomesPopulares": ["Sal de cozinha", "Sal refinado", "Eletrólito do suor e isotônicos"],
+    "classe": "Sal",
+    "subtipo": "Sal neutro (haleto iônico)",
+    "phEstimado": 7.0,
+    "fotoPlaquinha": "/assets/img/classe-sais.jpg",
+    "fotoLegenda": "Plaquinhas INF-G09-P1 (Quadra) e INF-G01-P7 (Restaurante) — exemplo de substância repetida",
+    "justificativa": "O cloreto de sódio é um sal porque é um composto iônico que, dissolvido em água, dissocia-se liberando um cátion diferente de H⁺ (Na⁺) e um ânion diferente de OH⁻ (Cl⁻).",
+    "classificacaoTags": ["Sal Neutro", "Composto Iônico", "Eletrólito Forte", "Solúvel em Água"],
+    "equacaoTipo": "Equação de Neutralização e Dissociação Salina",
+    "equacaoHtml": "HCl<sub>(aq)</sub> + NaOH<sub>(aq)</sub> → NaCl<sub>(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub>",
+    "equacaoExplicacao": "Formado pela neutralização total entre um ácido forte (HCl) e uma base forte (NaOH). Em água, separa-se completamente em íons Na⁺ e Cl⁻.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino cúbico de alto ponto de fusão (801 °C)",
+      "Cor": "Branco / translúcido",
+      "Solubilidade em água": "Solúvel em água (aprox. 360 g/L a 25 °C)"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Dissociação iônica completa sem hidrólise relevante",
+      "Caráter ácido/básico": "Neutro (pH ≈ 7,0 em solução aquosa pura)",
+      "Condutividade elétrica": "Não conduz no estado sólido; excelente condutor em solução aquosa ou fundido",
+      "Reações características": "Usado na eletrólise industrial para obtenção de gás cloro, hidrogênio e soda cáustica"
+    },
+    "porQueEstaAqui": "Na Quadra, os íons Na⁺ e Cl⁻ são eliminados no suor durante a prática esportiva e repostos por isotônicos para manter o equilíbrio hídrico e os impulsos nervosos. No Restaurante, atua como tempero essencial e agente conservante.",
+    "ondeMaisAparece": [
+      "Saúde e hospitais: soro fisiológico (solução aquosa a 0,9% de NaCl) para reposição de líquidos e higiene nasal.",
+      "Indústria química: matéria-prima da indústria de cloro-soda (produção de NaOH, Cl₂ e NaHCO₃)."
+    ],
+    "segurancaRiscos": "Seguro em consumo moderado, mas a ingestão excessiva crônica eleva o risco de hipertensão arterial, doenças cardiovasculares e sobrecarga renal.",
+    "segurancaCuidados": [
+      "Modere o consumo diário seguindo a recomendação da OMS (até 5 g de sal por dia).",
+      "Evite contato de grandes quantidades com ferimentos abertos ou olhos, pois causa ardência intensa."
+    ],
+    "curiosidade": "A palavra 'salário' vem do latim 'salarium': na Antiguidade, o sal era tão estratégico para conservar carnes e peixes sem geladeira que fazia parte da remuneração ou provisão de soldados romanos.",
+    "referencias": [
+      "USBERCO, J.; SALVADOR, E. Química: volume único. 5. ed. São Paulo: Saraiva, 2002.",
+      "NATIONAL CENTER FOR BIOTECHNOLOGY INFORMATION (NCBI). PubChem Compound Summary for CID 5234, Sodium Chloride. Disponível em: https://pubchem.ncbi.nlm.nih.gov/compound/Sodium-Chloride. Acesso em: 20 nov. 2026."
+    ],
+    "grupo": "G09 / G01",
+    "autores": [
+      "[Nome do Integrante 1 — G09]",
+      "[Nome do Integrante 2 — G09]",
+      "[Nome do Integrante 3 — G09]"
+    ],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G09-P1",
+        "zona": "Quadra",
+        "localExato": "Pilastra próxima ao bebedouro lateral da Quadra poliesportiva",
+        "grupo": "G09",
+        "lat": -20.14578,
+        "lng": -44.89028,
+        "autorizacao": {
+          "responsavel": "Professor(a) de Educação Física",
+          "data": "2026-11-20",
+          "aprovada": true
+        }
+      },
+      {
+        "codigo": "INF-G01-P7",
+        "zona": "Restaurante",
+        "localExato": "Área de temperos e preparo de refeições, junto aos saleiros",
+        "grupo": "G01",
+        "lat": -20.14518,
+        "lng": -44.89168,
+        "autorizacao": {
+          "responsavel": "Responsável pelo Restaurante",
+          "data": "2026-11-20",
+          "aprovada": true
+        }
+      }
+    ]
+  },
+  {
+    "slug": "oxido-de-zinco",
+    "nomeIupac": "Óxido de zinco",
+    "formula": "ZnO",
+    "formulaHtml": "ZnO",
+    "nomesPopulares": ["Branco de zinco", "Composto cerâmico de pasta térmica para CPU"],
+    "classe": "Óxido",
+    "subtipo": "Óxido anfótero",
+    "phEstimado": 7.2,
+    "fotoPlaquinha": "/assets/img/classe-oxidos.jpg",
+    "fotoLegenda": "Plaquinha INF-G06-P1 fixada na bancada de hardware do Laboratório de informática",
+    "justificativa": "O óxido de zinco é um óxido porque é um composto binário (formado exatamente por dois elementos: zinco e oxigênio) no qual o oxigênio é o elemento mais eletronegativo.",
+    "classificacaoTags": ["Óxido Anfótero", "Composto Binário", "Condutor Térmico", "Isolante Elétrico"],
+    "equacaoTipo": "Óxido Anfótero — Reage com Ácido Forte e com Base Forte",
+    "equacaoHtml": "ZnO<sub>(s)</sub> + 2 HCl<sub>(aq)</sub> → ZnCl<sub>2(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub><br>ZnO<sub>(s)</sub> + 2 NaOH<sub>(aq)</sub> → Na<sub>2</sub>ZnO<sub>2(aq)</sub> + H<sub>2</sub>O<sub>(l)</sub>",
+    "equacaoExplicacao": "Diante de ácido forte (HCl), o ZnO age como base formando cloreto de zinco; diante de base forte (NaOH), age como ácido formando zincato de sódio.",
+    "propriedadesFisicas": {
+      "Estado físico (25 °C)": "Sólido cristalino em pó fino",
+      "Cor": "Branco (torna-se amarelado quando fortemente aquecido)",
+      "Solubilidade em água": "Praticamente insolúvel em água pura"
+    },
+    "propriedadesQuimicas": {
+      "Comportamento em água": "Insolúvel e quimicamente estável em meio neutro",
+      "Caráter ácido/básico": "Anfótero (reage com ácidos fortes e bases fortes)",
+      "Condutividade elétrica": "Isolante elétrico à temperatura ambiente / semicondutor de banda larga",
+      "Reações características": "Alta condutividade térmica aliada a isolamento elétrico — ideal para eletrônica"
+    },
+    "porQueEstaAqui": "No Laboratório de informática, o ZnO compõe pastas térmicas aplicadas entre o processador (CPU) e o dissipador de calor: ele preenche microespaços de ar para transferir calor rapidamente sem causar curto-circuito nos componentes.",
+    "ondeMaisAparece": [
+      "Cosméticos e dermatologia: protetores solares físicos (barreira contra radiação UV) e pomadas cicatrizantes.",
+      "Indústria automotiva: agente ativador na vulcanização da borracha de pneus."
+    ],
+    "segurancaRiscos": "A inalação prolongada de pó seco ou fumos de óxido de zinco aquecido pode irritar vias respiratórias. Em pastas térmicas, evitar ingestão e contato ocular.",
+    "segurancaCuidados": [
+      "Lavar bem as mãos com água e sabão após manusear pasta térmica em manutenção de computadores.",
+      "Nunca abrir gabinetes ou fontes energizadas e não aquecer o material."
+    ],
+    "curiosidade": "O ZnO exibe termocromismo reversível: ao ser aquecido acima de 300 °C, perde minúsculas quantidades de oxigênio na rede cristalina e muda da cor branca para amarelo-limão, voltando ao branco assim que resfria.",
+    "referencias": [
+      "LEE, J. D. Química inorgânica não tão concisa. 5. ed. São Paulo: Blucher, 1999.",
+      "NATIONAL CENTER FOR BIOTECHNOLOGY INFORMATION (NCBI). PubChem Compound Summary for CID 14806, Zinc Oxide. Disponível em: https://pubchem.ncbi.nlm.nih.gov/compound/Zinc-Oxide. Acesso em: 20 nov. 2026."
+    ],
+    "grupo": "G06",
+    "autores": [
+      "[Nome do Integrante 1 — G06]",
+      "[Nome do Integrante 2 — G06]",
+      "[Nome do Integrante 3 — G06]"
+    ],
+    "ocorrencias": [
+      {
+        "codigo": "INF-G06-P1",
+        "zona": "Laboratório de informática",
+        "localExato": "Bancada de hardware, ao lado do gabinete demonstrativo com dissipador de CPU",
+        "grupo": "G06",
+        "lat": -20.14508,
+        "lng": -44.89075,
+        "autorizacao": {
+          "responsavel": "Responsável pelo Laboratório de Informática",
+          "data": "2026-11-20",
+          "aprovada": true
+        }
+      }
+    ]
+  }
+]

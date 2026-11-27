@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projeto AQUI TEM QUÍMICA! do 1º ano de Informática (UFCIMG — Escola de Aplicação, Divinópolis). Ácidos, bases, sais e óxidos no dia a dia da escola.">
+  <meta name="theme-color" content="#0B0F19">
+  <title>AQUI TEM QUÍMICA! — 1º Ano de Informática | UFCIMG Divinópolis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="home">
+  <canvas id="bg-molecules-canvas" aria-hidden="true"></canvas>
+
+  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo" aria-label="AQUI TEM QUÍMICA! Página Inicial">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <path d="M12 4h8M14 4v7.2L6.8 23.4A3 3 0 0 0 9.4 28h13.2a3 3 0 0 0 2.6-4.6L18 11.2V4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9.5 21h13" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="14" cy="24" r="1.4" fill="#10B981"/>
+            <circle cx="18.5" cy="23.2" r="1.1" fill="#FF4D4D"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>AQUI TEM QUÍMICA!</strong>
+          <small>1º INF • UFCIMG Divinópolis</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link active" aria-current="page">Início</a></li>
+          <li><a href="/classes" class="nav-link">4 Classes</a></li>
+          <li><a href="/mapa" class="nav-link">Mapa &amp; Tabela</a></li>
+          <li><a href="/laboratorio" class="nav-link">Lab Virtual &amp; AS</a></li>
+          <li><a href="#auditoria-turma" class="nav-link">Auditoria</a></li>
+          <li><a href="#creditos-turma" class="nav-link">Créditos</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/laboratorio#desafio-as" class="btn btn-sm btn-accent hide-xs">Modo Estudo AS</a>
+        <button type="button" id="theme-toggle" class="icon-btn" aria-label="Alternar tema claro e escuro" title="Alternar Dark/Light Mode">
+          <span class="theme-icon-dark" aria-hidden="true">☀️</span>
+          <span class="theme-icon-light" aria-hidden="true">🌙</span>
+        </button>
+        <button type="button" id="mobile-menu-toggle" class="icon-btn mobile-only" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="main-nav">
+          <span class="hamburger-lines" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo-principal">
+    <!-- HERO EXPERIENCIAL -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="hero-badges">
+            <span class="pill pill-tech">1º Ano de Informática (INF)</span>
+            <span class="pill pill-school">UFCIMG • Escola de Aplicação — Divinópolis</span>
+          </div>
+          <h1 class="hero-title">
+            A Química Oculta no <span class="text-gradient">Dia a Dia da Escola</span>
+          </h1>
+          <p class="hero-subtitle">
+            Explore ácidos, bases, sais e óxidos mapeados em tempo real nas 9 zonas da nossa escola. Escaneie as plaquinhas <code>INF-GXX-PX</code>, simule reações no Laboratório Virtual e prepare-se para a Avaliação Somativa (30/11).
+          </p>
+
+          <!-- BUSCA INSTANTÂNEA -->
+          <form class="hero-search" id="global-search-form" role="search" aria-label="Buscar substâncias, fórmulas, códigos ou zonas">
+            <label for="global-search-input" class="sr-only">Buscar por nome, fórmula, código INF ou zona</label>
+            <div class="search-input-wrap">
+              <span class="search-icon" aria-hidden="true">⌕</span>
+              <input
+                type="search"
+                id="global-search-input"
+                class="search-input"
+                placeholder="Buscar por substância, fórmula (ex: NaClO), código (INF-G01-P1) ou zona..."
+                autocomplete="off"
+              >
+              <button type="button" id="clear-global-search" class="btn-clear" aria-label="Limpar busca" hidden>×</button>
+            </div>
+            <div class="search-quick-tags" aria-label="Sugestões rápidas de busca">
+              <span>Tente:</span>
+              <button type="button" class="quick-chip" data-search="INF-G01">INF-G01</button>
+              <button type="button" class="quick-chip" data-search="NaClO">NaClO</button>
+              <button type="button" class="quick-chip" data-search="Laboratório de informática">Lab Informática</button>
+              <button type="button" class="quick-chip" data-search="Óxido">Óxidos</button>
+            </div>
+            <div id="global-search-results" class="search-dropdown" role="listbox" aria-label="Resultados da busca" hidden></div>
+          </form>
+
+          <div class="hero-cta-group">
+            <a href="/laboratorio#desafio-as" class="btn btn-primary btn-lg">
+              <span>⚡ Iniciar Modo Estudo AS (30/11)</span>
+            </a>
+            <a href="/mapa" class="btn btn-glass btn-lg">
+              <span>🗺️ Abrir Mapa das 9 Zonas</span>
+            </a>
+            <a href="#catalogo-plaquinhas" class="btn btn-outline btn-lg">
+              <span>📋 Ver Catálogo Completo</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="hero-media-card glass-card">
+            <img
+              src="/assets/img/hero-banner.jpg"
+              alt="Visualização científica futurista misturando moléculas brilhantes, vidrarias de laboratório e elementos do cotidiano escolar"
+              class="hero-banner-img"
+              loading="eager"
+            >
+            <div class="hero-floating-stats" aria-label="Resumo rápido do projeto">
+              <div class="mini-stat">
+                <strong id="hero-stat-plaquinhas">--</strong>
+                <span>Plaquinhas INF</span>
+              </div>
+              <div class="mini-stat">
+                <strong>9</strong>
+                <span>Zonas Mapeadas</span>
+              </div>
+              <div class="mini-stat">
+                <strong>4</strong>
+                <span>Simulações Web</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALERTA GLOBAL DE SEGURANÇA -->
+    <section class="safety-ribbon" aria-label="Aviso permanente de segurança química">
+      <div class="container safety-ribbon-inner">
+        <span class="safety-badge" aria-hidden="true">⚠️ SEGURANÇA EM 1º LUGAR</span>
+        <p>
+          Este projeto tem caráter estritamente observacional e educativo. <strong>Nunca faça misturas de produtos domésticos ou testes caseiros</strong> (ex.: misturar água sanitária com vinagre, limpa-pedras ou amônia libera gases altamente tóxicos).
+        </p>
+      </div>
+    </section>
+
+    <!-- 4 CLASSES INORGÂNICAS -->
+    <section class="section" id="classes-quimicas">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker">Fundamentos de Química Inorgânica</span>
+          <h2 class="section-title">As 4 Funções Inorgânicas na Escola</h2>
+          <p class="section-desc">
+            Cada função possui assinatura visual própria, definição rigorosa (incluindo a Teoria de Arrhenius) e um mini-experimento interativo na página dedicada.
+          </p>
+        </div>
+
+        <div class="classes-grid">
+          <article class="class-card class-acido glass-card tilt-card reveal" data-classe="Ácido">
+            <div class="class-card-media">
+              <img src="/assets/img/classe-acidos.jpg" alt="Ilustração conceitual de Ácidos" loading="lazy">
+              <span class="badge badge-acido">pH &lt; 7 • Libera H⁺</span>
+            </div>
+            <div class="class-card-body">
+              <div class="class-card-top">
+                <h3>Ácidos</h3>
+                <span class="formula-tag">HA → H⁺ + A⁻</span>
+              </div>
+              <p>Substâncias moleculares que, em meio aquoso (Arrhenius), sofrem ionização liberando como único cátion o íon hidrogênio (H⁺ / H₃O⁺).</p>
+              <ul class="class-mini-list">
+                <li><strong>Na escola:</strong> Vinagre e limão (Restaurante), baterias (Estacionamentos).</li>
+                <li><strong>Plaquinhas cadastradas:</strong> <span data-count-classe="Ácido">--</span></li>
+              </ul>
+              <a href="/classes#acidos" class="btn btn-class-acido btn-block">Explorar Ácidos &amp; Mini-Lab →</a>
+            </div>
+          </article>
+
+          <article class="class-card class-base glass-card tilt-card reveal" data-classe="Base">
+            <div class="class-card-media">
+              <img src="/assets/img/classe-bases.jpg" alt="Ilustração conceitual de Bases" loading="lazy">
+              <span class="badge badge-base">pH &gt; 7 • Libera OH⁻</span>
+            </div>
+            <div class="class-card-body">
+              <div class="class-card-top">
+                <h3>Bases</h3>
+                <span class="formula-tag">BOH → B⁺ + OH⁻</span>
+              </div>
+              <p>Compostos geralmente iônicos que, em solução aquosa (Arrhenius), sofrem dissociação liberando como único ânion a hidroxila (OH⁻).</p>
+              <ul class="class-mini-list">
+                <li><strong>Na escola:</strong> Sabonetes e desinfetantes (Banheiros Prédio 3), cal/cimento (Quadra).</li>
+                <li><strong>Plaquinhas cadastradas:</strong> <span data-count-classe="Base">--</span></li>
+              </ul>
+              <a href="/classes#bases" class="btn btn-class-base btn-block">Explorar Bases &amp; Mini-Lab →</a>
+            </div>
+          </article>
+
+          <article class="class-card class-sal glass-card tilt-card reveal" data-classe="Sal">
+            <div class="class-card-media">
+              <img src="/assets/img/classe-sais.jpg" alt="Ilustração conceitual de Sais" loading="lazy">
+              <span class="badge badge-sal">Cátion ≠ H⁺ • Ânion ≠ OH⁻</span>
+            </div>
+            <div class="class-card-body">
+              <div class="class-card-top">
+                <h3>Sais</h3>
+                <span class="formula-tag">MX → M⁺ + X⁻</span>
+              </div>
+              <p>Compostos iônicos formados tipicamente por neutralização ácido-base, liberando em água pelo menos um cátion diferente de H⁺ e um ânion diferente de OH⁻.</p>
+              <ul class="class-mini-list">
+                <li><strong>Na escola:</strong> Sal de cozinha e fermento (Restaurante), água sanitária (Banheiros), isotônicos/suor (Quadra).</li>
+                <li><strong>Plaquinhas cadastradas:</strong> <span data-count-classe="Sal">--</span></li>
+              </ul>
+              <a href="/classes#sais" class="btn btn-class-sal btn-block">Explorar Sais &amp; Mini-Lab →</a>
+            </div>
+          </article>
+
+          <article class="class-card class-oxido glass-card tilt-card reveal" data-classe="Óxido">
+            <div class="class-card-media">
+              <img src="/assets/img/classe-oxidos.jpg" alt="Ilustração conceitual de Óxidos" loading="lazy">
+              <span class="badge badge-oxido">Binário • Oxigênio (O²⁻)</span>
+            </div>
+            <div class="class-card-body">
+              <div class="class-card-top">
+                <h3>Óxidos</h3>
+                <span class="formula-tag">EₓOᵧ (O mais eletroneg.)</span>
+              </div>
+              <p>Compostos binários nos quais o oxigênio é o elemento mais eletronegativo. Classificam-se em ácidos, básicos, neutros ou anfóteros.</p>
+              <ul class="class-mini-list">
+                <li><strong>Na escola:</strong> Pasta térmica e telas/vidro (Lab Informática), ferrugem (Portaria), extintores de CO₂ (Corredores).</li>
+                <li><strong>Plaquinhas cadastradas:</strong> <span data-count-classe="Óxido">--</span></li>
+              </ul>
+              <a href="/classes#oxidos" class="btn btn-class-oxido btn-block">Explorar Óxidos &amp; Mini-Lab →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO INTERATIVO DE TODAS AS PLAQUINHAS -->
+    <section class="section section-alt" id="catalogo-plaquinhas">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker">Acervo Digital • Padrão INF-GXX-PX</span>
+          <h2 class="section-title">Catálogo Interativo de Plaquinhas</h2>
+          <p class="section-desc">
+            Filtre por função inorgânica, zona da escola ou digite uma palavra-chave. Cada card abre diretamente a página completa com os 11 blocos exigidos.
+          </p>
+        </div>
+
+        <div class="filter-bar glass-card reveal" role="region" aria-label="Filtros do catálogo de plaquinhas">
+          <div class="filter-group">
+            <span class="filter-label">Classe Química:</span>
+            <div class="chip-row" id="catalog-class-filters" role="group" aria-label="Filtrar por classe química">
+              <button type="button" class="filter-chip active" data-filter-classe="todas">Todas</button>
+              <button type="button" class="filter-chip chip-acido" data-filter-classe="Ácido">Ácidos</button>
+              <button type="button" class="filter-chip chip-base" data-filter-classe="Base">Bases</button>
+              <button type="button" class="filter-chip chip-sal" data-filter-classe="Sal">Sais</button>
+              <button type="button" class="filter-chip chip-oxido" data-filter-classe="Óxido">Óxidos</button>
+            </div>
+          </div>
+
+          <div class="filter-controls-row">
+            <div class="control-field">
+              <label for="catalog-zone-select">Zona da Escola (1º INF):</label>
+              <select id="catalog-zone-select" class="form-select">
+                <option value="todas">Todas as 9 zonas</option>
+                <optgroup label="Zonas Exclusivas do 1º INF">
+                  <option value="Restaurante">1. Restaurante (G01)</option>
+                  <option value="Banheiros do prédio 3">2. Banheiros do prédio 3 (G02)</option>
+                  <option value="Corredores do prédio 1">3. Corredores do prédio 1 (G03)</option>
+                  <option value="Corredores do prédio 6">4. Corredores do prédio 6 (G04)</option>
+                  <option value="Portaria">5. Portaria (G05)</option>
+                  <option value="Laboratório de informática">6. Laboratório de informática (G06)</option>
+                </optgroup>
+                <optgroup label="Zonas Compartilhadas com Mecatrônica">
+                  <option value="Jardim">7. Jardim (G07)</option>
+                  <option value="Estacionamentos">8. Estacionamentos (G08)</option>
+                  <option value="Quadra">9. Quadra (G09)</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="control-field">
+              <label for="catalog-search-input">Filtro Rápido:</label>
+              <input type="search" id="catalog-search-input" class="form-input" placeholder="Nome, fórmula ou código INF...">
+            </div>
+
+            <div class="catalog-counter" aria-live="polite">
+              Exibindo <strong id="catalog-visible-count">0</strong> de <strong id="catalog-total-count">0</strong> registros
+            </div>
+          </div>
+        </div>
+
+        <div id="catalog-grid" class="substance-grid" aria-live="polite">
+          <!-- Renderizado dinamicamente a partir de /api/substancias -->
+          <div class="loading-skeleton glass-card">Carregando catálogo de substâncias do 1º INF...</div>
+        </div>
+
+        <div id="catalog-empty-state" class="empty-state glass-card" hidden>
+          <h3>Nenhuma plaquinha encontrada com esses filtros</h3>
+          <p>Tente limpar o filtro de zona ou selecionar "Todas" nas classes químicas.</p>
+          <button type="button" id="reset-catalog-filters" class="btn btn-primary">Limpar Filtros</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAINEL DE AUDITORIA DA TURMA (DIFERENCIAL INFORMÁTICA) -->
+    <section class="section" id="auditoria-turma">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker">Engenharia &amp; Controle de Qualidade</span>
+          <h2 class="section-title">Painel de Auditoria de Metas — 1º Ano INF</h2>
+          <p class="section-desc">
+            Monitoramento automático em tempo real conectado à nossa base <code>substancias.json</code> para garantir 100% dos requisitos mínimos do edital antes da entrega final.
+          </p>
+        </div>
+
+        <div class="audit-dashboard glass-card reveal" id="audit-widget">
+          <div class="audit-overall-bar">
+            <div>
+              <h3>Status Geral de Conformidade da Turma</h3>
+              <p id="audit-overall-subtitle">Calculando métricas da base oficial...</p>
+            </div>
+            <span id="audit-overall-badge" class="audit-status-pill status-pending">Analisando...</span>
+          </div>
+
+          <div class="audit-kpi-grid">
+            <div class="audit-kpi-card" id="kpi-total-plaquinhas">
+              <div class="kpi-top">
+                <span class="kpi-label">Total de Plaquinhas</span>
+                <span class="kpi-target">Meta: ≥ 30</span>
+              </div>
+              <div class="kpi-value"><strong data-audit="total-plaquinhas">0</strong><span>/30</span></div>
+              <div class="progress-track"><div class="progress-fill" data-bar="total-plaquinhas" style="width: 0%"></div></div>
+              <small class="kpi-note" data-status="total-plaquinhas">Aguardando dados...</small>
+            </div>
+
+            <div class="audit-kpi-card" id="kpi-min-classe">
+              <div class="kpi-top">
+                <span class="kpi-label">Mínimo por Classe</span>
+                <span class="kpi-target">Meta: ≥ 6 cada</span>
+              </div>
+              <div class="kpi-value"><strong data-audit="classes-ok">0</strong><span>/4 classes</span></div>
+              <div class="progress-track"><div class="progress-fill" data-bar="classes-ok" style="width: 0%"></div></div>
+              <small class="kpi-note" data-status="classes-ok">Ácido, Base, Sal e Óxido</small>
+            </div>
+
+            <div class="audit-kpi-card" id="kpi-unicas-classe">
+              <div class="kpi-top">
+                <span class="kpi-label">Substâncias Únicas/Classe</span>
+                <span class="kpi-target">Meta: ≥ 4 cada</span>
+              </div>
+              <div class="kpi-value"><strong data-audit="unicas-ok">0</strong><span>/4 classes</span></div>
+              <div class="progress-track"><div class="progress-fill" data-bar="unicas-ok" style="width: 0%"></div></div>
+              <small class="kpi-note" data-status="unicas-ok">Diversidade química</small>
+            </div>
+
+            <div class="audit-kpi-card" id="kpi-zonas-ok">
+              <div class="kpi-top">
+                <span class="kpi-label">Cobertura das 9 Zonas</span>
+                <span class="kpi-target">Meta: ≥ 3 por zona</span>
+              </div>
+              <div class="kpi-value"><strong data-audit="zonas-ok">0</strong><span>/9 zonas</span></div>
+              <div class="progress-track"><div class="progress-fill" data-bar="zonas-ok" style="width: 0%"></div></div>
+              <small class="kpi-note" data-status="zonas-ok">6 exclusivas + 3 compartilhadas</small>
+            </div>
+          </div>
+
+          <div class="audit-breakdown-grid">
+            <div class="audit-panel">
+              <h4>Detalhamento por Classe (Plaquinhas / Únicas)</h4>
+              <div id="audit-classes-list" class="audit-bars-list"></div>
+            </div>
+            <div class="audit-panel">
+              <h4>Detalhamento por Zona (Meta: ≥ 3 plaquinhas)</h4>
+              <div id="audit-zones-list" class="audit-zones-grid"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAMADA PARA O LABORATÓRIO VIRTUAL E MAPA -->
+    <section class="section section-alt">
+      <div class="container feature-split-grid">
+        <article class="feature-banner glass-card reveal">
+          <div class="feature-banner-content">
+            <span class="section-kicker">Simulações Interativas &amp; Gamificação</span>
+            <h3>Laboratório Virtual &amp; Desafio AS</h3>
+            <p>Teste o pH de substâncias reais da escola com fenolftaleína e azul de bromotimol, visualize íons de Arrhenius acendendo uma lâmpada, balanceie óxidos no mini-reator e acumule XP no Quiz cronometrado para a prova de 30/11.</p>
+            <a href="/laboratorio" class="btn btn-primary">Abrir Laboratório Virtual →</a>
+          </div>
+        </article>
+
+        <article class="feature-banner glass-card reveal">
+          <div class="feature-banner-media">
+            <img src="/assets/img/mapa-campus-cover.jpg" alt="Prévia do Mapa Interativo do Campus" loading="lazy">
+          </div>
+          <div class="feature-banner-content">
+            <span class="section-kicker">Geolocalização Escolar</span>
+            <h3>Mapa Interativo + Tabela Oficial</h3>
+            <p>Navegue pela planta das 9 zonas do 1º ano de Informática, toque nos pins coloridos por classe química e consulte a tabela filtrável completa com resumo quantitativo.</p>
+            <a href="/mapa" class="btn btn-glass">Explorar Mapa do Campus →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CRÉDITOS OFICIAIS DA TURMA -->
+    <section class="section" id="creditos-turma">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-kicker">Equipe do Projeto • 1º Ano de Informática</span>
+          <h2 class="section-title">Créditos: 4 Duplas de Líderes &amp; 9 Grupos</h2>
+          <p class="section-desc">
+            Estrutura oficial de governança e produção de conteúdo da turma 1º INF (UFCIMG — Escola de Aplicação, Divinópolis).
+          </p>
+        </div>
+
+        <!-- 4 DUPLAS DE LÍDERES -->
+        <h3 class="subsection-title">4 Duplas de Líderes da Turma</h3>
+        <div class="leaders-grid reveal">
+          <article class="credit-card glass-card">
+            <span class="credit-badge">Liderança 01</span>
+            <h4>Coordenação e Mapa</h4>
+            <p class="credit-role">Gestão de prazos, integração das 9 zonas, auditoria de mínimos e planta das plaquinhas.</p>
+            <ul class="member-list">
+              <li>[Integrante 1 — DAVI SILVA VILAÇA]</li>
+              <li>[Integrante 2 — OTAVIO GRACIANO VEIGA DE MORAIS]</li>
+            </ul>
+          </article>
+
+          <article class="credit-card glass-card">
+            <span class="credit-badge">Liderança 02</span>
+            <h4>Revisão Técnica</h4>
+            <p class="credit-role">Conferência de fórmulas, teoria de Arrhenius, balanceamento, segurança e referências ABNT.</p>
+            <ul class="member-list">
+              <li>[Integrante 1 — MIRIA EMANUELA MARQUES FERREIRA]</li>
+              <li>[Integrante 2 — LARA SALVADOR ALVES DA SILVA]</li>
+            </ul>
+          </article>
+
+          <article class="credit-card glass-card credit-highlight">
+            <span class="credit-badge">Liderança 03 • Nossa Equipe</span>
+            <h4>Site &amp; Engenharia Web</h4>
+            <p class="credit-role">Arquitetura full-stack, design dark-mode, rotas diretas de QR Code, simulações JS e QuímicoBot INF.</p>
+            <ul class="member-list">
+              <li>[Integrante 1 — ARTHUR SANTOS PEREIRA]</li>
+              <li>[Integrante 2 —  AUGUSTO MACIEL TOMAZ]</li>
+            </ul>
+          </article>
+
+          <article class="credit-card glass-card">
+            <span class="credit-badge">Liderança 04</span>
+            <h4>Identidade Visual e Confecção</h4>
+            <p class="credit-role">Padronização gráfica das plaquinhas físicas (até 80 palavras), QR Codes legíveis e fixação no campus.</p>
+            <ul class="member-list">
+              <li>[Integrante 1 — MARCOS TÚLIO LOPES COSTA]</li>
+              <li>[Integrante 2 — TIAGO RESENDE ARAÚJO]</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- 9 GRUPOS POR ZONA -->
+        <h3 class="subsection-title">Os 9 Grupos por Zona Escolar</h3>
+        <div class="groups-grid reveal">
+          <article class="group-card glass-card">
+            <div class="group-header"><code>INF-G01</code><span class="zone-type exclusive">Exclusiva</span></div>
+            <h4>Grupo 01 — Restaurante</h4>
+            <ul class="member-list">
+              <li>[DANIEL FERREIRA DO CARMO]</li>
+              <li>[DIEGO SIMÕES GONÇALVES]</li>
+              <li>[LUCAS CAPUTO SIQUEIRA]</li>
+              <li>[VITOR GRACIANO VEIGA DE MORAIS]</li>
+            </ul>
+          </article>
+
+          <article class="group-card glass-card">
+            <div class="group-header"><code>INF-G02</code><span class="zone-type exclusive">Exclusiva</span></div>
+            <h4>Grupo 02 — Banheiros do prédio 3</h4>
+            <ul class="member-list">
+              <li>[JOAO HENRIQUE RODRIGUES PEREIRA]</li>
+              <li>[KAROLAYNE SOARES GOMES]</li>
+              <li>[KAWAM MOREIRA COSTA]</li>
+              <li>[MIGUEL HENRIQUE OLIVEIRA]</li>
+            </ul>
+          </article>
+
+          <article class="group-card glass-card">
+            <div class="group-header"><code>INF-G03</code><span class="zone-type exclusive">Exclusiva</span></div>
+            <h4>Grupo 03 — Corredores do prédio 1</h4>
+            <ul class="member-list">
+              <li>[GIOVANA LAYLA PEREIRA DE PAULO SOARES]</li>
+              <li>[MALU SHINZATO BRANDAO BRAGA]</li>
+              <li>[VINICIUS SOARES PRUDENCIO]</li>
+            </ul>
+          </article>
+
+          <article class="group-card glass-card">
+            <div class="group-header"><code>INF-G04</code><span class="zone-type exclusive">Exclusiva</span></div>
+            <h4>Grupo 04 — Corredores do prédio 6</h4>
+            <ul class="member-list">
+              <li>[GUILHERME HENRIQUE RIBEIRO COUTINHO]</li>
+              <li>[PEDRO GABRIEL BRAGA MARTINS]</li>
+              <li>[RUAN PABLO TORQUATO DOS SANTOS]</li>
+            </ul>
+          </article>
+
+          <article class="group-card glass-card">
+            <div class="group-header"><code>INF-G05</code><span class="zone-type exclusive">Exclusiva</span></div>
+            <h4>Grupo 05 — Portaria</h4>
+            <ul class="member-list">
+              <li>[BEATRIZ DE SOUZA DIAS]</li>
+              <li>[GABRIEL ALVES DE SOUZA]</li>
+              <li>[THAYSSA MARTINS ROMANO RIBEIRO]</li>
+            </ul>
+          </article>
+
+          <article class="group-card glass-card">
+            <div class="group-header"><code>INF-G06</code><span class="zone-type exclusive">Exclusiva</span></div>
+            <h4>Grupo 06 — Laboratório de informática</h4>
+            <ul class="member-list">
+              <li>[ARTHUR MACHADO MENDES]</li>
+              <li>[ARTUR BELMIRO DE MELO]</li>
+              <li>[JENYPHER EMILY OLIVEIRA CALDEIRA]</li>
+            </ul>
+          </article>
+
+          <article class="group-card glass-card">
+            <div class="group-header"><code>INF-G07</code><span class="zone-type shared">Compartilhada</span></div>
+            <h4>Grupo 07 — Jardim</h4>
+            <ul class="member-list">
+              <li>[HENRIQUE ALVES DE OLIVEIRA]</li>
+              <li>[NATÃ NEVES QUADROS]</li>
+              <li>[PEDRO JONAS GONTIJO]</li>
+            </ul>
+          </article>
+
+          <article class="group-card glass-card">
+            <div class="group-header"><code>INF-G08</code><span class="zone-type shared">Compartilhada</span></div>
+            <h4>Grupo 08 — Estacionamentos</h4>
+            <ul class="member-list">
+              <li>[GABRIEL DE SOUSA COUTINHO]</li>
+              <li>[MIGUEL ANDERSON GONCALVES]</li>
+              <li>[ROBERTO CARLOS VILELA FILHO]</li>
+              <li>[VITOR MARCOS FERREIRA]</li>
+            </ul>
+          </article>
+
+          <article class="group-card glass-card">
+            <div class="group-header"><code>INF-G09</code><span class="zone-type shared">Compartilhada</span></div>
+            <h4>Grupo 09 — Quadra</h4>
+            <ul class="member-list">
+              <li>[ANNA VITORIA NASCIMENTO DA CRUZ]</li>
+              <li>[GABRIEL VALINHAS RIBEIRO]</li>
+              <li>[MANOELA PEREIRA JESUS AQUINO DE SOUZA]</li>
+              <li>[SAMIRA ARAUJO REZENDE]</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong class="footer-brand">AQUI TEM QUÍMICA! — 1º Ano de Informática</strong>
+        <p class="footer-text">UFCIMG — Escola de Aplicação, Divinópolis (MG). Projeto interdisciplinar de Química Inorgânica e Desenvolvimento Web.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/">Início</a>
+        <a href="/classes">4 Classes</a>
+        <a href="/mapa">Mapa &amp; Tabela</a>
+        <a href="/laboratorio">Laboratório Virtual</a>
+      </div>
+      <p class="footer-safety">
+        <strong>Compromisso de Segurança:</strong> Conteúdo exclusivamente educativo. Nunca misture produtos de limpeza ou realize experimentos sem supervisão docente em laboratório.
+      </p>
+    </div>
+  </footer>
+
+  <!-- CHATBOT FLUTUANTE QUÍMICOBOT INF -->
+  <aside id="quimicobot-widget" class="chatbot-widget" aria-label="Assistente virtual QuímicoBot INF">
+    <button type="button" id="chatbot-fab" class="chatbot-fab" aria-label="Abrir chat com QuímicoBot INF" aria-expanded="false" aria-controls="chatbot-window">
+      <img src="/assets/img/bot-avatar.jpg" alt="Avatar QuímicoBot INF" class="fab-avatar">
+      <span class="fab-pulse" aria-hidden="true"></span>
+    </button>
+
+    <section id="chatbot-window" class="chatbot-window glass-card" aria-label="Conversa com QuímicoBot INF" hidden>
+      <header class="chatbot-header">
+        <div class="chatbot-identity">
+          <img src="/assets/img/bot-avatar.jpg" alt="QuímicoBot INF" class="chatbot-avatar">
+          <div>
+            <h2>QuímicoBot INF</h2>
+            <small class="bot-status"><span class="status-dot" aria-hidden="true"></span> Online • Química + Base INF</small>
+          </div>
+        </div>
+        <button type="button" id="chatbot-close" class="icon-btn" aria-label="Fechar QuímicoBot">✕</button>
+      </header>
+
+      <div id="chatbot-messages" class="chatbot-messages" role="log" aria-live="polite">
+        <div class="chat-msg bot">
+          <p>Olá! Sou o <strong>QuímicoBot INF</strong> 🧪💻. Posso tirar dúvidas sobre ácidos, bases, sais, óxidos, localizar plaquinhas nas 9 zonas da escola ou fazer uma pergunta surpresa para a AS de 30/11!</p>
+        </div>
+      </div>
+
+      <div class="chatbot-chips" aria-label="Perguntas rápidas">
+        <button type="button" class="chat-chip" data-prompt="Onde encontro óxidos no Laboratório de informática?">Óxidos no Lab INF</button>
+        <button type="button" class="chat-chip" data-prompt="Qual a diferença entre ácido e base segundo Arrhenius?">Arrhenius</button>
+        <button type="button" class="chat-chip" data-prompt="Me faça uma pergunta surpresa para a AS de Química!">Pergunta AS</button>
+        <button type="button" class="chat-chip" data-prompt="Por que nunca devo misturar água sanitária com vinagre?">Segurança</button>
+      </div>
+
+      <form id="chatbot-form" class="chatbot-form">
+        <label for="chatbot-input" class="sr-only">Digite sua pergunta sobre Química ou sobre as plaquinhas</label>
+        <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Pergunte sobre pH, Arrhenius, zonas..." autocomplete="off" required>
+        <button type="submit" class="chatbot-send" aria-label="Enviar mensagem">➤</button>
+      </form>
+    </section>
+  </aside>
+
+  <script src="/js/core.js" defer></script>
+  <script src="/js/pages.js" defer></script>
+</body>
+</html>

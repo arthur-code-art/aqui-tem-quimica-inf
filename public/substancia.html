@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ficha química completa de substância mapeada no projeto AQUI TEM QUÍMICA! do 1º ano de Informática (UFCIMG Divinópolis).">
+  <meta name="theme-color" content="#0B0F19">
+  <title>Substância — AQUI TEM QUÍMICA! | 1º INF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="substancia">
+  <canvas id="bg-molecules-canvas" aria-hidden="true"></canvas>
+  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <path d="M12 4h8M14 4v7.2L6.8 23.4A3 3 0 0 0 9.4 28h13.2a3 3 0 0 0 2.6-4.6L18 11.2V4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9.5 21h13" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="14" cy="24" r="1.4" fill="#10B981"/>
+            <circle cx="18.5" cy="23.2" r="1.1" fill="#FF4D4D"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>AQUI TEM QUÍMICA!</strong>
+          <small>1º INF • Rota Direta QR</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Início</a></li>
+          <li><a href="/classes" class="nav-link">4 Classes</a></li>
+          <li><a href="/mapa" class="nav-link">Mapa &amp; Tabela</a></li>
+          <li><a href="/laboratorio" class="nav-link">Lab Virtual &amp; AS</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/mapa" class="btn btn-sm btn-glass hide-xs">Ver no Mapa</a>
+        <button type="button" id="theme-toggle" class="icon-btn" aria-label="Alternar tema claro e escuro">
+          <span class="theme-icon-dark" aria-hidden="true">☀️</span>
+          <span class="theme-icon-light" aria-hidden="true">🌙</span>
+        </button>
+        <button type="button" id="mobile-menu-toggle" class="icon-btn mobile-only" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
+          <span class="hamburger-lines" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo-principal" class="substance-page-main">
+    <div class="container">
+      <!-- BREADCRUMB & BARRA DE ROTA QR -->
+      <nav class="breadcrumb" aria-label="Caminho de navegação">
+        <a href="/">Início</a>
+        <span aria-hidden="true">/</span>
+        <a href="/mapa">Plaquinhas 1º INF</a>
+        <span aria-hidden="true">/</span>
+        <span id="sub-breadcrumb-current" aria-current="page">Carregando substância...</span>
+      </nav>
+
+      <!-- ESTADO DE ERRO (SE CÓDIGO/SLUG NÃO EXISTIR) -->
+      <section id="substance-not-found" class="empty-state glass-card" hidden>
+        <h1>Plaquinha ou Substância não encontrada</h1>
+        <p>O código ou endereço escaneado não consta na base atual do 1º ano de Informática.</p>
+        <div class="hero-cta-group">
+          <a href="/" class="btn btn-primary">Ir para o Catálogo</a>
+          <a href="/mapa" class="btn btn-glass">Abrir Mapa da Escola</a>
+        </div>
+      </section>
+
+      <!-- CONTEÚDO DOS 11 BLOCOS OBRIGATÓRIOS -->
+      <article id="substance-article" class="substance-layout" data-classe-tema="">
+        <!-- BLOCO 2 (HERO DA SUBSTÂNCIA) + BLOCO 1 (IDENTIFICAÇÃO) -->
+        <header class="substance-hero glass-card reveal">
+          <div class="substance-hero-main">
+            <div class="substance-top-badges">
+              <span id="sub-classe-badge" class="badge">Classe</span>
+              <span id="sub-codigo-principal" class="code-pill">INF-GXX-PX</span>
+              <span id="sub-qr-badge" class="pill pill-tech">✓ Acesso Direto via QR Code</span>
+            </div>
+
+            <!-- BLOCO 2: SUBSTÂNCIA (IUPAC, FÓRMULA, NOMES POPULARES) -->
+            <div class="block-substancia" id="bloco-2-substancia">
+              <p class="block-kicker">02 • Substância Oficial (IUPAC)</p>
+              <h1 id="sub-nome-iupac" class="substance-title">Carregando...</h1>
+              <div class="formula-hero-row">
+                <div class="formula-display-box">
+                  <span class="formula-caption">Fórmula Química</span>
+                  <div id="sub-formula-html" class="formula-big">—</div>
+                </div>
+                <div class="popular-names-box">
+                  <span class="formula-caption">Nomes Populares / Comerciais</span>
+                  <p id="sub-nomes-populares">—</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- MINI ESCALA VISUAL DE pH -->
+            <div class="ph-meter-mini" aria-label="Indicador estimado de pH">
+              <div class="ph-meter-labels">
+                <span>Ácido (0)</span>
+                <strong id="sub-ph-label">pH estimado: —</strong>
+                <span>Básico (14)</span>
+              </div>
+              <div class="ph-gradient-bar">
+                <span id="sub-ph-marker" class="ph-marker" style="left: 50%"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- BLOCO 1: IDENTIFICAÇÃO + FOTO REAL DA PLAQUINHA -->
+          <aside class="substance-id-panel" id="bloco-1-identificacao">
+            <p class="block-kicker">01 • Identificação na Escola</p>
+            <div class="plaque-photo-frame">
+              <img id="sub-foto-plaquinha" src="/assets/img/hero-banner.jpg" alt="Foto real da plaquinha fixada na escola" loading="eager">
+              <span class="photo-caption" id="sub-foto-legenda">Registro fotográfico da plaquinha fixada</span>
+            </div>
+
+            <div class="occurrences-box">
+              <h2 class="occurrences-title">Códigos e Locais onde aparece</h2>
+              <ul id="sub-ocorrencias-list" class="occurrences-list">
+                <!-- Preenchido dinamicamente: suporta 1 ou várias plaquinhas para a mesma substância -->
+              </ul>
+            </div>
+          </aside>
+        </header>
+
+        <!-- GRID PRINCIPAL DOS BLOCOS 3 A 11 -->
+        <div class="substance-blocks-grid">
+          <!-- BLOCO 3: CLASSE E JUSTIFICATIVA (ARRHENIUS) -->
+          <section class="content-block glass-card reveal" id="bloco-3-classe">
+            <header class="block-header">
+              <span class="block-num">03</span>
+              <div>
+                <h2>Classe e Justificativa Científica</h2>
+                <small>Fundamentação química (Teoria de Arrhenius para ácidos e bases)</small>
+              </div>
+            </header>
+            <div class="block-body">
+              <p class="highlight-class-line"><strong>Função Inorgânica:</strong> <span id="sub-classe-nome">—</span></p>
+              <p id="sub-justificativa">—</p>
+            </div>
+          </section>
+
+          <!-- BLOCO 4: CLASSIFICAÇÃO COMPLEMENTAR + EQUAÇÃO QUÍMICA -->
+          <section class="content-block glass-card reveal" id="bloco-4-equacao">
+            <header class="block-header">
+              <span class="block-num">04</span>
+              <div>
+                <h2>Classificação Complementar &amp; Equação Química</h2>
+                <small id="sub-equacao-tipo">Ionização, dissociação, neutralização ou comportamento de óxido</small>
+              </div>
+            </header>
+            <div class="block-body">
+              <div class="classification-pills" id="sub-classificacao-tags"></div>
+              <div class="equation-card">
+                <span class="eq-label" id="sub-equacao-titulo">Equação Balanceada</span>
+                <div id="sub-equacao-html" class="chemical-eq-large">—</div>
+                <p id="sub-equacao-explicacao" class="eq-explain">—</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- BLOCO 5: PROPRIEDADES FÍSICAS E QUÍMICAS -->
+          <section class="content-block glass-card block-span-2 reveal" id="bloco-5-propriedades">
+            <header class="block-header">
+              <span class="block-num">05</span>
+              <div>
+                <h2>Propriedades Físicas e Químicas</h2>
+                <small>Características observáveis e reatividade</small>
+              </div>
+            </header>
+            <div class="props-tabs" role="tablist" aria-label="Alternar entre propriedades físicas e químicas">
+              <button type="button" class="prop-tab active" role="tab" aria-selected="true" data-prop-tab="ambas">Visão Completa</button>
+              <button type="button" class="prop-tab" role="tab" aria-selected="false" data-prop-tab="fisicas">Apenas Físicas</button>
+              <button type="button" class="prop-tab" role="tab" aria-selected="false" data-prop-tab="quimicas">Apenas Químicas</button>
+            </div>
+            <div class="props-split-cards" id="sub-props-container" data-view="ambas">
+              <div class="prop-subcard" data-prop-panel="fisicas">
+                <h3>Propriedades Físicas</h3>
+                <dl id="sub-props-fisicas" class="prop-dl"></dl>
+              </div>
+              <div class="prop-subcard" data-prop-panel="quimicas">
+                <h3>Propriedades Químicas</h3>
+                <dl id="sub-props-quimicas" class="prop-dl"></dl>
+              </div>
+            </div>
+          </section>
+
+          <!-- BLOCO 6: POR QUE ESTÁ AQUI? -->
+          <section class="content-block glass-card reveal" id="bloco-6-porque">
+            <header class="block-header">
+              <span class="block-num">06</span>
+              <div>
+                <h2>Por que está aqui?</h2>
+                <small>Relação direta entre as propriedades químicas e o uso na escola</small>
+              </div>
+            </header>
+            <div class="block-body">
+              <p id="sub-por-que-esta-aqui">—</p>
+            </div>
+          </section>
+
+          <!-- BLOCO 7: ONDE MAIS APARECE? -->
+          <section class="content-block glass-card reveal" id="bloco-7-onde-mais">
+            <header class="block-header">
+              <span class="block-num">07</span>
+              <div>
+                <h2>Onde mais aparece?</h2>
+                <small>Pelo menos 2 outras aplicações no cotidiano e na indústria</small>
+              </div>
+            </header>
+            <div class="block-body">
+              <ul id="sub-onde-mais-list" class="styled-list"></ul>
+            </div>
+          </section>
+
+          <!-- BLOCO 8: SEGURANÇA (CARD DE ALERTA VISUAL INVIOLÁVEL) -->
+          <section class="content-block safety-alert-card block-span-2 reveal" id="bloco-8-seguranca" role="alert">
+            <header class="block-header">
+              <span class="block-num safety-num">08</span>
+              <div>
+                <h2>⚠️ Segurança &amp; Cuidados no Manuseio</h2>
+                <small>Riscos reais e regra inviolável contra misturas domésticas</small>
+              </div>
+            </header>
+            <div class="block-body">
+              <p id="sub-seguranca-riscos">—</p>
+              <ul id="sub-seguranca-cuidados" class="styled-list"></ul>
+              <div class="inviolable-safety-box">
+                <strong>🚫 REGRA DE SEGURANÇA DO PROJETO:</strong> Nunca realize testes caseiros ou misture produtos de limpeza (como água sanitária com vinagre, ácidos ou produtos à base de amônia). Misturas indevidas podem liberar gás cloro (Cl₂) ou cloraminas, substâncias altamente tóxicas.
+              </div>
+            </div>
+          </section>
+
+          <!-- BLOCO 9: CURIOSIDADE ("VOCÊ SABIA?") -->
+          <section class="content-block curiosity-card glass-card block-span-2 reveal" id="bloco-9-curiosidade">
+            <header class="block-header">
+              <span class="block-num">09</span>
+              <div>
+                <h2>💡 Você Sabia?</h2>
+                <small>Informação extra que não coube no limite de 80 palavras da plaquinha física</small>
+              </div>
+            </header>
+            <div class="block-body">
+              <p id="sub-curiosidade">—</p>
+            </div>
+          </section>
+
+          <!-- BLOCO 10: REFERÊNCIAS (FORMATO ABNT) -->
+          <section class="content-block glass-card reveal" id="bloco-10-referencias">
+            <header class="block-header">
+              <span class="block-num">10</span>
+              <div>
+                <h2>Referências (ABNT)</h2>
+                <small>Fontes acadêmicas e técnicas confiáveis</small>
+              </div>
+            </header>
+            <div class="block-body">
+              <ol id="sub-referencias-list" class="abnt-list"></ol>
+            </div>
+          </section>
+
+          <!-- BLOCO 11: AUTORES -->
+          <section class="content-block glass-card reveal" id="bloco-11-autores">
+            <header class="block-header">
+              <span class="block-num">11</span>
+              <div>
+                <h2>Autores da Plaquinha</h2>
+                <small>1º Ano de Informática • UFCIMG Divinópolis</small>
+              </div>
+            </header>
+            <div class="block-body">
+              <p class="author-group-title" id="sub-autores-grupo">Grupo — • 1º Ano de Informática</p>
+              <ul id="sub-autores-lista" class="member-list"></ul>
+            </div>
+          </section>
+        </div>
+
+        <!-- NAVEGAÇÃO PÓS-LEITURA (THUMB-FRIENDLY) -->
+        <nav class="substance-footer-nav glass-card reveal" aria-label="Ações após leitura">
+          <a href="/mapa" class="btn btn-glass">🗺️ Ver no Mapa do Campus</a>
+          <a href="/laboratorio" class="btn btn-primary">🧪 Testar no Laboratório Virtual</a>
+          <a href="/" class="btn btn-outline">← Voltar ao Catálogo</a>
+        </nav>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong class="footer-brand">AQUI TEM QUÍMICA! — 1º Ano de Informática</strong>
+        <p class="footer-text">UFCIMG — Escola de Aplicação, Divinópolis (MG).</p>
+      </div>
+      <div class="footer-links">
+        <a href="/">Início</a>
+        <a href="/classes">4 Classes</a>
+        <a href="/mapa">Mapa &amp; Tabela</a>
+        <a href="/laboratorio">Laboratório Virtual</a>
+      </div>
+      <p class="footer-safety">
+        <strong>Compromisso de Segurança:</strong> Conteúdo exclusivamente educativo. Nunca misture produtos químicos domésticos.
+      </p>
+    </div>
+  </footer>
+
+  <!-- CHATBOT FLUTUANTE QUÍMICOBOT INF -->
+  <aside id="quimicobot-widget" class="chatbot-widget" aria-label="Assistente virtual QuímicoBot INF">
+    <button type="button" id="chatbot-fab" class="chatbot-fab" aria-label="Abrir chat com QuímicoBot INF" aria-expanded="false" aria-controls="chatbot-window">
+      <img src="/assets/img/bot-avatar.jpg" alt="Avatar QuímicoBot INF" class="fab-avatar">
+      <span class="fab-pulse" aria-hidden="true"></span>
+    </button>
+    <section id="chatbot-window" class="chatbot-window glass-card" aria-label="Conversa com QuímicoBot INF" hidden>
+      <header class="chatbot-header">
+        <div class="chatbot-identity">
+          <img src="/assets/img/bot-avatar.jpg" alt="QuímicoBot INF" class="chatbot-avatar">
+          <div>
+            <h2>QuímicoBot INF</h2>
+            <small class="bot-status"><span class="status-dot" aria-hidden="true"></span> Online • Química + Base INF</small>
+          </div>
+        </div>
+        <button type="button" id="chatbot-close" class="icon-btn" aria-label="Fechar QuímicoBot">✕</button>
+      </header>
+      <div id="chatbot-messages" class="chatbot-messages" role="log" aria-live="polite">
+        <div class="chat-msg bot">
+          <p>Está lendo esta plaquinha? Me pergunte qualquer detalhe sobre a equação, o pH ou onde encontrar substâncias parecidas na escola!</p>
+        </div>
+      </div>
+      <div class="chatbot-chips">
+        <button type="button" class="chat-chip" data-prompt="Explique a equação desta substância de forma simples">Explicar equação</button>
+        <button type="button" class="chat-chip" data-prompt="Me faça uma pergunta de revisão para a AS">Pergunta AS</button>
+      </div>
+      <form id="chatbot-form" class="chatbot-form">
+        <label for="chatbot-input" class="sr-only">Digite sua pergunta</label>
+        <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Tire sua dúvida sobre esta substância..." autocomplete="off" required>
+        <button type="submit" class="chatbot-send" aria-label="Enviar mensagem">➤</button>
+      </form>
+    </section>
+  </aside>
+
+  <script src="/js/core.js" defer></script>
+  <script src="/js/pages.js" defer></script>
+</body>
+</html>

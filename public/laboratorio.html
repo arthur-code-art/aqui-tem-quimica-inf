@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Laboratório Virtual interativo de Química Inorgânica e Modo Desafio AS (30/11) do 1º ano de Informática — UFCIMG Divinópolis.">
+  <meta name="theme-color" content="#0B0F19">
+  <title>Laboratório Virtual &amp; Desafio AS — AQUI TEM QUÍMICA! | 1º INF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="laboratorio">
+  <canvas id="bg-molecules-canvas" aria-hidden="true"></canvas>
+  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="/" class="brand-logo">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
+            <path d="M12 4h8M14 4v7.2L6.8 23.4A3 3 0 0 0 9.4 28h13.2a3 3 0 0 0 2.6-4.6L18 11.2V4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9.5 21h13" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="14" cy="24" r="1.4" fill="#10B981"/>
+            <circle cx="18.5" cy="23.2" r="1.1" fill="#FF4D4D"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>AQUI TEM QUÍMICA!</strong>
+          <small>1º INF • Lab Virtual &amp; AS</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Início</a></li>
+          <li><a href="/classes" class="nav-link">4 Classes</a></li>
+          <li><a href="/mapa" class="nav-link">Mapa &amp; Tabela</a></li>
+          <li><a href="/laboratorio" class="nav-link active" aria-current="page">Lab Virtual &amp; AS</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <span class="xp-pill" id="header-xp-badge" title="Experiência acumulada no Desafio AS">⚡ <strong id="user-xp-display">0</strong> XP</span>
+        <button type="button" id="theme-toggle" class="icon-btn" aria-label="Alternar tema claro e escuro">
+          <span class="theme-icon-dark" aria-hidden="true">☀️</span>
+          <span class="theme-icon-light" aria-hidden="true">🌙</span>
+        </button>
+        <button type="button" id="mobile-menu-toggle" class="icon-btn mobile-only" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
+          <span class="hamburger-lines" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo-principal">
+    <section class="page-hero">
+      <div class="container reveal">
+        <span class="section-kicker">Simulações Mobile-First • 100% Seguras</span>
+        <h1 class="page-title">Laboratório Virtual &amp; Desafio AS</h1>
+        <p class="page-subtitle">
+          Experimente fenômenos químicos no navegador sem riscos reais e treine com flashcards e quiz cronometrado para gabaritar a Avaliação Somativa de 30/11.
+        </p>
+
+        <nav class="lab-nav-tabs" role="tablist" aria-label="Escolher experimento ou modo de estudo">
+          <button type="button" class="lab-tab active" role="tab" aria-selected="true" data-lab-target="sim-ph">1. Medidor de pH</button>
+          <button type="button" class="lab-tab" role="tab" aria-selected="false" data-lab-target="sim-condutividade">2. Condutividade &amp; Arrhenius</button>
+          <button type="button" class="lab-tab" role="tab" aria-selected="false" data-lab-target="sim-oxidos">3. Reator de Óxidos</button>
+          <button type="button" class="lab-tab" role="tab" aria-selected="false" data-lab-target="desafio-as">4. Desafio AS (Quiz &amp; Cards)</button>
+        </nav>
+      </div>
+    </section>
+
+    <div class="container lab-sections-wrap">
+      <!-- SIMULAÇÃO 1: MEDIDOR DE pH INTERATIVO DA ESCOLA -->
+      <section class="lab-panel glass-card active" id="sim-ph" role="tabpanel" aria-labelledby="tab-ph">
+        <div class="lab-panel-header">
+          <div>
+            <span class="pill pill-tech">Simulação 01</span>
+            <h2>Medidor de pH Interativo da Escola</h2>
+            <p>Escolha uma substância real das nossas 9 zonas e um indicador ácido-base para ver a cor da solução, o pHmetro digital e o balanço de íons H⁺ e OH⁻.</p>
+          </div>
+        </div>
+
+        <div class="sim-ph-grid">
+          <div class="sim-controls-col">
+            <div class="control-block">
+              <h3>1. Escolha a substância da escola</h3>
+              <div class="sample-buttons-grid" id="ph-sample-buttons">
+                <button type="button" class="sample-btn active" data-ph-sample="limao">🍋 Suco de Limão <small>Restaurante</small></button>
+                <button type="button" class="sample-btn" data-ph-sample="vinagre">🥗 Vinagre (CH₃COOH) <small>Restaurante</small></button>
+                <button type="button" class="sample-btn" data-ph-sample="isotonico">⚡ Isotônico / Suor <small>Quadra</small></button>
+                <button type="button" class="sample-btn" data-ph-sample="agua">💧 Água Bebedouro <small>Corredores P1/P6</small></button>
+                <button type="button" class="sample-btn" data-ph-sample="bicarbonato">🧁 Fermento (NaHCO₃) <small>Restaurante</small></button>
+                <button type="button" class="sample-btn" data-ph-sample="sabonete">🧼 Sabonete Líquido <small>Banheiros P3</small></button>
+                <button type="button" class="sample-btn" data-ph-sample="agua_sanitaria">🧴 Água Sanitária (NaClO) <small>Banheiros P3</small></button>
+                <button type="button" class="sample-btn" data-ph-sample="bateria">🔋 Eletrólito Bateria (H₂SO₄) <small>Estacionamentos</small></button>
+              </div>
+            </div>
+
+            <div class="control-block">
+              <h3>2. Escolha o Indicador Químico</h3>
+              <div class="indicator-selector" id="ph-indicator-buttons">
+                <button type="button" class="filter-chip active" data-indicator="universal">Indicador Universal</button>
+                <button type="button" class="filter-chip" data-indicator="fenolftaleina">Fenolftaleína</button>
+                <button type="button" class="filter-chip" data-indicator="bromotimol">Azul de Bromotimol</button>
+                <button type="button" class="filter-chip" data-indicator="tornassol">Papel Tornassol</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="sim-stage-col">
+            <div class="beaker-stage">
+              <div class="digital-ph-meter" aria-live="polite">
+                <span class="meter-label">pHmetro Digital</span>
+                <strong id="ph-digital-value" class="meter-readout">2.3</strong>
+                <span id="ph-nature-badge" class="badge badge-acido">Ácido</span>
+              </div>
+
+              <div class="beaker-visual" aria-label="Béquer virtual animado">
+                <div class="beaker-glass">
+                  <div id="beaker-liquid" class="beaker-liquid">
+                    <div class="liquid-bubbles" aria-hidden="true"></div>
+                  </div>
+                  <div id="litmus-strip" class="litmus-strip" hidden>
+                    <span class="litmus-tip" id="litmus-tip"></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ph-scale-bar">
+                <div class="ph-gradient-bar">
+                  <span id="sim-ph-pointer" class="ph-marker" style="left: 16%"></span>
+                </div>
+                <div class="ph-scale-nums">
+                  <span>0</span><span>3</span><span>7 (Neutro)</span><span>11</span><span>14</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ion-concentration-box">
+              <h4>Concentração Relativa de Íons</h4>
+              <div class="ion-bar-row">
+                <span>[H⁺]</span>
+                <div class="progress-track"><div id="bar-h-plus" class="progress-fill fill-acido" style="width: 85%"></div></div>
+              </div>
+              <div class="ion-bar-row">
+                <span>[OH⁻]</span>
+                <div class="progress-track"><div id="bar-oh-minus" class="progress-fill fill-base" style="width: 15%"></div></div>
+              </div>
+              <p id="ph-explanation-text" class="sim-explanation">
+                O suco de limão contém ácido cítrico, liberando íons H⁺ em solução aquosa (pH &lt; 7).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SIMULAÇÃO 2: CONDUTIVIDADE ELÉTRICA E DISSOCIAÇÃO (ARRHENIUS) -->
+      <section class="lab-panel glass-card" id="sim-condutividade" role="tabpanel" hidden>
+        <div class="lab-panel-header">
+          <div>
+            <span class="pill pill-tech">Simulação 02</span>
+            <h2>Condutividade Elétrica &amp; Dissociação (Arrhenius)</h2>
+            <p>Adicione um soluto à água e observe em animação 2D a separação de íons livres e o brilho da lâmpada do circuito.</p>
+          </div>
+        </div>
+
+        <div class="sim-cond-grid">
+          <div class="sim-controls-col">
+            <h3>Selecione a substância para dissolver em água</h3>
+            <div class="solute-list" id="cond-solute-buttons">
+              <button type="button" class="sample-btn active" data-solute="hcl">Ácido Forte — HCl <small>Ionização quase total</small></button>
+              <button type="button" class="sample-btn" data-solute="ch3cooh">Ácido Fraco — CH₃COOH <small>Vinagre • Ionização parcial</small></button>
+              <button type="button" class="sample-btn" data-solute="naoh">Base Forte — NaOH <small>Dissociação total em Na⁺ e OH⁻</small></button>
+              <button type="button" class="sample-btn" data-solute="nacl">Sal Solúvel — NaCl <small>Dissociação total em Na⁺ e Cl⁻</small></button>
+              <button type="button" class="sample-btn" data-solute="agua_pura">Água Destilada — H₂O <small>Praticamente sem íons livres</small></button>
+            </div>
+
+            <div class="equation-card">
+              <span class="eq-label">Processo em Água</span>
+              <div id="cond-equation" class="chemical-eq-large">HCl<sub>(g)</sub> —<sup>H₂O</sup>→ H<sup>+</sup><sub>(aq)</sub> + Cl<sup>−</sup><sub>(aq)</sub></div>
+              <p id="cond-explanation" class="eq-explain">Alta concentração de íons livres fecha o circuito elétrico com eficiência máxima.</p>
+            </div>
+          </div>
+
+          <div class="sim-stage-col">
+            <div class="circuit-lamp-panel">
+              <div id="virtual-bulb" class="virtual-bulb bulb-strong" aria-live="polite">
+                <span class="bulb-glow" aria-hidden="true"></span>
+                <span class="bulb-icon" aria-hidden="true">💡</span>
+              </div>
+              <div>
+                <span class="meter-label">Status da Lâmpada</span>
+                <strong id="bulb-status-text">Brilho Intenso (Eletrólito Forte)</strong>
+              </div>
+            </div>
+
+            <div class="ion-canvas-wrap">
+              <canvas id="condutividade-canvas" width="520" height="280" aria-label="Animação 2D de íons em solução aquosa"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SIMULAÇÃO 3: CLASSIFICADOR INTERATIVO DE ÓXIDOS E NEUTRALIZAÇÃO -->
+      <section class="lab-panel glass-card" id="sim-oxidos" role="tabpanel" hidden>
+        <div class="lab-panel-header">
+          <div>
+            <span class="pill pill-tech">Simulação 03</span>
+            <h2>Reator de Óxidos &amp; Neutralização</h2>
+            <p>Combine um óxido (ácido, básico, neutro ou anfótero) com água, ácido ou base no mini-reator e acompanhe a equação balanceada passo a passo.</p>
+          </div>
+        </div>
+
+        <div class="reactor-grid">
+          <div class="reactor-inputs">
+            <div class="control-block">
+              <label for="oxide-select">1. Selecione o Óxido:</label>
+              <select id="oxide-select" class="form-select">
+                <option value="CO2">CO₂ — Dióxido de Carbono (Óxido Ácido • Extintores)</option>
+                <option value="CaO">CaO — Óxido de Cálcio (Óxido Básico • Cal/Cimento)</option>
+                <option value="CO">CO — Monóxido de Carbono (Óxido Neutro • Escapamento)</option>
+                <option value="ZnO">ZnO — Óxido de Zinco (Óxido Anfótero • Pasta Térmica)</option>
+              </select>
+            </div>
+
+            <div class="control-block">
+              <label for="reagent-select">2. Selecione o Reagente:</label>
+              <select id="reagent-select" class="form-select">
+                <option value="H2O">H₂O — Água</option>
+                <option value="HCl">HCl — Ácido Clorídrico (Ácido Forte)</option>
+                <option value="NaOH">NaOH — Hidróxido de Sódio (Base Forte)</option>
+              </select>
+            </div>
+
+            <button type="button" id="run-reactor-btn" class="btn btn-primary btn-block">⚗️ Executar Reação no Mini-Reator</button>
+          </div>
+
+          <div class="reactor-output glass-card" aria-live="polite">
+            <div class="reactor-status-row">
+              <span id="reactor-oxide-type" class="badge badge-oxido">Óxido Ácido</span>
+              <span id="reactor-reaction-badge" class="pill pill-tech">Pronto para reagir</span>
+            </div>
+            <div class="reactor-equation-display" id="reactor-equation">
+              CO<sub>2(g)</sub> + H<sub>2</sub>O<sub>(l)</sub> ⇌ H<sub>2</sub>CO<sub>3(aq)</sub>
+            </div>
+            <ol id="reactor-steps" class="reactor-steps-list">
+              <li>Selecione um óxido e um reagente e clique em "Executar Reação".</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- SIMULAÇÃO 4: MODO DESAFIO AS (FLASHCARDS & QUIZ GAMIFICADO) -->
+      <section class="lab-panel glass-card" id="desafio-as" role="tabpanel" hidden>
+        <div class="lab-panel-header">
+          <div>
+            <span class="pill pill-tech">Preparação Oficial • AS 30/11</span>
+            <h2>Modo "Desafio AS" — Flashcards &amp; Quiz Cronometrado</h2>
+            <p>Revise com cartões interativos 3D e teste sua velocidade no quiz baseado nas substâncias reais do 1º ano de Informática.</p>
+          </div>
+          <div class="gamification-hud" aria-label="Pontuação e sequência">
+            <div class="hud-stat"><span>XP Total</span><strong id="quiz-xp">0</strong></div>
+            <div class="hud-stat"><span>Streak</span><strong id="quiz-streak">0 🔥</strong></div>
+          </div>
+        </div>
+
+        <div class="study-mode-switch">
+          <button type="button" class="filter-chip active" data-study-view="quiz">🎯 Quiz Cronometrado</button>
+          <button type="button" class="filter-chip" data-study-view="flashcards">🃏 Flashcards 3D</button>
+        </div>
+
+        <!-- SUBPAINEL QUIZ -->
+        <div id="study-quiz-view" class="study-view">
+          <div class="quiz-topbar">
+            <span id="quiz-progress">Questão 1 de 8</span>
+            <span class="quiz-timer" id="quiz-timer">⏱️ 25s</span>
+          </div>
+          <div class="progress-track"><div id="quiz-progress-bar" class="progress-fill" style="width: 12.5%"></div></div>
+
+          <div id="quiz-card-body" class="quiz-card-body">
+            <span id="quiz-topic-badge" class="badge">Tema</span>
+            <h3 id="quiz-question-text">Carregando questão...</h3>
+            <div id="quiz-options" class="quiz-options-grid" role="radiogroup" aria-label="Alternativas da questão"></div>
+            <div id="quiz-feedback" class="quiz-feedback" aria-live="polite" hidden></div>
+            <div class="quiz-footer-actions">
+              <button type="button" id="quiz-next-btn" class="btn btn-primary" hidden>Próxima Questão →</button>
+              <button type="button" id="quiz-restart-btn" class="btn btn-glass" hidden>🔄 Jogar Novamente</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBPAINEL FLASHCARDS -->
+        <div id="study-flashcards-view" class="study-view" hidden>
+          <div class="flashcard-stage">
+            <button type="button" id="flashcard-card" class="flashcard-3d" aria-label="Virar flashcard para ver a resposta">
+              <div class="flashcard-inner">
+                <div class="flashcard-front">
+                  <span id="fc-badge" class="badge">Classe</span>
+                  <h3 id="fc-front-text">Toque para virar o cartão</h3>
+                  <small>Clique ou pressione Espaço para ver a resposta</small>
+                </div>
+                <div class="flashcard-back">
+                  <span class="pill pill-tech">Resposta</span>
+                  <p id="fc-back-text">—</p>
+                </div>
+              </div>
+            </button>
+          </div>
+          <div class="flashcard-controls">
+            <button type="button" id="fc-prev" class="btn btn-glass">← Anterior</button>
+            <span id="fc-counter">1 / 8</span>
+            <button type="button" id="fc-next" class="btn btn-primary">Próximo →</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <strong class="footer-brand">AQUI TEM QUÍMICA! — 1º Ano de Informática</strong>
+        <p class="footer-text">UFCIMG — Escola de Aplicação, Divinópolis (MG).</p>
+      </div>
+      <div class="footer-links">
+        <a href="/">Início</a>
+        <a href="/classes">4 Classes</a>
+        <a href="/mapa">Mapa &amp; Tabela</a>
+        <a href="/laboratorio">Laboratório Virtual</a>
+      </div>
+      <p class="footer-safety">
+        <strong>Compromisso de Segurança:</strong> Simulações virtuais substituem com 100% de segurança qualquer teste caseiro. Nunca misture produtos domésticos.
+      </p>
+    </div>
+  </footer>
+
+  <!-- CHATBOT FLUTUANTE QUÍMICOBOT INF -->
+  <aside id="quimicobot-widget" class="chatbot-widget" aria-label="Assistente virtual QuímicoBot INF">
+    <button type="button" id="chatbot-fab" class="chatbot-fab" aria-label="Abrir chat com QuímicoBot INF" aria-expanded="false" aria-controls="chatbot-window">
+      <img src="/assets/img/bot-avatar.jpg" alt="Avatar QuímicoBot INF" class="fab-avatar">
+      <span class="fab-pulse" aria-hidden="true"></span>
+    </button>
+    <section id="chatbot-window" class="chatbot-window glass-card" aria-label="Conversa com QuímicoBot INF" hidden>
+      <header class="chatbot-header">
+        <div class="chatbot-identity">
+          <img src="/assets/img/bot-avatar.jpg" alt="QuímicoBot INF" class="chatbot-avatar">
+          <div>
+            <h2>QuímicoBot INF</h2>
+            <small class="bot-status"><span class="status-dot" aria-hidden="true"></span> Online • Tutor AS 30/11</small>
+          </div>
+        </div>
+        <button type="button" id="chatbot-close" class="icon-btn" aria-label="Fechar QuímicoBot">✕</button>
+      </header>
+      <div id="chatbot-messages" class="chatbot-messages" role="log" aria-live="polite">
+        <div class="chat-msg bot">
+          <p>Bons estudos no Laboratório Virtual! Se travar em alguma questão do Desafio AS ou em balanceamento, é só chamar.</p>
+        </div>
+      </div>
+      <div class="chatbot-chips">
+        <button type="button" class="chat-chip" data-prompt="Como funciona o indicador fenolftaleína?">Fenolftaleína</button>
+        <button type="button" class="chat-chip" data-prompt="Por que o NaCl só conduz eletricidade em água ou fundido?">Condutividade NaCl</button>
+        <button type="button" class="chat-chip" data-prompt="Me faça uma pergunta surpresa para a AS de Química!">Pergunta AS</button>
+      </div>
+      <form id="chatbot-form" class="chatbot-form">
+        <label for="chatbot-input" class="sr-only">Digite sua pergunta</label>
+        <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Pergunte sobre pH, íons ou óxidos..." autocomplete="off" required>
+        <button type="submit" class="chatbot-send" aria-label="Enviar mensagem">➤</button>
+      </form>
+    </section>
+  </aside>
+
+  <script src="/js/core.js" defer></script>
+  <script src="/js/pages.js" defer></script>
+</body>
+</html>

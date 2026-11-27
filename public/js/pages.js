@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AQUI TEM QUÍMICA! — 1º Ano de Informática (UFCIMG — Divinópolis)
+   AQUI TEM QUÍMICA! — 1º Ano de Informática (CEFET-MG — Divinópolis)
    ETAPA 3 (Parte 2): Controladores das 5 Páginas, Mapa Digital + Croqui,
    Auditoria de Mínimos, 4 Simulações do Laboratório Virtual e Desafio AS
    ========================================================================== */

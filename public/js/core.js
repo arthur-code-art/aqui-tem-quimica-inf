@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AQUI TEM QUÍMICA! — 1º Ano de Informática (UFCIMG — Divinópolis)
+   AQUI TEM QUÍMICA! — 1º Ano de Informática (CEFET-MG — Divinópolis)
    ETAPA 3 (Parte 1): Núcleo Global, Partículas, Tema, Dados e QuímicoBot INF
    ========================================================================== */
 

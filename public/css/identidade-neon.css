@@ -567,49 +567,43 @@ button:active, .btn:active, a.btn:active {
 }
 
 /* ATQ_CONTRASTE_CLARO_INICIO */
-.atq-superficie-clara {
-  color: #1e1633 !important;
-}
-.atq-superficie-clara h1,
-.atq-superficie-clara h2,
-.atq-superficie-clara h3,
-.atq-superficie-clara h4,
-.atq-superficie-clara h5,
-.atq-superficie-clara h6 {
+[data-atq-ink="dark"] {
   color: #1a1033 !important;
+  -webkit-text-fill-color: #1a1033 !important;
   text-shadow: none !important;
 }
-.atq-superficie-clara > p,
-.atq-superficie-clara > div,
-.atq-superficie-clara > strong,
-.atq-superficie-clara > label,
-.atq-superficie-clara > small {
-  color: #1e1633 !important;
-}
-a.atq-superficie-clara,
-a.atq-superficie-clara * {
-  color: #1a1033 !important;
+[data-tema="claro"] [data-atq-ink="dark"] {
+  color: #1f1a14 !important;
+  -webkit-text-fill-color: #1f1a14 !important;
   text-shadow: none !important;
 }
-a.atq-superficie-clara {
-  border: 1px solid rgba(74, 44, 109, 0.30) !important;
+[data-atq-ink="light"] {
+  color: #f7f3ff !important;
+  -webkit-text-fill-color: #f7f3ff !important;
+}
+[data-atq-pill="1"] {
+  border: 1px solid rgba(74, 44, 109, 0.34) !important;
   font-weight: 700 !important;
 }
-a.atq-superficie-clara:hover {
+[data-atq-pill="1"]:hover {
   background: #f2ecfa !important;
   border-color: #6d4aa3 !important;
 }
-[data-tema="claro"] .atq-superficie-clara h1,
-[data-tema="claro"] .atq-superficie-clara h2,
-[data-tema="claro"] .atq-superficie-clara h3,
-[data-tema="claro"] .atq-superficie-clara h4 {
-  color: #1f1a14 !important;
-}
-[data-tema="claro"] a.atq-superficie-clara,
-[data-tema="claro"] a.atq-superficie-clara * {
+[data-tema="claro"] [data-atq-pill="1"] {
   color: #7c5605 !important;
+  -webkit-text-fill-color: #7c5605 !important;
+  border-color: rgba(184, 134, 11, 0.48) !important;
 }
-[data-tema="claro"] a.atq-superficie-clara {
-  border-color: rgba(184, 134, 11, 0.45) !important;
+[data-tema="claro"] [data-atq-pill="1"]:hover {
+  background: #faf3e3 !important;
+  border-color: #b8860b !important;
+}
+input::placeholder,
+textarea::placeholder {
+  color: rgba(215, 202, 240, 0.72) !important;
+}
+[data-tema="claro"] input::placeholder,
+[data-tema="claro"] textarea::placeholder {
+  color: #6b5d4d !important;
 }
 /* ATQ_CONTRASTE_CLARO_FIM */

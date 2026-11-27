@@ -3,57 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mapa 3D Satélite — CEFET Divinópolis | AQUI TEM QUÍMICA!</title>
-  <meta name="theme-color" content="#0f172a">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f172a'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='38'%3E%E2%9A%97%EF%B8%8F%3C/text%3E%3C/svg%3E">
-  <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
+  <title>Mapa 3D & Satélite GPS — CEFET-MG Campus V | AQUI TEM QUÍMICA!</title>
+  <meta name="theme-color" content="#0b0614">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23150c26'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='38'%3E%E2%9A%97%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/css/identidade-neon.css?v=4">
   <style>
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, -apple-system, sans-serif; background: #020617; color: #f8fafc; }
-    header { background: linear-gradient(135deg, #0f172a, #0c4a6e); border-bottom: 1px solid rgba(56,189,248,0.28); padding: 14px 20px; }
-    .hdr-in { max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
-    .brand h1 { margin: 0; font-size: 20px; }
-    .brand p { margin: 2px 0 0; font-size: 12px; color: #bae6fd; }
-    nav { display: flex; gap: 8px; flex-wrap: wrap; }
-    nav a, .btn { background: #1e293b; color: #f8fafc; text-decoration: none; border: 1px solid rgba(148,163,184,0.28); border-radius: 10px; padding: 8px 13px; font-size: 13px; font-weight: 600; cursor: pointer; }
-    .btn.ativo, .btn-primary { background: #0284c7; border-color: #38bdf8; color: #fff; }
-    main { max-width: 1240px; margin: 18px auto 90px; padding: 0 16px; }
-    .toolbar { background: #0f172a; border: 1px solid rgba(56,189,248,0.24); border-radius: 14px; padding: 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    body { margin: 0; }
+    header { padding: 14px 20px; }
+    .hdr-in { max-width: 1260px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand h1 { margin: 0; font-size: 21px; }
+    .brand p { margin: 2px 0 0; font-size: 12px; opacity: 0.86; }
+    nav { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    nav a, .btn { background: rgba(255,255,255,0.08); color: #f7f3ff; text-decoration: none; border: 1px solid rgba(200,162,77,0.38); border-radius: 10px; padding: 8px 13px; font-size: 13px; font-weight: 600; cursor: pointer; }
+    main { max-width: 1260px; margin: 18px auto 96px; padding: 0 16px; }
+    .toolbar { border-radius: 16px; padding: 14px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 12px; }
     .grupo { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-    select, input[type="search"] { background: #1e293b; color: #f8fafc; border: 1px solid #334155; border-radius: 9px; padding: 8px 11px; font-size: 13px; }
-    .legenda { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; font-size: 12px; color: #cbd5e1; margin-bottom: 10px; }
+    select, input[type="search"] { background: rgba(15, 8, 28, 0.85); color: #f7f3ff; border: 1px solid rgba(200,162,77,0.4); border-radius: 9px; padding: 8px 11px; font-size: 13px; }
+    .legenda { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; font-size: 12px; margin-bottom: 12px; }
     .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px; }
-    .map-card { background: #0f172a; border: 1px solid rgba(56,189,248,0.3); border-radius: 16px; overflow: hidden; box-shadow: 0 16px 40px rgba(0,0,0,0.45); }
-    #mapa-gl { width: 100%; height: 600px; }
-    #coord-bar { display: none; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px 14px; background: #172554; border-bottom: 1px solid rgba(56,189,248,0.35); font-size: 12px; }
-    .pin-gl { display: flex; align-items: center; gap: 5px; background: rgba(15,23,42,0.92); color: #fff; border: 2px solid #38bdf8; border-radius: 999px; padding: 4px 8px; font: 700 11px system-ui, sans-serif; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.55); transition: transform 0.15s; }
-    .pin-gl:hover { transform: scale(1.14); z-index: 10; }
-    .pin-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-    #detalhe-card { display: none; margin-top: 14px; background: #0f172a; border: 1px solid #38bdf8; border-radius: 14px; padding: 16px; }
-    .tabela-sec { margin-top: 22px; background: #0f172a; border: 1px solid rgba(56,189,248,0.24); border-radius: 16px; padding: 18px; }
+    .viewport-card { position: relative; border-radius: 18px; overflow: hidden; }
+    #canvas-3d-wrap { position: relative; width: 100%; height: 600px; touch-action: none; }
+    #mapa-2d-canvas { width: 100%; height: 600px; z-index: 1; }
+    .hud-3d { position: absolute; top: 12px; right: 12px; z-index: 20; display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; max-width: 92%; }
+    .hud-2d { position: absolute; top: 12px; right: 12px; z-index: 500; display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+    .hud-3d .btn, .hud-2d .btn { padding: 7px 11px; font-size: 12px; background: rgba(18,9,34,0.88); color: #f7f3ff; backdrop-filter: blur(6px); }
+    [data-tema="claro"] .hud-3d .btn, [data-tema="claro"] .hud-2d .btn { background: rgba(255,255,255,0.94) !important; color: #1f1a14 !important; }
+    .dica-3d { position: absolute; left: 12px; bottom: 12px; z-index: 18; background: rgba(18,9,34,0.85); color: #f7f3ff; font-size: 11px; padding: 6px 11px; border-radius: 8px; border: 1px solid rgba(200,162,77,0.35); pointer-events: none; }
+    [data-tema="claro"] .dica-3d { background: rgba(255,255,255,0.94); color: #1f1a14; }
+    #labels-3d { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 12; }
+    .zona-label-3d { position: absolute; transform: translate(-50%, -50%); pointer-events: auto; background: rgba(18,9,34,0.88); color: #f7f3ff; border: 1px solid #f5d37a; border-radius: 999px; padding: 4px 10px; font-size: 11px; font-weight: 700; cursor: pointer; white-space: nowrap; box-shadow: 0 4px 14px rgba(0,0,0,0.38); }
+    [data-tema="claro"] .zona-label-3d { background: rgba(255,255,255,0.95); color: #1f1a14; border-color: #b8860b; }
+    #tooltip-3d { position: absolute; display: none; z-index: 30; pointer-events: none; background: rgba(18,9,34,0.95); color: #f7f3ff; border: 1px solid #f5d37a; border-radius: 9px; padding: 7px 11px; font-size: 12px; max-width: 240px; }
+    [data-tema="claro"] #tooltip-3d { background: #ffffff; color: #1f1a14; border-color: #b8860b; box-shadow: 0 8px 20px rgba(0,0,0,0.16); }
+    #detalhe-card { display: none; margin-top: 14px; border-radius: 16px; padding: 16px; }
+    #coord-bar { display: none; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px 14px; background: rgba(200,155,60,0.16); border-bottom: 1px solid rgba(200,155,60,0.45); font-size: 12px; }
+    .tabela-sec { margin-top: 22px; border-radius: 18px; padding: 18px; }
     .tabela-wrap { overflow-x: auto; margin-top: 10px; }
     table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    th, td { text-align: left; padding: 10px; border-bottom: 1px solid rgba(148,163,184,0.16); }
-    th { color: #38bdf8; font-size: 12px; text-transform: uppercase; }
-    @media (max-width: 700px) { #mapa-gl { height: 470px; } }
+    th, td { text-align: left; padding: 10px; border-bottom: 1px solid rgba(200,162,77,0.18); }
+    th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; }
+    @media (max-width: 700px) { #canvas-3d-wrap, #mapa-2d-canvas { height: 470px; } .dica-3d { display: none; } }
     @media print {
-      body { background: #fff; color: #000; }
-      header nav, .toolbar, .map-card, #detalhe-card, #atq-progresso-bar, #qbot-ia-root { display: none !important; }
-      .tabela-sec { border: 0; background: #fff; padding: 0; }
-      th, td { color: #000; border-bottom: 1px solid #94a3b8; font-size: 11px; padding: 6px; }
+      body { background: #fff !important; color: #000 !important; }
+      header nav, .toolbar, .viewport-card, #detalhe-card { display: none !important; }
+      .tabela-sec { border: 0 !important; background: #fff !important; box-shadow: none !important; padding: 0; }
+      th, td { color: #000 !important; border-bottom: 1px solid #94a3b8 !important; font-size: 11px; padding: 6px; }
     }
   </style>
-  <link rel="stylesheet" href="/css/identidade-neon.css?v=3">
 </head>
 <body>
   <header>
     <div class="hdr-in">
       <div class="brand">
-        <h1>🛰️ Mapa 3D Satélite — CEFET-MG Campus Divinópolis</h1>
-        <p>AQUI TEM QUÍMICA! • 1º Ano de Informática (UFCIMG) • 38 Plaquinhas em 9 Zonas</p>
+        <h1>🏛️ Mapa 3D &amp; Satélite — CEFET-MG Campus V</h1>
+        <p>AQUI TEM QUÍMICA! • 1º Ano de Informática • 38 Plaquinhas em 9 Zonas</p>
       </div>
       <nav>
         <a href="/">🏠 Início</a>
+        <a href="/tabela">⚛️ Tabela</a>
         <a href="/api/auditoria" target="_blank">✅ Auditoria</a>
         <button type="button" id="btn-imprimir" class="btn btn-primary">🖨️ Imprimir / PDF</button>
       </nav>
@@ -63,22 +72,20 @@
   <main>
     <div class="toolbar">
       <div class="grupo">
-        <button type="button" id="btn-3d" class="btn ativo">🏛️ Visão 3D (Ativa)</button>
-        <button type="button" id="btn-camada" class="btn">🗺️ Ver Ruas</button>
-        <button type="button" id="btn-tour" class="btn">🎬 Tour CEFET</button>
-        <button type="button" id="btn-cefet" class="btn">🎯 Centralizar CEFET</button>
+        <button type="button" id="tab-3d" class="btn ativo">🏛️ Maquete 3D do CEFET</button>
+        <button type="button" id="tab-2d" class="btn">🛰️ Satélite GPS Real</button>
         <button type="button" id="btn-modo-coord" class="btn">📍 Calibrar GPS</button>
       </div>
       <div class="grupo">
         <select id="filtro-classe">
           <option value="Todas">Todas as classes</option>
-          <option value="Ácido">🔴 Ácidos</option>
-          <option value="Base">🔵 Bases</option>
-          <option value="Sal">🟢 Sais</option>
-          <option value="Óxido">🟠 Óxidos</option>
+          <option value="Ácido">🔴 Ácidos (6)</option>
+          <option value="Base">🔵 Bases (8)</option>
+          <option value="Sal">🟢 Sais (8)</option>
+          <option value="Óxido">🟠 Óxidos (16)</option>
         </select>
         <select id="filtro-zona"></select>
-        <input type="search" id="filtro-busca" placeholder="Buscar código ou substância...">
+        <input type="search" id="filtro-busca" placeholder="Buscar código, fórmula ou local...">
       </div>
     </div>
 
@@ -87,23 +94,48 @@
       <span><span class="dot" style="background:#3b82f6;"></span>Bases</span>
       <span><span class="dot" style="background:#22c55e;"></span>Sais</span>
       <span><span class="dot" style="background:#f59e0b;"></span>Óxidos</span>
-      <span id="stat-visiveis" style="margin-left:auto;color:#38bdf8;font-weight:700;">Carregando...</span>
+      <span id="stat-visiveis" style="margin-left:auto;font-weight:700;">Carregando...</span>
     </div>
 
-    <div class="map-card">
-      <div id="coord-bar">
-        <strong>Calibrador GPS:</strong>
-        <select id="coord-select"></select>
-        <span id="coord-status" style="color:#fde047;">Clique no ponto exato do CEFET no mapa abaixo para mover a plaquinha.</span>
-        <button type="button" id="btn-baixar-json" class="btn btn-primary" style="margin-left:auto;">💾 Baixar substancias.json</button>
+    <div class="viewport-card">
+      <div id="painel-3d">
+        <div id="canvas-3d-wrap">
+          <div class="hud-3d">
+            <button type="button" id="btn-tour" class="btn">🎬 Tour 3D</button>
+            <button type="button" id="btn-dia-noite" class="btn">☀️ Dia no 3D</button>
+            <button type="button" id="btn-zoom-in" class="btn">➕</button>
+            <button type="button" id="btn-zoom-out" class="btn">➖</button>
+            <button type="button" id="btn-reset-3d" class="btn">🎯 Visão Geral</button>
+          </div>
+          <div id="labels-3d"></div>
+          <div id="tooltip-3d"></div>
+          <div class="dica-3d">🖱️ Arraste para girar • Scroll/Pinça para zoom • Botão direito move • Clique nos pins ou zonas</div>
+        </div>
       </div>
-      <div id="mapa-gl"></div>
+
+      <div id="painel-2d" style="display:none;">
+        <div id="coord-bar">
+          <strong>Calibrador GPS:</strong>
+          <select id="coord-select"></select>
+          <span id="coord-status">Clique no ponto exato do CEFET no satélite abaixo para atualizar a plaquinha.</span>
+          <button type="button" id="btn-baixar-json" class="btn btn-primary" style="margin-left:auto;">💾 Baixar substancias.json</button>
+        </div>
+        <div style="position:relative;">
+          <div class="hud-2d">
+            <button type="button" id="btn-centralizar-cefet" class="btn">🎯 CEFET-MG</button>
+            <button type="button" id="btn-meu-gps" class="btn">📍 Minha Posição</button>
+            <button type="button" id="btn-camada-2d" class="btn">🗺️ Ver Ruas</button>
+          </div>
+          <div id="mapa-2d-canvas"></div>
+        </div>
+      </div>
     </div>
 
     <div id="detalhe-card"></div>
 
     <section class="tabela-sec">
-      <h2 style="margin:0;font-size:18px;color:#38bdf8;">📋 Tabela Oficial das 38 Plaquinhas</h2>
+      <h2 style="margin:0;font-size:19px;">📋 Tabela Oficial das 38 Plaquinhas</h2>
+      <p style="margin:3px 0 0;font-size:12px;opacity:0.8;">Pronta para imprimir ou salvar em PDF pelo botão no topo.</p>
       <div class="tabela-wrap">
         <table>
           <thead><tr><th>Código</th><th>Classe</th><th>Substância</th><th>Fórmula</th><th>Zona</th><th>Local Exato</th><th>Autorização</th></tr></thead>
@@ -113,12 +145,12 @@
     </section>
   </main>
 
-  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
-  <script src="/js/mapa-pro.js?v=2" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/js/mapa-pro.js?v=4" defer></script>
+  <script src="/js/efeitos-editorial.js?v=4" defer></script>
   <script src="/js/progresso.js?v=3" defer></script>
-  <script src="/js/quimicobot-ia.js?v=2" defer></script>
-  <script src="/js/efeitos-editorial.js?v=3" defer></script>
   <script src="/js/scanner-qr.js" defer></script>
-  <script src="/js/molecula-3d.js" defer></script>
+  <script src="/js/quimicobot-ia.js?v=2" defer></script>
 </body>
 </html>

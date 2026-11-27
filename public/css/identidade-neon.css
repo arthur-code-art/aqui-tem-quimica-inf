@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #0b0614;
+  --bg-elev: #150c26;
+  --bg-card: rgba(24, 14, 43, 0.84);
+  --bg-soft: #1f1336;
+  --roxo: #4a2c6d;
+  --roxo-vivo: #7c4dff;
+  --neon-violeta: #c084fc;
+  --neon-magenta: #e879f9;
+  --neon-ciano: #22d3ee;
+  --dourado: #c8a24d;
+  --dourado-claro: #f5d37a;
+  --texto: #f7f3ff;
+  --texto-sec: #c3b7dc;
+  --borda: rgba(200, 162, 77, 0.34);
+  --borda-neon: rgba(192, 132, 252, 0.55);
+  --glow-roxo: 0 0 24px rgba(168, 85, 247, 0.32), 0 0 6px rgba(200, 162, 77, 0.25);
+  --glow-ouro: 0 0 22px rgba(245, 211, 122, 0.38);
+  --font-editorial: 'Playfair Display', Georgia, serif;
+  --font-ui: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+[data-tema="claro"] {
+  --bg: #faf8fc;
+  --bg-elev: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.92);
+  --bg-soft: #f2ecfa;
+  --roxo: #4a2c6d;
+  --roxo-vivo: #6d4aa3;
+  --neon-violeta: #9333ea;
+  --neon-magenta: #c026d3;
+  --neon-ciano: #0891b2;
+  --dourado: #c8a24d;
+  --dourado-claro: #dfc27d;
+  --texto: #221930;
+  --texto-sec: #5c526d;
+  --borda: rgba(200, 162, 77, 0.45);
+  --borda-neon: rgba(147, 51, 234, 0.45);
+  --glow-roxo: 0 10px 30px rgba(109, 74, 163, 0.16), 0 0 14px rgba(192, 132, 252, 0.22);
+  --glow-ouro: 0 8px 24px rgba(200, 162, 77, 0.28);
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg) !important;
+  color: var(--texto) !important;
+  font-family: var(--font-ui) !important;
+  overflow-x: hidden;
+  transition: background-color 0.35s ease, color 0.35s ease;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(620px circle at 12% 8%, rgba(168, 85, 247, 0.17), transparent 60%),
+    radial-gradient(520px circle at 88% 18%, rgba(200, 162, 77, 0.12), transparent 62%),
+    radial-gradient(540px circle at 50% 92%, rgba(34, 211, 238, 0.10), transparent 65%);
+}
+
+[data-tema="claro"] body::before {
+  background:
+    radial-gradient(620px circle at 12% 8%, rgba(192, 132, 252, 0.16), transparent 60%),
+    radial-gradient(520px circle at 88% 18%, rgba(223, 194, 125, 0.20), transparent 62%);
+}
+
+#atq-fx-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.72;
+}
+
+[data-tema="claro"] #atq-fx-canvas {
+  opacity: 0.42;
+}
+
+header, main, footer, section, nav {
+  position: relative;
+  z-index: 1;
+}
+
+/* Tipografia Editorial + Fórmulas */
+h1, h2, h3, .editorial-title {
+  font-family: var(--font-editorial) !important;
+  letter-spacing: -0.015em;
+  color: var(--texto);
+}
+
+h1 {
+  text-shadow: 0 0 24px rgba(192, 132, 252, 0.35);
+}
+
+[data-tema="claro"] h1 {
+  color: #4a2c6d !important;
+  text-shadow: 0 2px 16px rgba(147, 51, 234, 0.14);
+}
+
+code, pre, .formula, td:nth-child(4) {
+  font-family: var(--font-mono) !important;
+}
+
+/* Header refinado com filete dourado neon */
+header {
+  background: linear-gradient(135deg, rgba(20, 11, 36, 0.94), rgba(74, 44, 109, 0.88)) !important;
+  border-bottom: 1px solid var(--dourado) !important;
+  box-shadow: 0 4px 28px rgba(168, 85, 247, 0.22) !important;
+  backdrop-filter: blur(12px);
+}
+
+[data-tema="claro"] header {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(242, 236, 250, 0.95)) !important;
+  border-bottom: 1px solid var(--dourado) !important;
+  box-shadow: 0 4px 20px rgba(74, 44, 109, 0.08) !important;
+}
+
+[data-tema="claro"] header h1,
+[data-tema="claro"] header p,
+[data-tema="claro"] header a {
+  color: #4a2c6d !important;
+}
+
+/* Unificacao visual das secoes interativas (Escala pH, Quiz, Simulador, Guia Voz, Mapa) */
+#atq-escala-ph,
+#atq-quiz,
+#atq-simulador,
+#atq-guia-voz,
+.toolbar,
+.tabela-sec,
+.map-card,
+#detalhe-card,
+.card,
+article {
+  background: var(--bg-card) !important;
+  color: var(--texto) !important;
+  border: 1px solid var(--borda) !important;
+  box-shadow: var(--glow-roxo) !important;
+  backdrop-filter: blur(10px);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.28s ease, box-shadow 0.28s ease !important;
+}
+
+#atq-escala-ph h2,
+#atq-quiz h2,
+#atq-simulador h2,
+#atq-guia-voz strong,
+.tabela-sec h2 {
+  color: var(--dourado-claro) !important;
+}
+
+[data-tema="claro"] #atq-escala-ph h2,
+[data-tema="claro"] #atq-quiz h2,
+[data-tema="claro"] #atq-simulador h2,
+[data-tema="claro"] .tabela-sec h2 {
+  color: #4a2c6d !important;
+}
+
+[data-tema="claro"] #atq-ph-detalhe,
+[data-tema="claro"] #atq-escala-ph button,
+[data-tema="claro"] #atq-quiz button,
+[data-tema="claro"] #atq-simulador select,
+[data-tema="claro"] #atq-guia-voz a {
+  background: #f2ecfa !important;
+  color: #221930 !important;
+  border-color: rgba(109, 74, 163, 0.28) !important;
+}
+
+[data-tema="claro"] #atq-escala-ph p,
+[data-tema="claro"] #atq-quiz p,
+[data-tema="claro"] #atq-simulador p,
+[data-tema="claro"] #atq-sim-res,
+[data-tema="claro"] #atq-guia-voz div {
+  color: #3a2d4f !important;
+}
+
+/* Cards interativos com holofote neon e linha dourada expansivel */
+.atq-glow-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.atq-glow-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(192, 132, 252, 0.22), rgba(200, 162, 77, 0.08) 45%, transparent 72%);
+}
+
+.atq-glow-card:hover::before {
+  opacity: 1;
+}
+
+.atq-glow-card::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-violeta), var(--dourado-claro), var(--neon-ciano));
+  box-shadow: 0 0 12px var(--dourado-claro);
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), left 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.atq-glow-card:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.atq-glow-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--borda-neon) !important;
+  box-shadow: 0 14px 36px rgba(124, 77, 255, 0.26), 0 0 18px rgba(200, 162, 77, 0.28) !important;
+}
+
+/* Botoes com microinteracao tatil e brilho neon */
+button, .btn, a.btn {
+  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease, filter 0.2s ease;
+}
+
+button:hover, .btn:hover, a.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 16px rgba(192, 132, 252, 0.42);
+}
+
+button:active, .btn:active, a.btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn.ativo, .btn-primary {
+  background: linear-gradient(135deg, var(--roxo-vivo), #9333ea) !important;
+  border-color: var(--dourado-claro) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.5) !important;
+}
+
+/* Acessibilidade WCAG 2.2: foco visivel nitido */
+:focus-visible {
+  outline: 2px solid var(--dourado-claro) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 5px rgba(192, 132, 252, 0.35) !important;
+}
+
+/* Scroll reveal cinematografico */
+.atq-reveal {
+  opacity: 0;
+  transform: translateY(24px) scale(0.985);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.atq-reveal.atq-visivel {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Botao de alternar tema Neon / Editorial Alabastro */
+#atq-tema-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--dourado);
+  background: linear-gradient(135deg, rgba(74, 44, 109, 0.92), rgba(20, 11, 36, 0.95));
+  color: #f5d37a;
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 16px rgba(192, 132, 252, 0.38);
+  z-index: 9992;
+}
+
+[data-tema="claro"] #atq-tema-toggle {
+  background: linear-gradient(135deg, #ffffff, #f2ecfa);
+  color: #4a2c6d;
+  border-color: #c8a24d;
+  box-shadow: 0 4px 14px rgba(74, 44, 109, 0.15);
+}
+
+/* Harmonizar QuimicoBot IA com Roxo + Dourado Neon */
+#qbot-ia-fab {
+  background: linear-gradient(135deg, #4a2c6d, #9333ea) !important;
+  border: 1px solid #f5d37a !important;
+  box-shadow: 0 0 24px rgba(192, 132, 252, 0.6), 0 0 10px rgba(245, 211, 122, 0.35) !important;
+}
+
+#qbot-ia-panel {
+  border: 1px solid rgba(200, 162, 77, 0.55) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65), 0 0 32px rgba(168, 85, 247, 0.35) !important;
+}
+
+.qbot-hdr {
+  background: linear-gradient(135deg, #321a52, #6d4aa3) !important;
+}
+
+/* Animacoes de carimbo e pulso neon */
+@keyframes atqNeonPulse {
+  0%, 100% { box-shadow: 0 0 14px rgba(192, 132, 252, 0.45), 0 0 4px rgba(245, 211, 122, 0.35); }
+  50% { box-shadow: 0 0 26px rgba(192, 132, 252, 0.8), 0 0 14px rgba(245, 211, 122, 0.65); }
+}
+
+@keyframes atqStampDrop {
+  0% { opacity: 0; transform: scale(2.1) rotate(-18deg); filter: blur(4px); }
+  65% { opacity: 1; transform: scale(0.92) rotate(4deg); filter: blur(0); }
+  100% { opacity: 1; transform: scale(1) rotate(-3deg); }
+}
+
+@keyframes atqShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Responsividade Mobile para botoes flutuantes sem sobreposicao */
+@media (max-width: 540px) {
+  #atq-progresso-bar {
+    left: 10px !important;
+    bottom: 12px !important;
+    padding: 7px 11px !important;
+    font-size: 12px !important;
+  }
+  #qbot-ia-fab {
+    right: 10px !important;
+    bottom: 12px !important;
+    padding: 6px 11px 6px 6px !important;
+    font-size: 12px !important;
+  }
+  #qbot-ia-fab img {
+    width: 28px !important;
+    height: 28px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .atq-reveal { opacity: 1 !important; transform: none !important; }
+  #atq-fx-canvas { display: none !important; }
+}
+
+@media print {
+  #atq-fx-canvas, #atq-tema-toggle, #atq-progresso-bar, #atq-toast-selo { display: none !important; }
+}

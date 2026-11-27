@@ -10,6 +10,10 @@ const fs = require('fs');
 const QRCode = require('qrcode');
 
 const app = express();
+app.get('/ping', (req, res) => {
+  res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
 
 app.use((req, res, next) => {
   let p = decodeURIComponent(req.path).toUpperCase();

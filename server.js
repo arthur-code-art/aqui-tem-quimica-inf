@@ -10,6 +10,13 @@ const fs = require('fs');
 const QRCode = require('qrcode');
 
 const app = express();
+app.use((req, res, next) => {
+  if (/^\/(assets|css|js)\//.test(req.path)) {
+    res.setHeader('Cache-Control', 'public, max-age=86400');
+  }
+  next();
+});
+
 app.get('/ping', (req, res) => {
   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });

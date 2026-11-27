@@ -1,381 +1,157 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="dark">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mapa digital via satélite com GPS, croqui das 9 zonas e tabela completa das plaquinhas do projeto AQUI TEM QUÍMICA! do 1º ano de Informática (UFCIMG Divinópolis).">
-  <meta name="theme-color" content="#0B0F19">
-  <title>Mapa Digital &amp; Tabela — AQUI TEM QUÍMICA! | 1º INF</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <!-- Leaflet CSS (Mapa Digital Interativo gratuito e sem API Key) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
-  <link rel="stylesheet" href="/css/style.css">
+  <title>Mapa 3D & Satélite — AQUI TEM QUÍMICA! (CEFET / UFCIMG)</title>
+  <meta name="theme-color" content="#0f172a">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f172a'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='38'%3E%E2%9A%97%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: #020617; color: #f8fafc; }
+    header { background: linear-gradient(135deg, #0f172a, #0c4a6e); border-bottom: 1px solid rgba(56,189,248,0.28); padding: 14px 20px; }
+    .hdr-in { max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand h1 { margin: 0; font-size: 20px; color: #f8fafc; }
+    .brand p { margin: 2px 0 0; font-size: 12px; color: #bae6fd; }
+    nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    nav a, .btn { background: #1e293b; color: #f8fafc; text-decoration: none; border: 1px solid rgba(148,163,184,0.28); border-radius: 10px; padding: 8px 13px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.18s; }
+    nav a:hover, .btn:hover { background: #334155; }
+    .btn.ativo, .btn-primary { background: #0284c7; border-color: #38bdf8; color: #fff; }
+    main { max-width: 1240px; margin: 18px auto 90px; padding: 0 16px; }
+    .toolbar { background: #0f172a; border: 1px solid rgba(56,189,248,0.24); border-radius: 14px; padding: 14px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .toolbar-grupo { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    select, input[type="search"] { background: #1e293b; color: #f8fafc; border: 1px solid #334155; border-radius: 9px; padding: 8px 11px; font-size: 13px; }
+    .legenda { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; font-size: 12px; color: #cbd5e1; margin-bottom: 12px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px; }
+    .viewport-card { position: relative; background: #0f172a; border: 1px solid rgba(56,189,248,0.3); border-radius: 16px; overflow: hidden; box-shadow: 0 16px 40px rgba(0,0,0,0.45); }
+    #canvas-3d-wrap { position: relative; width: 100%; height: 590px; touch-action: none; }
+    #mapa-2d-canvas { width: 100%; height: 590px; z-index: 1; }
+    .hud-3d { position: absolute; top: 12px; right: 12px; z-index: 20; display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; max-width: 90%; }
+    .hud-3d .btn { padding: 7px 11px; font-size: 12px; background: rgba(15,23,42,0.88); backdrop-filter: blur(6px); }
+    .hud-3d .btn.ativo { background: #0284c7; }
+    .dica-3d { position: absolute; left: 12px; bottom: 12px; z-index: 18; background: rgba(15,23,42,0.85); color: #cbd5e1; font-size: 11px; padding: 6px 10px; border-radius: 8px; border: 1px solid rgba(148,163,184,0.22); pointer-events: none; }
+    #labels-3d { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 12; }
+    .zona-label-3d { position: absolute; transform: translate(-50%, -50%); pointer-events: auto; background: rgba(15,23,42,0.86); color: #f8fafc; border: 1px solid rgba(56,189,248,0.48); border-radius: 999px; padding: 4px 10px; font-size: 11px; font-weight: 700; cursor: pointer; white-space: nowrap; box-shadow: 0 4px 14px rgba(0,0,0,0.35); transition: transform 0.15s; }
+    .zona-label-3d:hover { background: #0284c7; transform: translate(-50%, -50%) scale(1.08); }
+    #tooltip-3d { position: absolute; display: none; z-index: 30; pointer-events: none; background: rgba(2,6,23,0.95); color: #f8fafc; border: 1px solid #38bdf8; border-radius: 8px; padding: 7px 10px; font-size: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.45); }
+    #detalhe-card { display: none; margin-top: 14px; background: #0f172a; border: 1px solid #38bdf8; border-radius: 14px; padding: 16px; box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+    #coord-bar { display: none; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px 14px; background: #172554; border-bottom: 1px solid rgba(56,189,248,0.35); font-size: 12px; }
+    .tabela-sec { margin-top: 22px; background: #0f172a; border: 1px solid rgba(56,189,248,0.24); border-radius: 16px; padding: 18px; }
+    .tabela-wrap { overflow-x: auto; margin-top: 10px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { text-align: left; padding: 10px 10px; border-bottom: 1px solid rgba(148,163,184,0.16); }
+    th { color: #38bdf8; font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; }
+    @media (max-width: 700px) { #canvas-3d-wrap, #mapa-2d-canvas { height: 460px; } .dica-3d { display: none; } }
+    @media print {
+      body { background: #fff; color: #000; }
+      header nav, .toolbar, .viewport-card, #detalhe-card, #atq-progresso-bar { display: none !important; }
+      header { background: #fff; border-bottom: 2px solid #000; padding: 8px 0; }
+      .brand h1, .brand p { color: #000; }
+      .tabela-sec { border: 0; background: #fff; padding: 0; margin: 0; }
+      th, td { color: #000; border-bottom: 1px solid #94a3b8; font-size: 11px; padding: 6px; }
+      th { color: #000; }
+    }
+  </style>
 </head>
-<body data-page="mapa">
-  <canvas id="bg-molecules-canvas" aria-hidden="true"></canvas>
-  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
-
-  <header class="site-header" id="site-header">
-    <div class="container header-inner">
-      <a href="/" class="brand-logo">
-        <span class="brand-icon" aria-hidden="true">
-          <svg viewBox="0 0 32 32" width="28" height="28" fill="none">
-            <path d="M12 4h8M14 4v7.2L6.8 23.4A3 3 0 0 0 9.4 28h13.2a3 3 0 0 0 2.6-4.6L18 11.2V4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M9.5 21h13" stroke="#00D2FF" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="14" cy="24" r="1.4" fill="#10B981"/>
-            <circle cx="18.5" cy="23.2" r="1.1" fill="#FF4D4D"/>
-          </svg>
-        </span>
-        <span class="brand-text">
-          <strong>AQUI TEM QUÍMICA!</strong>
-          <small>1º INF • Mapa Digital do Campus</small>
-        </span>
-      </a>
-
-      <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
-        <ul class="nav-list">
-          <li><a href="/" class="nav-link">Início</a></li>
-          <li><a href="/classes" class="nav-link">4 Classes</a></li>
-          <li><a href="/mapa" class="nav-link active" aria-current="page">Mapa &amp; Tabela</a></li>
-          <li><a href="/laboratorio" class="nav-link">Lab Virtual &amp; AS</a></li>
-        </ul>
-      </nav>
-
-      <div class="header-actions">
-        <button type="button" id="print-map-btn" class="btn btn-sm btn-glass hide-xs">🖨️ Imprimir Mapa</button>
-        <button type="button" id="theme-toggle" class="icon-btn" aria-label="Alternar tema claro e escuro">
-          <span class="theme-icon-dark" aria-hidden="true">☀️</span>
-          <span class="theme-icon-light" aria-hidden="true">🌙</span>
-        </button>
-        <button type="button" id="mobile-menu-toggle" class="icon-btn mobile-only" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
-          <span class="hamburger-lines" aria-hidden="true"></span>
-        </button>
+<body>
+  <header>
+    <div class="hdr-in">
+      <div class="brand">
+        <h1>🏛️ Mapa 3D &amp; Satélite — Campus CEFET</h1>
+        <p>AQUI TEM QUÍMICA! • 1º Ano de Informática (UFCIMG) • 38 Plaquinhas em 9 Zonas</p>
       </div>
+      <nav>
+        <a href="/">🏠 Início</a>
+        <a href="/api/auditoria" target="_blank">✅ Auditoria JSON</a>
+        <button type="button" id="btn-imprimir" class="btn btn-primary">🖨️ Imprimir / PDF</button>
+      </nav>
     </div>
   </header>
 
-  <main id="conteudo-principal">
-    <section class="page-hero">
-      <div class="container reveal">
-        <span class="section-kicker">Geolocalização Escolar • Padrão INF-GRUPO-PLACA (P1 a P8)</span>
-        <h1 class="page-title">Mapa Digital do Campus &amp; Tabela Oficial</h1>
-        <p class="page-subtitle">
-          Alterne entre o <strong>Mapa Digital Real (Satélite + GPS)</strong> e o <strong>Croqui das 9 Zonas</strong>, filtre os pins por função inorgânica ou imprima a versão oficial para entrega.
-        </p>
+  <main>
+    <div class="toolbar">
+      <div class="toolbar-grupo">
+        <button type="button" id="tab-3d" class="btn ativo">🏛️ Mapa 3D do CEFET</button>
+        <button type="button" id="tab-2d" class="btn">🛰️ Mapa Satélite 2D</button>
+        <button type="button" id="btn-modo-coord" class="btn">📍 Calibrar GPS</button>
       </div>
-    </section>
+      <div class="toolbar-grupo">
+        <select id="filtro-classe">
+          <option value="Todas">Todas as classes</option>
+          <option value="Ácido">🔴 Ácidos (6)</option>
+          <option value="Base">🔵 Bases (8)</option>
+          <option value="Sal">🟢 Sais (8)</option>
+          <option value="Óxido">🟠 Óxidos (16)</option>
+        </select>
+        <select id="filtro-zona"></select>
+        <input type="search" id="filtro-busca" placeholder="Buscar código, fórmula ou local...">
+      </div>
+    </div>
 
-    <!-- PARTE 1: MAPA DIGITAL REAL + CROQUI DAS 9 ZONAS -->
-    <section class="section" id="planta-interativa">
-      <div class="container">
-        <!-- BARRA DE MODO DE VISUALIZAÇÃO + UTILITÁRIOS -->
-        <div class="map-mode-bar glass-card reveal">
-          <div class="map-mode-switch" role="tablist" aria-label="Escolher modo de visualização do mapa">
-            <button type="button" class="mode-btn active" role="tab" aria-selected="true" data-map-mode="digital">
-              🛰️ Mapa Digital Real (Satélite &amp; GPS)
-            </button>
-            <button type="button" class="mode-btn" role="tab" aria-selected="false" data-map-mode="croqui">
-              📐 Croqui das 9 Zonas (Interno / Impressão)
-            </button>
+    <div class="legenda">
+      <span><span class="dot" style="background:#ef4444;"></span>Ácidos</span>
+      <span><span class="dot" style="background:#3b82f6;"></span>Bases</span>
+      <span><span class="dot" style="background:#22c55e;"></span>Sais</span>
+      <span><span class="dot" style="background:#f59e0b;"></span>Óxidos</span>
+      <span id="stat-visiveis" style="margin-left:auto;color:#38bdf8;font-weight:700;">Carregando...</span>
+    </div>
+
+    <div class="viewport-card">
+      <div id="painel-3d">
+        <div id="canvas-3d-wrap">
+          <div class="hud-3d">
+            <button type="button" id="btn-tour" class="btn">🎬 Tour 3D</button>
+            <button type="button" id="btn-dia-noite" class="btn">🌙 Modo Noite</button>
+            <button type="button" id="btn-zoom-in" class="btn">➕</button>
+            <button type="button" id="btn-zoom-out" class="btn">➖</button>
+            <button type="button" id="btn-reset-3d" class="btn">🎯 Visão Geral</button>
           </div>
-
-          <div class="map-utility-actions">
-            <button type="button" id="btn-locate-me" class="btn btn-sm btn-glass" title="Mostrar minha localização atual no campus">
-              📍 Onde estou?
-            </button>
-            <button type="button" id="btn-coord-picker" class="btn btn-sm btn-outline" aria-pressed="false" title="Clique no mapa para copiar latitude e longitude para o JSON">
-              🎯 Modo Coordenadas
-            </button>
-            <button type="button" id="print-map-btn-inline" class="btn btn-sm btn-primary">
-              🖨️ Imprimir / Salvar PDF
-            </button>
-          </div>
-        </div>
-
-        <!-- LEGENDA E FILTROS COMPARTILHADOS ENTRE OS 2 MODOS -->
-        <div class="map-toolbar glass-card reveal">
-          <div class="map-legend" aria-label="Legenda de cores por classe química">
-            <span class="legend-item"><i class="dot dot-acido"></i> Ácidos</span>
-            <span class="legend-item"><i class="dot dot-base"></i> Bases</span>
-            <span class="legend-item"><i class="dot dot-sal"></i> Sais</span>
-            <span class="legend-item"><i class="dot dot-oxido"></i> Óxidos</span>
-          </div>
-          <div class="map-filters" role="group" aria-label="Filtrar marcadores por classe química">
-            <button type="button" class="filter-chip active" data-map-classe="todas">Todos os Pins</button>
-            <button type="button" class="filter-chip chip-acido" data-map-classe="Ácido">Ácidos</button>
-            <button type="button" class="filter-chip chip-base" data-map-classe="Base">Bases</button>
-            <button type="button" class="filter-chip chip-sal" data-map-classe="Sal">Sais</button>
-            <button type="button" class="filter-chip chip-oxido" data-map-classe="Óxido">Óxidos</button>
-          </div>
-        </div>
-
-        <!-- MODO 1: MAPA DIGITAL INTERATIVO (LEAFLET) -->
-        <div id="map-panel-digital" class="map-view-panel glass-card reveal" role="tabpanel">
-          <div class="map-layer-bar">
-            <div class="chip-row" role="group" aria-label="Estilo do mapa digital">
-              <button type="button" class="filter-chip active" data-tile-layer="satelite">🛰️ Satélite HD</button>
-              <button type="button" class="filter-chip" data-tile-layer="dark">🌑 Tech Dark</button>
-              <button type="button" class="filter-chip" data-tile-layer="ruas">🗺️ Mapa Claro</button>
-            </div>
-            <button type="button" id="btn-recenter-campus" class="btn btn-sm btn-outline">⟲ Centralizar no Campus</button>
-          </div>
-
-          <div id="coord-helper-banner" class="coord-helper-banner" hidden aria-live="polite">
-            <span>🎯 <strong>Modo Coordenadas ativo:</strong> Clique em qualquer ponto do mapa para copiar <code>"lat"</code> e <code>"lng"</code> prontos para colar em <code>substancias.json</code>.</span>
-            <code id="coord-output">Aguardando clique no mapa...</code>
-          </div>
-
-          <div class="digital-map-container">
-            <div id="leaflet-campus-map" aria-label="Mapa digital interativo via satélite da escola em Divinópolis"></div>
-          </div>
-        </div>
-
-        <!-- MODO 2: CROQUI ESQUEMÁTICO DAS 9 ZONAS (INTERNO & IMPRESSÃO) -->
-        <div id="map-panel-croqui" class="map-view-panel campus-map-wrapper glass-card" role="tabpanel" hidden>
-          <div class="campus-map-canvas" id="campus-map-canvas" role="region" aria-label="Croqui interativo das 9 zonas do 1º ano de Informática">
-            <img id="campus-custom-floorplan" src="/assets/img/mapa-campus-cover.jpg" alt="Fundo holográfico do campus" class="campus-bg-overlay">
-
-            <svg class="campus-svg" viewBox="0 0 1000 580" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-              <defs>
-                <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(148,163,184,0.14)" stroke-width="1"/>
-                </pattern>
-              </defs>
-              <rect width="1000" height="580" fill="url(#grid-pattern)"/>
-
-              <g class="map-zone-shape" data-zone-name="Portaria">
-                <rect x="35" y="420" width="175" height="120" rx="14"/>
-                <text x="122" y="468" text-anchor="middle" class="zone-code">G05 • EXCLUSIVA</text>
-                <text x="122" y="492" text-anchor="middle" class="zone-title">Portaria</text>
-              </g>
-
-              <g class="map-zone-shape shared" data-zone-name="Estacionamentos">
-                <rect x="235" y="420" width="230" height="120" rx="14"/>
-                <text x="350" y="468" text-anchor="middle" class="zone-code">G08 • COMPARTILHADA</text>
-                <text x="350" y="492" text-anchor="middle" class="zone-title">Estacionamentos</text>
-              </g>
-
-              <g class="map-zone-shape shared" data-zone-name="Jardim">
-                <rect x="490" y="420" width="215" height="120" rx="14"/>
-                <text x="597" y="468" text-anchor="middle" class="zone-code">G07 • COMPARTILHADA</text>
-                <text x="597" y="492" text-anchor="middle" class="zone-title">Jardim</text>
-              </g>
-
-              <g class="map-zone-shape shared" data-zone-name="Quadra">
-                <rect x="730" y="340" width="235" height="200" rx="14"/>
-                <text x="847" y="425" text-anchor="middle" class="zone-code">G09 • COMPARTILHADA</text>
-                <text x="847" y="449" text-anchor="middle" class="zone-title">Quadra</text>
-              </g>
-
-              <g class="map-zone-shape" data-zone-name="Corredores do prédio 1">
-                <rect x="35" y="210" width="215" height="175" rx="14"/>
-                <text x="142" y="282" text-anchor="middle" class="zone-code">G03 • EXCLUSIVA</text>
-                <text x="142" y="306" text-anchor="middle" class="zone-title">Corredores Prédio 1</text>
-              </g>
-
-              <g class="map-zone-shape" data-zone-name="Banheiros do prédio 3">
-                <rect x="280" y="210" width="205" height="175" rx="14"/>
-                <text x="382" y="282" text-anchor="middle" class="zone-code">G02 • EXCLUSIVA</text>
-                <text x="382" y="306" text-anchor="middle" class="zone-title">Banheiros Prédio 3</text>
-              </g>
-
-              <g class="map-zone-shape" data-zone-name="Corredores do prédio 6">
-                <rect x="515" y="210" width="190" height="175" rx="14"/>
-                <text x="610" y="282" text-anchor="middle" class="zone-code">G04 • EXCLUSIVA</text>
-                <text x="610" y="306" text-anchor="middle" class="zone-title">Corredores Prédio 6</text>
-              </g>
-
-              <g class="map-zone-shape" data-zone-name="Restaurante">
-                <rect x="35" y="35" width="450" height="145" rx="14"/>
-                <text x="260" y="95" text-anchor="middle" class="zone-code">G01 • EXCLUSIVA</text>
-                <text x="260" y="119" text-anchor="middle" class="zone-title">Restaurante</text>
-              </g>
-
-              <g class="map-zone-shape highlight-inf" data-zone-name="Laboratório de informática">
-                <rect x="515" y="35" width="450" height="145" rx="14"/>
-                <text x="740" y="95" text-anchor="middle" class="zone-code">G06 • EXCLUSIVA • HUB INF</text>
-                <text x="740" y="119" text-anchor="middle" class="zone-title">Laboratório de Informática</text>
-              </g>
-            </svg>
-
-            <div id="map-pins-layer" class="map-pins-layer" aria-label="Marcadores de plaquinhas no croqui"></div>
-
-            <div id="map-pin-popover" class="map-pin-popover glass-card" role="dialog" aria-label="Prévia da plaquinha selecionada" hidden>
-              <button type="button" id="close-pin-popover" class="icon-btn popover-close" aria-label="Fechar prévia">✕</button>
-              <div class="popover-badges">
-                <span id="pop-codigo" class="code-pill">INF-G01-P1</span>
-                <span id="pop-classe" class="badge">Classe</span>
-              </div>
-              <h3 id="pop-substancia">Substância</h3>
-              <p class="popover-formula" id="pop-formula">—</p>
-              <p class="popover-location" id="pop-local">Zona • Local exato</p>
-              <a id="pop-link" href="#" class="btn btn-primary btn-sm btn-block">Abrir Página Completa →</a>
-            </div>
-          </div>
+          <div id="labels-3d"></div>
+          <div id="tooltip-3d"></div>
+          <div class="dica-3d">🖱️ Arraste para girar • Roda/Pinça para zoom • Botão direito move • Clique nos pins ou rótulos</div>
         </div>
       </div>
-    </section>
 
-    <!-- PARTE 2: TABELA COMPLETA DAS PLAQUINHAS + RESUMO QUANTITATIVO -->
-    <section class="section section-alt" id="tabela-oficial">
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="section-kicker">Registro Oficial Obrigatório • Ordenado por Zona</span>
-          <h2 class="section-title">Tabela Completa das Plaquinhas (1º INF)</h2>
-          <p class="section-desc">
-            Filtre por zona ou função inorgânica. Cada linha exibe o código <code>INF-GRUPO-PLACA</code> e abre diretamente a página da substância.
-          </p>
+      <div id="painel-2d" style="display:none;">
+        <div id="coord-bar">
+          <strong>Modo Calibrador:</strong>
+          <select id="coord-select"></select>
+          <span id="coord-status" style="color:#fde047;">Clique no ponto exato do mapa abaixo para atualizar a plaquinha escolhida.</span>
+          <button type="button" id="btn-baixar-json" class="btn btn-primary" style="margin-left:auto;">💾 Baixar substancias.json</button>
         </div>
-
-        <div class="table-controls glass-card reveal">
-          <div class="control-field">
-            <label for="table-zone-filter">Filtrar por Zona:</label>
-            <select id="table-zone-filter" class="form-select">
-              <option value="todas">Todas as 9 zonas</option>
-              <option value="Restaurante">Restaurante</option>
-              <option value="Banheiros do prédio 3">Banheiros do prédio 3</option>
-              <option value="Corredores do prédio 1">Corredores do prédio 1</option>
-              <option value="Corredores do prédio 6">Corredores do prédio 6</option>
-              <option value="Portaria">Portaria</option>
-              <option value="Laboratório de informática">Laboratório de informática</option>
-              <option value="Jardim">Jardim</option>
-              <option value="Estacionamentos">Estacionamentos</option>
-              <option value="Quadra">Quadra</option>
-            </select>
-          </div>
-          <div class="control-field">
-            <label for="table-class-filter">Filtrar por Classe:</label>
-            <select id="table-class-filter" class="form-select">
-              <option value="todas">Todas as classes</option>
-              <option value="Ácido">Ácido</option>
-              <option value="Base">Base</option>
-              <option value="Sal">Sal</option>
-              <option value="Óxido">Óxido</option>
-            </select>
-          </div>
-          <div class="control-field">
-            <label for="table-search-input">Buscar na tabela:</label>
-            <input type="search" id="table-search-input" class="form-input" placeholder="Código (INF-G01-P7), local ou substância...">
-          </div>
+        <div style="position:relative;">
+          <button type="button" id="btn-camada-2d" class="btn" style="position:absolute;top:12px;right:12px;z-index:500;">🗺️ Ver Ruas</button>
+          <div id="mapa-2d-canvas"></div>
         </div>
+      </div>
+    </div>
 
-        <div class="table-responsive glass-card reveal">
-          <table class="official-table" id="plaquinhas-table">
-            <thead>
-              <tr>
-                <th scope="col">Código</th>
-                <th scope="col">Zona</th>
-                <th scope="col">Local exato</th>
-                <th scope="col">Substância</th>
-                <th scope="col">Fórmula</th>
-                <th scope="col">Classe</th>
-                <th scope="col">Grupo</th>
-              </tr>
-            </thead>
-            <tbody id="plaquinhas-table-body">
-              <tr>
-                <td colspan="7" class="table-loading">Carregando tabela oficial de plaquinhas...</td>
-              </tr>
-            </tbody>
-          </table>
+    <div id="detalhe-card"></div>
+
+    <section class="tabela-sec">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+        <div>
+          <h2 style="margin:0;font-size:18px;color:#38bdf8;">📋 Tabela Oficial das 38 Plaquinhas</h2>
+          <p style="margin:3px 0 0;font-size:12px;color:#94a3b8;">Pronta para imprimir ou salvar em PDF pelo botão no topo.</p>
         </div>
-
-        <section class="quantitative-summary glass-card reveal" aria-label="Resumo quantitativo das plaquinhas">
-          <div class="summary-header">
-            <h3>Resumo Quantitativo Oficial</h3>
-            <span class="pill pill-tech">Calculado automaticamente da base</span>
-          </div>
-          <div class="summary-grid">
-            <div class="summary-card">
-              <span>Total Geral de Plaquinhas</span>
-              <strong id="summary-total-geral">0</strong>
-              <small>Meta mínima: 30</small>
-            </div>
-            <div class="summary-card border-acido">
-              <span>Ácidos (Total / Únicas)</span>
-              <strong><span id="summary-acido-total">0</span> / <span id="summary-acido-unicas">0</span></strong>
-              <small>Meta: ≥ 6 / ≥ 4</small>
-            </div>
-            <div class="summary-card border-base">
-              <span>Bases (Total / Únicas)</span>
-              <strong><span id="summary-base-total">0</span> / <span id="summary-base-unicas">0</span></strong>
-              <small>Meta: ≥ 6 / ≥ 4</small>
-            </div>
-            <div class="summary-card border-sal">
-              <span>Sais (Total / Únicas)</span>
-              <strong><span id="summary-sal-total">0</span> / <span id="summary-sal-unicas">0</span></strong>
-              <small>Meta: ≥ 6 / ≥ 4</small>
-            </div>
-            <div class="summary-card border-oxido">
-              <span>Óxidos (Total / Únicas)</span>
-              <strong><span id="summary-oxido-total">0</span> / <span id="summary-oxido-unicas">0</span></strong>
-              <small>Meta: ≥ 6 / ≥ 4</small>
-            </div>
-          </div>
-        </section>
+      </div>
+      <div class="tabela-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Código</th><th>Classe</th><th>Substância</th><th>Fórmula</th><th>Zona</th><th>Local Exato</th><th>Autorização</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-corpo"></tbody>
+        </table>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <strong class="footer-brand">AQUI TEM QUÍMICA! — 1º Ano de Informática</strong>
-        <p class="footer-text">UFCIMG — Escola de Aplicação, Divinópolis (MG).</p>
-      </div>
-      <div class="footer-links">
-        <a href="/">Início</a>
-        <a href="/classes">4 Classes</a>
-        <a href="/mapa">Mapa &amp; Tabela</a>
-        <a href="/laboratorio">Laboratório Virtual</a>
-      </div>
-      <p class="footer-safety">
-        <strong>Compromisso de Segurança:</strong> Conteúdo exclusivamente educativo. Nunca misture produtos químicos domésticos.
-      </p>
-    </div>
-  </footer>
-
-  <!-- CHATBOT FLUTUANTE QUÍMICOBOT INF -->
-  <aside id="quimicobot-widget" class="chatbot-widget" aria-label="Assistente virtual QuímicoBot INF">
-    <button type="button" id="chatbot-fab" class="chatbot-fab" aria-label="Abrir chat com QuímicoBot INF" aria-expanded="false" aria-controls="chatbot-window">
-      <img src="/assets/img/bot-avatar.jpg" alt="Avatar QuímicoBot INF" class="fab-avatar">
-      <span class="fab-pulse" aria-hidden="true"></span>
-    </button>
-    <section id="chatbot-window" class="chatbot-window glass-card" aria-label="Conversa com QuímicoBot INF" hidden>
-      <header class="chatbot-header">
-        <div class="chatbot-identity">
-          <img src="/assets/img/bot-avatar.jpg" alt="QuímicoBot INF" class="chatbot-avatar">
-          <div>
-            <h2>QuímicoBot INF</h2>
-            <small class="bot-status"><span class="status-dot" aria-hidden="true"></span> Online • Química + Base INF</small>
-          </div>
-        </div>
-        <button type="button" id="chatbot-close" class="icon-btn" aria-label="Fechar QuímicoBot">✕</button>
-      </header>
-      <div id="chatbot-messages" class="chatbot-messages" role="log" aria-live="polite">
-        <div class="chat-msg bot">
-          <p>Quer localizar alguma substância nas 9 zonas do 1º INF? Pergunte aqui!</p>
-        </div>
-      </div>
-      <div class="chatbot-chips">
-        <button type="button" class="chat-chip" data-prompt="Quais substâncias temos no Restaurante?">Restaurante</button>
-        <button type="button" class="chat-chip" data-prompt="Onde encontro óxidos no Laboratório de informática?">Lab de Informática</button>
-      </div>
-      <form id="chatbot-form" class="chatbot-form">
-        <label for="chatbot-input" class="sr-only">Digite sua pergunta</label>
-        <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Buscar zona, código ou substância..." autocomplete="off" required>
-        <button type="submit" class="chatbot-send" aria-label="Enviar mensagem">➤</button>
-      </form>
-    </section>
-  </aside>
-
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" defer></script>
-  <script src="/js/core.js" defer></script>
-  <script src="/js/pages.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/js/mapa-pro.js" defer></script>
   <script src="/js/progresso.js" defer></script>
-  <script src="/js/guia-voz.js" defer></script>
 </body>
 </html>

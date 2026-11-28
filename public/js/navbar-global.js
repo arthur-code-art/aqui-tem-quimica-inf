@@ -3,6 +3,7 @@
 
   var ABAS = [
     { href: '/',            label: 'Início',      match: function (p) { return p === '/' || p === '/index.html'; } },
+    { href: '/plaquinhas',  label: 'Plaquinhas',  match: function (p) { return p.indexOf('/plaquinhas') === 0 || p.indexOf('/plaquinha/') === 0; } },
     { href: '/classes',     label: '4 Classes',   match: function (p) { return p.indexOf('/classes') === 0; } },
     { href: '/mapa',        label: 'Mapa & GPS',  match: function (p) { return p.indexOf('/mapa') === 0; } },
     { href: '/laboratorio', label: 'Lab Virtual', match: function (p) { return p.indexOf('/laboratorio') === 0; } },

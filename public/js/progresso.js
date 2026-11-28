@@ -1,7 +1,4 @@
 (function () {
-  // =========================================================================
-  // CONFIGURACAO RAPIDA DO PASSAPORTE (EDITE AQUI O @ DO INSTAGRAM E A META)
-  // =========================================================================
   var CONFIG_PASSAPORTE = {
     instagramHandle: '@INSTAGRAM_DA_SALA', // Troque pelo @ real da turma (ex: '@1inf.cefet')
     metaBrinde: 38,                        // 38 = 100% das plaquinhas (altere se quiser liberar antes)
@@ -53,42 +50,98 @@
     return meta;
   }
 
-  // Detectar QR Code na URL (/plaquinha/INF-G01-P1 ou ?plaquinha=INF-G01-P1)
+  // Marcar cliques internos em links de plaquinhas para NAO contar no Passaporte
+  document.addEventListener('click', function (ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (/\/plaquinha\/|\/substancia\/|[?&]plaquinha=/i.test(href)) {
+      try { sessionStorage.setItem('atq_nav_site_ts', String(Date.now())); } catch (e) {}
+    }
+  }, true);
+
+  function veioPeloQrCode(cod) {
+    // 1. Scan real pela camera do leitor integrado (scanner-qr.js)
+    try {
+      var rawTok = sessionStorage.getItem('atq_qr_cam_token');
+      if (rawTok) {
+        sessionStorage.removeItem('atq_qr_cam_token');
+        var tok = JSON.parse(rawTok);
+        if (tok && String(tok.codigo).toUpperCase() === cod && (Date.now() - Number(tok.ts || 0)) < 25000) {
+          return true;
+        }
+      }
+    } catch (e) {}
+
+    // 2. Clique interno recente no site ou codigo digitado manualmente -> NAO conta
+    try {
+      var navTs = Number(sessionStorage.getItem('atq_nav_site_ts') || '0');
+      if (navTs && (Date.now() - navTs) < 20000) {
+        sessionStorage.removeItem('atq_nav_site_ts');
+        return false;
+      }
+    } catch (e) {}
+
+    // 3. Navegacao vinda de outra pagina do proprio site -> NAO conta
+    if (document.referrer) {
+      try {
+        if (new URL(document.referrer).origin === window.location.origin) {
+          return false;
+        }
+      } catch (e) {}
+    }
+
+    // 4. Recarregamento (F5) ou botao voltar/avancar -> NAO conta
+    try {
+      var navEntries = performance.getEntriesByType && performance.getEntriesByType('navigation');
+      if (navEntries && navEntries[0] && (navEntries[0].type === 'reload' || navEntries[0].type === 'back_forward')) {
+        return false;
+      }
+    } catch (e) {}
+
+    // 5. Acesso externo direto (camera nativa do celular lendo o QR Code impresso) -> CONTA
+    return true;
+  }
+
   var urlTxt = decodeURIComponent(window.location.pathname + ' ' + window.location.search);
   var matchCod = urlTxt.match(/INF-G\d{2}-P\d+/i);
   var visitadas = lerVisitadas();
   var novoCodigoDesbloqueado = null;
+  var abertoSemQrCodigo = null;
 
   if (matchCod) {
     var cod = matchCod[0].toUpperCase();
     if (visitadas.indexOf(cod) === -1) {
-      visitadas.push(cod);
-      salvarVisitadas(visitadas);
-      novoCodigoDesbloqueado = cod;
+      if (veioPeloQrCode(cod)) {
+        visitadas.push(cod);
+        salvarVisitadas(visitadas);
+        novoCodigoDesbloqueado = cod;
+      } else {
+        abertoSemQrCodigo = cod;
+      }
     }
   }
 
-  // Estilos dedicados do Passaporte + Toast + Vale-Brinde Mobile
   if (!document.getElementById('atq-pass-css')) {
     var st = document.createElement('style');
     st.id = 'atq-pass-css';
     st.textContent =
       '#atq-progresso-bar{position:fixed;left:14px;bottom:14px;z-index:9994;display:flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(20,11,36,0.96),rgba(74,44,109,0.94));color:#f7f3ff;padding:8px 14px;border-radius:999px;border:1px solid #c8a24d;font-family:"Plus Jakarta Sans",system-ui,sans-serif;font-size:13px;cursor:pointer;animation:atqNeonPulse 3.2s ease-in-out infinite;backdrop-filter:blur(8px);}' +
       '#atq-progresso-bar .atq-pill-dot{width:9px;height:9px;border-radius:50%;background:#f5d37a;box-shadow:0 0 10px #f5d37a;}' +
-      '#atq-toast-selo{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:10020;display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#190d2e,#4a2c6d);color:#fff;padding:12px 18px;border-radius:16px;border:1px solid #f5d37a;box-shadow:0 16px 40px rgba(0,0,0,0.55),0 0 26px rgba(192,132,252,0.55);font-family:"Plus Jakarta Sans",system-ui,sans-serif;max-width:92vw;}' +
-      '.atq-stamp-badge{width:46px;height:46px;border-radius:50%;border:2px dashed #f5d37a;background:radial-gradient(circle,rgba(245,211,122,0.28),rgba(192,132,252,0.18));display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;animation:atqStampDrop 0.55s cubic-bezier(0.22,1,0.36,1) forwards;}' +
+      '#atq-toast-selo{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:10020;display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#190d2e,#4a2c6d);color:#fff;padding:12px 16px;border-radius:16px;border:1px solid #f5d37a;box-shadow:0 16px 40px rgba(0,0,0,0.55),0 0 26px rgba(192,132,252,0.55);font-family:"Plus Jakarta Sans",system-ui,sans-serif;max-width:92vw;}' +
+      '.atq-stamp-badge{width:44px;height:44px;border-radius:50%;border:2px dashed #f5d37a;background:radial-gradient(circle,rgba(245,211,122,0.28),rgba(192,132,252,0.18));display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;animation:atqStampDrop 0.55s cubic-bezier(0.22,1,0.36,1) forwards;}' +
       '.atq-modal-bg{position:fixed;inset:0;z-index:10010;background:rgba(8,4,16,0.82);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:12px;font-family:"Plus Jakarta Sans",system-ui,sans-serif;}' +
       '.atq-modal-box{background:linear-gradient(160deg,#120922,#1c1033);color:#f7f3ff;width:min(760px,100%);max-height:92vh;overflow-y:auto;border-radius:20px;border:1px solid rgba(200,162,77,0.55);box-shadow:0 24px 64px rgba(0,0,0,0.65),0 0 36px rgba(168,85,247,0.35);padding:20px;}' +
-      '[data-tema="claro"] .atq-modal-box{background:linear-gradient(160deg,#faf8fc,#f2ecfa);color:#221930;}' +
+      '[data-tema="claro"] .atq-modal-box{background:linear-gradient(160deg,#ffffff,#faf3e3);color:#1f1a14;}' +
       '.atq-pass-tabs{display:flex;gap:8px;margin:12px 0 14px;flex-wrap:wrap;}' +
       '.atq-pass-tab{padding:8px 14px;border-radius:999px;border:1px solid rgba(200,162,77,0.45);background:rgba(74,44,109,0.28);color:inherit;font-weight:700;font-size:12px;cursor:pointer;}' +
       '.atq-pass-tab.ativo{background:linear-gradient(135deg,#6d4aa3,#9333ea);color:#fff;border-color:#f5d37a;box-shadow:0 0 16px rgba(192,132,252,0.5);}' +
       '.atq-selo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}' +
       '.atq-selo-card{position:relative;padding:11px;border-radius:14px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:4px;transition:transform 0.2s ease,box-shadow 0.2s ease;}' +
       '.atq-selo-card.ok{background:linear-gradient(145deg,rgba(74,44,109,0.55),rgba(30,17,54,0.9));border:1px solid #f5d37a;box-shadow:0 0 16px rgba(245,211,122,0.22);}' +
-      '[data-tema="claro"] .atq-selo-card.ok{background:linear-gradient(145deg,#fbf6ea,#f2ecfa);border:1px solid #c8a24d;color:#221930;}' +
-      '.atq-selo-card.pendente{background:rgba(255,255,255,0.04);border:1px dashed rgba(192,132,252,0.32);opacity:0.82;}' +
-      '[data-tema="claro"] .atq-selo-card.pendente{background:#f9eef4;border:1px dashed #c8a24d;color:#5c526d;}' +
+      '[data-tema="claro"] .atq-selo-card.ok{background:linear-gradient(145deg,#fffdf7,#faf0d7);border:1.5px solid #c89b3c;color:#1f1a14;}' +
+      '.atq-selo-card.pendente{background:rgba(255,255,255,0.04);border:1px dashed rgba(192,132,252,0.32);opacity:0.86;}' +
+      '[data-tema="claro"] .atq-selo-card.pendente{background:#ffffff;border:1px dashed rgba(184,134,11,0.45);color:#5c5040;}' +
       '.atq-selo-carimbo{display:inline-block;align-self:flex-start;font-size:10px;font-weight:800;letter-spacing:0.06em;padding:2px 8px;border-radius:999px;background:rgba(245,211,122,0.2);color:#f5d37a;border:1px solid #f5d37a;animation:atqStampDrop 0.45s ease;}' +
       '[data-tema="claro"] .atq-selo-carimbo{background:#fbf6ea;color:#8a681e;border-color:#c8a24d;}' +
       '.atq-brinde-card{max-width:390px;margin:6px auto;padding:22px 18px;border-radius:22px;background:radial-gradient(circle at top right,rgba(192,132,252,0.32),transparent 55%),linear-gradient(160deg,#160b2b,#2e1654 55%,#120822);color:#fff;border:2px solid #f5d37a;box-shadow:0 0 36px rgba(245,211,122,0.35),0 0 28px rgba(192,132,252,0.45);text-align:center;position:relative;overflow:hidden;}' +
@@ -97,7 +150,6 @@
     document.head.appendChild(st);
   }
 
-  // Motor de Confetes (Roxo + Dourado + Pastel + Ciano Neon)
   function dispararConfetes() {
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var c = document.createElement('canvas');
@@ -110,14 +162,10 @@
     var pecas = [];
     for (var i = 0; i < 130; i++) {
       pecas.push({
-        x: Math.random() * c.width,
-        y: -20 - Math.random() * c.height * 0.6,
-        w: 6 + Math.random() * 7,
-        h: 4 + Math.random() * 5,
-        vx: (Math.random() - 0.5) * 4,
-        vy: 2.5 + Math.random() * 4.2,
-        rot: Math.random() * Math.PI * 2,
-        vr: (Math.random() - 0.5) * 0.2,
+        x: Math.random() * c.width, y: -20 - Math.random() * c.height * 0.6,
+        w: 6 + Math.random() * 7, h: 4 + Math.random() * 5,
+        vx: (Math.random() - 0.5) * 4, vy: 2.5 + Math.random() * 4.2,
+        rot: Math.random() * Math.PI * 2, vr: (Math.random() - 0.5) * 0.2,
         cor: cores[i % cores.length]
       });
     }
@@ -126,11 +174,8 @@
       ctx.clearRect(0, 0, c.width, c.height);
       pecas.forEach(function (p) {
         p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.vy += 0.04;
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rot);
-        ctx.fillStyle = p.cor;
-        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+        ctx.fillStyle = p.cor; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
         ctx.restore();
       });
       if (Date.now() - inicio < 4200) requestAnimationFrame(tick);
@@ -139,7 +184,6 @@
     requestAnimationFrame(tick);
   }
 
-  // Toast animado ao desbloquear QR Code novo
   function mostrarToastSelo(cod, subNome, formula, qtd, total) {
     var oldT = document.getElementById('atq-toast-selo');
     if (oldT) oldT.remove();
@@ -148,7 +192,7 @@
     t.innerHTML =
       '<div class="atq-stamp-badge">🧪</div>' +
       '<div>' +
-        '<div style="font-size:11px;font-weight:800;color:#f5d37a;letter-spacing:0.06em;">SELO DESBLOQUEADO • ' + qtd + '/' + total + '</div>' +
+        '<div style="font-size:11px;font-weight:800;color:#f5d37a;letter-spacing:0.06em;">QR CODE ESCANEADO • ' + qtd + '/' + total + '</div>' +
         '<div style="font-size:14px;font-weight:700;">' + cod + (subNome ? ' — ' + subNome + ' (' + formula + ')' : '') + '</div>' +
         '<div style="font-size:11px;color:#d8ccf0;">Carimbo registrado no seu Passaporte Químico!</div>' +
       '</div>';
@@ -158,10 +202,39 @@
       t.style.opacity = '0';
       t.style.transform = 'translate(-50%, -14px)';
       setTimeout(function () { t.remove(); }, 520);
-    }, 4400);
+    }, 4500);
   }
 
-  // Gerar PNG do Cartao de Vale-Brinde para download/Instagram
+  function mostrarAvisoSomenteQr(cod) {
+    var oldT = document.getElementById('atq-toast-selo');
+    if (oldT) oldT.remove();
+    var t = document.createElement('div');
+    t.id = 'atq-toast-selo';
+    t.innerHTML =
+      '<div style="font-size:22px;flex-shrink:0;">📷</div>' +
+      '<div style="font-size:12px;line-height:1.35;">' +
+        '<div style="font-weight:800;color:#f5d37a;">Visualizando ' + cod + ' pelo site</div>' +
+        '<div style="color:#e2d9f3;">Para carimbar no Passaporte, escaneie o <strong>QR Code físico</strong> na escola.</div>' +
+      '</div>' +
+      '<button type="button" id="atq-toast-scan" style="flex-shrink:0;background:#f5d37a;color:#140b24;border:0;border-radius:9px;padding:6px 10px;font-size:11px;font-weight:800;cursor:pointer;">Escanear</button>';
+    document.body.appendChild(t);
+    var bScan = document.getElementById('atq-toast-scan');
+    if (bScan) {
+      bScan.onclick = function () {
+        t.remove();
+        var fab = document.getElementById('atq-qr-fab');
+        if (fab) fab.click();
+      };
+    }
+    setTimeout(function () {
+      if (!t.parentNode) return;
+      t.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+      t.style.opacity = '0';
+      t.style.transform = 'translate(-50%, -14px)';
+      setTimeout(function () { t.remove(); }, 480);
+    }, 5200);
+  }
+
   function baixarCartaoPng(nome, codVal, dataHora, qtd, total) {
     var c = document.createElement('canvas');
     c.width = 1080; c.height = 1350;
@@ -176,13 +249,10 @@
     ctx.textAlign = 'center';
     ctx.fillStyle = '#f5d37a'; ctx.font = 'bold 30px sans-serif';
     ctx.fillText(CONFIG_PASSAPORTE.tituloProjeto + ' • ' + CONFIG_PASSAPORTE.subtituloSala, 540, 170);
-
     ctx.fillStyle = '#ffffff'; ctx.font = 'bold 64px Georgia, serif';
     ctx.fillText('PASSAPORTE COMPLETO', 540, 310);
-
     ctx.fillStyle = '#c084fc'; ctx.font = 'bold 32px sans-serif';
     ctx.fillText('VALE-BRINDE OFICIAL • ' + qtd + '/' + total + ' QR CODES', 540, 380);
-
     ctx.fillStyle = '#e9d5ff'; ctx.font = '28px sans-serif';
     ctx.fillText('Explorador(a):', 540, 520);
     ctx.fillStyle = '#f5d37a'; ctx.font = 'bold 54px Georgia, serif';
@@ -199,7 +269,6 @@
     ctx.fillStyle = '#ffffff'; ctx.font = '30px sans-serif';
     ctx.fillText('Envie este print no Direct de ' + CONFIG_PASSAPORTE.instagramHandle, 540, 990);
     ctx.fillText('para retirar seu brinde na hora!', 540, 1038);
-
     ctx.fillStyle = '#c084fc'; ctx.font = 'bold 26px sans-serif';
     ctx.fillText('aqui-tem-quimica-inf.onrender.com', 540, 1210);
 
@@ -209,7 +278,6 @@
     a.click();
   }
 
-  // Criar Botao Flutuante do Passaporte
   var oldBar = document.getElementById('atq-progresso-bar');
   if (oldBar) oldBar.remove();
 
@@ -274,18 +342,19 @@
         var cabecalho =
           '<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">' +
             '<div>' +
-              '<div style="font-size:11px;font-weight:800;letter-spacing:0.08em;color:#f5d37a;">CADERNO DE CAMPO • ' + CONFIG_PASSAPORTE.tituloProjeto + '</div>' +
+              '<div style="font-size:11px;font-weight:800;letter-spacing:0.08em;color:#c89b3c;">CADERNO DE CAMPO • ' + CONFIG_PASSAPORTE.tituloProjeto + '</div>' +
               '<h3 style="margin:2px 0 0;font-size:22px;font-family:\'Playfair Display\',serif;">Passaporte Químico</h3>' +
             '</div>' +
             '<button type="button" id="atq-close-m" style="background:rgba(255,255,255,0.12);color:inherit;border:1px solid rgba(200,162,77,0.4);border-radius:10px;padding:7px 12px;cursor:pointer;font-weight:700;">✕</button>' +
           '</div>' +
           '<div style="margin-top:12px;display:flex;justify-content:space-between;font-size:12px;">' +
-            '<span>Progresso para o Vale-Brinde: <strong>' + qtd + '/' + metaAlvo + '</strong></span>' +
-            '<strong style="color:#f5d37a;">' + pct + '%</strong>' +
+            '<span>QR Codes escaneados: <strong>' + qtd + '/' + metaAlvo + '</strong></span>' +
+            '<strong style="color:#c89b3c;">' + pct + '%</strong>' +
           '</div>' +
-          '<div style="height:10px;background:rgba(255,255,255,0.12);border-radius:999px;overflow:hidden;margin-top:5px;border:1px solid rgba(200,162,77,0.3);">' +
-            '<div style="height:100%;width:' + pct + '%;background:linear-gradient(90deg,#6d4aa3,#c084fc,#f5d37a);box-shadow:0 0 14px #f5d37a;transition:width 0.4s ease;"></div>' +
+          '<div style="height:10px;background:rgba(148,163,184,0.2);border-radius:999px;overflow:hidden;margin-top:5px;border:1px solid rgba(200,162,77,0.3);">' +
+            '<div style="height:100%;width:' + pct + '%;background:linear-gradient(90deg,#6d4aa3,#c084fc,#f5d37a);transition:width 0.4s ease;"></div>' +
           '</div>' +
+          '<div style="margin-top:6px;font-size:11.5px;opacity:0.84;">📷 Os selos só são carimbados ao escanear o <strong>QR Code físico</strong> da plaquinha (pela câmera do celular ou em <strong>Escanear QR</strong>).</div>' +
           '<div class="atq-pass-tabs">' +
             '<button type="button" class="atq-pass-tab ' + (aba === 'selos' ? 'ativo' : '') + '" data-aba="selos">📖 Meus Selos (' + qtd + '/' + totalReal + ')</button>' +
             '<button type="button" class="atq-pass-tab ' + (aba === 'brinde' ? 'ativo' : '') + '" data-aba="brinde">' + (desbloqueado ? '🏆 Vale-Brinde Liberado!' : '🔒 Vale-Brinde (' + (metaAlvo - qtd) + ' restantes)') + '</button>' +
@@ -308,9 +377,9 @@
           var gridHtml = filtrados.map(function (item) {
             if (item.ok) {
               return '<a href="/plaquinha/' + encodeURIComponent(item.codigo) + '" class="atq-selo-card ok">' +
-                '<span class="atq-selo-carimbo">✓ CARIMBADO</span>' +
+                '<span class="atq-selo-carimbo">✓ QR ESCANEADO</span>' +
                 '<strong style="font-size:13px;margin-top:4px;">' + item.nome + '</strong>' +
-                '<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:#c084fc;">' + item.codigo + ' • ' + item.formula + '</span>' +
+                '<span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:#c89b3c;">' + item.codigo + ' • ' + item.formula + '</span>' +
                 '<span style="font-size:11px;opacity:0.85;">📍 ' + item.zona + '</span>' +
               '</a>';
             }
@@ -350,9 +419,9 @@
           corpo =
             '<div style="text-align:center;padding:24px 14px;">' +
               '<div style="font-size:42px;margin-bottom:8px;">🔒</div>' +
-              '<h4 style="margin:0 0 6px;font-size:18px;font-family:\'Playfair Display\',serif;">Quase lá! Faltam ' + (metaAlvo - qtd) + ' plaquinhas</h4>' +
-              '<p style="font-size:13px;opacity:0.85;max-width:440px;margin:0 auto 14px;">Escaneie os QR Codes espalhados pelas 9 zonas do campus para completar seu Passaporte e desbloquear o <strong>Cartão de Vale-Brinde</strong> com código exclusivo para o Instagram <strong>' + CONFIG_PASSAPORTE.instagramHandle + '</strong>.</p>' +
-              '<button type="button" id="atq-ver-pistas" class="atq-pass-tab ativo">Ver pistas dos QR Codes que faltam</button>' +
+              '<h4 style="margin:0 0 6px;font-size:18px;font-family:\'Playfair Display\',serif;">Faltam ' + (metaAlvo - qtd) + ' QR Codes físicos</h4>' +
+              '<p style="font-size:13px;opacity:0.85;max-width:440px;margin:0 auto 14px;">Escaneie os QR Codes espalhados pelas 9 zonas do campus para completar seu Passaporte e desbloquear o <strong>Cartão de Vale-Brinde</strong> para o Instagram <strong>' + CONFIG_PASSAPORTE.instagramHandle + '</strong>.</p>' +
+              '<button type="button" id="atq-ver-pistas" class="atq-pass-tab ativo">Ver pistas com GPS</button>' +
             '</div>';
         }
 
@@ -393,7 +462,6 @@
 
   bar.addEventListener('click', function () { abrirModal(); });
 
-  // Disparar toast + carimbo se acabou de escanear QR Code novo
   if (novoCodigoDesbloqueado) {
     obterDados().then(function (dados) {
       var nome = '', formula = '';
@@ -419,5 +487,7 @@
     }).catch(function () {
       mostrarToastSelo(novoCodigoDesbloqueado, '', '', visitadas.length, CONFIG_PASSAPORTE.metaBrinde);
     });
+  } else if (abertoSemQrCodigo) {
+    setTimeout(function () { mostrarAvisoSomenteQr(abertoSemQrCodigo); }, 350);
   }
 })();

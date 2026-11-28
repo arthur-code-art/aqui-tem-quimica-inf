@@ -29,10 +29,19 @@
     });
   }
 
-  function processarCodigo(texto) {
+  function processarCodigo(texto, viaCamera) {
     var m = String(texto || '').toUpperCase().match(/INF-G\d{2}-P\d+/);
     if (!m) return false;
-    if (navigator.vibrate) navigator.vibrate([45, 30, 60]);
+    try {
+      if (viaCamera) {
+        sessionStorage.removeItem('atq_nav_site_ts');
+        sessionStorage.setItem('atq_qr_cam_token', JSON.stringify({ codigo: m[0], ts: Date.now() }));
+      } else {
+        sessionStorage.removeItem('atq_qr_cam_token');
+        sessionStorage.setItem('atq_nav_site_ts', String(Date.now()));
+      }
+    } catch (e) {}
+    if (viaCamera && navigator.vibrate) navigator.vibrate([45, 30, 60]);
     window.location.href = '/plaquinha/' + encodeURIComponent(m[0]);
     return true;
   }
@@ -52,9 +61,10 @@
         '<div id="atq-qr-reader"></div>' +
         '<div id="atq-qr-status" style="margin:10px 0;font-size:12px;color:#c3b7dc;text-align:center;">Iniciando câmera traseira...</div>' +
         '<form id="atq-qr-manual" style="display:flex;gap:8px;margin-top:8px;">' +
-          '<input id="atq-qr-input" placeholder="Ou digite o código (ex: INF-G01-P1)" style="flex:1;padding:9px 11px;border-radius:10px;border:1px solid rgba(200,162,77,0.4);background:#0b0614;color:#fff;font-size:12px;text-transform:uppercase;">' +
+          '<input id="atq-qr-input" placeholder="Digitar código (apenas visualizar)" style="flex:1;padding:9px 11px;border-radius:10px;border:1px solid rgba(200,162,77,0.4);background:#0b0614;color:#fff;font-size:12px;text-transform:uppercase;">' +
           '<button type="submit" style="background:linear-gradient(135deg,#6d4aa3,#9333ea);color:#fff;border:1px solid #f5d37a;border-radius:10px;padding:0 14px;font-weight:700;font-size:12px;cursor:pointer;">Abrir</button>' +
         '</form>' +
+        '<div style="margin-top:6px;font-size:11px;color:#c3b7dc;text-align:center;">Para carimbar no Passaporte, escaneie o QR Code físico pela câmera.</div>' +
       '</div>';
     document.body.appendChild(modal);
 
@@ -76,7 +86,7 @@
     document.getElementById('atq-qr-manual').onsubmit = function (ev) {
       ev.preventDefault();
       var val = document.getElementById('atq-qr-input').value.trim();
-      if (!processarCodigo(val)) {
+      if (!processarCodigo(val, false)) {
         document.getElementById('atq-qr-status').textContent = '⚠️ Código inválido. Use o padrão INF-G01-P1.';
       }
     };
@@ -88,8 +98,8 @@
         { facingMode: 'environment' },
         { fps: 10, qrbox: { width: 220, height: 220 } },
         function (decodedText) {
-          if (processarCodigo(decodedText)) {
-            statusEl.textContent = '✅ Plaquinha reconhecida! Abrindo...';
+          if (processarCodigo(decodedText, true)) {
+            statusEl.textContent = '✅ QR Code reconhecido! Carimbando Passaporte...';
             ativo = false;
             scanner.stop().catch(function () {});
           } else {
@@ -100,9 +110,9 @@
       );
     }).then(function () {
       ativo = true;
-      statusEl.textContent = 'Aponte a câmera para qualquer QR Code do campus.';
+      statusEl.textContent = 'Aponte a câmera para o QR Code físico da plaquinha.';
     }).catch(function () {
-      statusEl.textContent = 'Câmera indisponível ou sem permissão. Digite o código da plaquinha abaixo.';
+      statusEl.textContent = 'Câmera indisponível aqui. Use a câmera do celular no QR Code físico para carimbar.';
     });
   });
 })();

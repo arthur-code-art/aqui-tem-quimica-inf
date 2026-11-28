@@ -1,6 +1,6 @@
 (function () {
   var CONFIG_PASSAPORTE = {
-    instagramHandle: '@INSTAGRAM_DA_SALA', // Troque pelo @ real da turma (ex: '@1inf.cefet')
+    instagramHandle: '@primeiro.gp', // Troque pelo @ real da turma (ex: '@1inf.cefet')
     metaBrinde: 38,                        // 38 = 100% das plaquinhas (altere se quiser liberar antes)
     tituloProjeto: 'AQUI TEM QUÍMICA!',
     subtituloSala: '1º Ano de Informática • CEFET-MG'
@@ -133,6 +133,7 @@
       '.atq-modal-bg{position:fixed;inset:0;z-index:10010;background:rgba(8,4,16,0.82);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:12px;font-family:"Plus Jakarta Sans",system-ui,sans-serif;}' +
       '.atq-modal-box{background:linear-gradient(160deg,#120922,#1c1033);color:#f7f3ff;width:min(760px,100%);max-height:92vh;overflow-y:auto;border-radius:20px;border:1px solid rgba(200,162,77,0.55);box-shadow:0 24px 64px rgba(0,0,0,0.65),0 0 36px rgba(168,85,247,0.35);padding:20px;}' +
       '[data-tema="claro"] .atq-modal-box{background:linear-gradient(160deg,#ffffff,#faf3e3);color:#1f1a14;}' +
+      '[data-tema="claro"] .atq-pass-fill{background:linear-gradient(90deg,#9a6d08,#c89b3c,#e7c873)!important;}' +
       '.atq-pass-tabs{display:flex;gap:8px;margin:12px 0 14px;flex-wrap:wrap;}' +
       '.atq-pass-tab{padding:8px 14px;border-radius:999px;border:1px solid rgba(200,162,77,0.45);background:rgba(74,44,109,0.28);color:inherit;font-weight:700;font-size:12px;cursor:pointer;}' +
       '.atq-pass-tab.ativo{background:linear-gradient(135deg,#6d4aa3,#9333ea);color:#fff;border-color:#f5d37a;box-shadow:0 0 16px rgba(192,132,252,0.5);}' +
@@ -352,7 +353,7 @@
             '<strong style="color:#c89b3c;">' + pct + '%</strong>' +
           '</div>' +
           '<div style="height:10px;background:rgba(148,163,184,0.2);border-radius:999px;overflow:hidden;margin-top:5px;border:1px solid rgba(200,162,77,0.3);">' +
-            '<div style="height:100%;width:' + pct + '%;background:linear-gradient(90deg,#6d4aa3,#c084fc,#f5d37a);transition:width 0.4s ease;"></div>' +
+            '<div style="height:100%;width:' + pct + '%;background:linear-gradient(90deg,#6d4aa3,#c084fc,#f5d37a);transition:width 0.4s ease;" class="atq-pass-fill"></div>' +
           '</div>' +
           '<div style="margin-top:6px;font-size:11.5px;opacity:0.84;">📷 Os selos só são carimbados ao escanear o <strong>QR Code físico</strong> da plaquinha (pela câmera do celular ou em <strong>Escanear QR</strong>).</div>' +
           '<div class="atq-pass-tabs">' +

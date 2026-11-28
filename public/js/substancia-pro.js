@@ -6,16 +6,66 @@
     'Óxido': { hex: '#d97706', soft: 'rgba(217,119,6,0.16)', icone: '🟠' }
   };
 
+  // Paleta unica compartilhada entre a legenda de Massa Molar e as esferas/ligacoes 3D
   var MASSAS = {
-    H: [1.008, 'Hidrogênio', '#ffffff'], C: [12.011, 'Carbono', '#9ca3af'], N: [14.007, 'Nitrogênio', '#3b82f6'],
-    O: [15.999, 'Oxigênio', '#ef4444'], F: [18.998, 'Flúor', '#a3e635'], Na: [22.99, 'Sódio', '#a855f7'],
-    Mg: [24.305, 'Magnésio', '#22c55e'], Al: [26.982, 'Alumínio', '#cbd5e1'], Si: [28.085, 'Silício', '#eab308'],
-    P: [30.974, 'Fósforo', '#f97316'], S: [32.06, 'Enxofre', '#facc15'], Cl: [35.45, 'Cloro', '#10b981'],
-    K: [39.098, 'Potássio', '#8b5cf6'], Ca: [40.078, 'Cálcio', '#38bdf8'], Ti: [47.867, 'Titânio', '#94a3b8'],
-    Cr: [51.996, 'Cromo', '#60a5fa'], Mn: [54.938, 'Manganês', '#f472b6'], Fe: [55.845, 'Ferro', '#ea580c'],
-    Cu: [63.546, 'Cobre', '#d97706'], Zn: [65.38, 'Zinco', '#818cf8'], Ba: [137.33, 'Bário', '#34d399'],
-    Pb: [207.2, 'Chumbo', '#64748b']
+    H:  [1.008,  'Hidrogênio', '#f8fafc'],
+    Li: [6.94,   'Lítio',      '#c084fc'],
+    B:  [10.81,  'Boro',       '#fb7185'],
+    C:  [12.011, 'Carbono',    '#64748b'],
+    N:  [14.007, 'Nitrogênio', '#3b82f6'],
+    O:  [15.999, 'Oxigênio',   '#ef4444'],
+    F:  [18.998, 'Flúor',      '#a3e635'],
+    Na: [22.99,  'Sódio',      '#a855f7'],
+    Mg: [24.305, 'Magnésio',   '#10b981'],
+    Al: [26.982, 'Alumínio',   '#cbd5e1'],
+    Si: [28.085, 'Silício',    '#eab308'],
+    P:  [30.974, 'Fósforo',    '#f97316'],
+    S:  [32.06,  'Enxofre',    '#facc15'],
+    Cl: [35.45,  'Cloro',      '#22c55e'],
+    K:  [39.098, 'Potássio',   '#8b5cf6'],
+    Ca: [40.078, 'Cálcio',     '#22c55e'],
+    Ti: [47.867, 'Titânio',    '#94a3b8'],
+    Cr: [51.996, 'Cromo',      '#60a5fa'],
+    Mn: [54.938, 'Manganês',   '#c026d3'],
+    Fe: [55.845, 'Ferro',      '#ea580c'],
+    Co: [58.933, 'Cobalto',    '#f472b6'],
+    Ni: [58.693, 'Níquel',     '#34d399'],
+    Cu: [63.546, 'Cobre',      '#d97706'],
+    Zn: [65.38,  'Zinco',      '#818cf8'],
+    Br: [79.904, 'Bromo',      '#b91c1c'],
+    Ag: [107.87, 'Prata',      '#e2e8f0'],
+    In: [114.82, 'Índio',      '#ec4899'],
+    Sn: [118.71, 'Estanho',    '#9ca3af'],
+    I:  [126.90, 'Iodo',       '#7e22ce'],
+    Ba: [137.33, 'Bário',      '#14b8a6'],
+    Pb: [207.2,  'Chumbo',     '#475569']
   };
+
+  function gerarXyzSds() {
+    var linhas = ['43', 'Dodecil sulfato de sodio'];
+    for (var i = 0; i < 12; i++) {
+      var cx = (i * 1.26).toFixed(3);
+      var cy = (i % 2 === 0 ? 0.44 : -0.44).toFixed(3);
+      linhas.push('C ' + cx + ' ' + cy + ' 0.000');
+      var s = i % 2 === 0 ? 1 : -1;
+      if (i === 0) {
+        linhas.push('H -1.020 0.100 0.000');
+        linhas.push('H 0.350 1.160 0.750');
+        linhas.push('H 0.350 1.160 -0.750');
+      } else {
+        var hy = (Number(cy) + s * 0.68).toFixed(3);
+        linhas.push('H ' + cx + ' ' + hy + ' 0.850');
+        linhas.push('H ' + cx + ' ' + hy + ' -0.850');
+      }
+    }
+    linhas.push('O 15.020 0.360 0.000');
+    linhas.push('S 16.450 -0.250 0.000');
+    linhas.push('O 16.450 -1.680 0.000');
+    linhas.push('O 17.150 0.350 1.150');
+    linhas.push('O 17.150 0.350 -1.150');
+    linhas.push('Na 18.850 0.850 0.000');
+    return linhas.join('\n');
+  }
 
   var XYZ_LOCAL = {
     'H2O': '3\nAgua\nO 0.000 0.000 0.117\nH 0.000 0.757 -0.469\nH 0.000 -0.757 -0.469',
@@ -23,21 +73,31 @@
     'H2SO4': '7\nH2SO4\nS 0.000 0.000 0.150\nO 0.000 1.240 0.850\nO 0.000 -1.240 0.850\nO 1.240 0.000 -0.820\nO -1.240 0.000 -0.820\nH 1.980 0.000 -0.220\nH -1.980 0.000 -0.220',
     'NaOH': '3\nNaOH\nNa -1.850 0.000 0.000\nO 0.000 0.000 0.000\nH 0.960 0.000 0.000',
     'Ca(OH)2': '5\nCa(OH)2\nCa 0.000 0.000 0.000\nO 2.100 0.000 0.000\nH 3.060 0.000 0.000\nO -2.100 0.000 0.000\nH -3.060 0.000 0.000',
+    'Fe(OH)3': '7\nFe(OH)3\nFe 0.000 0.000 0.250\nO 1.650 0.000 -0.250\nH 2.450 0.000 0.280\nO -0.825 1.430 -0.250\nH -1.225 2.120 0.280\nO -0.825 -1.430 -0.250\nH -1.225 -2.120 0.280',
+    'Al(OH)3': '7\nAl(OH)3\nAl 0.000 0.000 0.250\nO 1.650 0.000 -0.250\nH 2.450 0.000 0.280\nO -0.825 1.430 -0.250\nH -1.225 2.120 0.280\nO -0.825 -1.430 -0.250\nH -1.225 -2.120 0.280',
     'NH4OH': '7\nNH4OH\nN -1.200 0.000 0.000\nH -1.550 0.950 0.000\nH -1.550 -0.480 0.820\nH -1.550 -0.480 -0.820\nH -0.180 0.000 0.000\nO 1.450 0.000 0.000\nH 2.410 0.000 0.000',
     'NaCl': '8\nNaCl\nNa 0.0 0.0 0.0\nCl 2.2 0.0 0.0\nCl 0.0 2.2 0.0\nNa 2.2 2.2 0.0\nCl 0.0 0.0 2.2\nNa 2.2 0.0 2.2\nNa 0.0 2.2 2.2\nCl 2.2 2.2 2.2',
     'NaClO': '3\nNaClO\nNa -2.100 0.000 0.000\nO 0.000 0.450 0.000\nCl 1.680 0.000 0.000',
     'CaCO3': '5\nCaCO3\nC 0.000 0.000 0.000\nO 1.280 0.000 0.000\nO -0.640 1.110 0.000\nO -0.640 -1.110 0.000\nCa -2.600 0.000 0.000',
     'NaHCO3': '6\nNaHCO3\nC 0.000 0.000 0.000\nO 1.250 0.250 0.000\nO -0.550 1.150 0.000\nO -0.750 -1.120 0.000\nH -1.680 -0.860 0.000\nNa 2.850 0.000 0.000',
     'BaSO4': '6\nBaSO4\nS 0.000 0.000 0.000\nO 1.200 0.850 0.000\nO 1.200 -0.850 0.000\nO -0.850 0.000 1.200\nO -0.850 0.000 -1.200\nBa -2.950 0.000 0.000',
-    'SiO2': '5\nSiO2\nSi 0.000 0.000 0.000\nO 1.320 0.930 0.000\nO -1.320 0.930 0.000\nO 0.000 -0.930 1.320\nO 0.000 -0.930 -1.320',
+    'BaTiO3': '5\nBaTiO3\nTi 0.000 0.000 0.000\nO 1.650 0.000 0.000\nO -0.825 1.430 0.000\nO -0.825 -1.430 0.000\nBa -2.550 0.000 0.000',
+    'In2O3': '5\nIn2O3\nIn -1.550 0.000 0.000\nIn 1.550 0.000 0.000\nO 0.000 0.950 0.000\nO -2.950 -0.600 0.000\nO 2.950 -0.600 0.000',
+    'SnO2': '3\nSnO2\nSn 0.000 0.000 0.000\nO 1.750 0.000 0.000\nO -1.750 0.000 0.000',
+    'SiO2': '3\nSiO2\nSi 0.000 0.000 0.000\nO 1.550 0.000 0.000\nO -1.550 0.000 0.000',
     'TiO2': '3\nTiO2\nTi 0.000 0.000 0.000\nO 1.620 0.450 0.000\nO -1.620 0.450 0.000',
     'Cr2O3': '5\nCr2O3\nCr -1.450 0.000 0.000\nCr 1.450 0.000 0.000\nO 0.000 0.950 0.000\nO -2.750 -0.650 0.000\nO 2.750 -0.650 0.000',
     'Fe2O3': '5\nFe2O3\nFe -1.500 0.000 0.000\nFe 1.500 0.000 0.000\nO 0.000 0.920 0.000\nO -2.800 -0.650 0.000\nO 2.800 -0.650 0.000',
     'Al2O3': '5\nAl2O3\nAl -1.450 0.000 0.000\nAl 1.450 0.000 0.000\nO 0.000 0.850 0.000\nO -2.750 -0.550 0.000\nO 2.750 -0.550 0.000',
     'CaO': '2\nCaO\nCa -0.950 0.000 0.000\nO 0.950 0.000 0.000',
+    'MgO': '2\nMgO\nMg -0.950 0.000 0.000\nO 0.950 0.000 0.000',
+    'CuO': '2\nCuO\nCu -0.950 0.000 0.000\nO 0.950 0.000 0.000',
     'ZnO': '2\nZnO\nZn -0.920 0.000 0.000\nO 0.920 0.000 0.000',
     'HCl': '2\nHCl\nCl -0.450 0.000 0.000\nH 0.830 0.000 0.000',
-    'Mg(OH)2': '5\nMg(OH)2\nMg 0.000 0.000 0.000\nO 1.920 0.000 0.000\nH 2.880 0.000 0.000\nO -1.920 0.000 0.000\nH -2.880 0.000 0.000'
+    'Mg(OH)2': '5\nMg(OH)2\nMg 0.000 0.000 0.000\nO 1.920 0.000 0.000\nH 2.880 0.000 0.000\nO -1.920 0.000 0.000\nH -2.880 0.000 0.000',
+    'C12H25NaO4S': gerarXyzSds(),
+    'C12H25SO4Na': gerarXyzSds(),
+    'NaC12H25SO4': gerarXyzSds()
   };
 
   var PUBCHEM_CID = {
@@ -78,6 +138,34 @@
       } else { i++; }
     }
     return stack[0] || {};
+  }
+
+  function gerarXyzGenerico(formulaLimpa) {
+    var atomos = contarAtomos(formulaLimpa);
+    var lista = [];
+    Object.keys(atomos).forEach(function (sym) {
+      var qtd = Math.min(atomos[sym], 24);
+      for (var i = 0; i < qtd; i++) lista.push(sym);
+    });
+    if (!lista.length) return null;
+
+    var idxCentro = lista.findIndex(function (el) { return el !== 'H' && el !== 'O'; });
+    if (idxCentro === -1) idxCentro = 0;
+    var centro = lista.splice(idxCentro, 1)[0];
+
+    var linhas = [String(lista.length + 1), formulaLimpa, centro + ' 0.000 0.000 0.000'];
+    var n = lista.length;
+    var golden = Math.PI * (3 - Math.sqrt(5));
+    for (var i = 0; i < n; i++) {
+      var y = n === 1 ? 0 : 1 - (i / (n - 1)) * 2;
+      var r = Math.sqrt(Math.max(0, 1 - y * y));
+      var theta = golden * i;
+      var dist = i < 6 ? 1.62 : 2.65;
+      var x = Math.cos(theta) * r * dist;
+      var z = Math.sin(theta) * r * dist;
+      linhas.push(lista[i] + ' ' + x.toFixed(3) + ' ' + (y * dist).toFixed(3) + ' ' + z.toFixed(3));
+    }
+    return { formato: 'xyz', dados: linhas.join('\n') };
   }
 
   function calcularMassa(formula) {
@@ -126,22 +214,23 @@
   }
 
   function obterModelo3D(formulaLimpa) {
-    var cid = PUBCHEM_CID[formulaLimpa];
-    if (cid) {
-      return fetch('https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/' + cid + '/SDF?record_type=3d')
-        .then(function (r) { if (!r.ok) throw new Error('no3d'); return r.text(); })
-        .then(function (txt) { return { formato: 'sdf', dados: txt }; })
-        .catch(function () {
-          if (XYZ_LOCAL[formulaLimpa]) return { formato: 'xyz', dados: XYZ_LOCAL[formulaLimpa] };
-          return fetch('https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/' + cid + '/SDF')
-            .then(function (r) { if (!r.ok) throw new Error('no2d'); return r.text(); })
-            .then(function (txt) { return { formato: 'sdf', dados: txt }; });
-        });
+    if (XYZ_LOCAL[formulaLimpa]) {
+      return Promise.resolve({ formato: 'xyz', dados: XYZ_LOCAL[formulaLimpa] });
     }
-    if (XYZ_LOCAL[formulaLimpa]) return Promise.resolve({ formato: 'xyz', dados: XYZ_LOCAL[formulaLimpa] });
-    return fetch('https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/fastformula/' + encodeURIComponent(formulaLimpa) + '/SDF?record_type=3d')
-      .then(function (r) { if (!r.ok) throw new Error('no3d'); return r.text(); })
-      .then(function (txt) { return { formato: 'sdf', dados: txt }; });
+    var cid = PUBCHEM_CID[formulaLimpa];
+    var promessa = cid
+      ? fetch('https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/' + cid + '/SDF?record_type=3d')
+          .then(function (r) { if (!r.ok) throw new Error('no3d'); return r.text(); })
+          .then(function (txt) { return { formato: 'sdf', dados: txt }; })
+      : fetch('https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/fastformula/' + encodeURIComponent(formulaLimpa) + '/SDF?record_type=3d')
+          .then(function (r) { if (!r.ok) throw new Error('no3d'); return r.text(); })
+          .then(function (txt) { return { formato: 'sdf', dados: txt }; });
+
+    return promessa.catch(function () {
+      var gen = gerarXyzGenerico(formulaLimpa);
+      if (gen) return gen;
+      throw new Error('sem-modelo');
+    });
   }
 
   function encontrarPlaquinha(dados) {
@@ -155,7 +244,6 @@
     });
     todas.sort(function (a, b) { return String(a.oc.codigo).localeCompare(String(b.oc.codigo)); });
 
-    // 1. Buscar por codigo INF-GXX-PX na URL ou query
     var mCod = (path + ' ' + window.location.search).match(/INF-G\d{2}-P\d+/i);
     if (mCod) {
       var cod = mCod[0].toUpperCase();
@@ -163,7 +251,6 @@
       if (idx !== -1) return { atual: todas[idx], idx: idx, todas: todas };
     }
 
-    // 2. Buscar por slug (/substancia/slug ou ?slug=...)
     var slugParam = qs.get('slug') || qs.get('s') || (path.indexOf('/substancia/') === 0 ? path.replace('/substancia/', '').replace(/\/$/, '') : '');
     if (slugParam) {
       var idxS = todas.findIndex(function (x) { return String(x.sub.slug).toLowerCase() === slugParam.toLowerCase(); });
@@ -296,7 +383,6 @@
           '</div>' +
 
           '<div class="sub-panels">' +
-            // PAINEL 1: RESUMO CLEAN
             '<section class="sub-panel ativo" id="panel-resumo">' +
               '<div class="sub-grid-2">' +
                 '<div class="sub-info-box sub-card">' +
@@ -334,7 +420,6 @@
               '</div>' +
             '</section>' +
 
-            // PAINEL 2: MOLECULA 3D + MASSA MOLAR
             '<section class="sub-panel" id="panel-mol3d">' +
               '<div class="sub-card sub-info-box">' +
                 '<div class="sub-mol-head">' +
@@ -364,7 +449,6 @@
               '</div>' +
             '</section>' +
 
-            // PAINEL 3: LOCAL, GPS & PROXIMAS
             '<section class="sub-panel" id="panel-local">' +
               '<div class="sub-card sub-info-box">' +
                 '<div class="sub-kicker">📍 LOCALIZAÇÃO NO CEFET-MG CAMPUS V</div>' +
@@ -388,7 +472,6 @@
               '</div>' +
             '</section>' +
 
-            // PAINEL 4: MINI-DESAFIO + EQUIPE
             '<section class="sub-panel" id="panel-desafio">' +
               '<div class="sub-card sub-info-box">' +
                 '<div class="sub-kicker">⚡ DESAFIO RELÂMPAGO DESTA PLAQUINHA</div>' +
@@ -411,13 +494,11 @@
             '<a class="sub-card sub-pager-btn sub-pager-r" href="/plaquinha/' + encodeURIComponent(prox.oc.codigo) + '"><small>Próxima plaquinha →</small><strong>' + esc(prox.oc.codigo) + ' · ' + esc(prox.sub.nomeIupac) + '</strong></a>' +
           '</nav>';
 
-        // Animar marcador de pH
         setTimeout(function () {
           var mk = document.getElementById('sub-ph-marker');
           if (mk) mk.style.left = mk.getAttribute('data-alvo') + '%';
         }, 120);
 
-        // Controle das Abas + carregamento sob demanda da Molecula 3D
         var molCarregada = false;
         var molViewer = null;
         var tabs = Array.from(root.querySelectorAll('.sub-tab'));
@@ -454,11 +535,22 @@
             var girando = true;
             var travado = false;
 
+            // Aplica exatamente as mesmas cores de MASSAS no modelo 3D (esferas e ligacoes)
             function estilo(tipo) {
-              if (tipo === 'sp') molViewer.setStyle({}, { sphere: { scale: 0.72, colorscheme: 'Jmol' } });
-              else molViewer.setStyle({}, { stick: { radius: 0.18, colorscheme: 'Jmol' }, sphere: { scale: 0.34, colorscheme: 'Jmol' } });
+              var base = tipo === 'sp'
+                ? { sphere: { scale: 0.72, color: '#c084fc' } }
+                : { stick: { radius: 0.18, color: '#c084fc' }, sphere: { scale: 0.36, color: '#c084fc' } };
+              molViewer.setStyle({}, base);
+              Object.keys(MASSAS).forEach(function (el) {
+                var c = MASSAS[el][2];
+                var st = tipo === 'sp'
+                  ? { sphere: { scale: 0.72, color: c } }
+                  : { stick: { radius: 0.18, color: c }, sphere: { scale: 0.36, color: c } };
+                molViewer.setStyle({ elem: el }, st);
+              });
               molViewer.render();
             }
+
             estilo('bs');
             molViewer.zoomTo();
             molViewer.spin('y', 0.75);
@@ -486,11 +578,10 @@
               molViewer.render();
             });
           }).catch(function () {
-            if (ld) ld.innerHTML = 'Visualização 3D indisponível offline para <strong>' + esc(sub.formula) + '</strong>.';
+            if (ld) ld.innerHTML = 'Visualização 3D indisponível neste dispositivo para <strong>' + esc(sub.formula) + '</strong>.';
           });
         }
 
-        // Botao Ouvir Ficha
         var btnAudio = document.getElementById('sub-btn-audio');
         var falando = false;
         btnAudio.onclick = function () {
@@ -512,13 +603,11 @@
           window.speechSynthesis.speak(u);
         };
 
-        // Botao Perguntar a IA
         document.getElementById('sub-btn-ia').onclick = function () {
           if (typeof window.abrirQuimicoBotIA === 'function') window.abrirQuimicoBotIA();
           else { var f = document.getElementById('qbot-ia-fab'); if (f) f.click(); }
         };
 
-        // Botao Compartilhar
         var btnShare = document.getElementById('sub-btn-share');
         btnShare.onclick = function () {
           var payload = { title: oc.codigo + ' · ' + sub.nomeIupac, text: 'Veja a plaquinha ' + oc.codigo + ' (' + sub.nomeIupac + ') no projeto AQUI TEM QUÍMICA!', url: window.location.href };
@@ -531,7 +620,6 @@
           }
         };
 
-        // Mini-Desafio da Plaquinha (2 perguntas)
         var formulasOutras = embaralhar(Array.from(new Set(dados.map(function (s) { return s.formula; }).filter(function (f) { return f !== sub.formula; })))).slice(0, 3);
         var perguntas = [
           {

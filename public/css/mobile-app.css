@@ -1,0 +1,367 @@
+/* ==========================================================================
+   VERSAO MOBILE DEDICADA (<= 768px) — ZERO IMPACTO NO COMPUTADOR (>= 769px)
+   ========================================================================== */
+
+#atq-mob-dock {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  html, body {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+
+  body {
+    padding-bottom: calc(82px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  /* Remove ruido visual e melhora desempenho no celular */
+  #atq-fx-canvas {
+    display: none !important;
+  }
+
+  /* Oculta os 3 botoes flutuantes antigos no celular (integrados no dock e no topo) */
+  html body #atq-progresso-bar,
+  html body #atq-qr-fab,
+  html body #qbot-ia-root #qbot-ia-fab {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  /* Topo compacto em uma unica linha sem quebrar */
+  #atq-global-header {
+    padding: 8px 10px !important;
+  }
+  .atq-nav-wrap {
+    gap: 6px !important;
+  }
+  .atq-brand {
+    gap: 7px !important;
+    min-width: 0;
+  }
+  .atq-brand-icon {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 15px !important;
+    border-radius: 9px !important;
+  }
+  .atq-brand-txt strong {
+    font-size: 13.5px !important;
+    letter-spacing: -0.02em;
+  }
+  .atq-brand-txt small {
+    display: none !important;
+  }
+  .atq-nav-actions {
+    gap: 5px !important;
+  }
+  .atq-nav-ia {
+    padding: 6px 9px !important;
+    font-size: 13px !important;
+    min-height: 34px;
+  }
+  .atq-nav-ia .txt-ia {
+    display: none !important;
+  }
+  #atq-tema-toggle {
+    padding: 6px 9px !important;
+    font-size: 11px !important;
+    min-height: 34px;
+    white-space: nowrap;
+  }
+  .atq-nav-burger {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 16px !important;
+  }
+
+  /* Menu suspenso mobile limpo e facil de tocar */
+  .atq-nav-links {
+    padding: 10px 12px 14px !important;
+    gap: 6px !important;
+  }
+  .atq-nav-link {
+    padding: 11px 14px !important;
+    font-size: 14px !important;
+  }
+
+  /* Barra inferior estilo App (Mobile Dock) */
+  #atq-mob-dock {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9995;
+    min-height: 64px;
+    padding: 4px 6px calc(6px + env(safe-area-inset-bottom, 0px));
+    background: rgba(15, 8, 28, 0.96);
+    border-top: 1px solid rgba(200, 162, 77, 0.48);
+    box-shadow: 0 -8px 26px rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(14px);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  [data-tema="claro"] #atq-mob-dock {
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-top: 1.5px solid #c89b3c !important;
+    box-shadow: 0 -6px 22px rgba(138, 98, 8, 0.14) !important;
+  }
+
+  .atq-dock-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 5px 2px;
+    border: 0;
+    background: transparent;
+    color: #c3b7dc;
+    text-decoration: none;
+    font-size: 10.5px;
+    font-weight: 700;
+    cursor: pointer;
+    min-height: 48px;
+    border-radius: 10px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .atq-dock-item:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  .atq-dock-item .atq-di-ic {
+    font-size: 19px;
+    line-height: 1;
+  }
+
+  .atq-dock-item.ativo {
+    color: #f5d37a !important;
+  }
+
+  [data-tema="claro"] .atq-dock-item {
+    color: #5c5040 !important;
+  }
+
+  [data-tema="claro"] .atq-dock-item.ativo {
+    color: #9a6d08 !important;
+    background: #faf3e3;
+  }
+
+  /* Botao central de QR Code em destaque */
+  .atq-dock-qr {
+    margin-top: -18px;
+  }
+
+  .atq-dock-qr .atq-di-ic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+    background: linear-gradient(135deg, #6d4aa3, #9333ea);
+    color: #ffffff;
+    border: 2px solid #f5d37a;
+    box-shadow: 0 6px 20px rgba(147, 51, 234, 0.55);
+  }
+
+  [data-tema="claro"] .atq-dock-qr .atq-di-ic {
+    background: linear-gradient(135deg, #c89b3c, #9a6d08) !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 6px 18px rgba(184, 134, 11, 0.42) !important;
+  }
+
+  .atq-dock-badge {
+    position: absolute;
+    top: 2px;
+    right: 12%;
+    background: #f5d37a;
+    color: #140b24;
+    font-size: 9.5px;
+    font-weight: 800;
+    padding: 1px 5px;
+    border-radius: 999px;
+    line-height: 1.2;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  [data-tema="claro"] .atq-dock-badge {
+    background: #9a6d08;
+    color: #ffffff;
+  }
+
+  /* Ajuste de espacamentos, textos e blocos em todas as paginas */
+  main {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    padding-bottom: 32px !important;
+    margin-top: 12px !important;
+  }
+
+  section, article, .card, .painel,
+  #atq-escala-ph, #atq-quiz, #atq-simulador, #atq-catalogo-pro, #atq-guia-voz, #atq-mol3d-sec {
+    border-radius: 14px !important;
+    max-width: 100% !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22) !important;
+  }
+
+  /* Evita vazamento horizontal de imagens, formularios e textos longos */
+  main img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  h1 {
+    font-size: clamp(22px, 6.5vw, 30px) !important;
+    line-height: 1.16 !important;
+  }
+
+  h2 {
+    font-size: clamp(18px, 5vw, 23px) !important;
+    line-height: 1.22 !important;
+  }
+
+  /* Coluna unica limpa para grids da home, 4 classes e laboratorio */
+  .hero-grid,
+  .classes-grid,
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .stats-grid,
+  .cards-grid,
+  .class-card-grid,
+  .lab-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Pagina inicial: limpa espacamentos excessivos */
+  .hero, .hero-section {
+    padding: 16px 12px !important;
+  }
+
+  /* Pagina Mapa & GPS: controles limpos e altura amigavel ao polegar */
+  .toolbar {
+    padding: 10px !important;
+    gap: 8px !important;
+  }
+  .toolbar .grupo {
+    width: 100%;
+    gap: 6px !important;
+  }
+  .toolbar .grupo .btn {
+    flex: 1 1 auto;
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+    text-align: center;
+  }
+  .toolbar select,
+  .toolbar input[type="search"] {
+    width: 100% !important;
+  }
+  #canvas-3d-wrap,
+  #mapa-2d-canvas {
+    height: 410px !important;
+  }
+  .hud-3d, .hud-2d {
+    top: 8px !important;
+    right: 8px !important;
+    gap: 4px !important;
+  }
+  .hud-3d .btn, .hud-2d .btn {
+    padding: 5px 8px !important;
+    font-size: 11px !important;
+  }
+  .tabela-sec {
+    padding: 14px 12px !important;
+  }
+  .tabela-wrap {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Pagina Plaquinhas e Substancia */
+  .pl-hero, .pl-filtros {
+    padding: 14px !important;
+  }
+  .pl-chips-row {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    width: 100%;
+  }
+  .pl-chips-row::-webkit-scrollbar {
+    display: none;
+  }
+  .pl-chip-classe, .pl-visao-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+  .pl-prog-box {
+    width: 100%;
+  }
+  #pl-btn-random {
+    width: 100%;
+  }
+
+  /* Chat QuimicoBot IA em formato janela mobile limpa acima do dock */
+  #qbot-ia-panel {
+    left: 8px !important;
+    right: 8px !important;
+    bottom: calc(70px + env(safe-area-inset-bottom, 0px)) !important;
+    width: auto !important;
+    height: min(520px, calc(100dvh - 138px)) !important;
+    border-radius: 16px !important;
+  }
+
+  /* Modais (Passaporte, Scanner, Previa) ajustados a tela do celular */
+  .atq-modal-bg,
+  #atq-qr-modal,
+  .pl-modal-bg {
+    padding: 8px 8px calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+    align-items: flex-end !important;
+  }
+  .atq-modal-box,
+  .atq-qr-box,
+  .pl-modal-box {
+    width: 100% !important;
+    max-height: calc(100dvh - 110px) !important;
+    border-radius: 18px !important;
+    padding: 15px !important;
+  }
+  .atq-selo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  /* Toast de carimbo posicionado abaixo do topo */
+  #atq-toast-selo {
+    top: 62px !important;
+    width: calc(100vw - 20px) !important;
+    max-width: 420px !important;
+    padding: 10px 12px !important;
+  }
+
+  /* Evita zoom automatico no iOS ao focar inputs */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+@media print {
+  #atq-mob-dock {
+    display: none !important;
+  }
+}

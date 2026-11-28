@@ -1,9 +1,11 @@
 /* ==========================================================================
-   VERSAO MOBILE DEDICADA (<= 768px) — ZERO IMPACTO NO COMPUTADOR (>= 769px)
+   VERSAO MOBILE CLEAN DEDICADA (<= 768px) — ZERO ALTERACAO NO COMPUTADOR
    ========================================================================== */
 
-#atq-mob-dock {
-  display: none;
+#atq-mob-dock,
+#atq-mob-home,
+.atq-mob-only {
+  display: none !important;
 }
 
 @media (max-width: 768px) {
@@ -13,15 +15,16 @@
   }
 
   body {
-    padding-bottom: calc(82px + env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)) !important;
   }
 
-  /* Remove ruido visual e melhora desempenho no celular */
+  /* Remove fundo neon/gradientes pesados e particulas no celular */
+  body::before,
   #atq-fx-canvas {
     display: none !important;
   }
 
-  /* Oculta os 3 botoes flutuantes antigos no celular (integrados no dock e no topo) */
+  /* Oculta os 3 botoes flutuantes antigos (centralizados no app bar) */
   html body #atq-progresso-bar,
   html body #atq-qr-fab,
   html body #qbot-ia-root #qbot-ia-fab {
@@ -30,64 +33,447 @@
     pointer-events: none !important;
   }
 
-  /* Topo compacto em uma unica linha sem quebrar */
+  .atq-mob-only {
+    display: block !important;
+  }
+
+  /* Topo super limpo (52px) */
   #atq-global-header {
-    padding: 8px 10px !important;
+    padding: 8px 12px !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(12px);
   }
   .atq-nav-wrap {
-    gap: 6px !important;
+    gap: 8px !important;
   }
   .atq-brand {
-    gap: 7px !important;
+    gap: 8px !important;
     min-width: 0;
   }
   .atq-brand-icon {
-    width: 32px !important;
-    height: 32px !important;
-    font-size: 15px !important;
-    border-radius: 9px !important;
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 14px !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
   }
   .atq-brand-txt strong {
-    font-size: 13.5px !important;
-    letter-spacing: -0.02em;
+    font-size: 14px !important;
+    letter-spacing: -0.01em;
   }
   .atq-brand-txt small {
     display: none !important;
   }
   .atq-nav-actions {
-    gap: 5px !important;
+    gap: 6px !important;
   }
-  .atq-nav-ia {
-    padding: 6px 9px !important;
-    font-size: 13px !important;
-    min-height: 34px;
+  .atq-nav-ia,
+  #atq-tema-toggle,
+  .atq-nav-burger {
+    width: 34px !important;
+    height: 34px !important;
+    padding: 0 !important;
+    border-radius: 10px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 15px !important;
+    box-shadow: none !important;
   }
   .atq-nav-ia .txt-ia {
     display: none !important;
   }
-  #atq-tema-toggle {
-    padding: 6px 9px !important;
-    font-size: 11px !important;
-    min-height: 34px;
-    white-space: nowrap;
-  }
-  .atq-nav-burger {
-    width: 34px !important;
-    height: 34px !important;
-    font-size: 16px !important;
+
+  /* ==================== HOME MOBILE CLEAN ==================== */
+  body.atq-has-mob-home:not(.atq-mob-full-home) main,
+  body.atq-has-mob-home:not(.atq-mob-full-home) #atq-extras-root,
+  body.atq-has-mob-home:not(.atq-mob-full-home) #atq-catalogo-pro,
+  body.atq-has-mob-home:not(.atq-mob-full-home) #atq-escala-ph,
+  body.atq-has-mob-home:not(.atq-mob-full-home) #atq-quiz,
+  body.atq-has-mob-home:not(.atq-mob-full-home) #atq-simulador,
+  body.atq-has-mob-home:not(.atq-mob-full-home) footer {
+    display: none !important;
   }
 
-  /* Menu suspenso mobile limpo e facil de tocar */
-  .atq-nav-links {
-    padding: 10px 12px 14px !important;
+  #atq-mob-home {
+    display: flex !important;
+    flex-direction: column;
+    gap: 14px;
+    padding: 14px 14px 20px;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  .mh-top {
+    padding: 4px 2px 0;
+  }
+  .mh-kicker {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #f5d37a;
+    text-transform: uppercase;
+  }
+  [data-tema="claro"] .mh-kicker {
+    color: #9a6d08;
+  }
+  .mh-title {
+    margin: 4px 0 2px;
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 24px !important;
+    line-height: 1.15 !important;
+    text-shadow: none !important;
+  }
+  .mh-sub {
+    margin: 0;
+    font-size: 13px;
+    opacity: 0.78;
+    line-height: 1.4;
+  }
+
+  /* Busca limpa */
+  .mh-search-wrap {
+    position: relative;
+  }
+  #mh-search {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 13px;
+    border: 1px solid rgba(200, 162, 77, 0.36);
+    background: #150c26;
+    color: #f7f3ff;
+    font-size: 15px !important;
+    outline: none;
+  }
+  [data-tema="claro"] #mh-search {
+    background: #ffffff !important;
+    color: #1f1a14 !important;
+    border: 1px solid rgba(184, 134, 11, 0.36) !important;
+  }
+  #mh-results {
+    display: none;
+    margin-top: 8px;
+    border-radius: 13px;
+    border: 1px solid rgba(200, 162, 77, 0.34);
+    background: #150c26;
+    overflow: hidden;
+  }
+  [data-tema="claro"] #mh-results {
+    background: #ffffff;
+    border-color: rgba(184, 134, 11, 0.32);
+  }
+  .mh-res-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 11px 13px;
+    border-bottom: 1px solid rgba(200, 162, 77, 0.14);
+    text-decoration: none;
+    color: inherit;
+  }
+  .mh-res-item:last-child { border-bottom: 0; }
+  .mh-res-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: #f5d37a;
+  }
+  [data-tema="claro"] .mh-res-code { color: #9a6d08; }
+
+  /* Cartao principal QR + Passaporte */
+  .mh-hero-card {
+    padding: 16px;
+    border-radius: 16px;
+    background: #170d2b;
+    border: 1px solid rgba(200, 162, 77, 0.38);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  [data-tema="claro"] .mh-hero-card {
+    background: #ffffff;
+    border: 1px solid rgba(184, 134, 11, 0.34);
+  }
+  .mh-scan-btn {
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: 12px;
+    border: 0;
+    background: linear-gradient(135deg, #6d4aa3, #9333ea);
+    color: #ffffff !important;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  [data-tema="claro"] .mh-scan-btn {
+    background: linear-gradient(135deg, #c89b3c, #9a6d08) !important;
+  }
+  .mh-pass-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 2px;
+    cursor: pointer;
+  }
+  .mh-prog-bar {
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.2);
+    overflow: hidden;
+    margin-top: 6px;
+  }
+  .mh-prog-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #9333ea, #f5d37a);
+  }
+  [data-tema="claro"] .mh-prog-fill {
+    background: linear-gradient(90deg, #9a6d08, #d4a024);
+  }
+
+  /* Grade limpa 2x2 de secoes */
+  .mh-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .mh-tile {
+    padding: 14px;
+    border-radius: 14px;
+    background: #150c26;
+    border: 1px solid rgba(200, 162, 77, 0.24);
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
+    cursor: pointer;
+  }
+  [data-tema="claro"] .mh-tile {
+    background: #ffffff;
+    border-color: rgba(184, 134, 11, 0.28);
+  }
+  .mh-tile-ic {
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .mh-tile strong {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .mh-tile span {
+    font-size: 11.5px;
+    opacity: 0.72;
+  }
+
+  /* Atalhos secundarios em linha */
+  .mh-quick-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .mh-pill-btn {
+    padding: 11px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(200, 162, 77, 0.28);
+    background: rgba(255, 255, 255, 0.04);
+    color: inherit;
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  [data-tema="claro"] .mh-pill-btn {
+    background: #faf3e3;
+    color: #5c4308 !important;
+    border-color: rgba(184, 134, 11, 0.34);
+  }
+
+  .mh-toggle-full {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 11px;
+    border: 1px dashed rgba(200, 162, 77, 0.36);
+    background: transparent;
+    color: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    opacity: 0.85;
+    cursor: pointer;
+  }
+
+  .mh-safety {
+    font-size: 11.5px;
+    line-height: 1.45;
+    opacity: 0.74;
+    padding: 10px 12px;
+    border-radius: 11px;
+    border-left: 3px solid #ef4444;
+    background: rgba(239, 68, 68, 0.08);
+  }
+
+  /* ==================== SUBPAGINAS CLEAN NO CELULAR ==================== */
+  main {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 10px 12px 26px !important;
+    margin-top: 0 !important;
+  }
+
+  section, article, .card, .painel, .toolbar, .tabela-sec, .viewport-card,
+  #atq-escala-ph, #atq-quiz, #atq-simulador, #atq-catalogo-pro, #atq-guia-voz, #atq-mol3d-sec {
+    border-radius: 14px !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    max-width: 100% !important;
+  }
+
+  .atq-glow-card::before,
+  .atq-glow-card::after {
+    display: none !important;
+  }
+  .atq-glow-card:hover {
+    transform: none !important;
+  }
+
+  main img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .hero-grid, .classes-grid, .grid-2, .grid-3, .grid-4,
+  .stats-grid, .cards-grid, .class-card-grid, .lab-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Pagina /plaquinhas enxuta no celular */
+  .pl-hero {
+    padding: 14px !important;
+    gap: 10px !important;
+    margin-bottom: 10px !important;
+  }
+  .pl-hero .pl-kicker,
+  .pl-hero p,
+  #pl-btn-random {
+    display: none !important;
+  }
+  .pl-hero h1 {
+    font-size: 21px !important;
+  }
+  .pl-prog-box {
+    width: 100%;
+    padding: 8px 11px !important;
+  }
+  .pl-filtros {
+    padding: 12px !important;
+    gap: 10px !important;
+    margin-bottom: 12px !important;
+  }
+  .pl-filtros-top > .pl-chips-row:last-child {
+    display: none !important;
+  }
+  .pl-chips-row {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    scrollbar-width: none;
+    width: 100%;
+    padding-bottom: 2px;
+  }
+  .pl-chips-row::-webkit-scrollbar { display: none; }
+  .pl-chip-classe { flex: 0 0 auto; white-space: nowrap; padding: 6px 11px !important; font-size: 12px !important; }
+  .pl-controls-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .pl-controls-grid.mob-fechado select {
+    display: none !important;
+  }
+  .pl-card {
+    padding: 13px !important;
+    gap: 9px !important;
+  }
+  .pl-desc,
+  .pl-btn-prev {
+    display: none !important;
+  }
+  .pl-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* Pagina /mapa enxuta no celular */
+  .toolbar {
+    padding: 10px !important;
+    gap: 8px !important;
+    margin-bottom: 10px !important;
+  }
+  .toolbar .grupo {
+    width: 100%;
     gap: 6px !important;
   }
-  .atq-nav-link {
-    padding: 11px 14px !important;
-    font-size: 14px !important;
+  .toolbar .grupo .btn {
+    flex: 1 1 auto;
+    padding: 8px 8px !important;
+    font-size: 12px !important;
+  }
+  #btn-modo-coord {
+    display: none !important;
+  }
+  .toolbar .grupo.mob-fechado {
+    display: none !important;
+  }
+  .toolbar select,
+  .toolbar input[type="search"] {
+    width: 100% !important;
+  }
+  .legenda {
+    font-size: 11px !important;
+    gap: 8px !important;
+    margin-bottom: 8px !important;
+  }
+  #canvas-3d-wrap,
+  #mapa-2d-canvas {
+    height: 390px !important;
+  }
+  .hud-3d .btn,
+  .hud-2d .btn {
+    padding: 5px 8px !important;
+    font-size: 11px !important;
+  }
+  .tabela-sec.mob-fechado .tabela-wrap {
+    display: none !important;
   }
 
-  /* Barra inferior estilo App (Mobile Dock) */
+  .atq-mob-mini-toggle {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(200, 162, 77, 0.34);
+    background: rgba(255, 255, 255, 0.05);
+    color: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+  }
+  [data-tema="claro"] .atq-mob-mini-toggle {
+    background: #faf3e3;
+    color: #6b4e08;
+  }
+
+  /* ==================== BARRA INFERIOR CLEAN ==================== */
   #atq-mob-dock {
     display: grid !important;
     grid-template-columns: repeat(5, 1fr);
@@ -97,21 +483,16 @@
     right: 0;
     bottom: 0;
     z-index: 9995;
-    min-height: 64px;
-    padding: 4px 6px calc(6px + env(safe-area-inset-bottom, 0px));
-    background: rgba(15, 8, 28, 0.96);
-    border-top: 1px solid rgba(200, 162, 77, 0.48);
-    box-shadow: 0 -8px 26px rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(14px);
+    height: calc(60px + env(safe-area-inset-bottom, 0px));
+    padding: 4px 4px env(safe-area-inset-bottom, 0px);
+    background: rgba(14, 8, 26, 0.97);
+    border-top: 1px solid rgba(200, 162, 77, 0.34);
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   }
-
   [data-tema="claro"] #atq-mob-dock {
-    background: rgba(255, 255, 255, 0.98) !important;
-    border-top: 1.5px solid #c89b3c !important;
-    box-shadow: 0 -6px 22px rgba(138, 98, 8, 0.14) !important;
+    background: #ffffff !important;
+    border-top: 1px solid rgba(184, 134, 11, 0.32) !important;
   }
-
   .atq-dock-item {
     position: relative;
     display: flex;
@@ -119,225 +500,81 @@
     align-items: center;
     justify-content: center;
     gap: 2px;
-    padding: 5px 2px;
+    padding: 4px 2px;
     border: 0;
     background: transparent;
-    color: #c3b7dc;
+    color: #a99bc4;
     text-decoration: none;
-    font-size: 10.5px;
+    font-size: 10px;
     font-weight: 700;
     cursor: pointer;
-    min-height: 48px;
-    border-radius: 10px;
+    min-height: 46px;
     -webkit-tap-highlight-color: transparent;
   }
-
-  .atq-dock-item:hover {
-    transform: none !important;
-    box-shadow: none !important;
-  }
-
   .atq-dock-item .atq-di-ic {
-    font-size: 19px;
+    font-size: 18px;
     line-height: 1;
   }
-
   .atq-dock-item.ativo {
     color: #f5d37a !important;
   }
-
   [data-tema="claro"] .atq-dock-item {
-    color: #5c5040 !important;
+    color: #6e6252 !important;
   }
-
   [data-tema="claro"] .atq-dock-item.ativo {
     color: #9a6d08 !important;
-    background: #faf3e3;
   }
-
-  /* Botao central de QR Code em destaque */
-  .atq-dock-qr {
-    margin-top: -18px;
-  }
-
   .atq-dock-qr .atq-di-ic {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 21px;
+    font-size: 18px;
     background: linear-gradient(135deg, #6d4aa3, #9333ea);
     color: #ffffff;
-    border: 2px solid #f5d37a;
-    box-shadow: 0 6px 20px rgba(147, 51, 234, 0.55);
   }
-
   [data-tema="claro"] .atq-dock-qr .atq-di-ic {
     background: linear-gradient(135deg, #c89b3c, #9a6d08) !important;
-    border-color: #ffffff !important;
-    box-shadow: 0 6px 18px rgba(184, 134, 11, 0.42) !important;
   }
-
   .atq-dock-badge {
     position: absolute;
     top: 2px;
-    right: 12%;
+    right: 16%;
     background: #f5d37a;
     color: #140b24;
-    font-size: 9.5px;
+    font-size: 9px;
     font-weight: 800;
     padding: 1px 5px;
     border-radius: 999px;
-    line-height: 1.2;
     font-family: 'JetBrains Mono', monospace;
   }
-
   [data-tema="claro"] .atq-dock-badge {
     background: #9a6d08;
     color: #ffffff;
   }
 
-  /* Ajuste de espacamentos, textos e blocos em todas as paginas */
-  main {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-    padding-bottom: 32px !important;
-    margin-top: 12px !important;
-  }
-
-  section, article, .card, .painel,
-  #atq-escala-ph, #atq-quiz, #atq-simulador, #atq-catalogo-pro, #atq-guia-voz, #atq-mol3d-sec {
-    border-radius: 14px !important;
-    max-width: 100% !important;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22) !important;
-  }
-
-  /* Evita vazamento horizontal de imagens, formularios e textos longos */
-  main img {
-    max-width: 100% !important;
-    height: auto !important;
-  }
-
-  h1 {
-    font-size: clamp(22px, 6.5vw, 30px) !important;
-    line-height: 1.16 !important;
-  }
-
-  h2 {
-    font-size: clamp(18px, 5vw, 23px) !important;
-    line-height: 1.22 !important;
-  }
-
-  /* Coluna unica limpa para grids da home, 4 classes e laboratorio */
-  .hero-grid,
-  .classes-grid,
-  .grid-2,
-  .grid-3,
-  .grid-4,
-  .stats-grid,
-  .cards-grid,
-  .class-card-grid,
-  .lab-grid {
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
-  }
-
-  /* Pagina inicial: limpa espacamentos excessivos */
-  .hero, .hero-section {
-    padding: 16px 12px !important;
-  }
-
-  /* Pagina Mapa & GPS: controles limpos e altura amigavel ao polegar */
-  .toolbar {
-    padding: 10px !important;
-    gap: 8px !important;
-  }
-  .toolbar .grupo {
-    width: 100%;
-    gap: 6px !important;
-  }
-  .toolbar .grupo .btn {
-    flex: 1 1 auto;
-    padding: 8px 10px !important;
-    font-size: 12px !important;
-    text-align: center;
-  }
-  .toolbar select,
-  .toolbar input[type="search"] {
-    width: 100% !important;
-  }
-  #canvas-3d-wrap,
-  #mapa-2d-canvas {
-    height: 410px !important;
-  }
-  .hud-3d, .hud-2d {
-    top: 8px !important;
-    right: 8px !important;
-    gap: 4px !important;
-  }
-  .hud-3d .btn, .hud-2d .btn {
-    padding: 5px 8px !important;
-    font-size: 11px !important;
-  }
-  .tabela-sec {
-    padding: 14px 12px !important;
-  }
-  .tabela-wrap {
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* Pagina Plaquinhas e Substancia */
-  .pl-hero, .pl-filtros {
-    padding: 14px !important;
-  }
-  .pl-chips-row {
-    flex-wrap: nowrap !important;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    width: 100%;
-  }
-  .pl-chips-row::-webkit-scrollbar {
-    display: none;
-  }
-  .pl-chip-classe, .pl-visao-btn {
-    flex: 0 0 auto;
-    white-space: nowrap;
-  }
-  .pl-prog-box {
-    width: 100%;
-  }
-  #pl-btn-random {
-    width: 100%;
-  }
-
-  /* Chat QuimicoBot IA em formato janela mobile limpa acima do dock */
+  /* Chat IA e Modais limpos na tela mobile */
   #qbot-ia-panel {
     left: 8px !important;
     right: 8px !important;
-    bottom: calc(70px + env(safe-area-inset-bottom, 0px)) !important;
+    bottom: calc(66px + env(safe-area-inset-bottom, 0px)) !important;
     width: auto !important;
-    height: min(520px, calc(100dvh - 138px)) !important;
+    height: min(500px, calc(100dvh - 130px)) !important;
     border-radius: 16px !important;
   }
-
-  /* Modais (Passaporte, Scanner, Previa) ajustados a tela do celular */
   .atq-modal-bg,
   #atq-qr-modal,
   .pl-modal-bg {
-    padding: 8px 8px calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+    padding: 8px 8px calc(66px + env(safe-area-inset-bottom, 0px)) !important;
     align-items: flex-end !important;
   }
   .atq-modal-box,
   .atq-qr-box,
   .pl-modal-box {
     width: 100% !important;
-    max-height: calc(100dvh - 110px) !important;
+    max-height: calc(100dvh - 104px) !important;
     border-radius: 18px !important;
     padding: 15px !important;
   }
@@ -345,23 +582,19 @@
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 8px !important;
   }
-
-  /* Toast de carimbo posicionado abaixo do topo */
   #atq-toast-selo {
-    top: 62px !important;
+    top: 58px !important;
     width: calc(100vw - 20px) !important;
-    max-width: 420px !important;
+    max-width: 400px !important;
     padding: 10px 12px !important;
   }
-
-  /* Evita zoom automatico no iOS ao focar inputs */
   input, select, textarea {
     font-size: 16px !important;
   }
 }
 
 @media print {
-  #atq-mob-dock {
+  #atq-mob-dock, #atq-mob-home, .atq-mob-only {
     display: none !important;
   }
 }

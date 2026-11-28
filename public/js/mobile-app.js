@@ -382,3 +382,37 @@
   });
 })();
 /* ATQ_MOB_4FUNC_JS_FIM */
+
+/* ATQ_MOB_TABELA_JS_INICIO */
+(function () {
+  function ajustarTabelaMobile() {
+    var scrollWrap = document.querySelector('.tabela-scroll');
+    if (!scrollWrap || !document.getElementById('tabela-grid')) return;
+    if (document.getElementById('atq-mob-tab-zoom')) return;
+
+    var painel = scrollWrap.closest('.painel') || scrollWrap.parentElement;
+    var dica = Array.from(painel.querySelectorAll('div, span')).find(function (el) {
+      return el.children.length === 0 && /deslize horizontalmente/i.test(el.textContent || '');
+    });
+
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.id = 'atq-mob-tab-zoom';
+    btn.className = 'atq-mob-tab-zoom-btn';
+    btn.textContent = '🔍 Ampliar tabela';
+    btn.onclick = function () {
+      var ampliada = scrollWrap.classList.toggle('mob-zoom');
+      btn.textContent = ampliada ? '📐 Ajustar à tela' : '🔍 Ampliar tabela';
+    };
+
+    if (dica && dica.parentNode) {
+      dica.classList.add('atq-mob-hide-hint');
+      dica.parentNode.insertBefore(btn, dica.nextSibling);
+    } else {
+      scrollWrap.parentNode.insertBefore(btn, scrollWrap);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', ajustarTabelaMobile);
+})();
+/* ATQ_MOB_TABELA_JS_FIM */

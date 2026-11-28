@@ -253,3 +253,132 @@
     setTimeout(ajustarIconeTema, 20);
   });
 })();
+
+/* ATQ_MOB_4FUNC_JS_INICIO */
+(function () {
+  var DEFS = [
+    { key: 'acidos', label: 'Ácidos', cor: '#ef4444', rx: /\b[áa]cidos\b/i },
+    { key: 'bases',  label: 'Bases',  cor: '#2563eb', rx: /\bbases\b|\bhidr[óo]xidos\b/i },
+    { key: 'sais',   label: 'Sais',   cor: '#16a34a', rx: /\bsais\b/i },
+    { key: 'oxidos', label: 'Óxidos', cor: '#d97706', rx: /\b[óo]xidos\b/i }
+  ];
+
+  function montarCarrossel4Funcoes() {
+    var p = window.location.pathname.toLowerCase();
+    if (p.indexOf('/classes') !== 0 && p !== '/' && p !== '/index.html') return;
+    if (document.querySelector('.atq-mob-func-bar')) return;
+
+    var raiz = document.querySelector('main') || document.body;
+    var titulos = Array.from(raiz.querySelectorAll('h2, h3, h4')).filter(function (el) {
+      if (el.closest('#atq-mob-home, #atq-catalogo-pro, #atq-extras-root, #atq-escala-ph, #atq-quiz, #atq-simulador, #qbot-ia-root')) return false;
+      var txt = (el.textContent || '').trim();
+      return txt.length > 0 && txt.length < 48;
+    });
+
+    var achados = [null, null, null, null];
+    titulos.forEach(function (h) {
+      var txt = (h.textContent || '').trim();
+      var matches = [];
+      DEFS.forEach(function (d, idx) {
+        if (d.rx.test(txt)) matches.push(idx);
+      });
+      if (matches.length === 1 && !achados[matches[0]]) {
+        achados[matches[0]] = h;
+      }
+    });
+
+    if (achados.some(function (x) { return !x; })) return;
+
+    // Encontrar o container comum mais proximo dos 4 cartoes
+    var lca = achados[0].parentElement;
+    while (lca && lca !== document.body) {
+      if (achados.every(function (h) { return lca.contains(h); })) break;
+      lca = lca.parentElement;
+    }
+    if (!lca) return;
+
+    var cards = achados.map(function (h) {
+      var cur = h;
+      while (cur.parentElement && cur.parentElement !== lca) cur = cur.parentElement;
+      return cur;
+    });
+
+    if (new Set(cards).size !== 4) return;
+
+    var atual = 0;
+    var hash = decodeURIComponent(window.location.hash || '').toLowerCase();
+    DEFS.forEach(function (d, i) {
+      if (hash.indexOf(d.key) !== -1) atual = i;
+    });
+
+    var bar = document.createElement('div');
+    bar.className = 'atq-mob-func-bar';
+    bar.setAttribute('role', 'tablist');
+    bar.setAttribute('aria-label', 'Escolher função inorgânica');
+    bar.innerHTML = DEFS.map(function (d, i) {
+      return '<button type="button" class="atq-mob-func-btn" role="tab" data-idx="' + i + '" style="--fn-cor:' + d.cor + ';">' +
+        '<span class="atq-mob-func-dot" style="background:' + d.cor + ';"></span>' +
+        '<span>' + d.label + '</span>' +
+      '</button>';
+    }).join('');
+
+    var pager = document.createElement('div');
+    pager.className = 'atq-mob-func-pager';
+    pager.innerHTML =
+      '<button type="button" class="atq-mob-func-nav" id="atq-fn-prev">← Anterior</button>' +
+      '<span class="atq-mob-func-pos" id="atq-fn-pos">1 / 4 · Ácidos</span>' +
+      '<button type="button" class="atq-mob-func-nav" id="atq-fn-next">Próxima →</button>';
+
+    cards[0].parentNode.insertBefore(bar, cards[0]);
+    cards[3].parentNode.insertBefore(pager, cards[3].nextSibling);
+
+    function mostrar(idx, rolarTopo) {
+      atual = (idx + 4) % 4;
+      cards.forEach(function (c, i) {
+        var ativo = i === atual;
+        c.classList.toggle('atq-mob-func-hidden', !ativo);
+        c.classList.toggle('atq-mob-func-active', ativo);
+      });
+
+      Array.from(bar.querySelectorAll('.atq-mob-func-btn')).forEach(function (b, i) {
+        var on = i === atual;
+        b.classList.toggle('ativo', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+
+      var posEl = document.getElementById('atq-fn-pos');
+      if (posEl) posEl.textContent = (atual + 1) + ' / 4 · ' + DEFS[atual].label;
+
+      // Aciona o Guardiao de Contraste WCAG no cartao recem-exibido
+      var ping = document.createElement('span');
+      ping.style.display = 'none';
+      cards[atual].appendChild(ping);
+      setTimeout(function () { if (ping.parentNode) ping.remove(); }, 30);
+
+      if (rolarTopo) {
+        bar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    Array.from(bar.querySelectorAll('.atq-mob-func-btn')).forEach(function (b) {
+      b.onclick = function () { mostrar(Number(b.getAttribute('data-idx')), false); };
+    });
+    document.getElementById('atq-fn-prev').onclick = function () { mostrar(atual - 1, true); };
+    document.getElementById('atq-fn-next').onclick = function () { mostrar(atual + 1, true); };
+
+    window.addEventListener('hashchange', function () {
+      var h = decodeURIComponent(window.location.hash || '').toLowerCase();
+      DEFS.forEach(function (d, i) {
+        if (h.indexOf(d.key) !== -1) mostrar(i, false);
+      });
+    });
+
+    mostrar(atual, false);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    montarCarrossel4Funcoes();
+    setTimeout(montarCarrossel4Funcoes, 500);
+  });
+})();
+/* ATQ_MOB_4FUNC_JS_FIM */

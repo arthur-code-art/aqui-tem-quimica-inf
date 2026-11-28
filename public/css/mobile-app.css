@@ -598,3 +598,133 @@
     display: none !important;
   }
 }
+
+/* ATQ_MOB_4FUNC_INICIO */
+.atq-mob-func-bar,
+.atq-mob-func-pager {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .atq-mob-func-hidden {
+    display: none !important;
+  }
+
+  .atq-mob-func-active {
+    animation: atqMobFuncIn 0.28s ease !important;
+  }
+
+  @keyframes atqMobFuncIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .atq-mob-func-bar {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    gap: 6px;
+    margin: 0 0 12px;
+    padding: 6px;
+    border-radius: 14px;
+    position: sticky;
+    top: 52px;
+    z-index: 40;
+    background: rgba(16, 9, 30, 0.96);
+    border: 1px solid rgba(200, 162, 77, 0.36);
+    backdrop-filter: blur(10px);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  [data-tema="claro"] .atq-mob-func-bar {
+    background: rgba(255, 255, 255, 0.97) !important;
+    border-color: rgba(184, 134, 11, 0.36) !important;
+  }
+
+  .atq-mob-func-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 8px 4px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: #c3b7dc;
+    font-size: 11.5px;
+    font-weight: 800;
+    cursor: pointer;
+    min-height: 44px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  [data-tema="claro"] .atq-mob-func-btn {
+    color: #5c5040 !important;
+  }
+
+  .atq-mob-func-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .atq-mob-func-btn.ativo {
+    background: var(--fn-cor, #7c4dff) !important;
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.28);
+  }
+
+  .atq-mob-func-btn.ativo .atq-mob-func-dot {
+    background: #ffffff !important;
+  }
+
+  .atq-mob-func-pager {
+    display: flex !important;
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 8px 10px;
+    border-radius: 14px;
+    background: rgba(20, 11, 36, 0.92);
+    border: 1px solid rgba(200, 162, 77, 0.32);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  [data-tema="claro"] .atq-mob-func-pager {
+    background: #ffffff !important;
+    border-color: rgba(184, 134, 11, 0.32) !important;
+  }
+
+  .atq-mob-func-nav {
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(200, 162, 77, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+    color: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  [data-tema="claro"] .atq-mob-func-nav {
+    background: #faf3e3 !important;
+    color: #6b4e08 !important;
+    border-color: rgba(184, 134, 11, 0.38) !important;
+  }
+
+  .atq-mob-func-pos {
+    font-size: 12px;
+    font-weight: 800;
+    opacity: 0.88;
+    text-align: center;
+  }
+}
+/* ATQ_MOB_4FUNC_FIM */

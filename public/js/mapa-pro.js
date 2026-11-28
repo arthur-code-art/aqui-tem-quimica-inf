@@ -495,7 +495,10 @@
 
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(42, Math.max(1, wrap.clientWidth) / Math.max(1, wrap.clientHeight), 0.5, 320);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2.5));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.08;
+    renderer.outputEncoding = THREE.sRGBEncoding;
     renderer.setSize(wrap.clientWidth, wrap.clientHeight);
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;

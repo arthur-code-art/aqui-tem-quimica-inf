@@ -6,104 +6,52 @@
     'Óxido': { hex: '#d97706', soft: 'rgba(217,119,6,0.16)', icone: '🟠' }
   };
 
-  // Paleta unica compartilhada entre a legenda de Massa Molar e as esferas/ligacoes 3D
+  // Paleta unica (massa, nome, cor hex sincronizada 3D + legenda, raio 3D)
   var MASSAS = {
-    H:  [1.008,  'Hidrogênio', '#f8fafc'],
-    Li: [6.94,   'Lítio',      '#c084fc'],
-    B:  [10.81,  'Boro',       '#fb7185'],
-    C:  [12.011, 'Carbono',    '#64748b'],
-    N:  [14.007, 'Nitrogênio', '#3b82f6'],
-    O:  [15.999, 'Oxigênio',   '#ef4444'],
-    F:  [18.998, 'Flúor',      '#a3e635'],
-    Na: [22.99,  'Sódio',      '#a855f7'],
-    Mg: [24.305, 'Magnésio',   '#10b981'],
-    Al: [26.982, 'Alumínio',   '#cbd5e1'],
-    Si: [28.085, 'Silício',    '#eab308'],
-    P:  [30.974, 'Fósforo',    '#f97316'],
-    S:  [32.06,  'Enxofre',    '#facc15'],
-    Cl: [35.45,  'Cloro',      '#22c55e'],
-    K:  [39.098, 'Potássio',   '#8b5cf6'],
-    Ca: [40.078, 'Cálcio',     '#22c55e'],
-    Ti: [47.867, 'Titânio',    '#94a3b8'],
-    Cr: [51.996, 'Cromo',      '#60a5fa'],
-    Mn: [54.938, 'Manganês',   '#c026d3'],
-    Fe: [55.845, 'Ferro',      '#ea580c'],
-    Co: [58.933, 'Cobalto',    '#f472b6'],
-    Ni: [58.693, 'Níquel',     '#34d399'],
-    Cu: [63.546, 'Cobre',      '#d97706'],
-    Zn: [65.38,  'Zinco',      '#818cf8'],
-    Br: [79.904, 'Bromo',      '#b91c1c'],
-    Ag: [107.87, 'Prata',      '#e2e8f0'],
-    In: [114.82, 'Índio',      '#ec4899'],
-    Sn: [118.71, 'Estanho',    '#9ca3af'],
-    I:  [126.90, 'Iodo',       '#7e22ce'],
-    Ba: [137.33, 'Bário',      '#14b8a6'],
-    Pb: [207.2,  'Chumbo',     '#475569']
-  };
-
-  function gerarXyzSds() {
-    var linhas = ['43', 'Dodecil sulfato de sodio'];
-    for (var i = 0; i < 12; i++) {
-      var cx = (i * 1.26).toFixed(3);
-      var cy = (i % 2 === 0 ? 0.44 : -0.44).toFixed(3);
-      linhas.push('C ' + cx + ' ' + cy + ' 0.000');
-      var s = i % 2 === 0 ? 1 : -1;
-      if (i === 0) {
-        linhas.push('H -1.020 0.100 0.000');
-        linhas.push('H 0.350 1.160 0.750');
-        linhas.push('H 0.350 1.160 -0.750');
-      } else {
-        var hy = (Number(cy) + s * 0.68).toFixed(3);
-        linhas.push('H ' + cx + ' ' + hy + ' 0.850');
-        linhas.push('H ' + cx + ' ' + hy + ' -0.850');
-      }
-    }
-    linhas.push('O 15.020 0.360 0.000');
-    linhas.push('S 16.450 -0.250 0.000');
-    linhas.push('O 16.450 -1.680 0.000');
-    linhas.push('O 17.150 0.350 1.150');
-    linhas.push('O 17.150 0.350 -1.150');
-    linhas.push('Na 18.850 0.850 0.000');
-    return linhas.join('\n');
-  }
-
-  var XYZ_LOCAL = {
-    'H2O': '3\nAgua\nO 0.000 0.000 0.117\nH 0.000 0.757 -0.469\nH 0.000 -0.757 -0.469',
-    'CO2': '3\nCO2\nC 0.000 0.000 0.000\nO 1.160 0.000 0.000\nO -1.160 0.000 0.000',
-    'H2SO4': '7\nH2SO4\nS 0.000 0.000 0.150\nO 0.000 1.240 0.850\nO 0.000 -1.240 0.850\nO 1.240 0.000 -0.820\nO -1.240 0.000 -0.820\nH 1.980 0.000 -0.220\nH -1.980 0.000 -0.220',
-    'NaOH': '3\nNaOH\nNa -1.850 0.000 0.000\nO 0.000 0.000 0.000\nH 0.960 0.000 0.000',
-    'Ca(OH)2': '5\nCa(OH)2\nCa 0.000 0.000 0.000\nO 2.100 0.000 0.000\nH 3.060 0.000 0.000\nO -2.100 0.000 0.000\nH -3.060 0.000 0.000',
-    'Fe(OH)3': '7\nFe(OH)3\nFe 0.000 0.000 0.250\nO 1.650 0.000 -0.250\nH 2.450 0.000 0.280\nO -0.825 1.430 -0.250\nH -1.225 2.120 0.280\nO -0.825 -1.430 -0.250\nH -1.225 -2.120 0.280',
-    'Al(OH)3': '7\nAl(OH)3\nAl 0.000 0.000 0.250\nO 1.650 0.000 -0.250\nH 2.450 0.000 0.280\nO -0.825 1.430 -0.250\nH -1.225 2.120 0.280\nO -0.825 -1.430 -0.250\nH -1.225 -2.120 0.280',
-    'NH4OH': '7\nNH4OH\nN -1.200 0.000 0.000\nH -1.550 0.950 0.000\nH -1.550 -0.480 0.820\nH -1.550 -0.480 -0.820\nH -0.180 0.000 0.000\nO 1.450 0.000 0.000\nH 2.410 0.000 0.000',
-    'NaCl': '8\nNaCl\nNa 0.0 0.0 0.0\nCl 2.2 0.0 0.0\nCl 0.0 2.2 0.0\nNa 2.2 2.2 0.0\nCl 0.0 0.0 2.2\nNa 2.2 0.0 2.2\nNa 0.0 2.2 2.2\nCl 2.2 2.2 2.2',
-    'NaClO': '3\nNaClO\nNa -2.100 0.000 0.000\nO 0.000 0.450 0.000\nCl 1.680 0.000 0.000',
-    'CaCO3': '5\nCaCO3\nC 0.000 0.000 0.000\nO 1.280 0.000 0.000\nO -0.640 1.110 0.000\nO -0.640 -1.110 0.000\nCa -2.600 0.000 0.000',
-    'NaHCO3': '6\nNaHCO3\nC 0.000 0.000 0.000\nO 1.250 0.250 0.000\nO -0.550 1.150 0.000\nO -0.750 -1.120 0.000\nH -1.680 -0.860 0.000\nNa 2.850 0.000 0.000',
-    'BaSO4': '6\nBaSO4\nS 0.000 0.000 0.000\nO 1.200 0.850 0.000\nO 1.200 -0.850 0.000\nO -0.850 0.000 1.200\nO -0.850 0.000 -1.200\nBa -2.950 0.000 0.000',
-    'BaTiO3': '5\nBaTiO3\nTi 0.000 0.000 0.000\nO 1.650 0.000 0.000\nO -0.825 1.430 0.000\nO -0.825 -1.430 0.000\nBa -2.550 0.000 0.000',
-    'In2O3': '5\nIn2O3\nIn -1.550 0.000 0.000\nIn 1.550 0.000 0.000\nO 0.000 0.950 0.000\nO -2.950 -0.600 0.000\nO 2.950 -0.600 0.000',
-    'SnO2': '3\nSnO2\nSn 0.000 0.000 0.000\nO 1.750 0.000 0.000\nO -1.750 0.000 0.000',
-    'SiO2': '3\nSiO2\nSi 0.000 0.000 0.000\nO 1.550 0.000 0.000\nO -1.550 0.000 0.000',
-    'TiO2': '3\nTiO2\nTi 0.000 0.000 0.000\nO 1.620 0.450 0.000\nO -1.620 0.450 0.000',
-    'Cr2O3': '5\nCr2O3\nCr -1.450 0.000 0.000\nCr 1.450 0.000 0.000\nO 0.000 0.950 0.000\nO -2.750 -0.650 0.000\nO 2.750 -0.650 0.000',
-    'Fe2O3': '5\nFe2O3\nFe -1.500 0.000 0.000\nFe 1.500 0.000 0.000\nO 0.000 0.920 0.000\nO -2.800 -0.650 0.000\nO 2.800 -0.650 0.000',
-    'Al2O3': '5\nAl2O3\nAl -1.450 0.000 0.000\nAl 1.450 0.000 0.000\nO 0.000 0.850 0.000\nO -2.750 -0.550 0.000\nO 2.750 -0.550 0.000',
-    'CaO': '2\nCaO\nCa -0.950 0.000 0.000\nO 0.950 0.000 0.000',
-    'MgO': '2\nMgO\nMg -0.950 0.000 0.000\nO 0.950 0.000 0.000',
-    'CuO': '2\nCuO\nCu -0.950 0.000 0.000\nO 0.950 0.000 0.000',
-    'ZnO': '2\nZnO\nZn -0.920 0.000 0.000\nO 0.920 0.000 0.000',
-    'HCl': '2\nHCl\nCl -0.450 0.000 0.000\nH 0.830 0.000 0.000',
-    'Mg(OH)2': '5\nMg(OH)2\nMg 0.000 0.000 0.000\nO 1.920 0.000 0.000\nH 2.880 0.000 0.000\nO -1.920 0.000 0.000\nH -2.880 0.000 0.000',
-    'C12H25NaO4S': gerarXyzSds(),
-    'C12H25SO4Na': gerarXyzSds(),
-    'NaC12H25SO4': gerarXyzSds()
-  };
-
-  var PUBCHEM_CID = {
-    'C6H8O7': 311, 'CH3COOH': 176, 'C2H4O2': 176, 'H3PO4': 1004, 'C2H5OH': 702,
-    'H2CO3': 767, 'C3H6O3': 612, 'C6H8O6': 54670067, 'H2O2': 784, 'NH3': 222,
-    'Na2CO3': 10340, 'CaSO4': 24497, 'KCl': 4873, 'NaF': 5235, 'CuSO4': 24462
+    H:  [1.008,  'Hidrogênio', '#f8fafc', 0.34],
+    Li: [6.94,   'Lítio',      '#c084fc', 0.58],
+    Be: [9.012,  'Berílio',    '#4ade80', 0.50],
+    B:  [10.81,  'Boro',       '#fb7185', 0.48],
+    C:  [12.011, 'Carbono',    '#64748b', 0.50],
+    N:  [14.007, 'Nitrogênio', '#3b82f6', 0.48],
+    O:  [15.999, 'Oxigênio',   '#ef4444', 0.46],
+    F:  [18.998, 'Flúor',      '#a3e635', 0.44],
+    Na: [22.99,  'Sódio',      '#a855f7', 0.64],
+    Mg: [24.305, 'Magnésio',   '#10b981', 0.60],
+    Al: [26.982, 'Alumínio',   '#cbd5e1', 0.58],
+    Si: [28.085, 'Silício',    '#eab308', 0.56],
+    P:  [30.974, 'Fósforo',    '#f97316', 0.54],
+    S:  [32.06,  'Enxofre',    '#facc15', 0.54],
+    Cl: [35.45,  'Cloro',      '#22c55e', 0.52],
+    K:  [39.098, 'Potássio',   '#8b5cf6', 0.68],
+    Ca: [40.078, 'Cálcio',     '#22c55e', 0.64],
+    Ti: [47.867, 'Titânio',    '#94a3b8', 0.60],
+    V:  [50.942, 'Vanádio',    '#a1a1aa', 0.58],
+    Cr: [51.996, 'Cromo',      '#60a5fa', 0.58],
+    Mn: [54.938, 'Manganês',   '#c026d3', 0.58],
+    Fe: [55.845, 'Ferro',      '#ea580c', 0.60],
+    Co: [58.933, 'Cobalto',    '#f472b6', 0.58],
+    Ni: [58.693, 'Níquel',     '#34d399', 0.58],
+    Cu: [63.546, 'Cobre',      '#d97706', 0.58],
+    Zn: [65.38,  'Zinco',      '#818cf8', 0.58],
+    As: [74.922, 'Arsênio',    '#a855f7', 0.56],
+    Se: [78.971, 'Selênio',    '#fb923c', 0.54],
+    Br: [79.904, 'Bromo',      '#b91c1c', 0.56],
+    Sr: [87.62,  'Estrôncio',  '#2dd4bf', 0.68],
+    Zr: [91.224, 'Zircônio',   '#38bdf8', 0.62],
+    Ag: [107.87, 'Prata',      '#e2e8f0', 0.62],
+    Cd: [112.41, 'Cádmio',     '#fde047', 0.62],
+    In: [114.82, 'Índio',      '#ec4899', 0.64],
+    Sn: [118.71, 'Estanho',    '#9ca3af', 0.64],
+    Sb: [121.76, 'Antimônio',  '#a78bfa', 0.62],
+    I:  [126.90, 'Iodo',       '#7e22ce', 0.60],
+    Ba: [137.33, 'Bário',      '#14b8a6', 0.72],
+    W:  [183.84, 'Tungstênio', '#38bdf8', 0.62],
+    Pt: [195.08, 'Platina',    '#cbd5e1', 0.62],
+    Au: [196.97, 'Ouro',       '#f59e0b', 0.62],
+    Hg: [200.59, 'Mercúrio',   '#94a3b8', 0.64],
+    Pb: [207.2,  'Chumbo',     '#475569', 0.66],
+    Bi: [208.98, 'Bismuto',    '#c084fc', 0.66]
   };
 
   function esc(s) {
@@ -116,56 +64,37 @@
   }
 
   function contarAtomos(formulaStr) {
-    var f = normFormula(formulaStr).replace(/[^A-Za-z0-9()\[\]]/g, '').replace(/\[/g, '(').replace(/\]/g, ')');
-    var stack = [{}], i = 0;
-    while (i < f.length) {
-      if (f[i] === '(') { stack.push({}); i++; }
-      else if (f[i] === ')') {
-        i++;
-        var num = '';
-        while (i < f.length && /\d/.test(f[i])) num += f[i++];
-        var mult = num ? parseInt(num, 10) : 1;
-        var grp = stack.pop() || {}, top = stack[stack.length - 1] || {};
-        Object.keys(grp).forEach(function (k) { top[k] = (top[k] || 0) + grp[k] * mult; });
-      } else if (/[A-Z]/.test(f[i])) {
-        var sym = f[i++];
-        if (i < f.length && /[a-z]/.test(f[i])) sym += f[i++];
-        var n = '';
-        while (i < f.length && /\d/.test(f[i])) n += f[i++];
-        var q = n ? parseInt(n, 10) : 1;
-        var cur = stack[stack.length - 1];
-        cur[sym] = (cur[sym] || 0) + q;
-      } else { i++; }
-    }
-    return stack[0] || {};
-  }
-
-  function gerarXyzGenerico(formulaLimpa) {
-    var atomos = contarAtomos(formulaLimpa);
-    var lista = [];
-    Object.keys(atomos).forEach(function (sym) {
-      var qtd = Math.min(atomos[sym], 24);
-      for (var i = 0; i < qtd; i++) lista.push(sym);
+    var limpa = normFormula(formulaStr).replace(/\[/g, '(').replace(/\]/g, ')');
+    var partes = limpa.split(/[·•.]/).filter(Boolean);
+    var total = {};
+    partes.forEach(function (parte) {
+      var mc = parte.match(/^(\d+)(.*)$/);
+      var coef = mc ? parseInt(mc[1], 10) : 1;
+      var f = (mc ? mc[2] : parte).replace(/[^A-Za-z0-9()]/g, '');
+      var stack = [{}], i = 0;
+      while (i < f.length) {
+        if (f[i] === '(') { stack.push({}); i++; }
+        else if (f[i] === ')') {
+          i++;
+          var num = '';
+          while (i < f.length && /\d/.test(f[i])) num += f[i++];
+          var mult = num ? parseInt(num, 10) : 1;
+          var grp = stack.pop() || {}, top = stack[stack.length - 1] || {};
+          Object.keys(grp).forEach(function (k) { top[k] = (top[k] || 0) + grp[k] * mult; });
+        } else if (/[A-Z]/.test(f[i])) {
+          var sym = f[i++];
+          if (i < f.length && /[a-z]/.test(f[i])) sym += f[i++];
+          var n = '';
+          while (i < f.length && /\d/.test(f[i])) n += f[i++];
+          var q = n ? parseInt(n, 10) : 1;
+          var cur = stack[stack.length - 1];
+          cur[sym] = (cur[sym] || 0) + q;
+        } else { i++; }
+      }
+      var base = stack[0] || {};
+      Object.keys(base).forEach(function (k) { total[k] = (total[k] || 0) + base[k] * coef; });
     });
-    if (!lista.length) return null;
-
-    var idxCentro = lista.findIndex(function (el) { return el !== 'H' && el !== 'O'; });
-    if (idxCentro === -1) idxCentro = 0;
-    var centro = lista.splice(idxCentro, 1)[0];
-
-    var linhas = [String(lista.length + 1), formulaLimpa, centro + ' 0.000 0.000 0.000'];
-    var n = lista.length;
-    var golden = Math.PI * (3 - Math.sqrt(5));
-    for (var i = 0; i < n; i++) {
-      var y = n === 1 ? 0 : 1 - (i / (n - 1)) * 2;
-      var r = Math.sqrt(Math.max(0, 1 - y * y));
-      var theta = golden * i;
-      var dist = i < 6 ? 1.62 : 2.65;
-      var x = Math.cos(theta) * r * dist;
-      var z = Math.sin(theta) * r * dist;
-      linhas.push(lista[i] + ' ' + x.toFixed(3) + ' ' + (y * dist).toFixed(3) + ' ' + z.toFixed(3));
-    }
-    return { formato: 'xyz', dados: linhas.join('\n') };
+    return total;
   }
 
   function calcularMassa(formula) {
@@ -196,15 +125,15 @@
     return a;
   }
 
-  function carregar3Dmol() {
-    if (window.$3Dmol) return Promise.resolve();
+  function carregarThree() {
+    if (window.THREE) return Promise.resolve();
     return new Promise(function (resolve, reject) {
       var s = document.createElement('script');
-      s.src = 'https://3dmol.org/build/3Dmol-min.js';
+      s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
       s.onload = resolve;
       s.onerror = function () {
         var s2 = document.createElement('script');
-        s2.src = 'https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.0.4/3Dmol-min.js';
+        s2.src = 'https://unpkg.com/three@0.128.0/build/three.min.js';
         s2.onload = resolve;
         s2.onerror = reject;
         document.head.appendChild(s2);
@@ -213,24 +142,313 @@
     });
   }
 
-  function obterModelo3D(formulaLimpa) {
-    if (XYZ_LOCAL[formulaLimpa]) {
-      return Promise.resolve({ formato: 'xyz', dados: XYZ_LOCAL[formulaLimpa] });
-    }
-    var cid = PUBCHEM_CID[formulaLimpa];
-    var promessa = cid
-      ? fetch('https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/' + cid + '/SDF?record_type=3d')
-          .then(function (r) { if (!r.ok) throw new Error('no3d'); return r.text(); })
-          .then(function (txt) { return { formato: 'sdf', dados: txt }; })
-      : fetch('https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/fastformula/' + encodeURIComponent(formulaLimpa) + '/SDF?record_type=3d')
-          .then(function (r) { if (!r.ok) throw new Error('no3d'); return r.text(); })
-          .then(function (txt) { return { formato: 'sdf', dados: txt }; });
+  var cacheBanco3D = null;
+  function obterModeloVerificado(formulaLimpa) {
+    var p = cacheBanco3D
+      ? Promise.resolve(cacheBanco3D)
+      : fetch('/data/moleculas-3d.json?v=1').then(function (r) { return r.json(); }).then(function (j) { cacheBanco3D = j; return j; });
 
-    return promessa.catch(function () {
-      var gen = gerarXyzGenerico(formulaLimpa);
-      if (gen) return gen;
-      throw new Error('sem-modelo');
+    return p.then(function (banco) {
+      if (banco && banco[formulaLimpa] && banco[formulaLimpa].atoms && banco[formulaLimpa].atoms.length) {
+        return banco[formulaLimpa];
+      }
+      // Reserva garantida se surgir formula nova no JSON antes de rodar a auditoria
+      var cont = contarAtomos(formulaLimpa);
+      var lista = [];
+      Object.keys(cont).forEach(function (sym) {
+        for (var i = 0; i < Math.min(cont[sym], 20); i++) lista.push(sym);
+      });
+      var cIdx = lista.findIndex(function (e) { return e !== 'H' && e !== 'O'; });
+      if (cIdx === -1) cIdx = 0;
+      var centro = lista.splice(cIdx, 1)[0] || 'C';
+      var atoms = [[centro, 0, 0, 0]], bonds = [];
+      var golden = Math.PI * (3 - Math.sqrt(5));
+      lista.forEach(function (el, i) {
+        var n = lista.length;
+        var y = n === 1 ? 0 : 1 - (i / (n - 1)) * 2;
+        var r = Math.sqrt(Math.max(0, 1 - y * y));
+        var th = golden * i;
+        atoms.push([el, Math.cos(th) * r * 1.65, y * 1.65, Math.sin(th) * r * 1.65]);
+        bonds.push([0, i + 1, 1]);
+      });
+      return { atoms: atoms, bonds: bonds };
     });
+  }
+
+  // ==================== MOTOR 3D STUDIO 4K (THREE.JS PBR) ====================
+  function criarVisualizador4K(container, modelo) {
+    var THREE = window.THREE;
+    container.innerHTML = '';
+
+    // Fundo cinematografico radial de estudio (adapta-se ao Modo Neon e Branco & Dourado)
+    function atualizarFundo() {
+      var claro = document.documentElement.getAttribute('data-tema') === 'claro';
+      container.style.background = claro
+        ? 'radial-gradient(circle at 38% 30%, #ffffff 0%, #faf3e3 58%, #ebd9b0 100%)'
+        : 'radial-gradient(circle at 38% 30%, #241345 0%, #110824 58%, #070310 100%)';
+    }
+    atualizarFundo();
+
+    var w = Math.max(260, container.clientWidth);
+    var h = Math.max(240, container.clientHeight);
+
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(38, w / h, 0.1, 200);
+
+    var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 3));
+    renderer.setSize(w, h);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.18;
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.domElement.style.display = 'block';
+    renderer.domElement.style.width = '100%';
+    renderer.domElement.style.height = '100%';
+    renderer.domElement.style.cursor = 'grab';
+    container.appendChild(renderer.domElement);
+
+    // Camada de rotulos atomicos 3D nitidos em resolucao nativa
+    var labelsLayer = document.createElement('div');
+    labelsLayer.style.cssText = 'position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:4;';
+    container.appendChild(labelsLayer);
+
+    // Iluminacao de Estudio 4K (4 pontos: hemisferio + principal + preenchimento frio + contorno dourado)
+    var hemi = new THREE.HemisphereLight(0xffffff, 0x2b194d, 0.92);
+    scene.add(hemi);
+
+    var keyLight = new THREE.DirectionalLight(0xffffff, 1.45);
+    keyLight.position.set(8, 12, 11);
+    scene.add(keyLight);
+
+    var fillLight = new THREE.DirectionalLight(0xa5f3fc, 0.62);
+    fillLight.position.set(-10, -4, 7);
+    scene.add(fillLight);
+
+    var rimLight = new THREE.DirectionalLight(0xf5d37a, 0.88);
+    rimLight.position.set(2, 9, -11);
+    scene.add(rimLight);
+
+    var pivot = new THREE.Group();
+    scene.add(pivot);
+
+    // Centralizar e calcular raio da molecula
+    var atoms = modelo.atoms || [];
+    var bonds = modelo.bonds || [];
+    var cx = 0, cy = 0, cz = 0;
+    atoms.forEach(function (a) { cx += a[1]; cy += a[2]; cz += a[3]; });
+    if (atoms.length) { cx /= atoms.length; cy /= atoms.length; cz /= atoms.length; }
+
+    var posicoes = atoms.map(function (a) {
+      return new THREE.Vector3(a[1] - cx, a[2] - cy, a[3] - cz);
+    });
+
+    var maxDist = 1.2;
+    posicoes.forEach(function (v) { maxDist = Math.max(maxDist, v.length() + 0.8); });
+
+    // Anel sutil de laboratorio abaixo da molecula
+    var haloRing = new THREE.Mesh(
+      new THREE.RingGeometry(maxDist * 0.72, maxDist * 0.755, 64),
+      new THREE.MeshBasicMaterial({ color: 0xf5d37a, side: THREE.DoubleSide, transparent: true, opacity: 0.22 })
+    );
+    haloRing.rotation.x = -Math.PI / 2;
+    haloRing.position.y = -maxDist * 0.78;
+    pivot.add(haloRing);
+
+    var sphereGeo = new THREE.SphereGeometry(1, 48, 36);
+    var cylGeo = new THREE.CylinderGeometry(1, 1, 1, 24, 1);
+
+    var atomMeshes = [];
+    var bondMeshes = [];
+    var labelItems = [];
+    var matCache = {};
+
+    function getMaterial(sym) {
+      if (matCache[sym]) return matCache[sym];
+      var info = MASSAS[sym] || [0, sym, '#c084fc', 0.52];
+      var col = new THREE.Color(info[2]);
+      var m = new THREE.MeshPhysicalMaterial({
+        color: col,
+        roughness: 0.16,
+        metalness: sym === 'H' || sym === 'O' || sym === 'C' || sym === 'N' ? 0.08 : 0.26,
+        clearcoat: 1.0,
+        clearcoatRoughness: 0.07,
+        reflectivity: 0.95,
+        emissive: col.clone().multiplyScalar(0.08)
+      });
+      matCache[sym] = m;
+      return m;
+    }
+
+    // Construir atomos em alta resolucao
+    atoms.forEach(function (a, i) {
+      var sym = a[0];
+      var info = MASSAS[sym] || [0, sym, '#c084fc', 0.52];
+      var baseR = info[3] || 0.52;
+      var mesh = new THREE.Mesh(sphereGeo, getMaterial(sym));
+      mesh.position.copy(posicoes[i]);
+      mesh.scale.setScalar(baseR);
+      mesh.userData = { baseR: baseR, sym: sym };
+      pivot.add(mesh);
+      atomMeshes.push(mesh);
+
+      var lbl = document.createElement('span');
+      lbl.textContent = sym;
+      lbl.style.cssText =
+        'position:absolute;transform:translate(-50%,-50%);padding:1px 6px;border-radius:999px;' +
+        'font:800 10.5px "JetBrains Mono",monospace;letter-spacing:0.02em;' +
+        'background:rgba(12,6,24,0.78);color:#fff;border:1px solid ' + info[2] + ';' +
+        'box-shadow:0 2px 8px rgba(0,0,0,0.45);white-space:nowrap;';
+      labelsLayer.appendChild(lbl);
+      labelItems.push({ el: lbl, mesh: mesh });
+    });
+
+    // Construir ligacoes bicolores (simples, duplas e triplas)
+    var upVec = new THREE.Vector3(0, 1, 0);
+    function adicionarMeiaLigacao(pInicio, pFim, corSym, raio) {
+      var dir = new THREE.Vector3().subVectors(pFim, pInicio);
+      var len = dir.length();
+      if (len < 0.001) return;
+      var m = new THREE.Mesh(cylGeo, getMaterial(corSym));
+      m.position.copy(pInicio).addScaledVector(dir, 0.5);
+      m.quaternion.setFromUnitVectors(upVec, dir.clone().normalize());
+      m.scale.set(raio, len, raio);
+      pivot.add(m);
+      bondMeshes.push(m);
+    }
+
+    bonds.forEach(function (b) {
+      var i1 = b[0], i2 = b[1], ord = b[2] || 1;
+      var p1 = posicoes[i1], p2 = posicoes[i2];
+      if (!p1 || !p2) return;
+      var dir = new THREE.Vector3().subVectors(p2, p1).normalize();
+      var perp = new THREE.Vector3(0, 0, 1).cross(dir);
+      if (perp.lengthSq() < 0.01) perp = new THREE.Vector3(0, 1, 0).cross(dir);
+      perp.normalize();
+
+      var offsets = ord === 2 ? [-0.12, 0.12] : (ord >= 3 ? [-0.16, 0, 0.16] : [0]);
+      var raio = ord >= 2 ? 0.085 : 0.115;
+
+      offsets.forEach(function (off) {
+        var shift = perp.clone().multiplyScalar(off);
+        var a1 = p1.clone().add(shift);
+        var a2 = p2.clone().add(shift);
+        var meio = a1.clone().add(a2).multiplyScalar(0.5);
+        adicionarMeiaLigacao(a1, meio, atoms[i1][0], raio);
+        adicionarMeiaLigacao(meio, a2, atoms[i2][0], raio);
+      });
+    });
+
+    // Camera inicial ajustada ao tamanho da molecula
+    var distBase = Math.max(4.6, maxDist * 2.55);
+    var distAlvo = distBase;
+    var distAtual = distBase;
+    camera.position.set(0, 0.4, distAtual);
+    camera.lookAt(0, 0, 0);
+
+    // Rotacao suave com inercia e toque mobile
+    var rotY = 0.35, rotX = 0.24;
+    var tRotY = 0.35, tRotX = 0.24;
+    var girando = true;
+    var mostrarRotulos = atoms.length <= 16;
+    var drag = false, lx = 0, ly = 0, pinchDist = 0;
+
+    labelsLayer.style.display = mostrarRotulos ? 'block' : 'none';
+
+    var dom = renderer.domElement;
+    dom.addEventListener('pointerdown', function (e) {
+      drag = true;
+      lx = e.clientX; ly = e.clientY;
+      dom.style.cursor = 'grabbing';
+    });
+    window.addEventListener('pointerup', function () {
+      drag = false;
+      dom.style.cursor = 'grab';
+    });
+    window.addEventListener('pointermove', function (e) {
+      if (!drag) return;
+      var dx = e.clientX - lx, dy = e.clientY - ly;
+      lx = e.clientX; ly = e.clientY;
+      tRotY += dx * 0.011;
+      tRotX = Math.max(-1.4, Math.min(1.4, tRotX + dy * 0.011));
+    });
+    dom.addEventListener('wheel', function (e) {
+      e.preventDefault();
+      distAlvo = Math.max(2.4, Math.min(distBase * 2.2, distAlvo + e.deltaY * 0.008));
+    }, { passive: false });
+    dom.addEventListener('touchstart', function (e) {
+      if (e.touches.length === 2) {
+        drag = false;
+        pinchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+      }
+    }, { passive: true });
+    dom.addEventListener('touchmove', function (e) {
+      if (e.touches.length === 2) {
+        var d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+        distAlvo = Math.max(2.4, Math.min(distBase * 2.2, distAlvo - (d - pinchDist) * 0.025));
+        pinchDist = d;
+      }
+    }, { passive: true });
+
+    function resize() {
+      var nw = container.clientWidth, nh = container.clientHeight;
+      if (nw < 10 || nh < 10) return;
+      camera.aspect = nw / nh;
+      camera.updateProjectionMatrix();
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 3));
+      renderer.setSize(nw, nh);
+    }
+    if (window.ResizeObserver) new ResizeObserver(resize).observe(container);
+    window.addEventListener('resize', resize);
+
+    var tmpVec = new THREE.Vector3();
+    function animar() {
+      requestAnimationFrame(animar);
+      if (container.offsetWidth === 0 || container.offsetHeight === 0) return;
+      if (girando && !drag) tRotY += 0.008;
+
+      rotY += (tRotY - rotY) * 0.12;
+      rotX += (tRotX - rotX) * 0.12;
+      distAtual += (distAlvo - distAtual) * 0.12;
+
+      pivot.rotation.y = rotY;
+      pivot.rotation.x = rotX;
+      camera.position.z = distAtual;
+      camera.lookAt(0, 0, 0);
+
+      renderer.render(scene, camera);
+
+      if (mostrarRotulos) {
+        var cw = container.clientWidth, ch = container.clientHeight;
+        for (var i = 0; i < labelItems.length; i++) {
+          var it = labelItems[i];
+          it.mesh.getWorldPosition(tmpVec);
+          tmpVec.project(camera);
+          var sx = (tmpVec.x * 0.5 + 0.5) * cw;
+          var sy = (-tmpVec.y * 0.5 + 0.5) * ch;
+          it.el.style.left = sx.toFixed(1) + 'px';
+          it.el.style.top = sy.toFixed(1) + 'px';
+          it.el.style.opacity = tmpVec.z < 1 ? '0.96' : '0';
+        }
+      }
+    }
+    animar();
+
+    return {
+      setEstilo: function (tipo) {
+        var vdw = tipo === 'sp';
+        atomMeshes.forEach(function (m) { m.scale.setScalar(m.userData.baseR * (vdw ? 2.05 : 1.0)); });
+        bondMeshes.forEach(function (b) { b.visible = !vdw; });
+      },
+      setGirar: function (on) { girando = on; },
+      setRotulos: function (on) {
+        mostrarRotulos = on;
+        labelsLayer.style.display = on ? 'block' : 'none';
+      },
+      getRotulos: function () { return mostrarRotulos; },
+      resetar: function () { tRotY = 0.35; tRotX = 0.24; distAlvo = distBase; },
+      atualizarTema: atualizarFundo,
+      resize: resize
+    };
   }
 
   function encontrarPlaquinha(dados) {
@@ -238,9 +456,7 @@
     var qs = new URLSearchParams(window.location.search || '');
     var todas = [];
     dados.forEach(function (s) {
-      (s.ocorrencias || []).forEach(function (o) {
-        todas.push({ sub: s, oc: o });
-      });
+      (s.ocorrencias || []).forEach(function (o) { todas.push({ sub: s, oc: o }); });
     });
     todas.sort(function (a, b) { return String(a.oc.codigo).localeCompare(String(b.oc.codigo)); });
 
@@ -343,11 +559,7 @@
 
         root.innerHTML =
           '<div class="sub-breadcrumb">' +
-            '<a href="/">← Catálogo</a>' +
-            '<span>·</span>' +
-            '<a href="/mapa">Mapa do CEFET</a>' +
-            '<span>·</span>' +
-            '<span>' + esc(oc.zona) + '</span>' +
+            '<a href="/">← Catálogo</a><span>·</span><a href="/mapa">Mapa do CEFET</a><span>·</span><span>' + esc(oc.zona) + '</span>' +
           '</div>' +
 
           '<section class="sub-hero sub-card sub-anim-in">' +
@@ -385,48 +597,32 @@
           '<div class="sub-panels">' +
             '<section class="sub-panel ativo" id="panel-resumo">' +
               '<div class="sub-grid-2">' +
-                '<div class="sub-info-box sub-card">' +
-                  '<div class="sub-kicker">🔬 POR QUE ESTÁ AQUI?</div>' +
-                  '<p class="sub-body">' + esc(sub.porQueEstaAqui) + '</p>' +
-                '</div>' +
-                '<div class="sub-info-box sub-card">' +
-                  '<div class="sub-kicker">📚 CLASSIFICAÇÃO QUÍMICA</div>' +
-                  '<p class="sub-body">' + esc(sub.justificativa) + '</p>' +
-                '</div>' +
+                '<div class="sub-info-box sub-card"><div class="sub-kicker">🔬 POR QUE ESTÁ AQUI?</div><p class="sub-body">' + esc(sub.porQueEstaAqui) + '</p></div>' +
+                '<div class="sub-info-box sub-card"><div class="sub-kicker">📚 CLASSIFICAÇÃO QUÍMICA</div><p class="sub-body">' + esc(sub.justificativa) + '</p></div>' +
               '</div>' +
-
               '<div class="sub-info-box sub-card" style="margin-top:14px;">' +
                 '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:8px;">' +
                   '<div class="sub-kicker" style="margin:0;">🌈 POSIÇÃO NA ESCALA DE pH (0 A 14)</div>' +
                   '<strong style="font-size:12px;color:' + phInfo.cor + ';">pH ≈ ' + ph.toFixed(1) + ' · ' + phInfo.txt + '</strong>' +
                 '</div>' +
-                '<div class="sub-ph-bar">' +
-                  '<div class="sub-ph-marker" id="sub-ph-marker" style="left:50%;" data-alvo="' + phPct.toFixed(1) + '"></div>' +
-                '</div>' +
+                '<div class="sub-ph-bar"><div class="sub-ph-marker" id="sub-ph-marker" style="left:50%;" data-alvo="' + phPct.toFixed(1) + '"></div></div>' +
                 '<div class="sub-ph-legend"><span>0 · Ácido forte</span><span>7 · Neutro</span><span>14 · Base forte</span></div>' +
               '</div>' +
-
               equacaoHtml +
-
               '<div class="sub-grid-2" style="margin-top:14px;">' +
-                '<details class="sub-acc sub-card" open>' +
-                  '<summary>💡 Curiosidade Científica</summary>' +
-                  '<p class="sub-body">' + esc(sub.curiosidade) + '</p>' +
-                '</details>' +
-                '<details class="sub-acc sub-card sub-warn" open>' +
-                  '<summary>⚠️ Segurança e Boas Práticas</summary>' +
-                  '<p class="sub-body">' + esc(segurancaTxt) + '</p>' +
-                '</details>' +
+                '<details class="sub-acc sub-card" open><summary>💡 Curiosidade Científica</summary><p class="sub-body">' + esc(sub.curiosidade) + '</p></details>' +
+                '<details class="sub-acc sub-card sub-warn" open><summary>⚠️ Segurança e Boas Práticas</summary><p class="sub-body">' + esc(segurancaTxt) + '</p></details>' +
               '</div>' +
             '</section>' +
 
             '<section class="sub-panel" id="panel-mol3d">' +
               '<div class="sub-card sub-info-box">' +
                 '<div class="sub-mol-head">' +
-                  '<div><div class="sub-kicker">🧬 VISUALIZADOR MOLECULAR INTERATIVO</div><h2 class="sub-h2">' + esc(sub.nomeIupac) + ' (' + esc(sub.formula) + ')</h2></div>' +
+                  '<div><div class="sub-kicker">🧬 VISUALIZADOR MOLECULAR STUDIO 4K</div><h2 class="sub-h2">' + esc(sub.nomeIupac) + ' (' + esc(sub.formula) + ')</h2></div>' +
                   '<div class="sub-mol-ctrls">' +
                     '<button type="button" id="s-mol-bs" class="btn ativo">Esferas</button>' +
                     '<button type="button" id="s-mol-sp" class="btn">Nuvem</button>' +
+                    '<button type="button" id="s-mol-lbl" class="btn ativo">🏷️ Rótulos</button>' +
                     '<button type="button" id="s-mol-spin" class="btn ativo">🔄 Girar</button>' +
                     '<button type="button" id="s-mol-lock" class="btn">🔓 Toque Livre</button>' +
                   '</div>' +
@@ -434,9 +630,9 @@
                 '<div class="sub-mol-stage">' +
                   '<div id="sub-mol-viewport"></div>' +
                   '<div id="sub-mol-shield" class="sub-mol-shield" style="display:none;">Toque bloqueado para facilitar rolagem no celular</div>' +
-                  '<div id="sub-mol-loading" class="sub-mol-loading">Carregando estrutura 3D...</div>' +
+                  '<div id="sub-mol-loading" class="sub-mol-loading">Renderizando molécula em 4K...</div>' +
                 '</div>' +
-                '<div class="sub-mol-tip">Arraste para girar a molécula · Pinça/scroll para zoom · No celular, clique em <strong>Travar Toque</strong> se quiser rolar a tela por cima do 3D.</div>' +
+                '<div class="sub-mol-tip">Arraste para girar · Pinça/scroll para zoom · Cores 100% sincronizadas com a composição abaixo.</div>' +
               '</div>' +
 
               '<div class="sub-card sub-info-box" style="margin-top:14px;">' +
@@ -473,10 +669,7 @@
             '</section>' +
 
             '<section class="sub-panel" id="panel-desafio">' +
-              '<div class="sub-card sub-info-box">' +
-                '<div class="sub-kicker">⚡ DESAFIO RELÂMPAGO DESTA PLAQUINHA</div>' +
-                '<div id="sub-quiz-area"></div>' +
-              '</div>' +
+              '<div class="sub-card sub-info-box"><div class="sub-kicker">⚡ DESAFIO RELÂMPAGO DESTA PLAQUINHA</div><div id="sub-quiz-area"></div></div>' +
               '<div class="sub-card sub-info-box" style="margin-top:14px;">' +
                 '<div class="sub-kicker">👥 FICHA TÉCNICA &amp; AUTORIA</div>' +
                 '<div class="sub-kv-grid">' +
@@ -500,7 +693,7 @@
         }, 120);
 
         var molCarregada = false;
-        var molViewer = null;
+        var molCtrl = null;
         var tabs = Array.from(root.querySelectorAll('.sub-tab'));
         tabs.forEach(function (t) {
           t.onclick = function () {
@@ -516,8 +709,8 @@
             if (id === 'mol3d' && !molCarregada) {
               molCarregada = true;
               iniciarMol3D();
-            } else if (id === 'mol3d' && molViewer) {
-              setTimeout(function () { molViewer.resize(); molViewer.render(); }, 60);
+            } else if (id === 'mol3d' && molCtrl) {
+              setTimeout(function () { molCtrl.resize(); }, 60);
             }
           };
         });
@@ -525,45 +718,28 @@
         function iniciarMol3D() {
           var vp = document.getElementById('sub-mol-viewport');
           var ld = document.getElementById('sub-mol-loading');
-          Promise.all([carregar3Dmol(), obterModelo3D(formulaLimpa)]).then(function (res) {
+          Promise.all([carregarThree(), obterModeloVerificado(formulaLimpa)]).then(function (res) {
             if (ld) ld.style.display = 'none';
-            var modelo = res[1];
-            var claro = document.documentElement.getAttribute('data-tema') === 'claro';
-            molViewer = window.$3Dmol.createViewer(vp, { backgroundColor: claro ? '#faf3e3' : '#0e071d' });
-            molViewer.addModel(modelo.dados, modelo.formato);
+            molCtrl = criarVisualizador4K(vp, res[1]);
 
-            var girando = true;
-            var travado = false;
-
-            // Aplica exatamente as mesmas cores de MASSAS no modelo 3D (esferas e ligacoes)
-            function estilo(tipo) {
-              var base = tipo === 'sp'
-                ? { sphere: { scale: 0.72, color: '#c084fc' } }
-                : { stick: { radius: 0.18, color: '#c084fc' }, sphere: { scale: 0.36, color: '#c084fc' } };
-              molViewer.setStyle({}, base);
-              Object.keys(MASSAS).forEach(function (el) {
-                var c = MASSAS[el][2];
-                var st = tipo === 'sp'
-                  ? { sphere: { scale: 0.72, color: c } }
-                  : { stick: { radius: 0.18, color: c }, sphere: { scale: 0.36, color: c } };
-                molViewer.setStyle({ elem: el }, st);
-              });
-              molViewer.render();
-            }
-
-            estilo('bs');
-            molViewer.zoomTo();
-            molViewer.spin('y', 0.75);
-            molViewer.render();
+            var girando = true, travado = false;
+            var btnLbl = document.getElementById('s-mol-lbl');
+            var rotulosOn = molCtrl.getRotulos();
+            btnLbl.classList.toggle('ativo', rotulosOn);
 
             document.getElementById('s-mol-bs').onclick = function () {
-              this.classList.add('ativo'); document.getElementById('s-mol-sp').classList.remove('ativo'); estilo('bs');
+              this.classList.add('ativo'); document.getElementById('s-mol-sp').classList.remove('ativo'); molCtrl.setEstilo('bs');
             };
             document.getElementById('s-mol-sp').onclick = function () {
-              this.classList.add('ativo'); document.getElementById('s-mol-bs').classList.remove('ativo'); estilo('sp');
+              this.classList.add('ativo'); document.getElementById('s-mol-bs').classList.remove('ativo'); molCtrl.setEstilo('sp');
+            };
+            btnLbl.onclick = function () {
+              rotulosOn = !rotulosOn;
+              this.classList.toggle('ativo', rotulosOn);
+              molCtrl.setRotulos(rotulosOn);
             };
             document.getElementById('s-mol-spin').onclick = function () {
-              girando = !girando; this.classList.toggle('ativo', girando); molViewer.spin(girando ? 'y' : false, 0.75);
+              girando = !girando; this.classList.toggle('ativo', girando); molCtrl.setGirar(girando);
             };
             document.getElementById('s-mol-lock').onclick = function () {
               travado = !travado;
@@ -571,14 +747,11 @@
               this.textContent = travado ? '🔒 Toque Travado' : '🔓 Toque Livre';
               document.getElementById('sub-mol-shield').style.display = travado ? 'flex' : 'none';
             };
-
-            window.addEventListener('atq-tema-mudou', function (ev) {
-              if (!molViewer) return;
-              molViewer.setBackgroundColor(ev.detail && ev.detail.tema === 'claro' ? '#faf3e3' : '#0e071d');
-              molViewer.render();
+            window.addEventListener('atq-tema-mudou', function () {
+              if (molCtrl) molCtrl.atualizarTema();
             });
           }).catch(function () {
-            if (ld) ld.innerHTML = 'Visualização 3D indisponível neste dispositivo para <strong>' + esc(sub.formula) + '</strong>.';
+            if (ld) ld.innerHTML = 'WebGL indisponível neste aparelho para renderizar <strong>' + esc(sub.formula) + '</strong>.';
           });
         }
 
@@ -586,12 +759,7 @@
         var falando = false;
         btnAudio.onclick = function () {
           if (!('speechSynthesis' in window)) { alert('Seu navegador não suporta leitura em voz alta.'); return; }
-          if (falando) {
-            window.speechSynthesis.cancel();
-            falando = false;
-            btnAudio.textContent = '🔊 Ouvir ficha';
-            return;
-          }
+          if (falando) { window.speechSynthesis.cancel(); falando = false; btnAudio.textContent = '🔊 Ouvir ficha'; return; }
           window.speechSynthesis.cancel();
           var texto = 'Plaquinha ' + oc.codigo + ', em ' + oc.zona + '. Substância: ' + sub.nomeIupac + ', função ' + sub.classe + '. ' +
             (sub.porQueEstaAqui || '') + ' Classificação: ' + (sub.justificativa || '') + ' Curiosidade: ' + (sub.curiosidade || '');
@@ -622,18 +790,8 @@
 
         var formulasOutras = embaralhar(Array.from(new Set(dados.map(function (s) { return s.formula; }).filter(function (f) { return f !== sub.formula; })))).slice(0, 3);
         var perguntas = [
-          {
-            enunciado: 'A substância "' + sub.nomeIupac + '" (' + sub.formula + ') pertence a qual função inorgânica?',
-            opcoes: embaralhar(['Ácido', 'Base', 'Sal', 'Óxido']),
-            correta: sub.classe,
-            exp: sub.justificativa
-          },
-          {
-            enunciado: 'Qual fórmula representa corretamente "' + sub.nomeIupac + '"?',
-            opcoes: embaralhar([sub.formula].concat(formulasOutras)),
-            correta: sub.formula,
-            exp: sub.nomeIupac + ' tem fórmula ' + sub.formula + ' e aparece em ' + oc.zona + '.'
-          }
+          { enunciado: 'A substância "' + sub.nomeIupac + '" (' + sub.formula + ') pertence a qual função inorgânica?', opcoes: embaralhar(['Ácido', 'Base', 'Sal', 'Óxido']), correta: sub.classe, exp: sub.justificativa },
+          { enunciado: 'Qual fórmula representa corretamente "' + sub.nomeIupac + '"?', opcoes: embaralhar([sub.formula].concat(formulasOutras)), correta: sub.formula, exp: sub.nomeIupac + ' tem fórmula ' + sub.formula + ' e aparece em ' + oc.zona + '.' }
         ];
 
         var qIdx = 0, qPts = 0;
@@ -653,30 +811,23 @@
           box.innerHTML =
             '<div style="font-size:12px;opacity:0.78;margin-bottom:6px;">Pergunta ' + (qIdx + 1) + ' de ' + perguntas.length + '</div>' +
             '<div style="font-size:16px;font-weight:700;margin-bottom:12px;">' + esc(q.enunciado) + '</div>' +
-            '<div class="sub-q-opts" id="sub-q-opts"></div>' +
-            '<div id="sub-q-fb" style="margin-top:10px;"></div>';
+            '<div class="sub-q-opts" id="sub-q-opts"></div><div id="sub-q-fb" style="margin-top:10px;"></div>';
 
           var optsEl = document.getElementById('sub-q-opts');
           var resp = false;
           q.opcoes.forEach(function (op) {
             var b = document.createElement('button');
-            b.type = 'button';
-            b.className = 'btn sub-q-opt';
-            b.textContent = op;
+            b.type = 'button'; b.className = 'btn sub-q-opt'; b.textContent = op;
             b.onclick = function () {
-              if (resp) return;
-              resp = true;
-              var ok = op === q.correta;
-              if (ok) qPts++;
+              if (resp) return; resp = true;
+              var ok = op === q.correta; if (ok) qPts++;
               Array.from(optsEl.children).forEach(function (x) {
                 if (x.textContent === q.correta) x.classList.add('sub-opt-ok');
                 else if (x === b && !ok) x.classList.add('sub-opt-err');
               });
               document.getElementById('sub-q-fb').innerHTML =
-                '<div class="sub-q-feedback">' +
-                  '<strong>' + (ok ? '✅ Correto! ' : '❌ Resposta certa: ' + esc(q.correta) + '. ') + '</strong>' + esc(q.exp) +
-                  '<div style="margin-top:10px;"><button type="button" id="sub-q-next" class="btn btn-primary">' + (qIdx + 1 < perguntas.length ? 'Próxima →' : 'Ver resultado') + '</button></div>' +
-                '</div>';
+                '<div class="sub-q-feedback"><strong>' + (ok ? '✅ Correto! ' : '❌ Resposta certa: ' + esc(q.correta) + '. ') + '</strong>' + esc(q.exp) +
+                '<div style="margin-top:10px;"><button type="button" id="sub-q-next" class="btn btn-primary">' + (qIdx + 1 < perguntas.length ? 'Próxima →' : 'Ver resultado') + '</button></div></div>';
               document.getElementById('sub-q-next').onclick = function () { qIdx++; renderQuiz(); };
             };
             optsEl.appendChild(b);

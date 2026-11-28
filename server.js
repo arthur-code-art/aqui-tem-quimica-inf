@@ -10,6 +10,7 @@ const fs = require('fs');
 const QRCode = require('qrcode');
 
 const app = express();
+require('./lib/anti-copia')(app);
 app.get('/plaquinhas', (req, res) => res.sendFile(require('path').join(__dirname, 'public', 'plaquinhas.html')));
 app.get('/tabela', (req, res) => res.sendFile(require('path').join(__dirname, 'public', 'tabela.html')));
 require('./lib/quimicobot-ia')(app);
